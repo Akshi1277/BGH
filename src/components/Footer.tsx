@@ -83,9 +83,11 @@ export default function Footer() {
 
       <div className="border-t border-ink-line">
         <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop py-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-[11px] font-mono-ui uppercase tracking-[0.1em] text-cream-faint">
-            &copy; {new Date().getFullYear()} Brahm Global Holdings. All
-            rights reserved.
+          <div className="text-[11px] font-mono-ui uppercase tracking-[0.1em] text-cream-faint text-center md:text-left">
+            &copy; {new Date().getFullYear()} Brahm Global Holdings.{" "}
+            <span className="inline-block md:inline whitespace-nowrap">
+              All rights reserved.
+            </span>
           </div>
           <div className="flex gap-6 text-[11px] font-mono-ui uppercase tracking-[0.1em] text-cream-faint">
             <Link href="#" className="hover:text-gold transition-colors">
