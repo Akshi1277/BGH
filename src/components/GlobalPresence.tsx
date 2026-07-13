@@ -49,25 +49,26 @@ export default function GlobalPresence() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-ink-line border border-ink-line">
           {TRUST.map((t, idx) => (
-            <motion.div
-              key={t.label}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: idx * 0.15 }}
-              className="bg-ink-soft p-10 md:p-12 flex flex-col items-center text-center gap-5"
-            >
-              <Icon name={t.icon} size={24} className="text-gold" />
-              <span className="font-display text-3xl text-cream">
-                {t.stat}
-              </span>
-              <h3 className="font-mono-ui text-label uppercase tracking-[0.1em] text-cream">
-                {t.label}
-              </h3>
-              <p className="text-sm text-cream-muted leading-relaxed max-w-xs">
-                {t.description}
-              </p>
-            </motion.div>
+            <div key={t.label} className="bg-ink-soft p-10 md:p-12 flex flex-col items-center text-center">
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: idx * 0.15 }}
+                className="flex flex-col items-center text-center gap-5"
+              >
+                <Icon name={t.icon} size={24} className="text-gold" />
+                <span className="font-display text-3xl text-cream">
+                  {t.stat}
+                </span>
+                <h3 className="font-mono-ui text-label uppercase tracking-[0.1em] text-cream">
+                  {t.label}
+                </h3>
+                <p className="text-sm text-cream-muted leading-relaxed max-w-xs">
+                  {t.description}
+                </p>
+              </motion.div>
+            </div>
           ))}
         </div>
       </div>
