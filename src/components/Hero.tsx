@@ -35,7 +35,7 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <span className="text-eyebrow font-mono-ui text-gold block">
-            Brahm Global Holdings <span className="inline-block md:inline">&mdash;</span> <span className="block md:inline text-gold/80">United Kingdom</span>
+            Brahm Global Holdings <span className="inline-block md:inline">&mdash;</span> <span className="block md:inline text-gold/80 mt-1.5 md:mt-0">United Kingdom</span>
           </span>
           <h1 className="font-display text-hero text-cream max-w-2xl">
             We build the products behind{" "}
