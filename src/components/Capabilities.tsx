@@ -73,30 +73,34 @@ export default function Capabilities() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-ink-line border border-ink-line"
         >
           {CAPABILITIES.map((cap) => (
-            <motion.div
+            <div
               key={cap.index}
-              variants={item}
               className="bg-ink p-8 md:p-10 flex flex-col gap-6 group hover:bg-ink-soft transition-colors duration-500"
             >
-              <div className="flex items-center justify-between">
-                <span className="font-mono-ui text-label text-gold">
-                  {cap.index}
-                </span>
-                <Icon
-                  name={cap.icon}
-                  size={22}
-                  className="text-cream-faint group-hover:text-gold transition-colors duration-500"
-                />
-              </div>
-              <div>
-                <h3 className="font-display text-xl text-cream mb-3">
-                  {cap.title}
-                </h3>
-                <p className="text-sm text-cream-muted leading-relaxed">
-                  {cap.description}
-                </p>
-              </div>
-            </motion.div>
+              <motion.div
+                variants={item}
+                className="flex flex-col gap-6"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="font-mono-ui text-label text-gold">
+                    {cap.index}
+                  </span>
+                  <Icon
+                    name={cap.icon}
+                    size={22}
+                    className="text-cream-faint group-hover:text-gold transition-colors duration-500"
+                  />
+                </div>
+                <div>
+                  <h3 className="font-display text-xl text-cream mb-3">
+                    {cap.title}
+                  </h3>
+                  <p className="text-sm text-cream-muted leading-relaxed">
+                    {cap.description}
+                  </p>
+                </div>
+              </motion.div>
+            </div>
           ))}
         </motion.div>
       </div>
