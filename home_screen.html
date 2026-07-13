@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BRAHM GLOBAL HOLDINGS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#261900",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#e4e2e2",
+                        "on-error": "#ffffff",
+                        "secondary": "#5e5f5b",
+                        "secondary-fixed-dim": "#c7c7c2",
+                        "surface-container": "#efeded",
+                        "on-surface-variant": "#44474a",
+                        "tertiary-fixed-dim": "#e9c176",
+                        "tertiary": "#000000",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#e3e3de",
+                        "on-tertiary-fixed": "#261900",
+                        "on-surface": "#1b1c1c",
+                        "surface": "#fbf9f9",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#454749",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#fbf9f9",
+                        "on-secondary-container": "#646561",
+                        "surface-tint": "#5d5e61",
+                        "on-secondary-fixed": "#1b1c19",
+                        "primary": "#000101",
+                        "inverse-primary": "#c6c6c9",
+                        "inverse-surface": "#303031",
+                        "tertiary-fixed": "#ffdea5",
+                        "on-background": "#1b1c1c",
+                        "on-primary-fixed": "#1a1c1e",
+                        "primary-container": "#1a1c1e",
+                        "surface-variant": "#e4e2e2",
+                        "outline-variant": "#c5c6ca",
+                        "surface-container-high": "#e9e8e7",
+                        "primary-fixed-dim": "#c6c6c9",
+                        "secondary-container": "#e3e3de",
+                        "inverse-on-surface": "#f2f0f0",
+                        "on-tertiary-container": "#a17f3b",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#fbf9f9",
+                        "primary-fixed": "#e2e2e5",
+                        "on-secondary-fixed-variant": "#464744",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#dbdad9",
+                        "surface-container-low": "#f5f3f3",
+                        "on-primary-container": "#838486",
+                        "on-tertiary-fixed-variant": "#5d4201",
+                        "outline": "#75777a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "title-md": ["Inter"],
+                        "headline-lg-mobile": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "title-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        body {
+            background-color: #fbf9f9; /* Fallback */
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar -->
+<nav class="w-full top-0 sticky bg-background z-50 border-b border-outline-variant/10">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex justify-between items-center h-20">
+<!-- Brand -->
+<a class="font-display-lg text-headline-lg-mobile md:text-headline-lg font-bold tracking-tighter text-primary flex items-center gap-4" href="#">
+                BRAHM GLOBAL HOLDINGS
+            </a>
+<!-- Desktop Nav -->
+<div class="hidden md:flex items-center gap-8 font-title-md text-title-md uppercase tracking-wider">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#tpl">TPL</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#lsa">LSA</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#luxure">LUXURE DE EDEN</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#alayn">ALAYN</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#about">ABOUT</a>
+<a class="bg-primary text-on-primary px-6 py-2 hover:opacity-80 transition-opacity uppercase text-label-sm font-label-sm tracking-widest ml-4" href="#contact">CONTACT US</a>
+</div>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden text-primary p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-[80vh] flex items-center justify-center overflow-hidden py-32">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="flex flex-col gap-8">
+<h1 class="font-display-lg text-display-lg text-primary max-w-3xl leading-tight">
+                        Innovating Globally, Grounded in Excellence.
+                    </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                        A global holding company balancing cutting-edge software innovation with the steadfast reliability of an established investment firm.
+                    </p>
+<div class="flex gap-4 mt-4">
+<a class="bg-primary text-on-primary px-8 py-4 uppercase font-label-sm text-label-sm tracking-widest hover:bg-inverse-surface transition-colors" href="#portfolio">Explore Portfolio</a>
+<a class="border border-outline px-8 py-4 uppercase font-label-sm text-label-sm tracking-widest hover:border-primary text-primary transition-colors" href="#about">Discover Our Heritage</a>
+</div>
+</div>
+<div class="relative flex justify-center lg:justify-end">
+<div class="relative w-full max-w-md aspect-[0.80] bg-surface-container-highest border border-outline-variant/20 overflow-hidden">
+<img alt="BRAHM GLOBAL HOLDINGS Logo" class="w-full h-full object-cover opacity-90 mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrefjls1_KoZzkLM10Rjax5rt-auT3GxdIlgtyHAhrMM0y523E7SPDpEDoM2WROlQUrWKuDOcDhaq6mZkdCjzJiiD4t-qqmWdkcnqviuhazRVQlh43CK9Qj2FfWl-pcLQgF8hMYNxurz5bO6iamFq3431A1oPAzSMidQ8ivrL6tiZHVWLyZr554QVNABO8_FDUCKpgLpaGd7AXkdOW-Fwiy4NLMk7imjkNjGd1N3S4a8FgeGSKhzDBh-VczS-F9ejkgi3jS2twPn8"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Spacer -->
+<div class="h-32"></div>
+<!-- Portfolio Bento Grid Section -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16" id="portfolio">
+<div class="mb-16">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-4">Our Ventures</h2>
+<div class="w-24 h-1 bg-primary"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- TPL -->
+<div class="col-span-1 md:col-span-2 bg-surface p-8 border border-outline-variant/20 group hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-[400px] relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-transparent to-surface-variant/30 z-0"></div>
+<div class="relative z-10">
+<span class="text-label-sm font-label-sm uppercase tracking-widest text-on-surface-variant mb-2 block">Sports Tech</span>
+<h3 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-4">TPL</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+                            Talent Pro League. The UK's premier football league management software, revolutionizing how professional sports are organized and analyzed.
+                        </p>
+</div>
+<div class="relative z-10 mt-8">
+<a class="inline-flex items-center gap-2 text-primary font-label-sm text-label-sm uppercase tracking-widest group-hover:gap-4 transition-all" href="#">
+                            Explore Solution <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- LSA -->
+<div class="col-span-1 bg-surface-container-low p-8 border border-outline-variant/20 group hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-[400px]">
+<div>
+<span class="text-label-sm font-label-sm uppercase tracking-widest text-on-surface-variant mb-2 block">EdTech</span>
+<h3 class="font-headline-lg text-headline-lg-mobile md:text-title-md text-primary mb-4">LSA</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            Comprehensive school and home-schooling software solutions. Empowering educators and students globally.
+                        </p>
+</div>
+<div class="mt-8">
+<a class="inline-flex items-center gap-2 text-primary font-label-sm text-label-sm uppercase tracking-widest group-hover:gap-4 transition-all" href="#">
+                            View Platform <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Luxure De Eden -->
+<div class="col-span-1 bg-surface-container-low p-8 border border-outline-variant/20 group hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-[400px]">
+<div>
+<span class="text-label-sm font-label-sm uppercase tracking-widest text-on-surface-variant mb-2 block">Luxury Goods</span>
+<h3 class="font-headline-lg text-headline-lg-mobile md:text-title-md text-primary mb-4">Luxure De Eden</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            An exquisite luxury perfume brand experience, blending heritage craftsmanship with modern elegance.
+                        </p>
+</div>
+<div class="mt-8">
+<a class="inline-flex items-center gap-2 text-primary font-label-sm text-label-sm uppercase tracking-widest group-hover:gap-4 transition-all" href="#">
+                            Discover Fragrances <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Alayn -->
+<div class="col-span-1 md:col-span-2 bg-surface p-8 border border-outline-variant/20 group hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-[400px] relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-tr from-transparent to-surface-variant/30 z-0"></div>
+<div class="relative z-10">
+<span class="text-label-sm font-label-sm uppercase tracking-widest text-on-surface-variant mb-2 block">Hospitality Tech</span>
+<h3 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-4">Alayn</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+                            Cutting-edge software solutions tailored specifically for the modern cafe and hospitality industry, streamlining operations and enhancing customer experience.
+                        </p>
+</div>
+<div class="relative z-10 mt-8">
+<a class="inline-flex items-center gap-2 text-primary font-label-sm text-label-sm uppercase tracking-widest group-hover:gap-4 transition-all" href="#">
+                            Learn More <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Spacer -->
+<div class="h-32"></div>
+<!-- About Section -->
+<section class="bg-surface-container-lowest py-32 border-y border-outline-variant/10" id="about">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div>
+<div class="w-full h-[500px] bg-surface-container-highest border border-outline-variant/20 relative" data-alt="A minimalist, high-end corporate office interior in London. The space features clean lines, expansive whitespace, and large windows revealing a subtle cityscape. High contrast between deep charcoal structural elements and warm cream walls. The lighting is soft and natural, emphasizing a gallery-like, prestigious atmosphere suitable for a global holding company." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCs5muyblDz7uSTCiP2qfvOdFQmfBS2woBP8WIzPksKMDg2NCHpTOtOvUQ1E3gFn0wmOvfBq39mxJ4KtI7prXMb5WLveiM3JWzTTkSNyIuO5EeW6xiiTgby7RdNOsu-Gin-n4uXFsfEO52uHI-aBt1KDG3tZ9PEhbjdRuMBhT_AIksmQFWtBwFUj6t_qjXnQufpH4W62s1EyNL3UhpcFpiiMILZ6Tz68B4z9iQ46iE0D7dKHyYL32OhklWJ-9NEKTS9W8i5dUq3TBA')">
+<!-- Image Container -->
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">Heritage &amp; Global Vision</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                        Rooted in UK heritage, BRAHM GLOBAL HOLDINGS is committed to driving global software innovation across diverse sectors.
+                    </p>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        We are more than just investors; we are builders. Our portfolio reflects a dedication to excellence, bridging the gap between steadfast reliability and visionary technology. From empowering educators to redefining luxury, our holding company architecture ensures sustainable growth and sector-leading solutions.
+                    </p>
+<div class="mt-8">
+<a class="border-b-2 border-primary text-primary pb-1 uppercase font-label-sm text-label-sm tracking-widest hover:text-on-surface-variant hover:border-on-surface-variant transition-colors" href="#contact">Read Our Full Story</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-surface-container-lowest border-t border-outline-variant/10 mt-32">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 flex flex-col md:flex-row justify-between items-center gap-8">
+<!-- Brand -->
+<div class="font-display-lg text-title-md font-bold text-primary">
+                BRAHM GLOBAL HOLDINGS
+            </div>
+<!-- Links -->
+<div class="flex flex-wrap justify-center gap-6 font-label-sm text-label-sm uppercase">
+<a class="text-on-surface-variant hover:underline underline-offset-4 transition-all duration-300" href="#">PORTFOLIO</a>
+<a class="text-on-surface-variant hover:underline underline-offset-4 transition-all duration-300" href="#">GOVERNANCE</a>
+<a class="text-on-surface-variant hover:underline underline-offset-4 transition-all duration-300" href="#">UK OPERATIONS</a>
+<a class="text-on-surface-variant hover:underline underline-offset-4 transition-all duration-300" href="#">GLOBAL REACH</a>
+<a class="text-on-surface-variant hover:underline underline-offset-4 transition-all duration-300" href="#">PRIVACY</a>
+</div>
+<!-- Copyright -->
+<div class="font-label-sm text-label-sm uppercase text-on-surface-variant text-center md:text-right">
+                © 2024 BRAHM GLOBAL HOLDINGS. ALL RIGHTS RESERVED.
+            </div>
+</div>
+</footer>
+</body></html>

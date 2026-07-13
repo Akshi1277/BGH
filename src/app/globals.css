@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+@theme {
+  /* ---- Ink (dark) surfaces ---- */
+  --color-ink: #08080a;
+  --color-ink-soft: #111113;
+  --color-ink-high: #19191c;
+  --color-ink-line: #2a2a2e;
+  --color-ink-line-soft: #1c1c1f;
+
+  /* ---- Paper (single light "gallery" surface) ---- */
+  --color-paper: #f3eee4;
+  --color-paper-high: #ece5d5;
+  --color-paper-ink: #16130e;
+  --color-paper-muted: #6c6659;
+  --color-paper-line: #ddd3ba;
+
+  /* ---- Text on ink ---- */
+  --color-cream: #f6f2ea;
+  --color-cream-muted: #a9a49b;
+  --color-cream-faint: #6b6862;
+
+  /* ---- Gold accent (extracted from the wordmark) ---- */
+  --color-gold: #d8b679;
+  --color-gold-soft: #f0dfb0;
+  --color-gold-deep: #8c6a2f;
+  --color-gold-line: #4a3b1d;
+
+  /* ---- Radius ---- */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* ---- Layout ---- */
+  --spacing-margin-mobile: 24px;
+  --spacing-margin-desktop: 64px;
+  --spacing-gutter: 24px;
+  --spacing-container-max: 1320px;
+
+  /* ---- Fonts ---- */
+  --font-display: "var(--font-playfair)", Georgia, serif;
+  --font-sans: "var(--font-inter)", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "var(--font-jbmono)", ui-monospace, "SFMono-Regular", monospace;
+}
+
+@utility font-display { font-family: var(--font-display); }
+@utility font-sans-ui { font-family: var(--font-sans); }
+@utility font-mono-ui { font-family: var(--font-mono); }
+
+/* Fluid, confident type scale */
+@utility text-hero {
+  font-size: clamp(2.75rem, 1.4rem + 6vw, 6.75rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+}
+@utility text-display {
+  font-size: clamp(2.25rem, 1.4rem + 3.2vw, 4.25rem);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+}
+@utility text-headline {
+  font-size: clamp(1.75rem, 1.3rem + 1.8vw, 2.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+@utility text-lede {
+  font-size: clamp(1.0625rem, 0.95rem + 0.5vw, 1.375rem);
+  line-height: 1.6;
+}
+@utility text-eyebrow {
+  font-size: 0.75rem;
+  line-height: 1;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+@utility text-label {
+  font-size: 0.8125rem;
+  line-height: 1;
+  letter-spacing: 0.08em;
+}
+
+/* Section rhythm */
+@utility section-y {
+  padding-top: clamp(72px, 8vw, 144px);
+  padding-bottom: clamp(72px, 8vw, 144px);
+}
+
+/* Hairline gold rule */
+@utility rule-gold {
+  height: 1px;
+  width: 3rem;
+  background: linear-gradient(90deg, var(--color-gold), transparent);
+}
+
+/* Fine film-grain overlay, self-contained (no network request) */
+@utility grain-overlay {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  opacity: 0.05;
+}
+
+/* Radial gold glow, used sparingly behind hero / CTA */
+@utility glow-gold {
+  background: radial-gradient(60% 50% at 50% 0%, color-mix(in srgb, var(--color-gold) 22%, transparent), transparent 70%);
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-ink);
+  color: var(--color-cream);
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 34s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
