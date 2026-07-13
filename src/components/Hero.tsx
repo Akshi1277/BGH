@@ -15,7 +15,7 @@ const CATEGORIES: { icon: IconName; label: string; pos: string }[] = [
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-ink pt-32 pb-20">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-ink pt-28 pb-20 md:pt-32">
       <div className="absolute inset-0 glow-gold pointer-events-none" />
       <div
         aria-hidden
@@ -50,7 +50,7 @@ export default function Hero() {
           <div className="flex gap-4 mt-4 flex-wrap">
             <Link
               href="#portfolio"
-              className="inline-flex items-center gap-2 bg-gold text-ink px-8 py-4 rounded-full text-label font-mono-ui uppercase tracking-[0.1em] hover:bg-gold-soft transition-colors group"
+              className="inline-flex items-center gap-2 bg-gold text-ink px-6 py-3.5 md:px-8 md:py-4 rounded-full text-label font-mono-ui uppercase tracking-[0.1em] hover:bg-gold-soft transition-colors group"
             >
               Explore Our Portfolio
               <Icon
@@ -61,7 +61,7 @@ export default function Hero() {
             </Link>
             <Link
               href="#build"
-              className="inline-flex items-center gap-2 border border-ink-line px-8 py-4 rounded-full text-label font-mono-ui uppercase tracking-[0.1em] text-cream hover:border-gold hover:text-gold transition-colors"
+              className="inline-flex items-center gap-2 border border-ink-line px-6 py-3.5 md:px-8 md:py-4 rounded-full text-label font-mono-ui uppercase tracking-[0.1em] text-cream hover:border-gold hover:text-gold transition-colors"
             >
               What We Build
             </Link>
@@ -114,7 +114,7 @@ export default function Hero() {
       </div>
 
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-cream-faint"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-3 text-cream-faint"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.8 }}
