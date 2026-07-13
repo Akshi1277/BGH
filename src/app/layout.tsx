@@ -32,9 +32,9 @@ export const metadata: Metadata = {
   },
   description,
   icons: {
-    icon: "/image.png",
-    shortcut: "/image.png",
-    apple: "/image.png",
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
   },
   openGraph: {
     title: `${title} — We Engineer What's Next`,

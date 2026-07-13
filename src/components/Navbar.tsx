@@ -61,7 +61,7 @@ export default function Navbar() {
         transition={{ duration: 0.7, ease: "easeOut" }}
         className={`w-full top-0 fixed z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-ink/85 backdrop-blur-md border-b border-ink-line"
+            ? "bg-ink/95 border-b border-ink-line"
             : "bg-transparent border-b border-transparent"
         }`}
       >
