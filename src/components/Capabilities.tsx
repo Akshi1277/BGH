@@ -60,8 +60,8 @@ export default function Capabilities() {
             What We Build
           </span>
           <h2 className="font-display text-display text-cream">
-            Four disciplines. One standard of{" "}
-            <span className="italic text-gold">craft</span>.
+            Four disciplines.<br />
+            One standard of <span className="italic text-gold">craft</span>.
           </h2>
         </motion.div>
 

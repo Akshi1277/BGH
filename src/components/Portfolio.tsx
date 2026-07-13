@@ -109,8 +109,8 @@ export default function Portfolio() {
             Our Portfolio
           </span>
           <h2 className="font-display text-display text-cream">
-            Four ventures. <span className="italic text-gold">One</span>{" "}
-            standard.
+            Four ventures.<br />
+            <span className="italic text-gold">One</span> standard.
           </h2>
         </motion.div>
 

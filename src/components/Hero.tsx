@@ -15,7 +15,7 @@ const CATEGORIES: { icon: IconName; label: string; pos: string }[] = [
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-ink pt-28 pb-20 md:pt-32">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-ink pt-28 pb-20 md:pt-28">
       <div className="absolute inset-0 glow-gold pointer-events-none" />
       <div
         aria-hidden
@@ -29,16 +29,17 @@ export default function Hero() {
 
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
         <motion.div
-          className="flex flex-col gap-8"
+          className="flex flex-col gap-6"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span className="text-eyebrow font-mono-ui text-gold block">
+          <span className="text-eyebrow font-mono-ui text-gold block mt-1">
             Brahm Global Holdings <span className="inline-block md:inline">&mdash;</span> <span className="block md:inline text-gold/80 mt-1.5 md:mt-0">United Kingdom</span>
           </span>
           <h1 className="font-display text-hero text-cream max-w-2xl">
-            We build the products behind{" "}
+            We build the products behind
+            <br />
             <span className="italic font-normal text-gold">tomorrow&rsquo;s</span>{" "}
             industries.
           </h1>
