@@ -38,7 +38,7 @@ export default function Footer() {
           <div className="flex items-center gap-3">
             <span className="relative w-9 h-9 rounded-full overflow-hidden border border-gold/30 shrink-0 bg-ink-high">
               <Image
-                src="/image copy.png"
+                src="/image copy 2.png"
                 alt="Brahm Global Holdings"
                 fill
                 sizes="36px"

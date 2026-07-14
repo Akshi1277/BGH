@@ -57,40 +57,38 @@ function CraftedPanel({
 
 const VENTURES = [
   {
-    tag: "Sports Tech",
-    name: "TPL",
-    span: "lg:col-span-4",
+    tag: "Sports Tech — BGH Venture",
+    name: "TALENT PRO LEAGUE",
+    logo: "/image copy 4.png",
     description:
-      "Talent Pro League — the UK's football league management platform, built to run competitions, teams, and player development at scale.",
+      "TPL — the UK's football league management platform, built to run competitions, teams, and player development at scale.",
     cta: "Explore Solution",
     visual: <BrowserFrame src="/tpl-preview.png" alt="Talent Pro League dashboard" />,
   },
   {
-    tag: "EdTech",
-    name: "LSA",
-    span: "lg:col-span-2",
+    tag: "EdTech — BGH Venture",
+    name: "LONDON SCHOOL OF ACADEMICS & ARTS",
+    logo: "/image copy 3.png",
     description:
-      "A school and homeschooling management platform giving educators, parents, and administrators one AI-powered home for learning.",
+      "A school and homeschooling management platform, incorporating our dual School Portal and Home Schooling Portal, providing one AI-powered home for learning.",
     cta: "View Platform",
     visual: <BrowserFrame src="/lsa-preview.png" alt="LSA school dashboard" />,
   },
   {
-    tag: "Luxury Goods",
+    tag: "Luxury Goods — BGH Venture",
     name: "Luxure De Eden",
-    span: "lg:col-span-2",
     description:
       "A fragrance house built on heritage craftsmanship and modern brand experience — from concept to commerce.",
     cta: "Discover Fragrances",
-    visual: <CraftedPanel icon="droplet" wordmark="Luxure De Eden" />,
+    visual: <BrowserFrame src="/luxure-preview-v2.png" alt="Luxure De Eden website preview" />,
   },
   {
-    tag: "Hospitality Tech",
+    tag: "Hospitality Tech — ENIF Project",
     name: "Alayn",
-    span: "lg:col-span-4",
     description:
-      "A modern operating system for cafés and restaurants — orders, inventory, and guest experience, unified into one platform.",
+      "A modern operating system for cafés and restaurants — orders, inventory, and guest experience, unified into one platform. Developed by ENIF.",
     cta: "Learn More",
-    visual: <CraftedPanel icon="cup" wordmark="Alayn" />,
+    visual: <BrowserFrame src="/alayn-preview-v2.png" alt="Alayn dashboard preview" />,
   },
 ];
 
@@ -119,22 +117,27 @@ export default function Portfolio() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 lg:grid-cols-6 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16"
         >
           {VENTURES.map((v) => (
             <motion.div
               key={v.name}
               variants={item}
-              className={`${v.span} group flex flex-col gap-6`}
+              className="group flex flex-col gap-6 transition-transform duration-500 hover:scale-[1.015]"
             >
               {v.visual}
               <div className="flex flex-col gap-3 px-1">
                 <span className="text-[11px] font-mono-ui uppercase tracking-[0.2em] text-cream-faint">
                   {v.tag}
                 </span>
-                <h3 className="font-display text-2xl text-cream">
-                  {v.name}
-                </h3>
+                <div className="flex flex-wrap items-center gap-4">
+                  {(v as any).logo && (
+                    <img src={(v as any).logo} alt={`${v.name} logo`} className="h-10 w-auto rounded-sm object-contain" />
+                  )}
+                  <h3 className="font-display text-2xl text-cream">
+                    {v.name}
+                  </h3>
+                </div>
                 <p className="text-sm text-cream-muted leading-relaxed max-w-md">
                   {v.description}
                 </p>

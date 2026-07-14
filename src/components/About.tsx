@@ -9,7 +9,7 @@ const PILLARS = [
     index: "01",
     title: "We Own the Full Stack",
     description:
-      "Strategy, design, engineering, and operations sit under one roof. Nothing is handed off to a subcontractor we don't control.",
+      "Strategy, design, and engineering sit under one roof inside ENIF, our technology wing. We build everything in-house with zero outsourcing.",
   },
   {
     index: "02",
@@ -55,7 +55,7 @@ export default function About() {
           transition={{ duration: 0.9, ease: "easeOut" }}
           className="lg:col-span-5 relative aspect-[4/5] bg-paper-high border border-paper-line overflow-hidden flex items-center justify-center p-10 lg:sticky lg:top-32"
         >
-          <div className="absolute inset-0 opacity-[0.08]">
+          <div className="absolute inset-0 opacity-[0.25]">
             <Image
               src="/logo.png"
               alt=""

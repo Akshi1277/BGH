@@ -63,6 +63,9 @@ export default function Capabilities() {
             Four disciplines.<br />
             One standard of <span className="italic text-gold">craft</span>.
           </h2>
+          <p className="text-cream-muted mt-4 max-w-lg">
+            Our specialized engineering wing at <span className="text-gold font-medium">ENIF</span> designs and builds products across four core digital disciplines.
+          </p>
         </motion.div>
 
         <motion.div

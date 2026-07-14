@@ -51,7 +51,7 @@
 
 /* Fluid, confident type scale */
 @utility text-hero {
-  font-size: clamp(2rem, 0.7rem + 6.7vw, 6.75rem);
+  font-size: clamp(2.25rem, 1.2rem + 4vw, 4.5rem);
   line-height: 1.05;
   letter-spacing: -0.02em;
 }

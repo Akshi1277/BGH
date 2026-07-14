@@ -8,14 +8,14 @@ import Icon, { IconName } from "./Icon";
 
 const CATEGORIES: { icon: IconName; label: string; pos: string }[] = [
   { icon: "cube", label: "Products", pos: "top-[2%] left-1/2 -translate-x-1/2" },
-  { icon: "cloud", label: "Platforms", pos: "right-0 top-1/2 -translate-y-1/2" },
+  { icon: "cloud", label: "Platforms", pos: "-right-12 top-1/2 -translate-y-1/2" },
   { icon: "cpu", label: "AI Solutions", pos: "bottom-[2%] left-1/2 -translate-x-1/2" },
-  { icon: "globe", label: "Ecosystems", pos: "left-0 top-1/2 -translate-y-1/2" },
+  { icon: "globe", label: "Ecosystems", pos: "-left-12 top-1/2 -translate-y-1/2" },
 ];
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-ink pt-28 pb-20 md:pt-28">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-ink pt-24 pb-16 md:pt-28 md:pb-24">
       <div className="absolute inset-0 glow-gold pointer-events-none" />
       <div
         aria-hidden
@@ -35,7 +35,7 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <span className="text-eyebrow font-mono-ui text-gold block mt-1">
-            Brahm Global Holdings <span className="inline-block md:inline">&mdash;</span> <span className="block md:inline text-gold/80 mt-1.5 md:mt-0">United Kingdom</span>
+            Brahm Global Holdings
           </span>
           <h1 className="font-display text-hero text-cream max-w-2xl">
             We build the products behind
@@ -44,9 +44,7 @@ export default function Hero() {
             industries.
           </h1>
           <p className="text-lede text-cream-muted max-w-xl">
-            A UK-based technology company designing and building software
-            products, SaaS platforms, and AI-powered ecosystems for
-            businesses that refuse to stand still.
+            A UK-based holding company. Through <span className="text-gold font-medium">ENIF</span>, our dedicated technology wing, and our portfolio of ventures, we design and build the software products, SaaS platforms, and AI-powered ecosystems of tomorrow.
           </p>
           <div className="flex gap-4 mt-4 flex-wrap">
             <Link
@@ -70,7 +68,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          className="relative aspect-square w-full max-w-[440px] mx-auto hidden lg:block"
+          className="relative aspect-square w-full max-w-[min(420px,60vh)] mx-auto hidden lg:block"
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.1, ease: "easeOut", delay: 0.3 }}
@@ -78,8 +76,8 @@ export default function Hero() {
           {/* connectors */}
           <div className="absolute left-1/2 top-[10%] w-px h-[26%] bg-gradient-to-b from-gold/50 to-gold/10 -translate-x-1/2" />
           <div className="absolute left-1/2 bottom-[10%] w-px h-[26%] bg-gradient-to-t from-gold/50 to-gold/10 -translate-x-1/2" />
-          <div className="absolute top-1/2 left-[10%] h-px w-[26%] bg-gradient-to-r from-gold/50 to-gold/10 -translate-y-1/2" />
-          <div className="absolute top-1/2 right-[10%] h-px w-[26%] bg-gradient-to-l from-gold/50 to-gold/10 -translate-y-1/2" />
+          <div className="absolute top-1/2 -left-12 h-px w-[calc(26%+3rem)] bg-gradient-to-r from-gold/50 to-gold/10 -translate-y-1/2" />
+          <div className="absolute top-1/2 -right-12 h-px w-[calc(26%+3rem)] bg-gradient-to-l from-gold/50 to-gold/10 -translate-y-1/2" />
 
           {/* rotating outer ring */}
           <motion.div
@@ -92,7 +90,7 @@ export default function Hero() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full border border-gold/40 bg-ink-soft flex items-center justify-center shadow-[0_0_60px_-10px_rgba(216,182,121,0.35)]">
             <div className="relative w-16 h-16 rounded-full overflow-hidden">
               <Image
-                src="/image copy.png"
+                src="/image copy 2.png"
                 alt="Brahm Global Holdings"
                 fill
                 sizes="64px"
