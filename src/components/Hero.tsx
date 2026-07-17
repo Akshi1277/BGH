@@ -134,8 +134,6 @@ export default function Hero() {
         aria-hidden
         className="absolute inset-0 pointer-events-none overflow-hidden"
       >
-        <div className="light-sweep" />
-
         {/* Single canvas — replaces 28 motion.divs */}
         <ParticleCanvas />
 

@@ -1,57 +1,91 @@
 @import "tailwindcss";
 
 @theme {
-  /* ---- Ink surfaces -> Warm Off-White / Stone backgrounds ---- */
-  --color-ink: #F8F6F2;
-  --color-ink-soft: #EEE9E1;
-  --color-ink-high: #E5DFD5;
-  --color-ink-line: #D5CEBD;
-  --color-ink-line-soft: #EEE9E1;
+  /* ═══════════════════════════════════════════════════════════════════
+     CHALK & VIVID — Brahm Global Holdings
+     Base: off-white chalk paper. Text: warm printer's ink.
+     Four vivid accents used with intention, never all at once.
+  ═══════════════════════════════════════════════════════════════════ */
 
-  /* ---- Paper (cards / elevated surfaces) ---- */
-  --color-paper: #EEE9E1;
-  --color-paper-high: #F8F6F2;
-  --color-paper-ink: #1C1C2E;
-  --color-paper-muted: #4A4A65;
-  --color-paper-line: #D5CEBD;
+  /* ─── SURFACES ────────────────────────────────────────────────────
+     Off-white chalk — warmer than #FFF, crisper than old ivory.
+     Cards sit on this as pure white panels, creating depth.          */
+  --color-ink:           #F8F6F2;   /* chalk base — the page ground   */
+  --color-ink-soft:      #F2EFE9;   /* subtle recessed panels         */
+  --color-ink-high:      #ECEAE4;   /* borders, dividers              */
+  --color-ink-line:      #DDD9D1;   /* hairline rules                 */
+  --color-ink-line-soft: #E8E5DF;
 
-  /* ---- Text -> Deep Slate on Off-White ---- */
-  --color-cream: #1C1C2E;
-  --color-cream-muted: #4A4A65;
-  --color-cream-faint: #7A7A96;
+  /* ─── PAPER — Pure white cards float above the chalk ground ──────  */
+  --color-paper:         #FFFFFF;
+  --color-paper-high:    #F8F6F2;
+  --color-paper-ink:     #0F0E0C;
+  --color-paper-muted:   #706A62;
+  --color-paper-line:    #E0DDD6;
 
-  /* ---- Accent -> Refined Navy (primary) & Warm Amber (highlight) ---- */
-  --color-gold: #2D3A8C;
-  --color-gold-soft: #4A58B0;
-  --color-gold-deep: #C8883A;
-  --color-gold-line: #2D3A8C;
+  /* ─── TEXT ────────────────────────────────────────────────────────
+     Warm printer's ink — not cold black, not navy. Like Monotype ink
+     on good paper. Clean and confident.                               */
+  --color-cream:         #0F0E0C;   /* primary — near-black, warm     */
+  --color-cream-muted:   #706A62;   /* body, captions                 */
+  --color-cream-faint:   #B0A89E;   /* placeholders, disabled         */
 
-  /* ---- Radius ---- */
-  --radius-xs: 2px;
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 16px;
+  /* ─── MALACHITE — Primary brand green ────────────────────────────
+     Vivid deep emerald. Signals growth, ambition, the natural world.
+     Used for: eyebrows, primary CTAs, hero accent, About section.    */
+  --color-gold:          #0A8A5C;   /* malachite — the primary accent */
+  --color-gold-soft:     #0DAE74;   /* hover, lighter moments         */
+  --color-gold-deep:     #076840;   /* pressed, dark decorative       */
+  --color-gold-line:     #0A8A5C;
+
+  /* ─── COBALT — Royal blue ────────────────────────────────────────
+     Deep, saturated cobalt. Digital, precision, trust.
+     Used for: tech/data elements, sapphire accents, links.           */
+  --color-cobalt:        #1C4ED8;
+  --color-cobalt-soft:   #3B6EF0;
+  --color-cobalt-deep:   #1038A8;
+
+  /* ─── PERSIMMON — Warm energy ────────────────────────────────────
+     Bold red-orange. Energy, sport, dynamism.
+     Used for: Portfolio section accent, warm highlights.             */
+  --color-persimmon:     #D43C1C;
+  --color-persimmon-soft:#E85A38;
+  --color-persimmon-deep:#A82C10;
+
+  /* ─── SAFFRON — Warm gold ────────────────────────────────────────
+     Rich saffron-gold. Prestige, luxury, editorial italic.
+     Used for: decorative rules, the italic hero word, marquee line.  */
+  --color-saffron:       #D4900A;
+  --color-saffron-soft:  #ECA820;
+  --color-saffron-deep:  #A87008;
+
+  /* ─── Radius ──────────────────────────────────────────────────────  */
+  --radius-xs:   2px;
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   16px;
   --radius-full: 9999px;
 
-  /* ---- Layout ---- */
-  --spacing-margin-mobile: 24px;
+  /* ─── Layout ──────────────────────────────────────────────────────  */
+  --spacing-margin-mobile:  24px;
   --spacing-margin-desktop: 64px;
-  --spacing-gutter: 24px;
-  --spacing-container-max: 1320px;
+  --spacing-gutter:         24px;
+  --spacing-container-max:  1320px;
 
-  /* ---- Fonts ---- */
+  /* ─── Fonts ───────────────────────────────────────────────────────  */
   --font-display: "var(--font-playfair)", Georgia, serif;
-  --font-sans: "var(--font-inter)", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: "var(--font-jbmono)", ui-monospace, "SFMono-Regular", monospace;
-  /* ---- Shared easing ---- */
+  --font-sans:    "var(--font-inter)", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:    "var(--font-jbmono)", ui-monospace, "SFMono-Regular", monospace;
+
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-@utility font-display { font-family: var(--font-display); }
-@utility font-sans-ui { font-family: var(--font-sans); }
-@utility font-mono-ui { font-family: var(--font-mono); }
+/* ─── Font utilities ──────────────────────────────────────────────── */
+@utility font-display  { font-family: var(--font-display); }
+@utility font-sans-ui  { font-family: var(--font-sans); }
+@utility font-mono-ui  { font-family: var(--font-mono); }
 
-/* Fluid, confident type scale */
+/* ─── Type scale ──────────────────────────────────────────────────── */
 @utility text-hero {
   font-size: clamp(2.25rem, 1.2rem + 4vw, 4.5rem);
   line-height: 1.05;
@@ -83,87 +117,83 @@
   letter-spacing: 0.08em;
 }
 
-/* Section rhythm */
+/* ─── Section rhythm ──────────────────────────────────────────────── */
 @utility section-y {
-  padding-top: clamp(72px, 8vw, 144px);
+  padding-top:    clamp(72px, 8vw, 144px);
   padding-bottom: clamp(72px, 8vw, 144px);
 }
 
-/* Hairline rule */
+/* ─── Decorative utilities ────────────────────────────────────────── */
 @utility rule-gold {
   height: 1px;
   width: 3rem;
   background: linear-gradient(90deg, var(--color-gold), transparent);
 }
-
-/* Reusable viewport-entry animation */
+@utility rule-cobalt {
+  height: 1px;
+  width: 3rem;
+  background: linear-gradient(90deg, var(--color-cobalt), transparent);
+}
 @utility fade-in-up {
   opacity: 0;
   transform: translateY(20px);
 }
-
-/* Fine film-grain overlay, self-contained (no network request).
-   Plain opacity, no mix-blend-mode: blend modes force the browser to
-   recomposite this fixed full-viewport layer against scrolling content
-   on every frame, which is a major source of scroll jank. */
 @utility grain-overlay {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity: 0.025;
+  opacity: 0.022;
 }
 
-/* Radial glow, used sparingly behind hero / CTA */
-@utility glow-gold {
-  background: radial-gradient(60% 50% at 50% 0%, color-mix(in srgb, var(--color-gold) 12%, transparent), transparent 70%);
-}
-
+/* ─── Base ─────────────────────────────────────────────────────────── */
 html {
   color-scheme: light;
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--color-ink);
-  color: var(--color-cream);
+  background-color: var(--color-ink);   /* chalk white                */
+  color: var(--color-cream);            /* warm printer's ink         */
 }
 
 ::selection {
-  background: var(--color-gold);
+  background: var(--color-gold);        /* malachite selection        */
   color: #ffffff;
 }
 
+/* ─── Marquee ──────────────────────────────────────────────────────── */
 @keyframes marquee {
   from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  to   { transform: translateX(-50%); }
 }
-.animate-marquee {
-  animation: marquee 34s linear infinite;
+.animate-marquee { animation: marquee 34s linear infinite; }
+
+/* ─── Hero colour wash — four vivid pigments on chalk ───────────────
+   On a light chalk base, the sweep is vivid but translucent.
+   Think watercolour pigment dropped into water — it blooms and drifts.
+   Two layers at different timings for natural depth.                  */
+@keyframes pigment-drift {
+  0%   {
+    transform: translate(-15%, 8%) rotate(-8deg) scale(1.1);
+    opacity: 0;
+  }
+  12%  { opacity: 1; }
+  40%  {
+    transform: translate(8%, -5%) rotate(-4deg) scale(0.95);
+    opacity: 0.85;
+  }
+  65%  {
+    transform: translate(15%, 3%) rotate(-7deg) scale(1.05);
+    opacity: 1;
+  }
+  88%  { opacity: 0.9; }
+  100% {
+    transform: translate(-15%, 8%) rotate(-8deg) scale(1.1);
+    opacity: 0;
+  }
 }
 
-/* Hero background: a barely-perceptible ambient glow that drifts very
-   slowly, like sunlight through a window. Kept to GPU-only properties. */
-@keyframes light-sweep {
-  0%, 100% { transform: translateX(-18%) rotate(-9deg); opacity: 0; }
-  30% { opacity: 0.18; }
-  50% { transform: translateX(18%) rotate(-9deg); opacity: 0.22; }
-  70% { opacity: 0.18; }
-}
-.light-sweep {
-  position: absolute;
-  top: -25%;
-  left: -15%;
-  width: 70%;
-  height: 150%;
-  background: linear-gradient(
-    100deg,
-    transparent,
-    color-mix(in srgb, var(--color-gold-soft) 15%, transparent) 45%,
-    transparent 80%
-  );
-  filter: blur(90px);
-  will-change: transform;
-  animation: light-sweep 80s ease-in-out infinite;
-}
 
+
+/* ─── Reduced motion ───────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

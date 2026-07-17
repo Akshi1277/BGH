@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Icon from "./Icon";
 
 const ease = [0.25, 1, 0.5, 1] as const;
-const AUTO_MS = 3800;
+const AUTO_MS = 5000;
 
 /* ─── Data ──────────────────────────────────────────────────────── */
 const VENTURES = [
@@ -139,7 +139,7 @@ export default function Portfolio() {
       AUTO_MS
     );
     return () => clearInterval(t);
-  }, [paused]);
+  }, [paused, active]);
 
   const { cardW, sideOffset } = dims;
   // Card height: chrome 32px + aspect(16/10) + label 52px
@@ -150,8 +150,6 @@ export default function Portfolio() {
     <section
       id="portfolio"
       className="section-y bg-ink overflow-hidden"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
     >
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop">
 
@@ -180,10 +178,12 @@ export default function Portfolio() {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.85, ease, delay: 0.15 }}
         >
-          {/* perspective wrapper */}
+          {/* perspective wrapper — hover-pause is scoped to just this area */}
           <div
             className="relative w-full"
             style={{ height: carouselH, perspective: 1300 }}
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
           >
             {VENTURES.map((venture, i) => {
               const offset = getOffset(i, active);

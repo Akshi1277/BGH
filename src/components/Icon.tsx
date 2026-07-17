@@ -13,7 +13,10 @@ export type IconName =
   | "link"
   | "arrow-up-right"
   | "cup"
-  | "droplet";
+  | "droplet"
+  | "layers"
+  | "trending-up"
+  | "users";
 
 const paths: Record<IconName, React.ReactNode> = {
   "arrow-right": <path d="M4 12h16M13 5l7 7-7 7" />,
@@ -59,6 +62,21 @@ const paths: Record<IconName, React.ReactNode> = {
   ),
   droplet: (
     <path d="M12 3s6 6.8 6 11.2A6 6 0 0 1 6 14.2C6 9.8 12 3 12 3z" />
+  ),
+  layers: (
+    <>
+      <path d="M12 2L2 7l10 5 10-5-10-5z" />
+      <path d="M2 17l10 5 10-5" />
+      <path d="M2 12l10 5 10-5" />
+    </>
+  ),
+  "trending-up": <path d="M3 17l6-6 4 4 8-8M14 7h6v6" />,
+  users: (
+    <>
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+    </>
   ),
 };
 
