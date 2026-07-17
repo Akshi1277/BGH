@@ -4,6 +4,8 @@ import React from "react";
 import { motion, Variants } from "framer-motion";
 import Icon, { IconName } from "./Icon";
 
+const ease = [0.25, 1, 0.5, 1] as const;
+
 const CAPABILITIES: { index: string; icon: IconName; title: string; description: string }[] = [
   {
     index: "01",
@@ -37,76 +39,92 @@ const CAPABILITIES: { index: string; icon: IconName; title: string; description:
 
 const container: Variants = {
   hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.12 } },
+  show: { opacity: 1, transition: { staggerChildren: 0.1 } },
 };
 
 const item: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.65, ease } },
 };
 
 export default function Capabilities() {
   return (
     <section id="build" className="section-y bg-ink">
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7 }}
-          className="max-w-2xl mb-20"
-        >
-          <span className="text-eyebrow font-mono-ui text-gold block mb-5">
+        {/* Heading — eyebrow and headline staggered individually */}
+        <div className="max-w-2xl mb-20">
+          <motion.span
+            className="text-eyebrow font-mono-ui text-gold block mb-5"
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease }}
+          >
             What We Build
-          </span>
-          <h2 className="font-display text-display text-cream">
+          </motion.span>
+          <motion.h2
+            className="font-display text-display text-cream"
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.75, ease, delay: 0.08 }}
+          >
             Four disciplines.<br />
             One standard of <span className="italic text-gold">craft</span>.
-          </h2>
-          <p className="text-cream-muted mt-4 max-w-lg">
+          </motion.h2>
+          <motion.p
+            className="text-cream-muted mt-4 max-w-lg"
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.65, ease, delay: 0.16 }}
+          >
             Our specialized engineering wing at <span className="text-gold font-medium">ENIF</span> designs and builds products across four core digital disciplines.
-          </p>
-        </motion.div>
+          </motion.p>
+        </div>
 
         <motion.div
           variants={container}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-80px" }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-ink-line border border-ink-line"
         >
           {CAPABILITIES.map((cap) => (
-            <div
+            <motion.div
               key={cap.index}
-              className="bg-ink p-8 md:p-10 flex flex-col gap-6 group hover:bg-ink-soft transition-colors duration-500"
+              variants={item}
+              className="bg-ink p-8 md:p-10 flex flex-col gap-6 group relative overflow-hidden transition-colors duration-400 hover:bg-ink-soft"
             >
-              <motion.div
-                variants={item}
-                className="flex flex-col gap-6"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="font-mono-ui text-label text-gold">
-                    {cap.index}
-                  </span>
-                  <Icon
-                    name={cap.icon}
-                    size={22}
-                    className="text-cream-faint group-hover:text-gold transition-colors duration-500"
-                  />
-                </div>
-                <div>
-                  <h3 className="font-display text-xl text-cream mb-3">
-                    {cap.title}
-                  </h3>
-                  <p className="text-sm text-cream-muted leading-relaxed">
-                    {cap.description}
-                  </p>
-                </div>
-              </motion.div>
-            </div>
+              {/* Left border reveal on hover */}
+              <span className="absolute left-0 top-0 h-full w-[2px] bg-gold origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-500 ease-out" />
+
+              <div className="flex items-center justify-between">
+                <span className="font-mono-ui text-label text-gold">
+                  {cap.index}
+                </span>
+                <motion.div
+                  className="text-cream-faint group-hover:text-gold transition-colors duration-400"
+                  whileHover={{ y: -2 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Icon name={cap.icon} size={22} />
+                </motion.div>
+              </div>
+              <div>
+                <h3 className="font-display text-xl text-cream mb-3">
+                  {cap.title}
+                </h3>
+                <p className="text-sm text-cream-muted leading-relaxed">
+                  {cap.description}
+                </p>
+              </div>
+            </motion.div>
           ))}
         </motion.div>
       </div>
     </section>
   );
 }
+
+

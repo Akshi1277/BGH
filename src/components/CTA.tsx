@@ -8,10 +8,13 @@ import Icon from "./Icon";
 export default function CTA() {
   return (
     <section id="contact" className="relative section-y bg-ink overflow-hidden">
-      <div className="absolute inset-0 glow-gold pointer-events-none" />
-      <div
-        aria-hidden
-        className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-px bg-gradient-to-r from-transparent via-ink-line to-transparent"
+      {/* One-time reveal glow — only appears once when section enters view */}
+      <motion.div
+        className="absolute inset-0 glow-gold pointer-events-none"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 1.2 }}
       />
 
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10 text-center flex flex-col items-center">
@@ -55,17 +58,19 @@ export default function CTA() {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="mt-12"
         >
-          <Link
-            href="mailto:hello@brahmglobalholdings.com"
-            className="inline-flex items-center gap-3 bg-gold text-ink px-10 py-5 rounded-full text-label font-mono-ui uppercase tracking-[0.1em] hover:bg-gold-soft transition-colors group"
-          >
-            Start a Conversation
-            <Icon
-              name="arrow-right"
-              size={18}
-              className="group-hover:translate-x-1 transition-transform"
-            />
-          </Link>
+          <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
+            <Link
+              href="mailto:hello@brahmglobalholdings.com"
+              className="inline-flex items-center gap-3 bg-gold text-ink px-10 py-5 rounded-full text-label font-mono-ui uppercase tracking-[0.1em] hover:bg-gold-soft transition-colors duration-300 group"
+            >
+              Start a Conversation
+              <Icon
+                name="arrow-right"
+                size={18}
+                className="group-hover:translate-x-1 transition-transform duration-200"
+              />
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
     </section>

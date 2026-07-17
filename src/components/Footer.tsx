@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const COLUMNS = [
   {
@@ -32,13 +35,19 @@ const COLUMNS = [
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-ink border-t border-ink-line">
+    <motion.footer
+      className="w-full bg-ink border-t border-ink-line"
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
+    >
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop py-20 grid grid-cols-1 md:grid-cols-12 gap-16">
         <div className="md:col-span-5 flex flex-col gap-6">
           <div className="flex items-center gap-3">
             <span className="relative w-9 h-9 rounded-full overflow-hidden border border-gold/30 shrink-0 bg-ink-high">
               <Image
-                src="/image copy 2.png"
+                src="/logo.png"
                 alt="Brahm Global Holdings"
                 fill
                 sizes="36px"
@@ -71,7 +80,7 @@ export default function Footer() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="text-sm text-cream-muted hover:text-gold transition-colors"
+                  className="text-sm text-cream-muted hover:text-gold hover:translate-x-0.5 transition-all duration-200 inline-block"
                 >
                   {link.label}
                 </Link>
@@ -99,6 +108,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }

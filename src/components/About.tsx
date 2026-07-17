@@ -4,6 +4,8 @@ import React from "react";
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 
+const ease = [0.25, 1, 0.5, 1] as const;
+
 const PILLARS = [
   {
     index: "01",
@@ -53,7 +55,7 @@ export default function About() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="lg:col-span-5 relative aspect-[4/5] bg-paper-high border border-paper-line overflow-hidden flex items-center justify-center p-10 lg:sticky lg:top-32"
+          className="lg:col-span-5 relative aspect-[4/5] bg-paper-high border border-paper-line overflow-hidden flex items-center justify-center p-10 lg:sticky lg:top-32 group"
         >
           <div className="absolute inset-0 opacity-[0.25]">
             <Image
@@ -67,32 +69,44 @@ export default function About() {
           <span className="absolute top-8 left-8 text-eyebrow font-mono-ui text-paper-muted">
             Our Philosophy
           </span>
-          <p className="font-display italic text-3xl md:text-4xl text-paper-ink leading-tight text-center relative z-10">
+          <p className="font-display italic text-3xl md:text-4xl text-paper-ink leading-tight text-center relative z-10 transition-transform duration-300 group-hover:-translate-y-1">
             &ldquo;We don&rsquo;t outsource ambition.&rdquo;
           </p>
         </motion.div>
 
         <div className="lg:col-span-7">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7 }}
-            className="max-w-xl mb-14"
-          >
-            <span className="text-eyebrow font-mono-ui text-gold-deep block mb-5">
+          <div className="max-w-xl mb-14">
+            <motion.span
+              className="text-eyebrow font-mono-ui text-gold-deep block mb-5"
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, ease }}
+            >
               Why We&rsquo;re Different
-            </span>
-            <h2 className="font-display text-display text-paper-ink mb-6">
+            </motion.span>
+            <motion.h2
+              className="font-display text-display text-paper-ink mb-6"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.75, ease, delay: 0.08 }}
+            >
               Builders first. Holding company second.
-            </h2>
-            <p className="text-lede text-paper-muted">
+            </motion.h2>
+            <motion.p
+              className="text-lede text-paper-muted"
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.65, ease, delay: 0.16 }}
+            >
               Most holding companies allocate capital. We do that too — but
               our real advantage is that we can design, engineer, and ship
               the product ourselves, end to end, under one standard of
               craft.
-            </p>
-          </motion.div>
+            </motion.p>
+          </div>
 
           <motion.div
             variants={list}
@@ -104,8 +118,10 @@ export default function About() {
               <motion.div
                 key={p.index}
                 variants={row}
-                className="grid grid-cols-[auto_1fr] gap-6 md:gap-10 py-8 border-t border-paper-line first:border-t-0 group"
+              className="grid grid-cols-[auto_1fr] gap-6 md:gap-10 py-8 border-t border-paper-line first:border-t-0 group relative pl-4"
               >
+              {/* Left accent bar reveals from bottom on hover */}
+              <span className="absolute left-0 top-0 h-full w-[2px] bg-gold-deep origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-500 ease-out" />
                 <span className="font-mono-ui text-label text-gold-deep pt-1">
                   {p.index}
                 </span>
@@ -125,3 +141,4 @@ export default function About() {
     </section>
   );
 }
+

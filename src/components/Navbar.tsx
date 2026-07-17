@@ -17,7 +17,7 @@ function Wordmark() {
     <Link href="#" className="flex items-center gap-3 group">
       <span className="relative w-9 h-9 rounded-full overflow-hidden border border-gold/30 shrink-0 bg-ink-high">
         <Image
-          src="/image copy 2.png"
+          src="/logo.png"
           alt="Brahm Global Holdings"
           fill
           sizes="36px"
@@ -61,7 +61,7 @@ export default function Navbar() {
         transition={{ duration: 0.7, ease: "easeOut" }}
         className={`w-full top-0 fixed z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-ink/95 border-b border-ink-line"
+            ? "bg-ink/95 backdrop-blur-sm border-b border-ink-line"
             : "bg-transparent border-b border-transparent"
         }`}
       >
@@ -78,12 +78,14 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="#contact"
-              className="inline-flex items-center gap-2 bg-gold text-ink px-6 py-2.5 rounded-full text-label font-mono-ui uppercase tracking-[0.1em] hover:bg-gold-soft transition-colors"
-            >
-              Start a Project
-            </Link>
+            <motion.div whileHover={{ y: -1 }} transition={{ duration: 0.15 }}>
+              <Link
+                href="#contact"
+                className="inline-flex items-center gap-2 bg-gold text-ink px-6 py-2.5 rounded-full text-label font-mono-ui uppercase tracking-[0.1em] hover:bg-gold-soft transition-colors duration-300"
+              >
+                Start a Project
+              </Link>
+            </motion.div>
           </div>
 
           <button

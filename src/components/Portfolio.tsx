@@ -6,23 +6,25 @@ import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 import Icon, { IconName } from "./Icon";
 
+const ease = [0.25, 1, 0.5, 1] as const;
+
 const container: Variants = {
   hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.15 } },
+  show: { opacity: 1, transition: { staggerChildren: 0.1 } },
 };
 
 const item: Variants = {
   hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease } },
 };
 
 function BrowserFrame({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="relative w-full rounded-md overflow-hidden border border-ink-line bg-ink shadow-[0_30px_60px_-20px_rgba(0,0,0,0.6)] group-hover:-translate-y-1 group-hover:border-gold/30 transition-all duration-500">
+    <div className="relative w-full rounded-md overflow-hidden border border-ink-line bg-ink shadow-[0_8px_30px_-8px_rgba(0,0,0,0.12)] group-hover:shadow-[0_16px_40px_-12px_rgba(0,0,0,0.18)] group-hover:border-gold/20 transition-all duration-500">
       <div className="h-7 bg-ink-high flex items-center gap-1.5 px-3 border-b border-ink-line">
-        <span className="w-2 h-2 rounded-full bg-cream-faint/40" />
-        <span className="w-2 h-2 rounded-full bg-cream-faint/40" />
-        <span className="w-2 h-2 rounded-full bg-cream-faint/40" />
+        <span className="w-2 h-2 rounded-full bg-cream-faint/40 group-hover:bg-[#FF5F57] transition-colors duration-300" />
+        <span className="w-2 h-2 rounded-full bg-cream-faint/40 group-hover:bg-[#FEBC2E] transition-colors duration-300 delay-[30ms]" />
+        <span className="w-2 h-2 rounded-full bg-cream-faint/40 group-hover:bg-[#28C840] transition-colors duration-300 delay-[60ms]" />
       </div>
       <div className="relative w-full aspect-[2/1]">
         <Image
@@ -77,6 +79,7 @@ const VENTURES = [
   {
     tag: "Luxury Goods — BGH Venture",
     name: "Luxure De Eden",
+    logo: "/luxure-logo.png",
     description:
       "A fragrance house built on heritage craftsmanship and modern brand experience — from concept to commerce.",
     cta: "Discover Fragrances",
@@ -85,6 +88,7 @@ const VENTURES = [
   {
     tag: "Hospitality Tech — ENIF Project",
     name: "Alayn",
+    logo: "/alaynlogo.jpeg",
     description:
       "A modern operating system for cafés and restaurants — orders, inventory, and guest experience, unified into one platform. Developed by ENIF.",
     cta: "Learn More",
@@ -123,7 +127,7 @@ export default function Portfolio() {
             <motion.div
               key={v.name}
               variants={item}
-              className="group flex flex-col gap-6 transition-transform duration-500 hover:scale-[1.015]"
+              className="group flex flex-col gap-6 transition-transform duration-500 hover:-translate-y-1"
             >
               {v.visual}
               <div className="flex flex-col gap-3 px-1">
@@ -143,7 +147,7 @@ export default function Portfolio() {
                 </p>
                 <Link
                   href="#"
-                  className="inline-flex items-center gap-2 text-xs font-mono-ui uppercase tracking-[0.15em] text-gold mt-2 group-hover:gap-3 transition-all"
+                  className="relative inline-flex items-center gap-2 text-xs font-mono-ui uppercase tracking-[0.15em] text-gold mt-2 group-hover:gap-3 transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:bg-gold after:scale-x-0 after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-300"
                 >
                   {v.cta}
                   <Icon name="arrow-up-right" size={14} />
