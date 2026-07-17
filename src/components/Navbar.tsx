@@ -15,7 +15,7 @@ const LINKS = [
 function Wordmark() {
   return (
     <Link href="#" className="flex items-center gap-3 group">
-      <span className="relative w-9 h-9 rounded-full overflow-hidden border border-gold/30 shrink-0 bg-ink-high">
+      <span className="relative w-9 h-9 rounded-full overflow-hidden border border-accent/30 shrink-0 bg-surface-high">
         <Image
           src="/whatsapp.svg"
           alt="Brahm Global Holdings"
@@ -25,10 +25,10 @@ function Wordmark() {
         />
       </span>
       <span className="flex flex-col leading-none">
-        <span className="font-display text-lg tracking-[0.12em] text-cream">
+        <span className="font-display text-lg tracking-[0.12em] text-ink">
           BRAHM
         </span>
-        <span className="font-mono-ui text-[9px] tracking-[0.32em] text-gold mt-1">
+        <span className="font-mono-ui text-[9px] tracking-[0.32em] text-accent mt-1">
           GLOBAL HOLDINGS
         </span>
       </span>
@@ -61,7 +61,7 @@ export default function Navbar() {
         transition={{ duration: 0.7, ease: "easeOut" }}
         className={`w-full top-0 fixed z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-ink/95 backdrop-blur-sm border-b border-ink-line"
+            ? "bg-surface/95 backdrop-blur-sm border-b border-surface-line"
             : "bg-transparent border-b border-transparent"
         }`}
       >
@@ -73,7 +73,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-label font-mono-ui uppercase text-cream-muted hover:text-gold transition-colors"
+                className="text-label font-mono-ui uppercase text-ink-muted hover:text-accent transition-colors"
               >
                 {link.label}
               </Link>
@@ -81,7 +81,7 @@ export default function Navbar() {
             <motion.div whileHover={{ y: -1 }} transition={{ duration: 0.15 }}>
               <Link
                 href="#contact"
-                className="inline-flex items-center gap-2 bg-gold text-ink px-6 py-2.5 rounded-full text-label font-mono-ui uppercase tracking-[0.1em] hover:bg-gold-soft transition-colors duration-300"
+                className="inline-flex items-center gap-2 bg-accent text-surface px-6 py-2.5 rounded-full text-label font-mono-ui uppercase tracking-[0.1em] hover:bg-accent-soft transition-colors duration-300"
               >
                 Start a Project
               </Link>
@@ -90,7 +90,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setOpen(true)}
-            className="md:hidden text-cream p-2 -mr-2"
+            className="md:hidden text-ink p-2 -mr-2"
             aria-label="Open menu"
           >
             <Icon name="menu" size={24} />
@@ -105,13 +105,13 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[60] bg-ink flex flex-col md:hidden"
+            className="fixed inset-0 z-[60] bg-surface flex flex-col md:hidden"
           >
             <div className="flex justify-between items-center h-20 px-margin-mobile shrink-0">
               <Wordmark />
               <button
                 onClick={() => setOpen(false)}
-                className="text-cream p-2 -mr-2"
+                className="text-ink p-2 -mr-2"
                 aria-label="Close menu"
               >
                 <Icon name="close" size={24} />
@@ -128,12 +128,12 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="group flex items-baseline gap-4 py-2 border-b border-ink-line/40"
+                    className="group flex items-baseline gap-4 py-2 border-b border-surface-line/40"
                   >
-                    <span className="font-mono-ui text-xs tracking-widest text-gold">
+                    <span className="font-mono-ui text-xs tracking-widest text-accent">
                       0{i + 1}
                     </span>
-                    <span className="font-display text-3xl text-cream group-hover:text-gold transition-colors">
+                    <span className="font-display text-3xl text-ink group-hover:text-accent transition-colors">
                       {link.label}
                     </span>
                   </Link>
@@ -144,7 +144,7 @@ export default function Navbar() {
               <Link
                 href="#contact"
                 onClick={() => setOpen(false)}
-                className="w-full flex items-center justify-center gap-2 bg-gold text-ink px-6 py-4 rounded-full text-label font-mono-ui uppercase tracking-[0.1em]"
+                className="w-full flex items-center justify-center gap-2 bg-accent text-surface px-6 py-4 rounded-full text-label font-mono-ui uppercase tracking-[0.1em]"
               >
                 Start a Project
               </Link>

@@ -42,8 +42,19 @@ export default function About() {
   return (
     <section
       id="difference"
-      className="section-y bg-paper text-paper-ink border-y border-paper-line"
+      className="section-y bg-paper text-paper-ink border-y border-paper-line relative"
     >
+      {/* ── Section edge gradients — soften Capabilities↔Portfolio transitions ── */}
+      <div
+        aria-hidden
+        className="absolute top-0 left-0 right-0 h-24 pointer-events-none z-10"
+        style={{ background: "linear-gradient(to bottom, var(--color-surface), transparent)" }}
+      />
+      <div
+        aria-hidden
+        className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none z-10"
+        style={{ background: "linear-gradient(to top, var(--color-surface), transparent)" }}
+      />
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-start">
 
         {/* ── Left: editorial statement card ───────────────────── */}
@@ -54,16 +65,23 @@ export default function About() {
           transition={{ duration: 0.85, ease }}
           className="lg:col-span-5 lg:sticky lg:top-32"
         >
-          <div className="relative bg-paper-high border border-paper-line rounded-2xl p-8 md:p-10 overflow-hidden">
+          {/* Philosophy card with brand-signature cream→pine gradient */}
+          <div
+            className="relative border border-paper-line rounded-2xl p-8 md:p-10 overflow-hidden"
+            style={{
+              background:
+                "linear-gradient(160deg, #F8F6F2 0%, #EAF2EC 60%, #D8EBE1 100%)",
+            }}
+          >
 
-            {/* Corner bracket decorations — amber as a subtle luxury detail */}
-            <span className="absolute top-4 left-4   w-5 h-5 border-t border-l border-gold-deep/40" />
-            <span className="absolute top-4 right-4  w-5 h-5 border-t border-r border-gold-deep/40" />
-            <span className="absolute bottom-4 left-4  w-5 h-5 border-b border-l border-gold-deep/40" />
-            <span className="absolute bottom-4 right-4 w-5 h-5 border-b border-r border-gold-deep/40" />
+            {/* Corner bracket decorations */}
+            <span className="absolute top-4 left-4   w-5 h-5 border-t border-l border-accent-deep/40" />
+            <span className="absolute top-4 right-4  w-5 h-5 border-t border-r border-accent-deep/40" />
+            <span className="absolute bottom-4 left-4  w-5 h-5 border-b border-l border-accent-deep/40" />
+            <span className="absolute bottom-4 right-4 w-5 h-5 border-b border-r border-accent-deep/40" />
 
-            {/* Eyebrow — navy, consistent with hero/portfolio */}
-            <p className="font-mono-ui text-eyebrow text-gold block mb-8">
+            {/* Eyebrow */}
+            <p className="font-mono-ui text-eyebrow text-accent block mb-8">
               Our Philosophy
             </p>
 
@@ -74,8 +92,8 @@ export default function About() {
               ambition.&rdquo;
             </blockquote>
 
-            {/* Amber rule — fine warm accent, not primary text */}
-            <div className="h-px w-14 bg-gold-deep/50 mb-8" />
+            {/* Accent rule */}
+            <div className="h-px w-14 bg-accent-deep/50 mb-8" />
 
             {/* Fact rows */}
             <dl className="flex flex-col gap-5">
@@ -107,7 +125,7 @@ export default function About() {
           {/* Section header */}
           <div className="mb-12">
             <motion.span
-              className="font-mono-ui text-eyebrow text-gold block mb-5"
+              className="font-mono-ui text-eyebrow text-accent block mb-5"
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
@@ -125,8 +143,8 @@ export default function About() {
             >
               Builders first.
               <br />
-              {/* Italic in navy — matches the hero's "One" in gold */}
-              <span className="italic font-normal text-gold">
+              {/* Italic in accent green — matches the hero's italic */}
+              <span className="italic font-normal text-accent">
                 Holding company
               </span>{" "}
               second.
@@ -167,9 +185,9 @@ export default function About() {
                     transition: { duration: 0.55, ease: "easeOut" },
                   },
                 }}
-                className="group relative bg-paper-high border border-paper-line rounded-2xl p-6 md:p-7 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-gold/30 hover:shadow-[0_10px_30px_-10px_rgba(45,58,140,0.1)]"
+                className="group relative bg-paper-high border border-paper-line rounded-2xl p-6 md:p-7 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-accent/30 hover:shadow-[0_10px_30px_-10px_rgba(31,92,67,0.12)]"
               >
-                {/* Ghost number — paper-ink at ~4% opacity, purely decorative */}
+                {/* Ghost number — purely decorative */}
                 <span
                   aria-hidden
                   className="absolute -top-3 -right-1 font-display text-[7rem] leading-none select-none pointer-events-none text-paper-ink/[0.04]"
@@ -177,8 +195,8 @@ export default function About() {
                   {p.index}
                 </span>
 
-                {/* Index — navy, consistent with eyebrows */}
-                <span className="inline-block font-mono-ui text-[11px] tracking-widest text-gold mb-5">
+                {/* Index — accent, consistent with eyebrows */}
+                <span className="inline-block font-mono-ui text-[11px] tracking-widest text-accent mb-5">
                   {p.index}
                 </span>
 
@@ -192,8 +210,8 @@ export default function About() {
                   {p.description}
                 </p>
 
-                {/* Bottom accent — navy, slides in from left on hover */}
-                <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-gold group-hover:w-full transition-[width] duration-500 ease-out" />
+                {/* Bottom accent — slides in from left on hover */}
+                <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-accent group-hover:w-full transition-[width] duration-500 ease-out" />
               </motion.div>
             ))}
           </motion.div>

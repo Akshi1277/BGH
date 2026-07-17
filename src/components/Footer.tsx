@@ -36,7 +36,7 @@ const COLUMNS = [
 export default function Footer() {
   return (
     <motion.footer
-      className="w-full bg-ink border-t border-ink-line"
+      className="w-full bg-surface border-t border-surface-line"
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
@@ -45,7 +45,7 @@ export default function Footer() {
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop py-20 grid grid-cols-1 md:grid-cols-12 gap-16">
         <div className="md:col-span-5 flex flex-col gap-6">
           <div className="flex items-center gap-3">
-            <span className="relative w-9 h-9 rounded-full overflow-hidden border border-gold/30 shrink-0 bg-ink-high">
+            <span className="relative w-9 h-9 rounded-full overflow-hidden border border-accent/30 shrink-0 bg-surface-high">
               <Image
                 src="/whatsapp.svg"
                 alt="Brahm Global Holdings"
@@ -55,15 +55,15 @@ export default function Footer() {
               />
             </span>
             <span className="flex flex-col leading-none">
-              <span className="font-display text-lg tracking-[0.12em] text-cream">
+              <span className="font-display text-lg tracking-[0.12em] text-ink">
                 BRAHM
               </span>
-              <span className="font-mono-ui text-[9px] tracking-[0.32em] text-gold mt-1">
+              <span className="font-mono-ui text-[9px] tracking-[0.32em] text-accent mt-1">
                 GLOBAL HOLDINGS
               </span>
             </span>
           </div>
-          <p className="text-sm text-cream-muted leading-relaxed max-w-xs">
+          <p className="text-sm text-ink-muted leading-relaxed max-w-xs">
             We engineer what&rsquo;s next. A UK-based technology company
             designing and building software products, SaaS platforms, and
             AI-powered ecosystems.
@@ -73,14 +73,14 @@ export default function Footer() {
         <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-10">
           {COLUMNS.map((col) => (
             <div key={col.heading} className="flex flex-col gap-4">
-              <span className="font-mono-ui text-label uppercase tracking-[0.1em] text-cream-faint mb-1">
+              <span className="font-mono-ui text-label uppercase tracking-[0.1em] text-ink-faint mb-1">
                 {col.heading}
               </span>
               {col.links.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="text-sm text-cream-muted hover:text-gold hover:translate-x-0.5 transition-all duration-200 inline-block"
+                  className="text-sm text-ink-muted hover:text-accent hover:translate-x-0.5 transition-all duration-200 inline-block"
                 >
                   {link.label}
                 </Link>
@@ -90,19 +90,19 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-ink-line">
+      <div className="border-t border-surface-line">
         <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop py-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-[11px] font-mono-ui uppercase tracking-[0.1em] text-cream-faint text-center md:text-left">
+          <div className="text-[11px] font-mono-ui uppercase tracking-[0.1em] text-ink-faint text-center md:text-left">
             &copy; {new Date().getFullYear()} Brahm Global Holdings.{" "}
             <span className="inline-block md:inline whitespace-nowrap">
               All rights reserved.
             </span>
           </div>
-          <div className="flex gap-6 text-[11px] font-mono-ui uppercase tracking-[0.1em] text-cream-faint">
-            <Link href="#" className="hover:text-gold transition-colors">
+          <div className="flex gap-6 text-[11px] font-mono-ui uppercase tracking-[0.1em] text-ink-faint">
+            <Link href="#" className="hover:text-accent transition-colors">
               Privacy Policy
             </Link>
-            <Link href="#" className="hover:text-gold transition-colors">
+            <Link href="#" className="hover:text-accent transition-colors">
               Terms of Service
             </Link>
           </div>

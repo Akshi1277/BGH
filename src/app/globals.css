@@ -2,41 +2,41 @@
 
 @theme {
   /* ═══════════════════════════════════════════════════════════════════
-     CHALK & VIVID — Brahm Global Holdings
-     Base: off-white chalk paper. Text: warm printer's ink.
-     Four vivid accents used with intention, never all at once.
+     CHALK & PINE — Brahm Global Holdings
+     Base: off-white chalk paper. Text: warm graphite ink.
+     Forest/pine accent used with intention across every section.
   ═══════════════════════════════════════════════════════════════════ */
 
   /* ─── SURFACES ────────────────────────────────────────────────────
      Off-white chalk — warmer than #FFF, crisper than old ivory.
      Cards sit on this as pure white panels, creating depth.          */
-  --color-ink:           #F8F6F2;   /* chalk base — the page ground   */
-  --color-ink-soft:      #F2EFE9;   /* subtle recessed panels         */
-  --color-ink-high:      #ECEAE4;   /* borders, dividers              */
-  --color-ink-line:      #DDD9D1;   /* hairline rules                 */
-  --color-ink-line-soft: #E8E5DF;
+  --color-surface:           #F8F6F2;   /* chalk base — the page ground   */
+  --color-surface-soft:      #F2EFE9;   /* subtle recessed panels         */
+  --color-surface-high:      #ECEAE4;   /* borders, dividers              */
+  --color-surface-line:      #DDD9D1;   /* hairline rules                 */
+  --color-surface-line-soft: #E8E5DF;
 
   /* ─── PAPER — Pure white cards float above the chalk ground ──────  */
   --color-paper:         #FFFFFF;
   --color-paper-high:    #F8F6F2;
-  --color-paper-ink:     #0F0E0C;
+  --color-paper-ink:     #1C1F1E;
   --color-paper-muted:   #706A62;
   --color-paper-line:    #E0DDD6;
 
-  /* ─── TEXT ────────────────────────────────────────────────────────
-     Warm printer's ink — not cold black, not navy. Like Monotype ink
-     on good paper. Clean and confident.                               */
-  --color-cream:         #0F0E0C;   /* primary — near-black, warm     */
-  --color-cream-muted:   #706A62;   /* body, captions                 */
-  --color-cream-faint:   #B0A89E;   /* placeholders, disabled         */
+  /* ─── INK — Warm graphite text ────────────────────────────────────
+     Warm graphite — not cold black, not navy. Like Monotype ink
+     on good paper. Softer than flat black against cream surfaces.    */
+  --color-ink:           #1C1F1E;   /* primary — warm graphite            */
+  --color-ink-muted:     #706A62;   /* body, captions                     */
+  --color-ink-faint:     #B0A89E;   /* placeholders, disabled             */
 
-  /* ─── MALACHITE — Primary brand green ────────────────────────────
-     Vivid deep emerald. Signals growth, ambition, the natural world.
-     Used for: eyebrows, primary CTAs, hero accent, About section.    */
-  --color-gold:          #0A8A5C;   /* malachite — the primary accent */
-  --color-gold-soft:     #0DAE74;   /* hover, lighter moments         */
-  --color-gold-deep:     #076840;   /* pressed, dark decorative       */
-  --color-gold-line:     #0A8A5C;
+  /* ─── ACCENT — Primary forest/pine green ──────────────────────────
+     Deep engineered pine. Signals craft, discipline, growth.
+     Used for: eyebrows, primary CTAs, hero accent, pillar index.    */
+  --color-accent:        #1F5C43;   /* forest/pine — the primary accent   */
+  --color-accent-soft:   #2A7A5A;   /* hover, lighter moments             */
+  --color-accent-deep:   #163F2E;   /* pressed, dark decorative           */
+  --color-accent-line:   #1F5C43;
 
   /* ─── COBALT — Royal blue ────────────────────────────────────────
      Deep, saturated cobalt. Digital, precision, trust.
@@ -124,10 +124,10 @@
 }
 
 /* ─── Decorative utilities ────────────────────────────────────────── */
-@utility rule-gold {
+@utility rule-accent {
   height: 1px;
   width: 3rem;
-  background: linear-gradient(90deg, var(--color-gold), transparent);
+  background: linear-gradient(90deg, var(--color-accent), transparent);
 }
 @utility rule-cobalt {
   height: 1px;
@@ -150,12 +150,12 @@ html {
 }
 
 body {
-  background-color: var(--color-ink);   /* chalk white                */
-  color: var(--color-cream);            /* warm printer's ink         */
+  background-color: var(--color-surface);   /* chalk white              */
+  color: var(--color-ink);                  /* warm graphite            */
 }
 
 ::selection {
-  background: var(--color-gold);        /* malachite selection        */
+  background: var(--color-accent);          /* forest/pine selection    */
   color: #ffffff;
 }
 

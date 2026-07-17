@@ -59,7 +59,7 @@ function ParticleCanvas() {
           0,
           Math.PI * 2
         );
-        ctx.fillStyle = `rgba(180,140,60,${alpha.toFixed(3)})`;
+        ctx.fillStyle = `rgba(31,92,67,${alpha.toFixed(3)})`;
         ctx.fill();
       }
 
@@ -127,7 +127,7 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center overflow-hidden bg-ink pt-24 pb-16 md:pt-28 md:pb-24"
+      className="relative min-h-screen flex items-center overflow-hidden bg-surface pt-24 pb-16 md:pt-28 md:pb-24"
     >
       {/* ── Background layer ─────────────────────────────────────── */}
       <div
@@ -144,7 +144,7 @@ export default function Hero() {
             width: "55vw",
             height: "55vw",
             background:
-              "radial-gradient(circle, rgba(180,140,60,0.07) 0%, transparent 70%)",
+              "radial-gradient(circle, rgba(31,92,67,0.07) 0%, transparent 70%)",
           }}
         />
       </div>
@@ -155,7 +155,7 @@ export default function Hero() {
         {/* Left column */}
         <div className="flex flex-col gap-6">
           <motion.span
-            className="text-eyebrow font-mono-ui text-gold block mt-1"
+            className="text-eyebrow font-mono-ui text-accent block mt-1"
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease }}
@@ -164,14 +164,14 @@ export default function Hero() {
           </motion.span>
 
           <motion.h1
-            className="font-display text-hero text-cream max-w-2xl"
+            className="font-display text-hero text-ink max-w-2xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease, delay: 0.1 }}
           >
             We build the products behind
             <br />
-            <span className="italic font-normal text-gold relative inline-block overflow-hidden">
+            <span className="italic font-normal text-accent relative inline-block overflow-hidden">
               tomorrow&rsquo;s
               <motion.span
                 aria-hidden
@@ -195,13 +195,13 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p
-            className="text-lede text-cream-muted max-w-xl"
+            className="text-lede text-ink-muted max-w-xl"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease, delay: 0.22 }}
           >
             A UK-based holding company. Through{" "}
-            <span className="text-gold font-medium">ENIF</span>, our dedicated
+            <span className="text-accent font-medium">ENIF</span>, our dedicated
             technology wing, and our portfolio of ventures, we design and build
             the software products, SaaS platforms, and AI-powered ecosystems of
             tomorrow.
@@ -215,7 +215,7 @@ export default function Hero() {
           >
             <Link
               href="#portfolio"
-              className="inline-flex items-center gap-2 bg-gold text-ink px-6 py-3.5 md:px-8 md:py-4 rounded-full text-label font-mono-ui uppercase tracking-[0.1em] hover:bg-gold-soft transition-colors duration-300 group"
+              className="inline-flex items-center gap-2 bg-accent text-surface px-6 py-3.5 md:px-8 md:py-4 rounded-full text-label font-mono-ui uppercase tracking-[0.1em] hover:bg-accent-soft transition-colors duration-300 group"
             >
               Explore Our Portfolio
               <Icon
@@ -226,7 +226,7 @@ export default function Hero() {
             </Link>
             <Link
               href="#build"
-              className="inline-flex items-center gap-2 border border-ink-line px-6 py-3.5 md:px-8 md:py-4 rounded-full text-label font-mono-ui uppercase tracking-[0.1em] text-cream-muted hover:border-gold hover:text-gold transition-colors duration-300"
+              className="inline-flex items-center gap-2 border border-surface-line px-6 py-3.5 md:px-8 md:py-4 rounded-full text-label font-mono-ui uppercase tracking-[0.1em] text-ink-muted hover:border-accent hover:text-accent transition-colors duration-300"
             >
               What We Build
             </Link>
@@ -243,28 +243,28 @@ export default function Hero() {
         >
           {/* Connector lines (draw-in) */}
           <motion.div
-            className="absolute left-1/2 top-[10%] w-px h-[26%] bg-gradient-to-b from-gold/60 to-gold/10 -translate-x-1/2"
+            className="absolute left-1/2 top-[10%] w-px h-[26%] bg-gradient-to-b from-accent/60 to-accent/10 -translate-x-1/2"
             style={{ originY: 0 }}
             initial={{ scaleY: 0, opacity: 0 }}
             animate={{ scaleY: 1, opacity: 1 }}
             transition={{ duration: 0.9, delay: 0.45, ease: "easeOut" }}
           />
           <motion.div
-            className="absolute left-1/2 bottom-[10%] w-px h-[26%] bg-gradient-to-t from-gold/60 to-gold/10 -translate-x-1/2"
+            className="absolute left-1/2 bottom-[10%] w-px h-[26%] bg-gradient-to-t from-accent/60 to-accent/10 -translate-x-1/2"
             style={{ originY: 1 }}
             initial={{ scaleY: 0, opacity: 0 }}
             animate={{ scaleY: 1, opacity: 1 }}
             transition={{ duration: 0.9, delay: 0.55, ease: "easeOut" }}
           />
           <motion.div
-            className="absolute top-1/2 -left-12 h-px w-[calc(26%+3rem)] bg-gradient-to-r from-gold/60 to-gold/10 -translate-y-1/2"
+            className="absolute top-1/2 -left-12 h-px w-[calc(26%+3rem)] bg-gradient-to-r from-accent/60 to-accent/10 -translate-y-1/2"
             style={{ originX: 0 }}
             initial={{ scaleX: 0, opacity: 0 }}
             animate={{ scaleX: 1, opacity: 1 }}
             transition={{ duration: 0.9, delay: 0.65, ease: "easeOut" }}
           />
           <motion.div
-            className="absolute top-1/2 -right-12 h-px w-[calc(26%+3rem)] bg-gradient-to-l from-gold/60 to-gold/10 -translate-y-1/2"
+            className="absolute top-1/2 -right-12 h-px w-[calc(26%+3rem)] bg-gradient-to-l from-accent/60 to-accent/10 -translate-y-1/2"
             style={{ originX: 1 }}
             initial={{ scaleX: 0, opacity: 0 }}
             animate={{ scaleX: 1, opacity: 1 }}
@@ -273,7 +273,7 @@ export default function Hero() {
 
           {/* Rotating outer ring */}
           <motion.div
-            className="absolute inset-[26%] rounded-full border border-dashed border-gold/25"
+            className="absolute inset-[26%] rounded-full border border-dashed border-accent/25"
             animate={{ rotate: 360 }}
             transition={{ duration: 90, repeat: Infinity, ease: "linear" }}
           />
@@ -285,18 +285,18 @@ export default function Hero() {
             transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
           >
             <div
-              className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-gold"
-              style={{ boxShadow: "0 0 8px 3px rgba(180,140,60,0.55)" }}
+              className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-accent"
+              style={{ boxShadow: "0 0 8px 3px rgba(31,92,67,0.55)" }}
             />
           </motion.div>
 
           {/* Center medallion */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full border border-gold/35 bg-ink-soft flex items-center justify-center">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full border border-accent/35 bg-surface-soft flex items-center justify-center">
             <div
               className="absolute inset-0 rounded-full"
               style={{
                 background:
-                  "radial-gradient(circle at center, rgba(180,140,60,0.12) 0%, transparent 70%)",
+                  "radial-gradient(circle at center, rgba(31,92,67,0.12) 0%, transparent 70%)",
               }}
             />
             <div className="relative w-16 h-16 rounded-full overflow-hidden">
@@ -314,7 +314,7 @@ export default function Hero() {
           {CATEGORIES.map((c, i) => (
             <motion.div
               key={c.label}
-              className={`absolute ${c.pos} flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-ink-line bg-ink-soft/90 backdrop-blur text-[10px] font-mono-ui uppercase tracking-widest text-cream-muted whitespace-nowrap hover:border-gold/40 hover:text-gold transition-colors duration-300`}
+              className={`absolute ${c.pos} flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-surface-line bg-surface-soft/90 backdrop-blur text-[10px] font-mono-ui uppercase tracking-widest text-ink-muted whitespace-nowrap hover:border-accent/40 hover:text-accent transition-colors duration-300`}
               initial={{ opacity: 0, scale: 0.75 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{
@@ -335,14 +335,14 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-3 text-cream-faint"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-3 text-ink-faint"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 1 }}
       >
         <span className="text-eyebrow font-mono-ui">Scroll</span>
         <motion.span
-          className="w-px h-8 bg-gradient-to-b from-gold/50 to-transparent"
+          className="w-px h-8 bg-gradient-to-b from-accent/50 to-transparent"
           animate={{ opacity: [0.4, 1, 0.4] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         />

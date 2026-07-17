@@ -61,7 +61,7 @@ export default function RootLayout({
       lang="en"
       className={`${playfair.variable} ${inter.variable} ${jbmono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-ink text-cream font-sans-ui relative">
+      <body className="min-h-full flex flex-col bg-surface text-ink font-sans-ui relative">
         <div
           aria-hidden
           className="grain-overlay pointer-events-none fixed inset-0 z-[999]"

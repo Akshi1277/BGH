@@ -15,7 +15,7 @@ const PATHWAYS: { icon: IconName; label: string; description: string; href: stri
     description:
       "A new product, platform, or venture — from first principles to launch.",
     href: "mailto:hello@brahmglobalholdings.com?subject=Start a Project",
-    accent: "var(--color-gold)",         /* malachite */
+    accent: "var(--color-accent)",         /* forest/pine */
   },
   {
     icon: "trending-up",
@@ -85,7 +85,7 @@ function MagneticCTA() {
       whileHover={{ scale: 1.06 }}
       whileTap={{ scale: 0.96 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className="inline-flex items-center gap-3 bg-black text-ink px-10 py-5 rounded-full text-label font-mono-ui uppercase tracking-[0.1em] group"
+      className="inline-flex items-center gap-3 bg-accent text-surface px-10 py-5 rounded-full text-label font-mono-ui uppercase tracking-[0.1em] hover:bg-accent-soft transition-colors duration-300 group"
     >
       Start a Conversation
       <motion.span
@@ -117,7 +117,7 @@ function PathwayCard({
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.55, delay }}
       whileHover="hover"
-      className="group relative bg-paper border border-ink-line rounded-2xl p-8 flex flex-col gap-5 overflow-hidden cursor-pointer"
+      className="group relative bg-paper border border-surface-line rounded-2xl p-8 flex flex-col gap-5 overflow-hidden cursor-pointer"
     >
       {/* Coloured top accent line — slides in from left on hover */}
       <motion.div
@@ -130,10 +130,10 @@ function PathwayCard({
 
       {/* Icon ring */}
       <motion.div
-        className="w-11 h-11 rounded-xl border border-ink-line flex items-center justify-center"
+        className="w-11 h-11 rounded-xl border border-surface-line flex items-center justify-center"
         style={{ color: pathway.accent }}
         variants={{
-          rest: { borderColor: "var(--color-ink-line)" },
+          rest: { borderColor: "var(--color-surface-line)" },
           hover: { borderColor: pathway.accent, scale: 1.08 },
         }}
         transition={{ duration: 0.25 }}
@@ -144,18 +144,18 @@ function PathwayCard({
       {/* Text */}
       <div className="flex-1">
         <div className="flex items-center gap-2 mb-2">
-          <span className="font-mono-ui text-label text-cream uppercase tracking-[0.08em]">
+          <span className="font-mono-ui text-label text-ink uppercase tracking-[0.08em]">
             {pathway.label}
           </span>
           <motion.span
-            className="text-cream-muted"
+            className="text-ink-muted"
             variants={{ rest: { x: 0, opacity: 0 }, hover: { x: 4, opacity: 1 } }}
             transition={{ duration: 0.2 }}
           >
             <Icon name="arrow-right" size={13} />
           </motion.span>
         </div>
-        <p className="text-sm leading-relaxed text-cream-muted">
+        <p className="text-sm leading-relaxed text-ink-muted">
           {pathway.description}
         </p>
       </div>
@@ -188,14 +188,14 @@ export default function CTA() {
   return (
     <section
       id="contact"
-      className="relative section-y bg-ink overflow-hidden"
+      className="relative section-y bg-surface overflow-hidden"
     >
       {/* ── Subtle dot grid ─────────────────────────────────────────── */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           backgroundImage:
-            "radial-gradient(circle, var(--color-ink-line) 1px, transparent 1px)",
+            "radial-gradient(circle, var(--color-surface-line) 1px, transparent 1px)",
           backgroundSize: "36px 36px",
           opacity: 0.6,
         }}
@@ -210,7 +210,7 @@ export default function CTA() {
           width: "60%",
           height: "100%",
           background:
-            "radial-gradient(ellipse, color-mix(in srgb, var(--color-gold) 16%, transparent), transparent 70%)",
+            "radial-gradient(ellipse, color-mix(in srgb, var(--color-accent) 16%, transparent), transparent 70%)",
           filter: "blur(70px)",
         }}
         initial={{ opacity: 0 }}
@@ -245,7 +245,7 @@ export default function CTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55 }}
-            className="text-eyebrow font-mono-ui text-gold block mb-6"
+            className="text-eyebrow font-mono-ui text-accent block mb-6"
           >
             Let&rsquo;s Build
           </motion.span>
@@ -256,7 +256,7 @@ export default function CTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-display text-display text-cream max-w-3xl"
+            className="font-display text-display text-ink max-w-3xl"
           >
             Tell us what you want&nbsp;to{" "}
             {/* clip container — hides the sliding word during transition */}
@@ -274,7 +274,7 @@ export default function CTA() {
                     duration: 0.42,
                     ease: [0.25, 1, 0.5, 1],
                   }}
-                  className="italic text-gold inline-block"
+                  className="italic text-accent inline-block"
                 >
                   {WORDS[wordIdx]}
                 </motion.span>
@@ -287,7 +287,7 @@ export default function CTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-lede text-cream-muted max-w-xl mt-8"
+            className="text-lede text-ink-muted max-w-xl mt-8"
           >
             Whether it&rsquo;s a new product, a platform to scale, or an
             ecosystem to connect — we start every conversation the same way:

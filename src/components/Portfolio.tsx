@@ -20,6 +20,7 @@ const VENTURES = [
     imageSrc: "/tpl-preview.png",
     imageAlt: "Talent Pro League dashboard",
     logo: "/image copy 4.png",
+    aspectRatio: "1892/952",   /* measured: 1892 × 952 px — ~2:1 */
     description:
       "TPL — the UK's football league management platform, built to run competitions, teams, and player development at scale.",
     cta: "Explore Solution",
@@ -34,6 +35,7 @@ const VENTURES = [
     imageSrc: "/lsa-preview.png",
     imageAlt: "LSA school dashboard",
     logo: "/image copy 3.png",
+    aspectRatio: "1913/953",   /* measured: 1913 × 953 px — ~2:1 */
     description:
       "A school and homeschooling management platform — dual School Portal and Home Schooling Portal — providing one AI-powered home for learning.",
     cta: "View Platform",
@@ -48,6 +50,7 @@ const VENTURES = [
     imageSrc: "/luxure-preview-v2.png",
     imageAlt: "Luxure De Eden website",
     logo: "/luxure-logo.png",
+    aspectRatio: "1892/952",   /* same frame as other cards — image cropped to fit */
     description:
       "A fragrance house built on heritage craftsmanship and modern brand experience — from concept to commerce.",
     cta: "Discover Fragrances",
@@ -62,6 +65,7 @@ const VENTURES = [
     imageSrc: "/image copy 5.png",
     imageAlt: "Alayn dashboard",
     logo: "/alaynlogo.jpeg",
+    aspectRatio: "1896/952",   /* measured: 1896 × 952 px — ~2:1 */
     description:
       "A modern operating system for cafés and restaurants — orders, inventory, and guest experience unified. Developed by ENIF.",
     cta: "Learn More",
@@ -142,14 +146,14 @@ export default function Portfolio() {
   }, [paused, active]);
 
   const { cardW, sideOffset } = dims;
-  // Card height: chrome 32px + aspect(16/10) + label 52px
-  const carouselH = Math.round(cardW * 0.625 + 32 + 52);
+  // Card height: chrome 32px + screenshot at measured ~2:1 ratio (952/1892 ≈ 0.503) + label 52px
+  const carouselH = Math.round(cardW * (952 / 1892) + 32 + 52);
   const v = VENTURES[active];
 
   return (
     <section
       id="portfolio"
-      className="section-y bg-ink overflow-hidden"
+      className="section-y bg-surface overflow-hidden"
     >
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop">
 
@@ -161,13 +165,13 @@ export default function Portfolio() {
           transition={{ duration: 0.7, ease }}
           className="mb-16"
         >
-          <span className="text-eyebrow font-mono-ui text-gold block mb-5">
+          <span className="text-eyebrow font-mono-ui text-accent block mb-5">
             Our Portfolio
           </span>
-          <h2 className="font-display text-display text-cream">
+          <h2 className="font-display text-display text-ink">
             Four ventures.
             <br />
-            <span className="italic text-gold">One</span> standard.
+            <span className="italic text-accent">One</span> standard.
           </h2>
         </motion.div>
 
@@ -208,28 +212,28 @@ export default function Portfolio() {
                 >
                   <div
                     className={[
-                      "w-full rounded-xl overflow-hidden border bg-ink transition-colors duration-500",
+                      "w-full rounded-xl overflow-hidden border bg-surface transition-colors duration-500",
                       isCenter
-                        ? "border-gold/30 shadow-[0_24px_72px_-20px_rgba(0,0,0,0.8)]"
-                        : "border-ink-line cursor-pointer",
+                        ? "border-accent/30 shadow-[0_24px_72px_-20px_rgba(0,0,0,0.8)]"
+                        : "border-surface-line cursor-pointer",
                     ].join(" ")}
                   >
                     {/* Browser chrome */}
-                    <div className="h-8 bg-ink-high flex items-center gap-3 px-3 border-b border-ink-line">
+                    <div className="h-8 bg-surface-high flex items-center gap-3 px-3 border-b border-surface-line">
                       <div className="flex items-center gap-1.5 shrink-0">
                         <span
-                          className={`w-2 h-2 rounded-full transition-colors duration-300 ${isCenter ? "bg-[#FF5F57]" : "bg-cream-faint/20"}`}
+                          className={`w-2 h-2 rounded-full transition-colors duration-300 ${isCenter ? "bg-[#FF5F57]" : "bg-ink-faint/20"}`}
                         />
                         <span
-                          className={`w-2 h-2 rounded-full transition-colors duration-300 ${isCenter ? "bg-[#FEBC2E]" : "bg-cream-faint/20"}`}
+                          className={`w-2 h-2 rounded-full transition-colors duration-300 ${isCenter ? "bg-[#FEBC2E]" : "bg-ink-faint/20"}`}
                         />
                         <span
-                          className={`w-2 h-2 rounded-full transition-colors duration-300 ${isCenter ? "bg-[#28C840]" : "bg-cream-faint/20"}`}
+                          className={`w-2 h-2 rounded-full transition-colors duration-300 ${isCenter ? "bg-[#28C840]" : "bg-ink-faint/20"}`}
                         />
                       </div>
-                      <div className="flex-1 h-5 rounded bg-ink/70 border border-ink-line/40 flex items-center px-2 gap-1.5 overflow-hidden">
-                        <span className="w-1 h-1 rounded-full bg-gold/50 shrink-0" />
-                        <span className="text-[8px] font-mono-ui text-cream-faint/50 truncate tracking-wide">
+                      <div className="flex-1 h-5 rounded bg-surface/70 border border-surface-line/40 flex items-center px-2 gap-1.5 overflow-hidden">
+                        <span className="w-1 h-1 rounded-full bg-accent/50 shrink-0" />
+                        <span className="text-[8px] font-mono-ui text-ink-faint/50 truncate tracking-wide">
                           {venture.url}
                         </span>
                       </div>
@@ -238,33 +242,33 @@ export default function Portfolio() {
                     {/* Screenshot */}
                     <div
                       className="relative overflow-hidden"
-                      style={{ aspectRatio: "16/10" }}
+                      style={{ aspectRatio: venture.aspectRatio }}
                     >
                     <Image
   src={venture.imageSrc}
   alt={venture.imageAlt}
   fill
   sizes="(max-width: 640px) 260px, (max-width: 1024px) 320px, 400px"
-  className="object-contain object-top"
+  className="object-cover object-top"
   loading="eager"
 />
-                      {/* Dim overlay for non-active */}
+                      {/* Dim overlay for non-active — dark tint, not cream wash */}
                       {!isCenter && (
-                        <div className="absolute inset-0 bg-ink/50" />
+                        <div className="absolute inset-0 bg-ink/20" />
                       )}
-                      {/* Bottom fade */}
-                      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/50 to-transparent pointer-events-none" />
+                      {/* Bottom fade — subtle, doesn't wash the centre card */}
+                      <div className="absolute inset-x-0 bottom-0 h-1/5 bg-gradient-to-t from-surface/25 to-transparent pointer-events-none" />
                     </div>
 
                     {/* Label strip */}
-                    <div className="px-3 py-3 flex items-center gap-2.5 border-t border-ink-line">
+                    <div className="px-3 py-3 flex items-center gap-2.5 border-t border-surface-line">
                 <img
   src={venture.logo}
   alt=""
   className="h-5 w-auto object-contain shrink-0 rounded-sm opacity-80"
   loading="eager"
 />
-                      <span className="text-xs font-display text-cream truncate">
+                      <span className="text-xs font-display text-ink truncate">
                         {venture.name}
                       </span>
                     </div>
@@ -287,29 +291,29 @@ export default function Portfolio() {
               >
                 {/* Tag */}
                 <div className="flex items-center gap-2">
-                  <span className="w-1 h-1 rounded-full bg-gold/70 shrink-0" />
-                  <span className="text-[11px] font-mono-ui uppercase tracking-[0.2em] text-cream-faint">
+                  <span className="w-1 h-1 rounded-full bg-accent/70 shrink-0" />
+                  <span className="text-[11px] font-mono-ui uppercase tracking-[0.2em] text-ink-faint">
                     {v.tag} — {v.badge}
                   </span>
                 </div>
 
                 {/* Name */}
-                <h3 className="font-display text-2xl md:text-3xl text-cream">
+                <h3 className="font-display text-2xl md:text-3xl text-ink">
                   {v.name}
                 </h3>
 
                 {/* Divider */}
-                <div className="h-px w-8 bg-gold/40" />
+                <div className="h-px w-8 bg-accent/40" />
 
                 {/* Description */}
-                <p className="text-sm text-cream-muted max-w-md leading-relaxed">
+                <p className="text-sm text-ink-muted max-w-md leading-relaxed">
                   {v.description}
                 </p>
 
                 {/* CTA */}
                 <Link
                   href={v.href}
-                  className="relative inline-flex items-center gap-2 text-xs font-mono-ui uppercase tracking-[0.15em] text-gold mt-1 group/cta w-fit"
+                  className="relative inline-flex items-center gap-2 text-xs font-mono-ui uppercase tracking-[0.15em] text-accent mt-1 group/cta w-fit"
                 >
                   {v.cta}
                   <Icon
@@ -317,7 +321,7 @@ export default function Portfolio() {
                     size={14}
                     className="transition-transform duration-300 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5"
                   />
-                  <span className="absolute bottom-0 left-0 h-px w-full bg-gold scale-x-0 origin-left group-hover/cta:scale-x-100 transition-transform duration-300" />
+                  <span className="absolute bottom-0 left-0 h-px w-full bg-accent scale-x-0 origin-left group-hover/cta:scale-x-100 transition-transform duration-300" />
                 </Link>
               </motion.div>
             </AnimatePresence>
@@ -329,10 +333,10 @@ export default function Portfolio() {
                   key={i}
                   onClick={() => setActive(i)}
                   className={[
-                    "rounded-full transition-all duration-400",
+                    "rounded-full transition-all duration-300",
                     i === active
-                      ? "w-6 h-1.5 bg-gold"
-                      : "w-1.5 h-1.5 bg-cream-faint/25 hover:bg-cream-faint/50",
+                      ? "w-8 h-2 bg-accent shadow-[0_0_6px_2px_rgba(31,92,67,0.35)]"
+                      : "w-2.5 h-2.5 bg-ink-muted/40 hover:bg-accent/60",
                   ].join(" ")}
                   aria-label={`Go to ${VENTURES[i].name}`}
                 />
