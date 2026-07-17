@@ -18,7 +18,7 @@ const PATHWAYS: { icon: IconName; label: string; description: string; href: stri
     accent: "var(--color-accent)",         /* forest/pine */
   },
   {
-    icon: "trending-up",
+    icon: "compass",
     label: "Explore investment",
     description:
       "We back ambitious founders operating in our core growth sectors.",

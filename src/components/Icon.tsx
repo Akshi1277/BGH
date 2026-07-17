@@ -63,6 +63,7 @@ const paths: Record<IconName, React.ReactNode> = {
   droplet: (
     <path d="M12 3s6 6.8 6 11.2A6 6 0 0 1 6 14.2C6 9.8 12 3 12 3z" />
   ),
+  
   layers: (
     <>
       <path d="M12 2L2 7l10 5 10-5-10-5z" />
