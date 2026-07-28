@@ -8,8 +8,8 @@ const ease = [0.25, 1, 0.5, 1] as const;
 
 const CREDENTIALS: { icon: IconName; stat: string; label: string }[] = [
   { icon: "globe",   stat: "UK",    label: "Headquartered & Engineered" },
-  { icon: "layers",  stat: "4",     label: "Active Ventures" },
-  { icon: "compass", stat: "3+",    label: "Industry Sectors" },
+  { icon: "layers",  stat: "5",     label: "Group Companies" },
+  { icon: "compass", stat: "6",     label: "Industry Sectors" },
   { icon: "shield",  stat: "100%",  label: "Built In-House" },
 ];
 

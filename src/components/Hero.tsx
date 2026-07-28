@@ -84,10 +84,10 @@ function ParticleCanvas() {
 
 /* ─── Category badges ───────────────────────────────────────────── */
 const CATEGORIES: { icon: IconName; label: string; pos: string; delay: number }[] = [
-  { icon: "cube",  label: "Products",    pos: "top-[2%] left-1/2 -translate-x-1/2",  delay: 0    },
-  { icon: "cloud", label: "Platforms",   pos: "-right-12 top-1/2 -translate-y-1/2",  delay: 0.12 },
-  { icon: "cpu",   label: "AI Solutions",pos: "bottom-[2%] left-1/2 -translate-x-1/2", delay: 0.24 },
-  { icon: "globe", label: "Ecosystems",  pos: "-left-12 top-1/2 -translate-y-1/2",   delay: 0.36 },
+  { icon: "cpu",         label: "Technology",     pos: "top-[2%] left-1/2 -translate-x-1/2",  delay: 0    },
+  { icon: "trending-up", label: "Sport & Media",  pos: "-right-12 top-1/2 -translate-y-1/2",  delay: 0.12 },
+  { icon: "globe",       label: "Education",      pos: "bottom-[2%] left-1/2 -translate-x-1/2", delay: 0.24 },
+  { icon: "droplet",     label: "Consumer Brands",pos: "-left-12 top-1/2 -translate-y-1/2",   delay: 0.36 },
 ];
 
 /* ─── Hero ──────────────────────────────────────────────────────── */
@@ -169,10 +169,9 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease, delay: 0.1 }}
           >
-            We build the products behind
-            <br />
-            <span className="italic font-normal text-accent relative inline-block overflow-hidden">
-              tomorrow&rsquo;s
+            Building{" "}
+            <span className="italic font-normal text-accent relative inline-block overflow-hidden pb-2 -mb-2">
+              enduring
               <motion.span
                 aria-hidden
                 className="absolute inset-0 pointer-events-none"
@@ -191,7 +190,9 @@ export default function Hero() {
                 }}
               />
             </span>{" "}
-            industries.
+            businesses.
+            <br />
+            Creating companies that shape industries.
           </motion.h1>
 
           <motion.p
@@ -200,11 +201,13 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease, delay: 0.22 }}
           >
-            A UK-based holding company. Through{" "}
-            <span className="text-accent font-medium">ENIF</span>, our dedicated
-            technology wing, and our portfolio of ventures, we design and build
-            the software products, SaaS platforms, and AI-powered ecosystems of
-            tomorrow.
+            <span className="text-accent font-medium">BRAHM Global Holdings</span> is
+            a British venture builder and holding company dedicated to creating,
+            acquiring and scaling exceptional businesses across technology,
+            education, sport, hospitality, luxury consumer products and emerging
+            industries. Through disciplined entrepreneurship, strategic
+            investment and world-class execution, we build organisations
+            designed to endure — not merely companies designed to exist.
           </motion.p>
 
           <motion.div
@@ -214,10 +217,10 @@ export default function Hero() {
             transition={{ duration: 0.6, ease, delay: 0.35 }}
           >
             <Link
-              href="#portfolio"
+              href="/#companies"
               className="inline-flex items-center gap-2 bg-accent text-surface px-6 py-3.5 md:px-8 md:py-4 rounded-full text-label font-mono-ui uppercase tracking-[0.1em] hover:bg-accent-soft transition-colors duration-300 group"
             >
-              Explore Our Portfolio
+              Explore Our Group
               <Icon
                 name="arrow-right"
                 size={16}
@@ -225,10 +228,10 @@ export default function Hero() {
               />
             </Link>
             <Link
-              href="#build"
+              href="/#how-we-build"
               className="inline-flex items-center gap-2 border border-surface-line px-6 py-3.5 md:px-8 md:py-4 rounded-full text-label font-mono-ui uppercase tracking-[0.1em] text-ink-muted hover:border-accent hover:text-accent transition-colors duration-300"
             >
-              What We Build
+              How We Build
             </Link>
           </motion.div>
         </div>

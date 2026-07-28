@@ -6,34 +6,48 @@ import Icon, { IconName } from "./Icon";
 
 const ease = [0.25, 1, 0.5, 1] as const;
 
-const CAPABILITIES: { index: string; icon: IconName; title: string; description: string }[] = [
+const SECTORS: { index: string; icon: IconName; title: string; description: string }[] = [
   {
     index: "01",
-    icon: "cube",
-    title: "Software Products",
+    icon: "cpu",
+    title: "Technology & Artificial Intelligence",
     description:
-      "End-to-end products designed, engineered, and shipped under our own roof — from first sketch to production release.",
+      "Building AI, software and digital infrastructure — the engineering capability behind the Group.",
   },
   {
     index: "02",
-    icon: "cloud",
-    title: "SaaS Platforms",
+    icon: "trending-up",
+    title: "Sports & Media",
     description:
-      "Multi-tenant platforms built to scale, with the architecture, billing, and security a serious business demands.",
+      "Connecting athletes, communities and commercial partners through digital competition and entertainment.",
   },
   {
     index: "03",
-    icon: "cpu",
-    title: "AI-Powered Solutions",
+    icon: "globe",
+    title: "Education",
     description:
-      "Applied intelligence woven into real workflows — automation and insight that make products smarter, not louder.",
+      "Developing digital learning platforms and global education services for the next generation of learners.",
   },
   {
     index: "04",
-    icon: "globe",
-    title: "Digital Ecosystems",
+    icon: "cup",
+    title: "Hospitality",
     description:
-      "Connected experiences across web, mobile, and data — engineered as a coherent system, not a pile of features.",
+      "Creating premium hospitality concepts where design, service and experience combine.",
+  },
+  {
+    index: "05",
+    icon: "droplet",
+    title: "Luxury Consumer Brands",
+    description:
+      "Crafting refined fragrance and lifestyle collections built on heritage and modern craftsmanship.",
+  },
+  {
+    index: "06",
+    icon: "cloud",
+    title: "Digital Commerce",
+    description:
+      "Building the commercial infrastructure that lets every Group company sell and scale online.",
   },
 ];
 
@@ -47,9 +61,9 @@ const item: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.65, ease } },
 };
 
-export default function Capabilities() {
+export default function TheGroup() {
   return (
-    <section id="build" className="section-y bg-surface relative">
+    <section id="group" className="section-y bg-surface relative">
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop">
         {/* Heading — eyebrow and headline staggered individually */}
         <div className="max-w-2xl mb-20">
@@ -60,7 +74,7 @@ export default function Capabilities() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, ease }}
           >
-            What We Build
+            The Group
           </motion.span>
           <motion.h2
             className="font-display text-display text-ink"
@@ -69,8 +83,8 @@ export default function Capabilities() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.75, ease, delay: 0.08 }}
           >
-            Four disciplines.<br />
-            One standard of <span className="italic text-accent">craft</span>.
+            One Group.<br />
+            Multiple <span className="italic text-accent">industries</span>.
           </motion.h2>
           <motion.p
             className="text-ink-muted mt-4 max-w-lg"
@@ -79,7 +93,9 @@ export default function Capabilities() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.65, ease, delay: 0.16 }}
           >
-            Our specialized engineering wing at <span className="text-accent font-medium">ENIF</span> designs and builds products across four core digital disciplines.
+            Our companies operate independently while benefiting from the
+            strategic direction, governance, technology capabilities and
+            operational expertise of the Group.
           </motion.p>
         </div>
 
@@ -88,11 +104,11 @@ export default function Capabilities() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-surface-line border border-surface-line"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-surface-line border border-surface-line"
         >
-          {CAPABILITIES.map((cap) => (
+          {SECTORS.map((sector) => (
             <motion.div
-              key={cap.index}
+              key={sector.index}
               variants={item}
               className="bg-surface p-8 md:p-10 flex flex-col gap-6 group relative overflow-hidden transition-colors duration-400 hover:bg-surface-soft"
             >
@@ -104,27 +120,27 @@ export default function Capabilities() {
                 aria-hidden
                 className="absolute -top-2 -right-2 font-display text-[7rem] leading-none select-none pointer-events-none text-ink/[0.035]"
               >
-                {cap.index}
+                {sector.index}
               </span>
 
               <div className="flex items-center justify-between">
                 <span className="font-mono-ui text-label text-accent">
-                  {cap.index}
+                  {sector.index}
                 </span>
                 <motion.div
                   className="text-ink-faint group-hover:text-accent transition-colors duration-400"
                   whileHover={{ y: -2 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Icon name={cap.icon} size={22} />
+                  <Icon name={sector.icon} size={22} />
                 </motion.div>
               </div>
               <div>
                 <h3 className="font-display text-xl text-ink mb-3">
-                  {cap.title}
+                  {sector.title}
                 </h3>
                 <p className="text-sm text-ink-muted leading-relaxed">
-                  {cap.description}
+                  {sector.description}
                 </p>
               </div>
             </motion.div>
@@ -134,5 +150,3 @@ export default function Capabilities() {
     </section>
   );
 }
-
-

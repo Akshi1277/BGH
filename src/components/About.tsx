@@ -5,43 +5,39 @@ import { motion } from "framer-motion";
 
 const ease = [0.25, 1, 0.5, 1] as const;
 
-const PILLARS = [
+const PHILOSOPHY = [
   {
     index: "01",
-    title: "We Own the Full Stack",
+    title: "Markets Evolve",
     description:
-      "Strategy, design, and engineering sit under one roof inside ENIF, our technology wing. We build everything in-house with zero outsourcing.",
+      "Technologies change and consumer behaviour shifts — but businesses built on strong fundamentals don't move with every trend.",
   },
   {
     index: "02",
-    title: "Senior Builders, Direct Access",
+    title: "Built to Endure",
     description:
-      "You work with the people actually building the product — not a layer of account managers relaying your feedback.",
+      "The organisations that endure are those built upon strong fundamentals, exceptional leadership and continuous innovation.",
   },
   {
     index: "03",
-    title: "Built to Global Standards",
+    title: "Category Leaders",
     description:
-      "UK-based engineering discipline, shipped for a global user base — from compliance to performance to accessibility.",
-  },
-  {
-    index: "04",
-    title: "Partners, Not Vendors",
-    description:
-      "We hold equity in the outcomes we build. Our ventures are products we intend to stand behind for years, not projects we invoice and leave.",
+      "Every company within BRAHM Global Holdings is created with the ambition to become a category leader — not simply another participant.",
   },
 ];
 
 const FACTS = [
   { label: "Headquartered", value: "London, UK" },
-  { label: "Portfolio",     value: "4 Active Ventures" },
-  { label: "Delivered",     value: "End-to-End" },
+  { label: "Group Companies", value: "5" },
+  { label: "Model",          value: "Venture Builder" },
 ];
+
+const TAGS = ["Build with purpose", "Operate with excellence", "Scale with integrity"];
 
 export default function About() {
   return (
     <section
-      id="difference"
+      id="who-we-are"
       className="section-y bg-paper text-paper-ink border-y border-paper-line relative"
     >
       {/* ── Section edge gradients — soften Capabilities↔Portfolio transitions ── */}
@@ -87,9 +83,9 @@ export default function About() {
 
             {/* Quote */}
             <blockquote className="font-display italic text-[2rem] md:text-[2.25rem] text-paper-ink leading-snug mb-8">
-              &ldquo;We don&rsquo;t outsource
+              &ldquo;We don&rsquo;t follow industries.
               <br />
-              ambition.&rdquo;
+              We build them.&rdquo;
             </blockquote>
 
             {/* Accent rule */}
@@ -119,7 +115,7 @@ export default function About() {
           </div>
         </motion.div>
 
-        {/* ── Right: headline + pillar cards ───────────────────── */}
+        {/* ── Right: headline + philosophy cards ───────────────────── */}
         <div className="lg:col-span-7">
 
           {/* Section header */}
@@ -131,7 +127,7 @@ export default function About() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, ease }}
             >
-              Why We&rsquo;re Different
+              Who We Are
             </motion.span>
 
             <motion.h2
@@ -141,13 +137,10 @@ export default function About() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.75, ease, delay: 0.08 }}
             >
-              Builders first.
+              A long-term
               <br />
-              {/* Italic in accent green — matches the hero's italic */}
-              <span className="italic font-normal text-accent">
-                Holding company
-              </span>{" "}
-              second.
+              <span className="italic font-normal text-accent">builder</span>{" "}
+              of businesses.
             </motion.h2>
 
             <motion.p
@@ -157,15 +150,20 @@ export default function About() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.65, ease, delay: 0.16 }}
             >
-              Most holding companies allocate capital. We do that too — but
-              our real advantage is that we can design, engineer, and ship the
-              product ourselves, end to end, under one standard of craft.
+              At BRAHM Global Holdings, we believe the world&rsquo;s most
+              valuable organisations are built through vision, discipline and
+              patience. Rather than focusing on a single industry, we create
+              and support businesses capable of becoming leaders within their
+              respective sectors. From software platforms and artificial
+              intelligence to premium consumer brands and hospitality
+              concepts, every company within our Group is united by one
+              philosophy.
             </motion.p>
           </div>
 
-          {/* 2×2 pillar card grid */}
+          {/* 3-card philosophy grid */}
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5 mb-10"
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-80px" }}
@@ -174,7 +172,7 @@ export default function About() {
               show: { opacity: 1, transition: { staggerChildren: 0.11 } },
             }}
           >
-            {PILLARS.map((p) => (
+            {PHILOSOPHY.map((p) => (
               <motion.div
                 key={p.index}
                 variants={{
@@ -213,6 +211,24 @@ export default function About() {
                 {/* Bottom accent — slides in from left on hover */}
                 <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-accent group-hover:w-full transition-[width] duration-500 ease-out" />
               </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Closing tag row — "Build with purpose. Operate with excellence. Scale with integrity." */}
+          <motion.div
+            className="flex flex-wrap gap-3"
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease, delay: 0.2 }}
+          >
+            {TAGS.map((tag) => (
+              <span
+                key={tag}
+                className="font-mono-ui text-[11px] uppercase tracking-[0.12em] text-accent border border-accent/30 rounded-full px-4 py-2"
+              >
+                {tag}
+              </span>
             ))}
           </motion.div>
         </div>

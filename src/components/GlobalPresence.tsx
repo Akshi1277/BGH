@@ -26,7 +26,7 @@ const TRUST: { icon: IconName; stat: string; label: string; description: string 
     stat: "100%",
     label: "Designed & Engineered In-House",
     description:
-      "Every venture in our portfolio is built by our own team. No outsourced core, no black-box vendors, no excuses.",
+      "Every company in our Group is built by our own team, through ENIF. No outsourced core, no black-box vendors, no excuses.",
   },
 ];
 

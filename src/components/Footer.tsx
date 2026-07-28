@@ -7,26 +7,27 @@ import { motion } from "framer-motion";
 
 const COLUMNS = [
   {
-    heading: "Portfolio",
+    heading: "Group Companies",
     links: [
-      { label: "Talent Pro League", href: "#portfolio" },
-      { label: "LSA", href: "#portfolio" },
-      { label: "Luxure De Eden", href: "#portfolio" },
-      { label: "Alayn", href: "#portfolio" },
+      { label: "Talent Pro League", href: "/#companies" },
+      { label: "LSA", href: "/#companies" },
+      { label: "Luxure De Eden", href: "/#companies" },
+      { label: "Alayn", href: "/#companies" },
+      { label: "ENIF Technologies", href: "/enif" },
     ],
   },
   {
     heading: "Company",
     links: [
-      { label: "What We Build", href: "#build" },
-      { label: "Why We're Different", href: "#difference" },
-      { label: "Why Trust Us", href: "#trust" },
+      { label: "Who We Are", href: "/#who-we-are" },
+      { label: "How We Build", href: "/#how-we-build" },
+      { label: "Why Trust Us", href: "/#trust" },
     ],
   },
   {
     heading: "Connect",
     links: [
-      { label: "Start a Project", href: "#contact" },
+      { label: "Start a Project", href: "/#contact" },
       { label: "LinkedIn", href: "#" },
       { label: "Careers", href: "#" },
     ],
@@ -44,7 +45,7 @@ export default function Footer() {
     >
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop py-20 grid grid-cols-1 md:grid-cols-12 gap-16">
         <div className="md:col-span-5 flex flex-col gap-6">
-          <div className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3 w-fit">
             <span className="relative w-9 h-9 rounded-full overflow-hidden border border-accent/30 shrink-0 bg-surface-high">
               <Image
                 src="/whatsapp.svg"
@@ -62,11 +63,12 @@ export default function Footer() {
                 GLOBAL HOLDINGS
               </span>
             </span>
-          </div>
+          </Link>
           <p className="text-sm text-ink-muted leading-relaxed max-w-xs">
-            We engineer what&rsquo;s next. A UK-based technology company
-            designing and building software products, SaaS platforms, and
-            AI-powered ecosystems.
+            Building enduring businesses. A British venture builder and
+            holding company creating, acquiring and scaling exceptional
+            businesses across technology, education, sport, hospitality and
+            luxury consumer products.
           </p>
         </div>
 

@@ -10,11 +10,27 @@ const ease = [0.25, 1, 0.5, 1] as const;
 const AUTO_MS = 5000;
 
 /* ─── Data ──────────────────────────────────────────────────────── */
-const VENTURES = [
+interface Venture {
+  number: string;
+  tag: string;
+  badge: string;
+  name: string;
+  url: string;
+  imageSrc?: string;
+  imageAlt: string;
+  logo?: string;
+  aspectRatio: string;
+  description: string;
+  cta: string;
+  href: string;
+  variant?: "gradient";
+}
+
+const VENTURES: Venture[] = [
   {
     number: "01",
-    tag: "Sports Tech",
-    badge: "BGH Venture",
+    tag: "Sports & Media",
+    badge: "Group Company",
     name: "TALENT PRO LEAGUE",
     url: "talentproleague.co.uk",
     imageSrc: "/tpl-preview.png",
@@ -28,8 +44,8 @@ const VENTURES = [
   },
   {
     number: "02",
-    tag: "EdTech",
-    badge: "BGH Venture",
+    tag: "Education",
+    badge: "Group Company",
     name: "LONDON SCHOOL OF ACADEMICS & ARTS",
     url: "lsaa.co.uk",
     imageSrc: "/lsa-preview.png",
@@ -37,14 +53,14 @@ const VENTURES = [
     logo: "/image copy 3.png",
     aspectRatio: "1913/953",   /* measured: 1913 × 953 px — ~2:1 */
     description:
-      "A school and homeschooling management platform — dual School Portal and Home Schooling Portal — providing one AI-powered home for learning.",
+      "Delivering world-class online education powered by British educators and intelligent digital learning.",
     cta: "View Platform",
     href: "#",
   },
   {
     number: "03",
-    tag: "Luxury Goods",
-    badge: "BGH Venture",
+    tag: "Luxury Consumer Brands",
+    badge: "Group Company",
     name: "Luxure De Eden",
     url: "luxuredeeden.com",
     imageSrc: "/luxure-preview-v2.png",
@@ -52,14 +68,14 @@ const VENTURES = [
     logo: "/luxure-logo.png",
     aspectRatio: "1892/952",   /* same frame as other cards — image cropped to fit */
     description:
-      "A fragrance house built on heritage craftsmanship and modern brand experience — from concept to commerce.",
+      "Crafting refined fragrance collections inspired by British heritage and modern luxury — from concept to commerce.",
     cta: "Discover Fragrances",
     href: "#",
   },
   {
     number: "04",
-    tag: "Hospitality Tech",
-    badge: "ENIF Project",
+    tag: "Hospitality & Lifestyle",
+    badge: "Group Company",
     name: "Alayn",
     url: "alayn.io",
     imageSrc: "/image copy 5.png",
@@ -67,11 +83,25 @@ const VENTURES = [
     logo: "/alaynlogo.jpeg",
     aspectRatio: "1896/952",   /* measured: 1896 × 952 px — ~2:1 */
     description:
-      "A modern operating system for cafés and restaurants — orders, inventory, and guest experience unified. Developed by ENIF.",
+      "A premium hospitality concept where specialty coffee, design and fragrance combine to create an entirely new customer experience.",
     cta: "Learn More",
     href: "#",
   },
-] as const;
+  {
+    number: "05",
+    tag: "Technology & Artificial Intelligence",
+    badge: "Group Company",
+    name: "ENIF TECHNOLOGIES",
+    url: "brahmglobalholdings.com/enif",
+    imageAlt: "ENIF Technologies",
+    aspectRatio: "1892/952",
+    description:
+      "The engineering capability behind the Group — designing, engineering and maintaining the digital products and platforms of every BRAHM company.",
+    cta: "Explore ENIF",
+    href: "/enif",
+    variant: "gradient",
+  },
+];
 
 /* ─── Helpers ───────────────────────────────────────────────────── */
 function getOffset(index: number, active: number): number {
@@ -152,7 +182,7 @@ export default function Portfolio() {
 
   return (
     <section
-      id="portfolio"
+      id="companies"
       className="section-y bg-surface overflow-hidden"
     >
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop">
@@ -166,10 +196,10 @@ export default function Portfolio() {
           className="mb-16"
         >
           <span className="text-eyebrow font-mono-ui text-accent block mb-5">
-            Our Portfolio
+            Our Companies
           </span>
           <h2 className="font-display text-display text-ink">
-            Four ventures.
+            Five companies.
             <br />
             <span className="italic text-accent">One</span> standard.
           </h2>
@@ -239,19 +269,33 @@ export default function Portfolio() {
                       </div>
                     </div>
 
-                    {/* Screenshot */}
+                    {/* Screenshot / gradient panel */}
                     <div
                       className="relative overflow-hidden"
                       style={{ aspectRatio: venture.aspectRatio }}
                     >
+                    {venture.variant === "gradient" ? (
+                      <div
+                        className="absolute inset-0 flex items-center justify-center"
+                        style={{
+                          background:
+                            "linear-gradient(160deg, #101820 0%, #142B22 55%, #1F5C43 130%)",
+                        }}
+                      >
+                        <span className="font-display italic text-lg md:text-xl tracking-[0.08em] text-surface/90">
+                          ENIF
+                        </span>
+                      </div>
+                    ) : (
                     <Image
-  src={venture.imageSrc}
+  src={venture.imageSrc!}
   alt={venture.imageAlt}
   fill
   sizes="(max-width: 640px) 260px, (max-width: 1024px) 320px, 400px"
   className="object-cover object-top"
   loading="eager"
 />
+                    )}
                       {/* Dim overlay for non-active — dark tint, not cream wash */}
                       {!isCenter && (
                         <div className="absolute inset-0 bg-ink/20" />
@@ -262,12 +306,18 @@ export default function Portfolio() {
 
                     {/* Label strip */}
                     <div className="px-3 py-3 flex items-center gap-2.5 border-t border-surface-line">
+                {venture.logo ? (
                 <img
   src={venture.logo}
   alt=""
   className="h-5 w-auto object-contain shrink-0 rounded-sm opacity-80"
   loading="eager"
 />
+                ) : (
+                  <span className="h-5 w-5 shrink-0 rounded-sm bg-accent/90 flex items-center justify-center font-mono-ui text-[9px] text-surface">
+                    E
+                  </span>
+                )}
                       <span className="text-xs font-display text-ink truncate">
                         {venture.name}
                       </span>
@@ -342,6 +392,11 @@ export default function Portfolio() {
                 />
               ))}
             </div>
+
+            {/* Future companies note */}
+            <p className="mt-6 text-[11px] font-mono-ui uppercase tracking-[0.18em] text-ink-faint italic">
+              + Future Companies — Coming Soon
+            </p>
           </div>
         </motion.div>
       </div>

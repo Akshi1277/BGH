@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter, JetBrains_Mono } from "next/font/google";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -21,13 +23,14 @@ const jbmono = JetBrains_Mono({
 
 const siteUrl = "https://brahmglobalholdings.com";
 const title = "BRAHM GLOBAL HOLDINGS";
+const tagline = "Building Enduring Businesses";
 const description =
-  "We Engineer What's Next. BRAHM GLOBAL HOLDINGS is a UK-based technology company designing and building software products, SaaS platforms, and AI-powered ecosystems — including Talent Pro League, LSA, Luxure De Eden, and Alayn.";
+  "BRAHM Global Holdings is a British venture builder and holding company that creates, acquires and scales exceptional businesses across technology, education, sport, hospitality and luxury consumer brands — including Talent Pro League, LSA, Alayn, Luxure De Eden, and our technology division, ENIF.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${title} — We Engineer What's Next`,
+    default: `${title} — ${tagline}`,
     template: `%s — ${title}`,
   },
   description,
@@ -37,7 +40,7 @@ export const metadata: Metadata = {
     apple: "/favicon.ico",
   },
   openGraph: {
-    title: `${title} — We Engineer What's Next`,
+    title: `${title} — ${tagline}`,
     description,
     url: siteUrl,
     siteName: title,
@@ -46,7 +49,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${title} — We Engineer What's Next`,
+    title: `${title} — ${tagline}`,
     description,
   },
 };
@@ -66,7 +69,9 @@ export default function RootLayout({
           aria-hidden
           className="grain-overlay pointer-events-none fixed inset-0 z-[999]"
         />
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

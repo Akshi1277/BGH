@@ -7,14 +7,16 @@ import { AnimatePresence, motion } from "framer-motion";
 import Icon from "./Icon";
 
 const LINKS = [
-  { label: "What We Build", href: "#build" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "About", href: "#difference" },
+  { label: "Home", href: "/" },
+  { label: "Group", href: "/#group" },
+  { label: "Ventures", href: "/#companies" },
+  { label: "ENIF", href: "/enif" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 function Wordmark() {
   return (
-    <Link href="#" className="flex items-center gap-3 group">
+    <Link href="/" className="flex items-center gap-3 group">
       <span className="relative w-9 h-9 rounded-full overflow-hidden border border-accent/30 shrink-0 bg-surface-high">
         <Image
           src="/whatsapp.svg"
@@ -68,7 +70,7 @@ export default function Navbar() {
         <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop flex justify-between items-center h-20">
           <Wordmark />
 
-          <div className="hidden md:flex items-center gap-10">
+          <div className="hidden md:flex items-center gap-8">
             {LINKS.map((link) => (
               <Link
                 key={link.href}
@@ -80,7 +82,7 @@ export default function Navbar() {
             ))}
             <motion.div whileHover={{ y: -1 }} transition={{ duration: 0.15 }}>
               <Link
-                href="#contact"
+                href="/#contact"
                 className="inline-flex items-center gap-2 bg-accent text-surface px-6 py-2.5 rounded-full text-label font-mono-ui uppercase tracking-[0.1em] hover:bg-accent-soft transition-colors duration-300"
               >
                 Start a Project
@@ -142,7 +144,7 @@ export default function Navbar() {
             </div>
             <div className="p-margin-mobile pb-10 shrink-0">
               <Link
-                href="#contact"
+                href="/#contact"
                 onClick={() => setOpen(false)}
                 className="w-full flex items-center justify-center gap-2 bg-accent text-surface px-6 py-4 rounded-full text-label font-mono-ui uppercase tracking-[0.1em]"
               >
