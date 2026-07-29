@@ -22,13 +22,13 @@ interface PillListProps {
   tone?: "surface" | "soft";
 }
 
-export default function PillList({ eyebrow, heading, items, tone = "surface" }: PillListProps) {
+export default function PillList({ eyebrow, heading, items }: PillListProps) {
   return (
-    <section className={`section-y ${tone === "soft" ? "bg-surface-soft" : "bg-surface"} relative`}>
-      <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop">
+    <section className="section-y bg-[#04070D] text-[#F8FAFC] relative overflow-hidden border-b border-cyan-500/20">
+      <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
         <div className="max-w-2xl mb-12">
           <motion.span
-            className="text-eyebrow font-mono-ui text-cobalt block mb-5"
+            className="text-eyebrow font-mono-ui text-[#38BDF8] block mb-4 uppercase tracking-[0.2em]"
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -37,7 +37,7 @@ export default function PillList({ eyebrow, heading, items, tone = "surface" }: 
             {eyebrow}
           </motion.span>
           <motion.h2
-            className="font-display text-display text-ink"
+            className="font-display text-display text-[#F8FAFC]"
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -58,7 +58,7 @@ export default function PillList({ eyebrow, heading, items, tone = "surface" }: 
             <motion.span
               key={it}
               variants={item}
-              className="font-mono-ui text-xs uppercase tracking-[0.1em] text-ink-muted border border-surface-line rounded-full px-5 py-2.5 hover:border-cobalt hover:text-cobalt transition-colors duration-300"
+              className="font-mono-ui text-xs uppercase tracking-[0.1em] text-[#94A3B8] border border-cyan-500/20 bg-[#0A101F]/80 backdrop-blur-md rounded-full px-5 py-2.5 hover:border-cyan-400 hover:text-[#38BDF8] hover:shadow-[0_0_15px_rgba(56,189,248,0.2)] transition-all duration-300"
             >
               {it}
             </motion.span>

@@ -8,27 +8,29 @@ const ease = [0.25, 1, 0.5, 1] as const;
 
 export default function EnifCTA() {
   return (
-    <section id="contact" className="relative section-y bg-surface overflow-hidden">
+    <section id="contact" className="relative section-y bg-[#04070D] text-[#F8FAFC] overflow-hidden">
+      {/* Background Dot Grid */}
       <div
         aria-hidden
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none opacity-20"
         style={{
           backgroundImage:
-            "radial-gradient(circle, var(--color-surface-line) 1px, transparent 1px)",
+            "radial-gradient(circle, rgba(56,189,248,0.4) 1px, transparent 1px)",
           backgroundSize: "36px 36px",
-          opacity: 0.6,
         }}
       />
+      
+      {/* Cyan Ambient Wash */}
       <motion.div
         className="absolute pointer-events-none"
         style={{
           top: "-25%",
-          left: "-15%",
-          width: "55%",
+          left: "25%",
+          width: "50%",
           height: "90%",
           background:
-            "radial-gradient(ellipse, color-mix(in srgb, var(--color-cobalt) 16%, transparent), transparent 70%)",
-          filter: "blur(80px)",
+            "radial-gradient(ellipse, rgba(14, 165, 233, 0.18), transparent 70%)",
+          filter: "blur(90px)",
         }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -43,7 +45,7 @@ export default function EnifCTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55 }}
-            className="text-eyebrow font-mono-ui text-cobalt block mb-6"
+            className="text-eyebrow font-mono-ui text-[#38BDF8] block mb-6 uppercase tracking-[0.2em]"
           >
             Let&rsquo;s Build
           </motion.span>
@@ -53,10 +55,10 @@ export default function EnifCTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-display text-display text-ink max-w-3xl"
+            className="font-display text-display text-[#F8FAFC] max-w-3xl"
           >
             Let&rsquo;s build something{" "}
-            <span className="italic text-cobalt">remarkable</span>.
+            <span className="italic text-[#38BDF8]">remarkable</span>.
           </motion.h2>
 
           <motion.p
@@ -64,7 +66,7 @@ export default function EnifCTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-lede text-ink-muted max-w-xl mt-8"
+            className="text-lede text-[#94A3B8] max-w-xl mt-8"
           >
             Whether you&rsquo;re launching a new venture, transforming an
             existing business or exploring the potential of artificial
@@ -81,7 +83,7 @@ export default function EnifCTA() {
           >
             <MagneticButton
               href="mailto:hello@brahmglobalholdings.com?subject=Discovery Consultation"
-              className="inline-flex items-center gap-3 bg-cobalt text-surface px-10 py-5 rounded-full text-label font-mono-ui uppercase tracking-[0.1em] hover:bg-cobalt-soft transition-colors duration-300 group"
+              className="inline-flex items-center gap-3 bg-[#0EA5E9] text-[#020617] px-10 py-5 rounded-full text-label font-mono-ui uppercase tracking-[0.12em] font-bold hover:bg-[#38BDF8] transition-all duration-300 shadow-[0_0_30px_rgba(14,165,233,0.4)] group"
             >
               Schedule a Discovery Consultation
             </MagneticButton>

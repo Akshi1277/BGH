@@ -50,14 +50,14 @@ const PROCESS_STEPS = [
 ];
 
 export const metadata: Metadata = {
-  title: "ENIF Technologies",
+  title: "ENIF Technologies — Beyond the Stars",
   description:
     "ENIF Technologies is the technology and innovation division of BRAHM Global Holdings — designing, engineering and maintaining digital products, intelligent platforms and enterprise software.",
 };
 
 export default function EnifPage() {
   return (
-    <main>
+    <main className="bg-[#04070D] text-[#F8FAFC] min-h-screen">
       <EnifHero />
       <EnifServices />
       <PillList
@@ -65,7 +65,7 @@ export default function EnifPage() {
         heading={
           <>
             We engineer solutions across{" "}
-            <span className="italic text-cobalt">multiple industries</span>.
+            <span className="italic text-[#38BDF8]">multiple industries</span>.
           </>
         }
         items={INDUSTRIES}
@@ -78,17 +78,17 @@ export default function EnifPage() {
         heading={
           <>
             A disciplined path from{" "}
-            <span className="italic text-cobalt">idea to production</span>.
+            <span className="italic text-[#38BDF8]">idea to production</span>.
           </>
         }
         steps={PROCESS_STEPS}
-        accent="cobalt"
+        accent="cyan"
+        theme="dark"
       />
       <PillList
         eyebrow="Technologies"
         heading="The stack behind every build."
         items={TECHNOLOGIES}
-        tone="soft"
       />
       <EnifCTA />
     </main>

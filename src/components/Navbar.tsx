@@ -8,16 +8,15 @@ import Icon from "./Icon";
 
 const LINKS = [
   { label: "Home", href: "/" },
-  { label: "Group", href: "/#group" },
+  { label: "The Group", href: "/#group" },
   { label: "Ventures", href: "/#companies" },
-  { label: "ENIF", href: "/enif" },
   { label: "Contact", href: "/#contact" },
 ];
 
 function Wordmark() {
   return (
     <Link href="/" className="flex items-center gap-3 group">
-      <span className="relative w-9 h-9 rounded-full overflow-hidden border border-accent/30 shrink-0 bg-surface-high">
+      <span className="relative w-9 h-9 rounded-full overflow-hidden border border-[#34D399]/40 shrink-0 bg-[#141A16]">
         <Image
           src="/whatsapp.svg"
           alt="Brahm Global Holdings"
@@ -27,10 +26,10 @@ function Wordmark() {
         />
       </span>
       <span className="flex flex-col leading-none">
-        <span className="font-display text-lg tracking-[0.12em] text-ink">
+        <span className="font-display text-lg tracking-[0.12em] text-[#F4F4F0]">
           BRAHM
         </span>
-        <span className="font-mono-ui text-[9px] tracking-[0.32em] text-accent mt-1">
+        <span className="font-mono-ui text-[9px] tracking-[0.32em] text-[#34D399] mt-1">
           GLOBAL HOLDINGS
         </span>
       </span>
@@ -63,7 +62,7 @@ export default function Navbar() {
         transition={{ duration: 0.7, ease: "easeOut" }}
         className={`w-full top-0 fixed z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-surface/95 backdrop-blur-sm border-b border-surface-line"
+            ? "bg-[#0A0D0B]/90 backdrop-blur-md border-b border-white/10 shadow-lg"
             : "bg-transparent border-b border-transparent"
         }`}
       >
@@ -75,24 +74,24 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-label font-mono-ui uppercase text-ink-muted hover:text-accent transition-colors"
+                className="text-label font-mono-ui uppercase text-white/70 hover:text-[#34D399] transition-colors"
               >
                 {link.label}
               </Link>
             ))}
             <motion.div whileHover={{ y: -1 }} transition={{ duration: 0.15 }}>
               <Link
-                href="/#contact"
-                className="inline-flex items-center gap-2 bg-accent text-surface px-6 py-2.5 rounded-full text-label font-mono-ui uppercase tracking-[0.1em] hover:bg-accent-soft transition-colors duration-300"
+                href="/enif"
+                className="inline-flex items-center gap-2 bg-[#1F5C43] text-white px-8 py-2.5 rounded-full text-label font-mono-ui uppercase tracking-[0.12em] font-bold hover:bg-[#2A7A5A] transition-colors duration-300 shadow-[0_0_15px_rgba(31,92,67,0.35)]"
               >
-                Start a Project
+                ENIF
               </Link>
             </motion.div>
           </div>
 
           <button
             onClick={() => setOpen(true)}
-            className="md:hidden text-ink p-2 -mr-2"
+            className="md:hidden text-[#F4F4F0] p-2 -mr-2"
             aria-label="Open menu"
           >
             <Icon name="menu" size={24} />
@@ -107,13 +106,13 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[60] bg-surface flex flex-col md:hidden"
+            className="fixed inset-0 z-[60] bg-[#0A0D0B] text-[#F4F4F0] flex flex-col md:hidden"
           >
-            <div className="flex justify-between items-center h-20 px-margin-mobile shrink-0">
+            <div className="flex justify-between items-center h-20 px-margin-mobile shrink-0 border-b border-white/10">
               <Wordmark />
               <button
                 onClick={() => setOpen(false)}
-                className="text-ink p-2 -mr-2"
+                className="text-[#F4F4F0] p-2 -mr-2"
                 aria-label="Close menu"
               >
                 <Icon name="close" size={24} />
@@ -130,12 +129,12 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="group flex items-baseline gap-4 py-2 border-b border-surface-line/40"
+                    className="group flex items-baseline gap-4 py-2 border-b border-white/10"
                   >
-                    <span className="font-mono-ui text-xs tracking-widest text-accent">
+                    <span className="font-mono-ui text-xs tracking-widest text-[#34D399]">
                       0{i + 1}
                     </span>
-                    <span className="font-display text-3xl text-ink group-hover:text-accent transition-colors">
+                    <span className="font-display text-3xl text-[#F4F4F0] group-hover:text-[#34D399] transition-colors">
                       {link.label}
                     </span>
                   </Link>
@@ -144,11 +143,11 @@ export default function Navbar() {
             </div>
             <div className="p-margin-mobile pb-10 shrink-0">
               <Link
-                href="/#contact"
+                href="/enif"
                 onClick={() => setOpen(false)}
-                className="w-full flex items-center justify-center gap-2 bg-accent text-surface px-6 py-4 rounded-full text-label font-mono-ui uppercase tracking-[0.1em]"
+                className="w-full flex items-center justify-center gap-2 bg-[#1F5C43] text-white px-6 py-4 rounded-full text-label font-mono-ui uppercase tracking-[0.1em] font-bold"
               >
-                Start a Project
+                ENIF
               </Link>
             </div>
           </motion.div>
