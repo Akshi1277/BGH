@@ -6,6 +6,7 @@ import EnifEngagement from "@/components/enif/EnifEngagement";
 import EnifWhy from "@/components/enif/EnifWhy";
 import ProcessFlow from "@/components/ProcessFlow";
 import EnifCTA from "@/components/enif/EnifCTA";
+import Footer from "@/components/Footer";
 
 const INDUSTRIES = [
   "Technology",
@@ -91,6 +92,7 @@ export default function EnifPage() {
         items={TECHNOLOGIES}
       />
       <EnifCTA />
+      <Footer theme="dark" />
     </main>
   );
 }

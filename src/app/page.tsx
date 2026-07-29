@@ -7,6 +7,7 @@ import Portfolio from "@/components/Portfolio";
 import FoundersVision from "@/components/FoundersVision";
 import GlobalPresence from "@/components/GlobalPresence";
 import CTA from "@/components/CTA";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <FoundersVision />
       <GlobalPresence />
       <CTA />
+      <Footer theme="light" />
     </main>
   );
 }
