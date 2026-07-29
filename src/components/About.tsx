@@ -5,34 +5,36 @@ import { motion } from "framer-motion";
 
 const ease = [0.25, 1, 0.5, 1] as const;
 
-const PHILOSOPHY = [
+const PRINCIPLES = [
   {
     index: "01",
-    title: "Markets Evolve",
-    description:
-      "Technologies change and consumer behaviour shifts — but businesses built on strong fundamentals don't move with every trend.",
+    title: "Vision",
+    description: "Seeing opportunities others overlook and designing ventures with generational scale in mind.",
   },
   {
     index: "02",
-    title: "Built to Endure",
-    description:
-      "The organisations that endure are those built upon strong fundamentals, exceptional leadership and continuous innovation.",
+    title: "Discipline",
+    description: "Executing with consistency, precision, accountability, and commercial rigour.",
   },
   {
     index: "03",
-    title: "Category Leaders",
-    description:
-      "Every company within BRAHM Global Holdings is created with the ambition to become a category leader — not simply another participant.",
+    title: "Legacy",
+    description: "Creating enterprises designed to endure and remain relevant long after their founders.",
   },
 ];
 
 const FACTS = [
   { label: "Headquartered", value: "London, UK" },
-  { label: "Group Companies", value: "5" },
-  { label: "Model",          value: "Venture Builder" },
+  { label: "Ownership",      value: "Privately Held" },
+  { label: "Horizon",        value: "Long-term" },
 ];
 
-const TAGS = ["Build with purpose", "Operate with excellence", "Scale with integrity"];
+const TAGS = [
+  "Disciplined Execution",
+  "Long-term Stewardship",
+  "Commercial Excellence",
+  "Operational Rigour",
+];
 
 export default function About() {
   return (
@@ -40,7 +42,6 @@ export default function About() {
       id="who-we-are"
       className="section-y bg-paper text-paper-ink border-y border-paper-line relative"
     >
-      {/* ── Section edge gradients — soften Capabilities↔Portfolio transitions ── */}
       <div
         aria-hidden
         className="absolute top-0 left-0 right-0 h-24 pointer-events-none z-10"
@@ -51,7 +52,7 @@ export default function About() {
         className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none z-10"
         style={{ background: "linear-gradient(to top, var(--color-surface), transparent)" }}
       />
-      <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-start">
+      <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-start relative z-20">
 
         {/* ── Left: editorial statement card ───────────────────── */}
         <motion.div
@@ -61,38 +62,30 @@ export default function About() {
           transition={{ duration: 0.85, ease }}
           className="lg:col-span-5 lg:sticky lg:top-32"
         >
-          {/* Philosophy card with brand-signature cream→pine gradient */}
           <div
-            className="relative border border-paper-line rounded-2xl p-8 md:p-10 overflow-hidden"
+            className="relative border border-paper-line rounded-2xl p-8 md:p-10 overflow-hidden shadow-sm"
             style={{
               background:
                 "linear-gradient(160deg, #F8F6F2 0%, #EAF2EC 60%, #D8EBE1 100%)",
             }}
           >
-
             {/* Corner bracket decorations */}
             <span className="absolute top-4 left-4   w-5 h-5 border-t border-l border-accent-deep/40" />
             <span className="absolute top-4 right-4  w-5 h-5 border-t border-r border-accent-deep/40" />
             <span className="absolute bottom-4 left-4  w-5 h-5 border-b border-l border-accent-deep/40" />
             <span className="absolute bottom-4 right-4 w-5 h-5 border-b border-r border-accent-deep/40" />
 
-            {/* Eyebrow */}
-            <p className="font-mono-ui text-eyebrow text-accent block mb-8">
-              Our Philosophy
+            <p className="font-mono-ui text-eyebrow text-accent block mb-6 uppercase tracking-[0.2em]">
+              PRIVATELY HELD BUSINESS GROUP
             </p>
 
-            {/* Quote */}
-            <blockquote className="font-display italic text-[2rem] md:text-[2.25rem] text-paper-ink leading-snug mb-8">
-              &ldquo;We don&rsquo;t follow industries.
-              <br />
-              We build them.&rdquo;
+            <blockquote className="font-display italic text-[1.85rem] md:text-[2.1rem] text-paper-ink leading-snug mb-8">
+              &ldquo;The strongest businesses are built with the patience to endure and the ambition to lead.&rdquo;
             </blockquote>
 
-            {/* Accent rule */}
             <div className="h-px w-14 bg-accent-deep/50 mb-8" />
 
-            {/* Fact rows */}
-            <dl className="flex flex-col gap-5">
+            <dl className="flex flex-col gap-4">
               {FACTS.map((f) => (
                 <div
                   key={f.label}
@@ -101,67 +94,76 @@ export default function About() {
                   <dt className="font-mono-ui text-[11px] uppercase tracking-[0.18em] text-paper-muted">
                     {f.label}
                   </dt>
-                  <dd className="font-display text-sm text-paper-ink">
+                  <dd className="font-display text-sm text-paper-ink font-medium">
                     {f.value}
                   </dd>
                 </div>
               ))}
             </dl>
 
-            {/* Attribution */}
-            <p className="mt-10 font-mono-ui text-[10px] uppercase tracking-[0.22em] text-paper-muted/50">
-              — Brahm Global Holdings
+            <p className="mt-8 font-mono-ui text-[10px] uppercase tracking-[0.22em] text-paper-muted/60">
+              — BRAHM Global Holdings
             </p>
           </div>
         </motion.div>
 
-        {/* ── Right: headline + philosophy cards ───────────────────── */}
+        {/* ── Right: headline + principles cards ───────────────────── */}
         <div className="lg:col-span-7">
 
-          {/* Section header */}
           <div className="mb-12">
             <motion.span
-              className="font-mono-ui text-eyebrow text-accent block mb-5"
+              className="font-mono-ui text-eyebrow text-accent block mb-3 uppercase tracking-[0.2em]"
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, ease }}
             >
-              Who We Are
+              WHO WE ARE
             </motion.span>
 
             <motion.h2
-              className="font-display text-display text-paper-ink mb-5 leading-tight"
+              className="font-display text-3xl md:text-5xl text-paper-ink mb-4 leading-tight"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.75, ease, delay: 0.08 }}
             >
-              A long-term
+              Built for Generations.{" "}
               <br />
-              <span className="italic font-normal text-accent">builder</span>{" "}
-              of businesses.
+              <span className="italic font-normal text-accent">Not Market Cycles.</span>
             </motion.h2>
 
-            <motion.p
-              className="text-lede text-paper-muted max-w-xl"
+            <motion.div
+              className="space-y-4 text-paper-muted font-light leading-relaxed"
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.65, ease, delay: 0.16 }}
             >
-              At BRAHM Global Holdings, we believe the world&rsquo;s most
-              valuable organisations are built through vision, discipline and
-              patience. Rather than focusing on a single industry, we create
-              and support businesses capable of becoming leaders within their
-              respective sectors. From software platforms and artificial
-              intelligence to premium consumer brands and hospitality
-              concepts, every company within our Group is united by one
-              philosophy.
-            </motion.p>
+              <p>
+                <strong className="text-paper-ink font-medium">BRAHM Global Holdings</strong> is an independent, privately held business group established with a long-term vision. Our ambition extends beyond creating successful companies. We create enduring enterprises designed to evolve across generations, guided by disciplined leadership, exceptional execution and an uncompromising pursuit of excellence.
+              </p>
+              <p>
+                Every business within the Group contributes to a greater purpose: To build an institution that continues to grow, adapt and lead for generations to come.
+              </p>
+            </motion.div>
+
+            {/* One Group One Standard Banner */}
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.65, ease, delay: 0.22 }}
+              className="mt-8 p-6 rounded-xl border border-accent/20 bg-accent/5 text-paper-ink"
+            >
+              <h4 className="font-display text-xl text-accent font-semibold mb-2">One Group. One Standard.</h4>
+              <p className="text-sm text-paper-muted font-light leading-relaxed">
+                Every company within BRAHM Global Holdings operates independently while benefiting from the Group's leadership, engineering capability, operational expertise and long-term strategic direction. Different industries. One philosophy. One uncompromising standard of excellence.
+              </p>
+            </motion.div>
           </div>
 
-          {/* 3-card philosophy grid */}
+          {/* 3-card principles grid */}
           <motion.div
             className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5 mb-10"
             initial="hidden"
@@ -172,7 +174,7 @@ export default function About() {
               show: { opacity: 1, transition: { staggerChildren: 0.11 } },
             }}
           >
-            {PHILOSOPHY.map((p) => (
+            {PRINCIPLES.map((p) => (
               <motion.div
                 key={p.index}
                 variants={{
@@ -185,7 +187,6 @@ export default function About() {
                 }}
                 className="group relative bg-paper-high border border-paper-line rounded-2xl p-6 md:p-7 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-accent/30 hover:shadow-[0_10px_30px_-10px_rgba(31,92,67,0.12)]"
               >
-                {/* Ghost number — purely decorative */}
                 <span
                   aria-hidden
                   className="absolute -top-3 -right-1 font-display text-[7rem] leading-none select-none pointer-events-none text-paper-ink/[0.04]"
@@ -193,28 +194,23 @@ export default function About() {
                   {p.index}
                 </span>
 
-                {/* Index — accent, consistent with eyebrows */}
-                <span className="inline-block font-mono-ui text-[11px] tracking-widest text-accent mb-5">
+                <span className="inline-block font-mono-ui text-[11px] tracking-widest text-accent mb-4">
                   {p.index}
                 </span>
 
-                {/* Title */}
-                <h3 className="font-display text-lg text-paper-ink mb-3 leading-snug pr-6">
+                <h3 className="font-display text-xl text-paper-ink mb-3 leading-snug pr-4">
                   {p.title}
                 </h3>
 
-                {/* Description */}
-                <p className="text-sm text-paper-muted leading-relaxed">
+                <p className="text-sm text-paper-muted font-light leading-relaxed">
                   {p.description}
                 </p>
 
-                {/* Bottom accent — slides in from left on hover */}
                 <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-accent group-hover:w-full transition-[width] duration-500 ease-out" />
               </motion.div>
             ))}
           </motion.div>
 
-          {/* Closing tag row — "Build with purpose. Operate with excellence. Scale with integrity." */}
           <motion.div
             className="flex flex-wrap gap-3"
             initial={{ opacity: 0, y: 14 }}

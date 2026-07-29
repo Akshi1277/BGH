@@ -1,42 +1,48 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 import Icon, { IconName } from "./Icon";
 import MagneticButton from "./MagneticButton";
 
-/* ─── Cycling words in the headline ──────────────────────────────── */
-const WORDS = ["build.", "scale.", "disrupt.", "launch."];
+const ease = [0.25, 1, 0.5, 1] as const;
 
-/* ─── The three conversation pathways ────────────────────────────── */
-const PATHWAYS: { icon: IconName; label: string; description: string; href: string; accent: string }[] = [
+/* ─── The four conversation pathways ────────────────────────────── */
+const PATHWAYS: { icon: IconName; title: string; description: string; href: string; accent: string }[] = [
   {
     icon: "layers",
-    label: "Start a project",
+    title: "BUILD WITH BRAHM",
     description:
-      "A new product, platform, or venture — from first principles to launch.",
-    href: "mailto:hello@brahmglobalholdings.com?subject=Start a Project",
-    accent: "var(--color-accent)",         /* forest/pine */
+      "From new ventures to established enterprises, we partner with organisations to create businesses, products and platforms built for long-term success.",
+    href: "mailto:hello@brahmglobalholdings.com?subject=Build With BRAHM",
+    accent: "var(--color-accent)",
   },
   {
-    icon: "compass",
-    label: "Explore investment",
+    icon: "cpu",
+    title: "WORK WITH ENIF",
     description:
-      "We back ambitious founders operating in our core growth sectors.",
-    href: "mailto:hello@brahmglobalholdings.com?subject=Investment Inquiry",
-    accent: "var(--color-cobalt)",
+      "Partner with our engineering division to design, build and scale intelligent software, AI-powered platforms and enterprise technology tailored to your organisation.",
+    href: "/enif#contact",
+    accent: "#38BDF8",
   },
   {
     icon: "users",
-    label: "Partner with us",
+    title: "PARTNER WITH US",
     description:
-      "Strategic alliances, joint ventures, or distribution partnerships.",
-    href: "mailto:hello@brahmglobalholdings.com?subject=Partnership",
+      "We welcome strategic partnerships, joint ventures and commercial collaborations that create sustainable value for all parties.",
+    href: "mailto:hello@brahmglobalholdings.com?subject=Partnership Inquiry",
     accent: "var(--color-persimmon)",
+  },
+  {
+    icon: "compass",
+    title: "INVESTMENT OPPORTUNITIES",
+    description:
+      "We explore opportunities aligned with our long-term philosophy and our core sectors of technology, education, hospitality, sport, luxury consumer brands and emerging industries.",
+    href: "mailto:hello@brahmglobalholdings.com?subject=Investment Opportunity",
+    accent: "var(--color-cobalt)",
   },
 ];
 
-/* ─── Pathway card ────────────────────────────────────────────────── */
 function PathwayCard({
   pathway,
   delay,
@@ -50,56 +56,53 @@ function PathwayCard({
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.55, delay }}
+      transition={{ duration: 0.55, delay, ease }}
       whileHover="hover"
-      className="group relative bg-paper border border-surface-line rounded-2xl p-8 flex flex-col gap-5 overflow-hidden cursor-pointer"
+      className="group relative bg-paper border border-surface-line rounded-2xl p-7 md:p-8 flex flex-col justify-between overflow-hidden cursor-pointer hover:border-accent/40 transition-colors"
     >
-      {/* Coloured top accent line — slides in from left on hover */}
       <motion.div
         className="absolute top-0 left-0 h-[2.5px] w-full origin-left"
         style={{ background: pathway.accent }}
         variants={{ rest: { scaleX: 0 }, hover: { scaleX: 1 } }}
         initial="rest"
-        transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
+        transition={{ duration: 0.35, ease }}
       />
 
-      {/* Icon ring */}
-      <motion.div
-        className="w-11 h-11 rounded-xl border border-surface-line flex items-center justify-center"
-        style={{ color: pathway.accent }}
-        variants={{
-          rest: { borderColor: "var(--color-surface-line)" },
-          hover: { borderColor: pathway.accent, scale: 1.08 },
-        }}
-        transition={{ duration: 0.25 }}
-      >
-        <Icon name={pathway.icon} size={18} />
-      </motion.div>
-
-      {/* Text */}
-      <div className="flex-1">
-        <div className="flex items-center gap-2 mb-2">
-          <span className="font-mono-ui text-label text-ink uppercase tracking-[0.08em]">
-            {pathway.label}
-          </span>
+      <div>
+        <div className="flex items-center justify-between mb-6">
+          <motion.div
+            className="w-10 h-10 rounded-xl border border-surface-line flex items-center justify-center"
+            style={{ color: pathway.accent }}
+            variants={{
+              rest: { borderColor: "var(--color-surface-line)" },
+              hover: { borderColor: pathway.accent, scale: 1.08 },
+            }}
+            transition={{ duration: 0.25 }}
+          >
+            <Icon name={pathway.icon} size={18} />
+          </motion.div>
           <motion.span
-            className="text-ink-muted"
-            variants={{ rest: { x: 0, opacity: 0 }, hover: { x: 4, opacity: 1 } }}
+            className="text-ink-muted group-hover:text-accent transition-colors"
+            variants={{ rest: { x: 0 }, hover: { x: 4 } }}
             transition={{ duration: 0.2 }}
           >
-            <Icon name="arrow-right" size={13} />
+            <Icon name="arrow-right" size={15} />
           </motion.span>
         </div>
-        <p className="text-sm leading-relaxed text-ink-muted">
+
+        <h3 className="font-mono-ui text-xs font-bold text-ink uppercase tracking-[0.14em] mb-3">
+          {pathway.title}
+        </h3>
+
+        <p className="text-sm leading-relaxed text-ink-muted font-light">
           {pathway.description}
         </p>
       </div>
 
-      {/* Subtle background tint on hover */}
       <motion.div
         className="absolute inset-0 pointer-events-none rounded-2xl"
         style={{
-          background: `radial-gradient(ellipse at top left, color-mix(in srgb, ${pathway.accent} 6%, transparent), transparent 70%)`,
+          background: `radial-gradient(ellipse at top left, color-mix(in srgb, ${pathway.accent} 8%, transparent), transparent 70%)`,
         }}
         variants={{ rest: { opacity: 0 }, hover: { opacity: 1 } }}
         transition={{ duration: 0.4 }}
@@ -108,24 +111,12 @@ function PathwayCard({
   );
 }
 
-/* ─── Main component ──────────────────────────────────────────────── */
 export default function CTA() {
-  const [wordIdx, setWordIdx] = useState(0);
-
-  useEffect(() => {
-    const id = setInterval(
-      () => setWordIdx((i) => (i + 1) % WORDS.length),
-      2400
-    );
-    return () => clearInterval(id);
-  }, []);
-
   return (
     <section
       id="contact"
       className="relative section-y bg-surface overflow-hidden"
     >
-      {/* ── Subtle dot grid ─────────────────────────────────────────── */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -136,7 +127,6 @@ export default function CTA() {
         }}
       />
 
-      {/* ── Colour washes ────────────────────────────────────────────── */}
       <motion.div
         className="absolute pointer-events-none"
         style={{
@@ -153,99 +143,64 @@ export default function CTA() {
         viewport={{ once: true }}
         transition={{ duration: 1.6 }}
       />
-      <motion.div
-        className="absolute pointer-events-none"
-        style={{
-          bottom: "-20%",
-          right: "-15%",
-          width: "55%",
-          height: "90%",
-          background:
-            "radial-gradient(ellipse, color-mix(in srgb, var(--color-cobalt) 10%, transparent), transparent 70%)",
-          filter: "blur(90px)",
-        }}
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.6, delay: 0.4 }}
-      />
 
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
 
-        {/* ── Hero text block — centred ─────────────────────────────── */}
-        <div className="text-center flex flex-col items-center mb-20">
+        {/* ── Hero text block ─────────────────────────────── */}
+        <div className="text-center flex flex-col items-center mb-16 md:mb-20">
 
           <motion.span
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55 }}
-            className="text-eyebrow font-mono-ui text-accent block mb-6"
+            className="text-eyebrow font-mono-ui text-accent block mb-4 uppercase tracking-[0.2em]"
           >
-            Let&rsquo;s Build
+            LET'S BUILD
           </motion.span>
 
-          {/* Headline with cycling word */}
           <motion.h2
-            initial={{ opacity: 0, y: 28 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-display text-display text-ink max-w-3xl"
+            className="font-display text-3xl md:text-5xl text-ink max-w-3xl leading-tight"
           >
-            Tell us what you want&nbsp;to{" "}
-            {/* clip container — hides the sliding word during transition */}
-            <span
-              className="inline-block overflow-hidden align-bottom"
-              style={{ verticalAlign: "bottom" }}
-            >
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.span
-                  key={wordIdx}
-                  initial={{ y: "105%" }}
-                  animate={{ y: "0%" }}
-                  exit={{ y: "-105%" }}
-                  transition={{
-                    duration: 0.42,
-                    ease: [0.25, 1, 0.5, 1],
-                  }}
-                  className="italic text-accent inline-block"
-                >
-                  {WORDS[wordIdx]}
-                </motion.span>
-              </AnimatePresence>
-            </span>
+            Every Enduring Enterprise Begins With a Conversation.
           </motion.h2>
 
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-lede text-ink-muted max-w-xl mt-8"
+            className="space-y-4 text-ink-muted text-base md:text-lg max-w-2xl mt-6 font-light leading-relaxed"
           >
-            Whether it&rsquo;s a new product, a platform to scale, or an
-            ecosystem to connect — we start every conversation the same way:
-            by understanding the problem worth solving.
-          </motion.p>
+            <p>
+              Whether you are establishing a new venture, seeking a strategic technology partner, exploring investment opportunities or considering a long-term partnership, we welcome conversations with ambitious organisations and exceptional people who share our commitment to building lasting value.
+            </p>
+            <p className="text-ink font-normal italic">
+              If your ambition is to create something designed to endure, we would be pleased to begin the conversation.
+            </p>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="mt-12"
+            className="mt-10"
           >
             <MagneticButton href="mailto:hello@brahmglobalholdings.com">
-              Start a Conversation
+              START A CONVERSATION
             </MagneticButton>
           </motion.div>
         </div>
 
-        {/* ── Three pathway cards ───────────────────────────────────── */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* ── 4 Pathway cards ───────────────────────────────────── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {PATHWAYS.map((p, i) => (
-            <PathwayCard key={p.label} pathway={p} delay={0.45 + i * 0.1} />
+            <PathwayCard key={p.title} pathway={p} delay={0.35 + i * 0.08} />
           ))}
         </div>
 

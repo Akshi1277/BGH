@@ -1,10 +1,12 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import Icon from "./Icon";
+import { StarButton } from "./ui/StarButton";
 
 const LINKS = [
   { label: "Home", href: "/" },
@@ -38,6 +40,7 @@ function Wordmark() {
 }
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -53,6 +56,10 @@ export default function Navbar() {
       document.body.style.overflow = "";
     };
   }, [open]);
+
+  if (pathname?.startsWith("/enif")) {
+    return null;
+  }
 
   return (
     <>
@@ -80,12 +87,12 @@ export default function Navbar() {
               </Link>
             ))}
             <motion.div whileHover={{ y: -1 }} transition={{ duration: 0.15 }}>
-              <Link
+              <StarButton
                 href="/enif"
-                className="inline-flex items-center gap-2 bg-[#1F5C43] text-white px-8 py-2.5 rounded-full text-label font-mono-ui uppercase tracking-[0.12em] font-bold hover:bg-[#2A7A5A] transition-colors duration-300 shadow-[0_0_15px_rgba(31,92,67,0.35)]"
+                className="font-mono-ui uppercase tracking-[0.12em] font-bold"
               >
                 ENIF
-              </Link>
+              </StarButton>
             </motion.div>
           </div>
 
@@ -142,13 +149,13 @@ export default function Navbar() {
               ))}
             </div>
             <div className="p-margin-mobile pb-10 shrink-0">
-              <Link
+              <StarButton
                 href="/enif"
                 onClick={() => setOpen(false)}
-                className="w-full flex items-center justify-center gap-2 bg-[#1F5C43] text-white px-6 py-4 rounded-full text-label font-mono-ui uppercase tracking-[0.1em] font-bold"
+                className="w-full font-mono-ui uppercase tracking-[0.1em] font-bold py-4 h-auto"
               >
                 ENIF
-              </Link>
+              </StarButton>
             </div>
           </motion.div>
         )}

@@ -4,34 +4,34 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-
 import { usePathname } from "next/navigation";
 
 const COLUMNS = [
   {
-    heading: "Group Companies",
+    heading: "OUR GROUP",
     links: [
+      { label: "ENIF", href: "/enif" },
       { label: "Talent Pro League", href: "/#companies" },
-      { label: "LSA", href: "/#companies" },
-      { label: "Luxure De Eden", href: "/#companies" },
+      { label: "London School of Academics & Arts", href: "/#companies" },
       { label: "Alayn", href: "/#companies" },
-      { label: "ENIF Technologies", href: "/enif" },
+      { label: "Luxure De Eden", href: "/#companies" },
     ],
   },
   {
-    heading: "Company",
+    heading: "THE GROUP",
     links: [
       { label: "Who We Are", href: "/#who-we-are" },
-      { label: "How We Build", href: "/#how-we-build" },
-      { label: "Why Trust Us", href: "/#trust" },
+      { label: "Our Philosophy", href: "/#standard" },
+      { label: "Our Companies", href: "/#companies" },
+      { label: "Contact", href: "/#contact" },
     ],
   },
   {
-    heading: "Connect",
+    heading: "CONNECT",
     links: [
-      { label: "Start a Project", href: "/#contact" },
-      { label: "LinkedIn", href: "#" },
+      { label: "Start a Conversation", href: "mailto:hello@brahmglobalholdings.com" },
       { label: "Careers", href: "#" },
+      { label: "LinkedIn", href: "#" },
     ],
   },
 ];
@@ -57,6 +57,8 @@ export default function Footer({ theme }: FooterProps) {
       transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
     >
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop py-20 grid grid-cols-1 md:grid-cols-12 gap-16">
+        
+        {/* Brand Block */}
         <div className="md:col-span-5 flex flex-col gap-6">
           <Link href="/" className="flex items-center gap-3 w-fit">
             <span
@@ -91,24 +93,39 @@ export default function Footer({ theme }: FooterProps) {
               </span>
             </span>
           </Link>
-          <p
-            className={`text-sm leading-relaxed max-w-xs ${
-              isDark ? "text-[#94A3B8]" : "text-ink-muted"
-            }`}
-          >
-            Building enduring businesses. A British venture builder and
-            holding company creating, acquiring and scaling exceptional
-            businesses across technology, education, sport, hospitality and
-            luxury consumer products.
-          </p>
+
+          <div className="space-y-2 max-w-sm">
+            <h4
+              className={`font-display text-base font-semibold ${
+                isDark ? "text-[#38BDF8]" : "text-accent"
+              }`}
+            >
+              Building Institutions That Endure.
+            </h4>
+            <p
+              className={`text-sm leading-relaxed font-light ${
+                isDark ? "text-[#94A3B8]" : "text-ink-muted"
+              }`}
+            >
+              BRAHM Global Holdings is an independent, privately held business group dedicated to creating, developing and growing enduring enterprises across technology, education, sport, hospitality, luxury consumer brands and emerging industries.
+            </p>
+            <p
+              className={`text-xs font-mono-ui uppercase tracking-wider ${
+                isDark ? "text-white/60" : "text-ink/60"
+              }`}
+            >
+              Headquartered in London. Built for international markets.
+            </p>
+          </div>
         </div>
 
+        {/* Links Columns */}
         <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-10">
           {COLUMNS.map((col) => (
             <div key={col.heading} className="flex flex-col gap-4">
               <span
-                className={`font-mono-ui text-label uppercase tracking-[0.1em] mb-1 ${
-                  isDark ? "text-[#38BDF8]" : "text-ink-faint"
+                className={`font-mono-ui text-label uppercase tracking-[0.15em] mb-1 font-bold ${
+                  isDark ? "text-[#38BDF8]" : "text-accent"
                 }`}
               >
                 {col.heading}
@@ -131,6 +148,7 @@ export default function Footer({ theme }: FooterProps) {
         </div>
       </div>
 
+      {/* Copyright Bar */}
       <div
         className={`border-t ${
           isDark ? "border-cyan-500/20" : "border-surface-line"
@@ -138,36 +156,18 @@ export default function Footer({ theme }: FooterProps) {
       >
         <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop py-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <div
-            className={`text-[11px] font-mono-ui uppercase tracking-[0.1em] text-center md:text-left ${
-              isDark ? "text-[#94A3B8]" : "text-ink-faint"
+            className={`text-[11px] font-mono-ui uppercase tracking-[0.12em] text-center md:text-left ${
+              isDark ? "text-[#94A3B8]" : "text-ink-muted"
             }`}
           >
-            &copy; {new Date().getFullYear()} Brahm Global Holdings.{" "}
-            <span className="inline-block md:inline whitespace-nowrap">
-              All rights reserved.
-            </span>
+            &copy; 2026 BRAHM Global Holdings Ltd. All Rights Reserved.
           </div>
           <div
-            className={`flex gap-6 text-[11px] font-mono-ui uppercase tracking-[0.1em] ${
-              isDark ? "text-[#94A3B8]" : "text-ink-faint"
+            className={`text-[11px] font-mono-ui uppercase tracking-[0.15em] ${
+              isDark ? "text-[#38BDF8]" : "text-accent"
             }`}
           >
-            <Link
-              href="#"
-              className={`transition-colors ${
-                isDark ? "hover:text-[#38BDF8]" : "hover:text-accent"
-              }`}
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="#"
-              className={`transition-colors ${
-                isDark ? "hover:text-[#38BDF8]" : "hover:text-accent"
-              }`}
-            >
-              Terms of Service
-            </Link>
+            Independent. Privately Held. Built for Generations.
           </div>
         </div>
       </div>

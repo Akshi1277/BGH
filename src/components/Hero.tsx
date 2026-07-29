@@ -45,7 +45,7 @@ function ParticleCanvas() {
       ctx.clearRect(0, 0, w, h);
 
       for (const p of PARTICLE_DATA) {
-        const s = t / 1000 / p.duration; // normalised time (0→1 per cycle)
+        const s = t / 1000 / p.duration;
         const angle = s * Math.PI * 2 + p.phase;
         const dy = Math.sin(angle) * 11;
         const dx = Math.sin(angle) * p.driftX * 0.5;
@@ -87,7 +87,14 @@ const CATEGORIES: { icon: IconName; label: string; pos: string; delay: number }[
   { icon: "cpu",         label: "Technology",     pos: "top-[2%] left-1/2 -translate-x-1/2",  delay: 0    },
   { icon: "trending-up", label: "Sport & Media",  pos: "-right-12 top-1/2 -translate-y-1/2",  delay: 0.12 },
   { icon: "globe",       label: "Education",      pos: "bottom-[2%] left-1/2 -translate-x-1/2", delay: 0.24 },
-  { icon: "droplet",     label: "Consumer Brands",pos: "-left-12 top-1/2 -translate-y-1/2",   delay: 0.36 },
+  { icon: "droplet",     label: "Luxury & Consumer",pos: "-left-12 top-1/2 -translate-y-1/2", delay: 0.36 },
+];
+
+const HERO_PILLARS = [
+  "London Headquarters",
+  "Global Operations",
+  "Engineering Excellence",
+  "Long-term Ownership",
 ];
 
 /* ─── Hero ──────────────────────────────────────────────────────── */
@@ -96,7 +103,6 @@ export default function Hero() {
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  // Stiffer spring = snappier, less ongoing work for the engine
   const springX = useSpring(mouseX, { stiffness: 60, damping: 20 });
   const springY = useSpring(mouseY, { stiffness: 60, damping: 20 });
   const rotateY = useTransform(springX, [-0.5, 0.5], [-6, 6]);
@@ -108,7 +114,6 @@ export default function Hero() {
     let rafId: number;
 
     const onMove = (e: MouseEvent) => {
-      // RAF-throttle: at most one update per frame
       cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(() => {
         const r = el.getBoundingClientRect();
@@ -127,17 +132,15 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center overflow-hidden bg-[#0A0D0B] text-[#F4F4F0] pt-24 pb-16 md:pt-28 md:pb-24 border-b border-white/10"
+      className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-[#0A0D0B] text-[#F4F4F0] pt-28 pb-16 md:pt-36 md:pb-20 border-b border-white/10"
     >
       {/* ── Background layer ─────────────────────────────────────── */}
       <div
         aria-hidden
         className="absolute inset-0 pointer-events-none overflow-hidden"
       >
-        {/* Single canvas — replaces 28 motion.divs */}
         <ParticleCanvas />
 
-        {/* Soft radial glow behind diagram */}
         <div
           className="absolute top-1/2 right-0 -translate-y-1/2 pointer-events-none"
           style={{
@@ -150,26 +153,29 @@ export default function Hero() {
       </div>
 
       {/* ── Main grid ────────────────────────────────────────────── */}
-      <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+      <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center my-auto">
 
         {/* Left column */}
         <div className="flex flex-col gap-6">
-          <motion.span
-            className="text-eyebrow font-mono-ui text-[#34D399] block mt-1"
+          {/* Eyebrow Label */}
+          <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease }}
+            className="inline-flex items-center gap-2 text-eyebrow font-mono-ui text-[#34D399] tracking-[0.25em] uppercase"
           >
-            Brahm Global Holdings
-          </motion.span>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#34D399]" />
+            <span>BRAHM GLOBAL HOLDINGS • LONDON</span>
+          </motion.div>
 
+          {/* Main Headline */}
           <motion.h1
-            className="font-display text-hero text-[#F4F4F0] max-w-2xl"
+            className="font-display text-hero text-[#F4F4F0] max-w-2xl leading-[1.1]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease, delay: 0.1 }}
           >
-            Building{" "}
+            Building Businesses That{" "}
             <motion.span
               className="italic font-normal relative inline-block pb-2 -mb-2 bg-clip-text text-transparent"
               style={{
@@ -186,63 +192,69 @@ export default function Hero() {
                 ease: "easeInOut",
               }}
             >
-              enduring
-            </motion.span>{" "}
-            businesses.
-            <br />
-            Creating companies that shape industries.
+              Endure.
+            </motion.span>
           </motion.h1>
 
+          {/* Subhead & Paragraph */}
           <motion.p
-            className="text-lede text-[#A0AAA4] max-w-xl"
+            className="text-lg md:text-xl text-[#34D399] font-display font-light"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease, delay: 0.22 }}
+            transition={{ duration: 0.7, ease, delay: 0.18 }}
           >
-            <span className="text-[#34D399] font-medium">BRAHM Global Holdings</span> is
-            a British venture builder and holding company dedicated to creating,
-            acquiring and scaling exceptional businesses across technology,
-            education, sport, hospitality, luxury consumer products and emerging
-            industries. Through disciplined entrepreneurship, strategic
-            investment and world-class execution, we build organisations
-            designed to endure — not merely companies designed to exist.
+            Creating companies with the ambition to shape industries and create lasting value.
           </motion.p>
 
+          <motion.p
+            className="text-lede text-[#A0AAA4] max-w-xl font-light"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease, delay: 0.24 }}
+          >
+            <span className="text-[#F4F4F0] font-medium">BRAHM Global Holdings</span> is an international venture builder and holding company creating exceptional businesses across technology, education, sport, hospitality and premium consumer brands.
+          </motion.p>
+
+          {/* Quote line */}
+          <motion.p
+            className="text-sm text-white/50 italic border-l border-[#34D399]/40 pl-4 py-1 max-w-lg"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease, delay: 0.3 }}
+          >
+            "We build businesses with the ambition to remain relevant long after their founders."
+          </motion.p>
+
+          {/* Explore CTA Button */}
           <motion.div
-            className="flex gap-4 mt-4 flex-wrap"
+            className="flex gap-4 mt-2 flex-wrap"
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease, delay: 0.35 }}
+            transition={{ duration: 0.6, ease, delay: 0.38 }}
           >
             <Link
-              href="/#companies"
-              className="inline-flex items-center gap-2 bg-[#1F5C43] text-white px-6 py-3.5 md:px-8 md:py-4 rounded-full text-label font-mono-ui uppercase tracking-[0.1em] hover:bg-[#2A7A5A] transition-colors duration-300 group"
+              href="/#group"
+              className="inline-flex items-center gap-2 bg-[#1F5C43] text-white px-8 py-4 rounded-full text-label font-mono-ui uppercase tracking-[0.12em] font-bold hover:bg-[#2A7A5A] transition-colors duration-300 shadow-[0_0_20px_rgba(31,92,67,0.4)] group"
             >
-              Explore Our Group
+              Explore the Group
               <Icon
                 name="arrow-right"
                 size={16}
                 className="group-hover:translate-x-1 transition-transform duration-200"
               />
             </Link>
-            <Link
-              href="/#how-we-build"
-              className="inline-flex items-center gap-2 border border-white/20 px-6 py-3.5 md:px-8 md:py-4 rounded-full text-label font-mono-ui uppercase tracking-[0.1em] text-white/80 hover:border-[#34D399] hover:text-[#34D399] transition-colors duration-300"
-            >
-              How We Build
-            </Link>
           </motion.div>
         </div>
 
         {/* Right column — diagram with mouse 3-D tilt */}
         <motion.div
-          className="relative aspect-square w-full max-w-[min(420px,60vh)] mx-auto hidden lg:block"
+          className="relative aspect-square w-full max-w-[min(420px,55vh)] mx-auto hidden lg:block"
           style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
           initial={{ opacity: 0, scale: 0.94 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, ease, delay: 0.2 }}
         >
-          {/* Connector lines (draw-in) */}
+          {/* Connector lines */}
           <motion.div
             className="absolute left-1/2 top-[10%] w-px h-[26%] bg-gradient-to-b from-[#34D399]/60 to-[#34D399]/10 -translate-x-1/2"
             style={{ originY: 0 }}
@@ -311,8 +323,8 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Capability badges — entry only, no infinite y-loop */}
-          {CATEGORIES.map((c, i) => (
+          {/* Category badges */}
+          {CATEGORIES.map((c) => (
             <motion.div
               key={c.label}
               className={`absolute ${c.pos} flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/10 bg-[#121815]/90 backdrop-blur text-[10px] font-mono-ui uppercase tracking-widest text-white/70 whitespace-nowrap hover:border-[#34D399]/50 hover:text-[#34D399] transition-colors duration-300`}
@@ -334,20 +346,29 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-3 text-white/40"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 1 }}
-      >
-        <span className="text-eyebrow font-mono-ui">Scroll</span>
-        <motion.span
-          className="w-px h-8 bg-gradient-to-b from-[#34D399]/60 to-transparent"
-          animate={{ opacity: [0.4, 1, 0.4] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </motion.div>
+      {/* ── Hero Footer Pillars & Tagline ─────────────────────────── */}
+      <div className="relative z-10 max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop w-full pt-12 border-t border-white/10 mt-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center md:text-left mb-6">
+          {HERO_PILLARS.map((pillar, i) => (
+            <motion.div
+              key={pillar}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 + i * 0.08 }}
+              className="flex items-center gap-2 justify-center md:justify-start"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[#34D399]" />
+              <span className="font-mono-ui text-xs text-white/70 uppercase tracking-wider">
+                {pillar}
+              </span>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="text-center font-mono-ui text-[11px] uppercase tracking-[0.2em] text-[#34D399]/80 pt-4">
+          Headquartered in London • Built for International Markets
+        </div>
+      </div>
     </section>
   );
 }

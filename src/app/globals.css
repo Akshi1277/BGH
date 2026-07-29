@@ -193,6 +193,52 @@ body {
 
 
 
+/* ─── Star Button Animation ────────────────────────────────────────── */
+@keyframes star-btn {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+.animate-star-btn {
+  animation: star-btn var(--duration, 3s) linear infinite;
+}
+
+@keyframes star-twinkle-a {
+  0%, 100% { opacity: 0.3; transform: scale(0.96); }
+  35% { opacity: 1; transform: scale(1.15); }
+  70% { opacity: 0.4; transform: scale(0.98); }
+}
+
+@keyframes star-twinkle-b {
+  0%, 100% { opacity: 0.85; transform: scale(1.08); }
+  45% { opacity: 0.15; transform: scale(0.92); }
+  80% { opacity: 1; transform: scale(1.18); }
+}
+
+.animate-star-twinkle-a {
+  animation: star-twinkle-a 2.1s ease-in-out infinite;
+}
+
+.animate-star-twinkle-b {
+  animation: star-twinkle-b 2.9s ease-in-out infinite;
+}
+
+@keyframes shiny {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.animate-shiny {
+  animation: shiny 5s linear infinite;
+}
+
 /* ─── Reduced motion ───────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

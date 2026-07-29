@@ -68,13 +68,13 @@ export default function TheGroup() {
         {/* Heading — eyebrow and headline staggered individually */}
         <div className="max-w-2xl mb-20">
           <motion.span
-            className="text-eyebrow font-mono-ui text-accent block mb-5"
+            className="text-eyebrow font-mono-ui text-accent block mb-4 uppercase tracking-[0.2em]"
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, ease }}
           >
-            The Group
+            THE BRAHM GROUP
           </motion.span>
           <motion.h2
             className="font-display text-display text-ink"
@@ -83,8 +83,7 @@ export default function TheGroup() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.75, ease, delay: 0.08 }}
           >
-            One Group.<br />
-            Multiple <span className="italic text-accent">industries</span>.
+            Group <span className="italic text-accent">Sectors</span>.
           </motion.h2>
           <motion.p
             className="text-ink-muted mt-4 max-w-lg"

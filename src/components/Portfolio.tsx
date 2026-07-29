@@ -9,12 +9,12 @@ import Icon from "./Icon";
 const ease = [0.25, 1, 0.5, 1] as const;
 const AUTO_MS = 5000;
 
-/* ─── Data ──────────────────────────────────────────────────────── */
 interface Venture {
   number: string;
   tag: string;
   badge: string;
   name: string;
+  tagline: string;
   url: string;
   imageSrc?: string;
   imageAlt: string;
@@ -29,81 +29,85 @@ interface Venture {
 const VENTURES: Venture[] = [
   {
     number: "01",
-    tag: "Sports & Media",
+    tag: "ENGINEERING & ARTIFICIAL INTELLIGENCE",
     badge: "Group Company",
-    name: "TALENT PRO LEAGUE",
-    url: "talentproleague.co.uk",
-    imageSrc: "/tpl-preview.png",
-    imageAlt: "Talent Pro League dashboard",
-    logo: "/image copy 4.png",
-    aspectRatio: "1892/952",   /* measured: 1892 × 952 px — ~2:1 */
-    description:
-      "TPL — the UK's football league management platform, built to run competitions, teams, and player development at scale.",
-    cta: "Explore Solution",
-    href: "#",
-  },
-  {
-    number: "02",
-    tag: "Education",
-    badge: "Group Company",
-    name: "LONDON SCHOOL OF ACADEMICS & ARTS",
-    url: "lsaa.co.uk",
-    imageSrc: "/lsa-preview.png",
-    imageAlt: "LSA school dashboard",
-    logo: "/image copy 3.png",
-    aspectRatio: "1913/953",   /* measured: 1913 × 953 px — ~2:1 */
-    description:
-      "Delivering world-class online education powered by British educators and intelligent digital learning.",
-    cta: "View Platform",
-    href: "#",
-  },
-  {
-    number: "03",
-    tag: "Luxury Consumer Brands",
-    badge: "Group Company",
-    name: "Luxure De Eden",
-    url: "luxuredeeden.com",
-    imageSrc: "/luxure-preview-v2.png",
-    imageAlt: "Luxure De Eden website",
-    logo: "/luxure-logo.png",
-    aspectRatio: "1892/952",   /* same frame as other cards — image cropped to fit */
-    description:
-      "Crafting refined fragrance collections inspired by British heritage and modern luxury — from concept to commerce.",
-    cta: "Discover Fragrances",
-    href: "#",
-  },
-  {
-    number: "04",
-    tag: "Hospitality & Lifestyle",
-    badge: "Group Company",
-    name: "Alayn",
-    url: "alayn.io",
-    imageSrc: "/image copy 5.png",
-    imageAlt: "Alayn dashboard",
-    logo: "/alaynlogo.jpeg",
-    aspectRatio: "1896/952",   /* measured: 1896 × 952 px — ~2:1 */
-    description:
-      "A premium hospitality concept where specialty coffee, design and fragrance combine to create an entirely new customer experience.",
-    cta: "Learn More",
-    href: "#",
-  },
-  {
-    number: "05",
-    tag: "Technology & Artificial Intelligence",
-    badge: "Group Company",
-    name: "ENIF TECHNOLOGIES",
+    name: "ENIF",
+    tagline: "Engineering the Intelligence Behind Modern Business.",
     url: "brahmglobalholdings.com/enif",
     imageAlt: "ENIF Technologies",
     aspectRatio: "1892/952",
     description:
-      "The engineering capability behind the Group — designing, engineering and maintaining the digital products and platforms of every BRAHM company.",
-    cta: "Explore ENIF",
+      "ENIF is the engineering company of BRAHM Global Holdings, designing intelligent software, enterprise platforms and artificial intelligence that power both our own businesses and organisations worldwide. From ambitious start-ups to established enterprises, ENIF transforms complex ideas into secure, scalable and commercially successful digital products.",
+    cta: "Explore ENIF →",
     href: "/enif",
     variant: "gradient",
   },
+  {
+    number: "02",
+    tag: "SPORTS TECHNOLOGY",
+    badge: "Group Company",
+    name: "Talent Pro League",
+    tagline: "Reimagining the Future of Football.",
+    url: "talentproleague.co.uk",
+    imageSrc: "/tpl-preview.png",
+    imageAlt: "Talent Pro League dashboard",
+    logo: "/image copy 4.png",
+    aspectRatio: "1892/952",
+    description:
+      "Talent Pro League is a next-generation football ecosystem connecting players, clubs, coaches, leagues and commercial partners through intelligent technology designed to modernise competition management, talent development and grassroots participation. Built to strengthen the future of football through innovation, accessibility and community.",
+    cta: "Explore Talent Pro League →",
+    href: "/#contact",
+  },
+  {
+    number: "03",
+    tag: "EDUCATION",
+    badge: "Group Company",
+    name: "London School of Academics & Arts",
+    tagline: "British Education Without Borders.",
+    url: "lsaa.co.uk",
+    imageSrc: "/lsa-preview.png",
+    imageAlt: "LSA school dashboard",
+    logo: "/image copy 3.png",
+    aspectRatio: "1913/953",
+    description:
+      "London School of Academics & Arts delivers internationally accessible education through British educators, intelligent technology and personalised learning experiences. Combining academic excellence with AI-powered learning, LSAA prepares learners around the world for the opportunities of tomorrow.",
+    cta: "Explore LSAA →",
+    href: "/#contact",
+  },
+  {
+    number: "04",
+    tag: "HOSPITALITY TECHNOLOGY",
+    badge: "Group Company",
+    name: "Alayn",
+    tagline: "Redefining Hospitality Through Intelligence.",
+    url: "alayn.io",
+    imageSrc: "/image copy 5.png",
+    imageAlt: "Alayn dashboard",
+    logo: "/alaynlogo.jpeg",
+    aspectRatio: "1896/952",
+    description:
+      "Alayn is an intelligent hospitality platform combining artificial intelligence, operational excellence and modern customer experience to help cafés, restaurants and hospitality groups operate more efficiently, grow sustainably and build stronger customer relationships. Designed to become the operating system behind the next generation of hospitality businesses.",
+    cta: "Explore Alayn →",
+    href: "/#contact",
+  },
+  {
+    number: "05",
+    tag: "LUXURY CONSUMER BRANDS",
+    badge: "Group Company",
+    name: "Luxure De Eden",
+    tagline: "Modern Luxury. Enduring Elegance.",
+    url: "luxuredeeden.com",
+    imageSrc: "/luxure-preview-v2.png",
+    imageAlt: "Luxure De Eden website",
+    logo: "/luxure-logo.png",
+    aspectRatio: "1892/952",
+    description:
+      "Luxure De Eden is a contemporary luxury fragrance house creating refined perfumes inspired by craftsmanship, artistic expression and timeless sophistication. Every collection is designed to deliver an immersive sensory experience while celebrating modern luxury with enduring character.",
+    cta: "Explore Luxure De Eden →",
+    href: "/#contact",
+  },
 ];
 
-/* ─── Helpers ───────────────────────────────────────────────────── */
 function getOffset(index: number, active: number): number {
   const n = VENTURES.length;
   const raw = ((index - active) % n + n) % n;
@@ -123,7 +127,7 @@ function getCardProps(
   cardW: number,
   sideOffset: number
 ): CardProps {
-  const cx = -(cardW / 2); // shift to truly center each card
+  const cx = -(cardW / 2);
   if (offset === 0)
     return { x: cx, rotateY: 0, scale: 1, opacity: 1, zIndex: 10 };
   if (offset === -1)
@@ -142,16 +146,13 @@ function getCardProps(
       opacity: 0.55,
       zIndex: 5,
     };
-  // hidden — tuck behind center
   return { x: cx, rotateY: 0, scale: 0.65, opacity: 0, zIndex: 0 };
 }
 
-/* ─── Section ───────────────────────────────────────────────────── */
 export default function Portfolio() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
 
-  // Responsive card dimensions
   const [dims, setDims] = useState({ cardW: 400, sideOffset: 300 });
   useEffect(() => {
     const update = () => {
@@ -165,7 +166,6 @@ export default function Portfolio() {
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  // Auto-advance
   useEffect(() => {
     if (paused) return;
     const t = setInterval(
@@ -176,14 +176,13 @@ export default function Portfolio() {
   }, [paused, active]);
 
   const { cardW, sideOffset } = dims;
-  // Card height: chrome 32px + screenshot at measured ~2:1 ratio (952/1892 ≈ 0.503) + label 52px
   const carouselH = Math.round(cardW * (952 / 1892) + 32 + 52);
   const v = VENTURES[active];
 
   return (
     <section
       id="companies"
-      className="section-y bg-surface overflow-hidden"
+      className="section-y bg-surface overflow-hidden border-t border-surface-line"
     >
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop">
 
@@ -193,16 +192,17 @@ export default function Portfolio() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, ease }}
-          className="mb-16"
+          className="mb-16 max-w-3xl"
         >
-          <span className="text-eyebrow font-mono-ui text-accent block mb-5">
-            Our Companies
+          <span className="text-eyebrow font-mono-ui text-accent block mb-4 uppercase tracking-[0.2em]">
+            THE BRAHM GROUP
           </span>
-          <h2 className="font-display text-display text-ink">
-            Five companies.
-            <br />
-            <span className="italic text-accent">One</span> standard.
+          <h2 className="font-display text-4xl md:text-5xl text-ink leading-tight mb-6">
+            Building Institutions <span className="italic font-normal text-accent">That Endure.</span>
           </h2>
+          <p className="text-base md:text-lg text-ink-muted font-light leading-relaxed">
+            Every company within BRAHM Global Holdings is established with a distinct purpose, independent identity and long-term ambition. Together they represent our commitment to creating enduring enterprises capable of shaping industries, advancing technology and creating lasting value for generations.
+          </p>
         </motion.div>
 
         {/* ── 3-D Carousel ─────────────────────────────────────── */}
@@ -212,7 +212,6 @@ export default function Portfolio() {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.85, ease, delay: 0.15 }}
         >
-          {/* perspective wrapper — hover-pause is scoped to just this area */}
           <div
             className="relative w-full"
             style={{ height: carouselH, perspective: 1300 }}
@@ -244,26 +243,20 @@ export default function Portfolio() {
                     className={[
                       "w-full rounded-xl overflow-hidden border bg-surface transition-colors duration-500",
                       isCenter
-                        ? "border-accent/30 shadow-[0_24px_72px_-20px_rgba(0,0,0,0.8)]"
+                        ? "border-accent/40 shadow-[0_24px_72px_-20px_rgba(0,0,0,0.2)]"
                         : "border-surface-line cursor-pointer",
                     ].join(" ")}
                   >
                     {/* Browser chrome */}
                     <div className="h-8 bg-surface-high flex items-center gap-3 px-3 border-b border-surface-line">
                       <div className="flex items-center gap-1.5 shrink-0">
-                        <span
-                          className={`w-2 h-2 rounded-full transition-colors duration-300 ${isCenter ? "bg-[#FF5F57]" : "bg-ink-faint/20"}`}
-                        />
-                        <span
-                          className={`w-2 h-2 rounded-full transition-colors duration-300 ${isCenter ? "bg-[#FEBC2E]" : "bg-ink-faint/20"}`}
-                        />
-                        <span
-                          className={`w-2 h-2 rounded-full transition-colors duration-300 ${isCenter ? "bg-[#28C840]" : "bg-ink-faint/20"}`}
-                        />
+                        <span className={`w-2 h-2 rounded-full ${isCenter ? "bg-[#FF5F57]" : "bg-ink-faint/20"}`} />
+                        <span className={`w-2 h-2 rounded-full ${isCenter ? "bg-[#FEBC2E]" : "bg-ink-faint/20"}`} />
+                        <span className={`w-2 h-2 rounded-full ${isCenter ? "bg-[#28C840]" : "bg-ink-faint/20"}`} />
                       </div>
                       <div className="flex-1 h-5 rounded bg-surface/70 border border-surface-line/40 flex items-center px-2 gap-1.5 overflow-hidden">
                         <span className="w-1 h-1 rounded-full bg-accent/50 shrink-0" />
-                        <span className="text-[8px] font-mono-ui text-ink-faint/50 truncate tracking-wide">
+                        <span className="text-[8px] font-mono-ui text-ink-faint/60 truncate tracking-wide">
                           {venture.url}
                         </span>
                       </div>
@@ -274,51 +267,49 @@ export default function Portfolio() {
                       className="relative overflow-hidden"
                       style={{ aspectRatio: venture.aspectRatio }}
                     >
-                    {venture.variant === "gradient" ? (
-                      <div
-                        className="absolute inset-0 flex items-center justify-center"
-                        style={{
-                          background:
-                            "linear-gradient(160deg, #101820 0%, #142B22 55%, #1F5C43 130%)",
-                        }}
-                      >
-                        <span className="font-display italic text-lg md:text-xl tracking-[0.08em] text-surface/90">
-                          ENIF
-                        </span>
-                      </div>
-                    ) : (
-                    <Image
-  src={venture.imageSrc!}
-  alt={venture.imageAlt}
-  fill
-  sizes="(max-width: 640px) 260px, (max-width: 1024px) 320px, 400px"
-  className="object-cover object-top"
-  loading="eager"
-/>
-                    )}
-                      {/* Dim overlay for non-active — dark tint, not cream wash */}
-                      {!isCenter && (
-                        <div className="absolute inset-0 bg-ink/20" />
+                      {venture.variant === "gradient" ? (
+                        <div
+                          className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center"
+                          style={{
+                            background:
+                              "linear-gradient(160deg, #04070D 0%, #071520 55%, #1F5C43 130%)",
+                          }}
+                        >
+                          <span className="font-display italic text-2xl md:text-3xl tracking-[0.08em] text-[#38BDF8] mb-1">
+                            ENIF
+                          </span>
+                          <span className="font-mono-ui text-[9px] uppercase tracking-[0.2em] text-white/70">
+                            Engineering & AI Division
+                          </span>
+                        </div>
+                      ) : (
+                        <Image
+                          src={venture.imageSrc!}
+                          alt={venture.imageAlt}
+                          fill
+                          sizes="(max-width: 640px) 260px, (max-width: 1024px) 320px, 400px"
+                          className="object-cover object-top"
+                          loading="eager"
+                        />
                       )}
-                      {/* Bottom fade — subtle, doesn't wash the centre card */}
-                      <div className="absolute inset-x-0 bottom-0 h-1/5 bg-gradient-to-t from-surface/25 to-transparent pointer-events-none" />
+                      {!isCenter && <div className="absolute inset-0 bg-ink/15" />}
                     </div>
 
                     {/* Label strip */}
                     <div className="px-3 py-3 flex items-center gap-2.5 border-t border-surface-line">
-                {venture.logo ? (
-                <img
-  src={venture.logo}
-  alt=""
-  className="h-5 w-auto object-contain shrink-0 rounded-sm opacity-80"
-  loading="eager"
-/>
-                ) : (
-                  <span className="h-5 w-5 shrink-0 rounded-sm bg-accent/90 flex items-center justify-center font-mono-ui text-[9px] text-surface">
-                    E
-                  </span>
-                )}
-                      <span className="text-xs font-display text-ink truncate">
+                      {venture.logo ? (
+                        <img
+                          src={venture.logo}
+                          alt=""
+                          className="h-5 w-auto object-contain shrink-0 rounded-sm opacity-90"
+                          loading="eager"
+                        />
+                      ) : (
+                        <span className="h-5 w-5 shrink-0 rounded-sm bg-accent flex items-center justify-center font-mono-ui text-[9px] text-surface font-bold">
+                          E
+                        </span>
+                      )}
+                      <span className="text-xs font-display text-ink truncate font-medium">
                         {venture.name}
                       </span>
                     </div>
@@ -337,33 +328,35 @@ export default function Portfolio() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -14 }}
                 transition={{ duration: 0.38, ease }}
-                className="flex flex-col items-center gap-3"
+                className="flex flex-col items-center gap-3 max-w-xl"
               >
-                {/* Tag */}
+                {/* Sector Tag */}
                 <div className="flex items-center gap-2">
-                  <span className="w-1 h-1 rounded-full bg-accent/70 shrink-0" />
-                  <span className="text-[11px] font-mono-ui uppercase tracking-[0.2em] text-ink-faint">
-                    {v.tag} — {v.badge}
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                  <span className="text-[11px] font-mono-ui uppercase tracking-[0.2em] text-accent font-semibold">
+                    {v.tag}
                   </span>
                 </div>
 
-                {/* Name */}
-                <h3 className="font-display text-2xl md:text-3xl text-ink">
+                {/* Name & Tagline */}
+                <h3 className="font-display text-2xl md:text-4xl text-ink">
                   {v.name}
                 </h3>
+                <p className="font-display italic text-lg text-accent font-light">
+                  &ldquo;{v.tagline}&rdquo;
+                </p>
 
-                {/* Divider */}
-                <div className="h-px w-8 bg-accent/40" />
+                <div className="h-px w-10 bg-accent/30 my-1" />
 
                 {/* Description */}
-                <p className="text-sm text-ink-muted max-w-md leading-relaxed">
+                <p className="text-sm text-ink-muted leading-relaxed font-light">
                   {v.description}
                 </p>
 
                 {/* CTA */}
                 <Link
                   href={v.href}
-                  className="relative inline-flex items-center gap-2 text-xs font-mono-ui uppercase tracking-[0.15em] text-accent mt-1 group/cta w-fit"
+                  className="relative inline-flex items-center gap-2 text-xs font-mono-ui uppercase tracking-[0.15em] text-accent font-bold mt-2 group/cta w-fit"
                 >
                   {v.cta}
                   <Icon
@@ -385,20 +378,35 @@ export default function Portfolio() {
                   className={[
                     "rounded-full transition-all duration-300",
                     i === active
-                      ? "w-8 h-2 bg-accent shadow-[0_0_6px_2px_rgba(31,92,67,0.35)]"
-                      : "w-2.5 h-2.5 bg-ink-muted/40 hover:bg-accent/60",
+                      ? "w-8 h-2 bg-accent shadow-sm"
+                      : "w-2.5 h-2.5 bg-ink-muted/30 hover:bg-accent/60",
                   ].join(" ")}
                   aria-label={`Go to ${VENTURES[i].name}`}
                 />
               ))}
             </div>
-
-            {/* Future companies note */}
-            <p className="mt-6 text-[11px] font-mono-ui uppercase tracking-[0.18em] text-ink-faint italic">
-              + Future Companies — Coming Soon
-            </p>
           </div>
         </motion.div>
+
+        {/* ── Closing Statement Banner ──────────────────────────── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.7, ease, delay: 0.2 }}
+          className="mt-20 p-8 md:p-10 rounded-2xl border border-accent/20 bg-accent/5 text-center max-w-4xl mx-auto"
+        >
+          <span className="font-mono-ui text-xs text-accent uppercase tracking-[0.2em] block mb-3 font-semibold">
+            Group Governance & Ownership
+          </span>
+          <h4 className="font-display text-2xl md:text-3xl text-ink mb-4">
+            One Group. Five Companies. <span className="italic font-normal text-accent">One Enduring Standard.</span>
+          </h4>
+          <p className="text-sm md:text-base text-ink-muted font-light leading-relaxed max-w-2xl mx-auto">
+            Although each company serves a different industry, every enterprise within BRAHM Global Holdings is created with the same ambition—to build organisations defined by exceptional quality, disciplined execution and enduring value.
+          </p>
+        </motion.div>
+
       </div>
     </section>
   );

@@ -2,49 +2,52 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import Icon, { IconName } from "./Icon";
 
-const ease = [0.25, 1, 0.5, 1] as const;
-
-const CREDENTIALS: { icon: IconName; stat: string; label: string }[] = [
-  { icon: "globe",   stat: "UK",    label: "Headquartered & Engineered" },
-  { icon: "layers",  stat: "5",     label: "Group Companies" },
-  { icon: "compass", stat: "6",     label: "Industry Sectors" },
-  { icon: "shield",  stat: "100%",  label: "Built In-House" },
+const INDUSTRIES = [
+  "Technology",
+  "Education",
+  "Sport",
+  "Hospitality",
+  "Luxury",
+  "Artificial Intelligence",
+  "Commerce",
+  "Future Ventures",
 ];
 
 export default function Marquee() {
   return (
-    <div className="border-y border-surface-line bg-surface-soft">
-      <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop">
-        <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-surface-line">
-          {CREDENTIALS.map((c, i) => (
-            <motion.div
-              key={c.stat}
-              className="flex flex-col items-center justify-center gap-1.5 py-10 px-6 text-center group relative overflow-hidden"
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, ease, delay: i * 0.08 }}
-            >
-              {/* Left border reveal on hover — same treatment as Capabilities/GlobalPresence */}
-              <span className="absolute left-0 top-0 h-full w-[2px] bg-accent origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-500 ease-out" />
-
-              <Icon
-                name={c.icon}
-                size={15}
-                className="text-accent opacity-75 mb-0.5"
-              />
-              <span className="font-display text-2xl md:text-3xl text-ink">
-                {c.stat}
-              </span>
-              <span className="font-mono-ui text-[10px] uppercase tracking-[0.18em] text-ink-faint leading-tight text-center">
-                {c.label}
-              </span>
-            </motion.div>
-          ))}
-        </div>
+    <section className="py-12 bg-surface-soft border-y border-surface-line overflow-hidden relative">
+      <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop mb-6 text-center">
+        <span className="font-mono-ui text-xs text-accent uppercase tracking-[0.25em]">
+          INDUSTRIES WE BUILD & SHAPE
+        </span>
       </div>
-    </div>
+
+      <div className="relative w-full flex overflow-x-hidden">
+        {/* Gradient fades on edges */}
+        <div className="absolute top-0 left-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-surface-soft to-transparent z-10 pointer-events-none" />
+        <div className="absolute top-0 right-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-surface-soft to-transparent z-10 pointer-events-none" />
+
+        <motion.div
+          className="flex whitespace-nowrap gap-6 md:gap-8 px-6"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{
+            duration: 35,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        >
+          {[...INDUSTRIES, ...INDUSTRIES, ...INDUSTRIES].map((ind, i) => (
+            <div
+              key={i}
+              className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-surface-line bg-surface text-ink font-display text-lg md:text-xl tracking-wide hover:border-accent hover:text-accent transition-colors shadow-sm"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+              {ind}
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
   );
 }

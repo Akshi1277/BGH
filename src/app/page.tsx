@@ -2,7 +2,7 @@ import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import TheGroup from "@/components/Capabilities";
 import About from "@/components/About";
-import HowWeBuild from "@/components/HowWeBuild";
+import TheBrahmStandard from "@/components/TheBrahmStandard";
 import Portfolio from "@/components/Portfolio";
 import FoundersVision from "@/components/FoundersVision";
 import GlobalPresence from "@/components/GlobalPresence";
@@ -13,10 +13,10 @@ export default function Home() {
   return (
     <main>
       <Hero />
+      <TheBrahmStandard />
       <Marquee />
       <TheGroup />
       <About />
-      <HowWeBuild />
       <Portfolio />
       <FoundersVision />
       <GlobalPresence />
