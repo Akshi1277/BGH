@@ -118,7 +118,6 @@ export const GradientCard = ({
           className="absolute inset-0 opacity-10 mix-blend-soft-light z-[11] pointer-events-none"
           style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='smudge'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.01' numOctaves='3' seed='5' stitchTiles='stitch'/%3E%3CfeGaussianBlur stdDeviation='10'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23smudge)'/%3E%3C/svg%3E")`,
-            backdropFilter: "blur(1px)",
           }}
         />
 
@@ -274,9 +273,8 @@ export const GradientCard = ({
                   position: "relative",
                   overflow: "hidden",
                 }}
-                initial={{ filter: "blur(3px)", opacity: 0.7 }}
+                initial={{ opacity: 0.7 }}
                 animate={{
-                  filter: "blur(0px)",
                   opacity: 1,
                   boxShadow: isHovered
                     ? "0 8px 16px -2px rgba(0, 0, 0, 0.3), 0 4px 8px -1px rgba(0, 0, 0, 0.2), inset 2px 2px 5px rgba(255, 255, 255, 0.15), inset -2px -2px 5px rgba(0, 0, 0, 0.7)"
@@ -343,10 +341,9 @@ export const GradientCard = ({
                   letterSpacing: "-0.01em",
                   lineHeight: 1.2,
                 }}
-                initial={{ filter: "blur(3px)", opacity: 0.7 }}
+                initial={{ opacity: 0.7 }}
                 animate={{
                   textShadow: isHovered ? "0 2px 4px rgba(0,0,0,0.2)" : "none",
-                  filter: "blur(0px)",
                   opacity: 1,
                   transition: { duration: 1.2, delay: 0.2 },
                 }}
@@ -360,10 +357,9 @@ export const GradientCard = ({
                   lineHeight: 1.5,
                   fontWeight: 350,
                 }}
-                initial={{ filter: "blur(3px)", opacity: 0.7 }}
+                initial={{ opacity: 0.7 }}
                 animate={{
                   textShadow: isHovered ? "0 1px 2px rgba(0,0,0,0.1)" : "none",
-                  filter: "blur(0px)",
                   opacity: 0.85,
                   transition: { duration: 1.2, delay: 0.4 },
                 }}
@@ -400,9 +396,8 @@ export const GradientCard = ({
               <motion.a
                 href={learnMoreHref}
                 className="inline-flex items-center text-white text-sm font-medium group"
-                initial={{ filter: "blur(3px)", opacity: 0.7 }}
+                initial={{ opacity: 0.7 }}
                 animate={{
-                  filter: "blur(0px)",
                   opacity: 0.9,
                   transition: { duration: 1.2, delay: 0.6 },
                 }}

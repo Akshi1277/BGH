@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { LumaBar } from "@/components/ui/LumaBar";
 import EnifHero from "@/components/enif/EnifHero";
 import EnifCapabilities from "@/components/enif/EnifCapabilities";
-import EnifIndustries from "@/components/enif/EnifIndustries";
+
 import EnifWhy from "@/components/enif/EnifWhy";
 import EnifPhilosophy from "@/components/enif/EnifPhilosophy";
 import EnifMethod from "@/components/enif/EnifMethod";
@@ -22,7 +22,7 @@ export default function EnifPage() {
       <LumaBar />
       <EnifHero />
       <EnifCapabilities />
-      <EnifIndustries />
+
       <EnifWhy />
       <EnifMethod />
       <EnifPhilosophy />
