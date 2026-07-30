@@ -2,9 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { SpotlightCard } from "../ui/SpotlightCard";
-import Icon from "../Icon";
-
+import { GradientCard } from "../ui/gradient-card";
 import DotField from "../reactbits/DotField";
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -55,33 +53,34 @@ export default function EnifCapabilities() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
           {/* Card 1: Software Engineering */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease, delay: 0.1 }}
+            className="h-full flex"
           >
-            <SpotlightCard className="h-full p-8 md:p-10 flex flex-col justify-between">
-              <div>
-                <span className="text-[#38BDF8] font-mono-ui text-sm font-bold tracking-widest mb-4 block">
-                  01
-                </span>
-                <h3 className="text-2xl font-display mb-4">Software Engineering</h3>
-                <p className="text-[#94A3B8] text-sm md:text-base leading-relaxed mb-6">
-                  Enterprise software engineered for performance, resilience and long-term maintainability. We design bespoke digital products tailored to the operational requirements of modern organisations—not constrained by off-the-shelf solutions.
-                </p>
-              </div>
-              <ul className="space-y-2 mt-4 text-sm text-white/70">
-                {["Enterprise Platforms", "Business Systems", "Customer Portals", "Mobile Applications", "Internal Platforms", "Cloud-native Applications"].map((item, i) => (
-                  <li key={i} className="flex items-center gap-2">
-                    <Icon name="arrow-right" size={14} className="text-[#38BDF8]" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </SpotlightCard>
+            <GradientCard
+              index="01"
+              title="Software Engineering"
+              description="Enterprise software engineered for performance, resilience and long-term maintainability. We design bespoke digital products tailored to the operational requirements of modern organisations—not constrained by off-the-shelf solutions."
+              items={[
+                "Enterprise Platforms",
+                "Business Systems",
+                "Customer Portals",
+                "Mobile Applications",
+                "Internal Platforms",
+                "Cloud-native Applications"
+              ]}
+              icon={
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 2l9 5v10l-9 5-9-5V7l9-5z" />
+                  <path d="M3 7l9 5 9-5M12 12v9" />
+                </svg>
+              }
+            />
           </motion.div>
 
           {/* Card 2: Artificial Intelligence */}
@@ -90,26 +89,27 @@ export default function EnifCapabilities() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease, delay: 0.2 }}
+            className="h-full flex"
           >
-            <SpotlightCard className="h-full p-8 md:p-10 flex flex-col justify-between">
-              <div>
-                <span className="text-[#38BDF8] font-mono-ui text-sm font-bold tracking-widest mb-4 block">
-                  02
-                </span>
-                <h3 className="text-2xl font-display mb-4">Artificial Intelligence</h3>
-                <p className="text-[#94A3B8] text-sm md:text-base leading-relaxed mb-6">
-                  Practical intelligence. Commercial impact. Our AI capabilities automate workflows, enhance decision-making, and unlock new revenue streams. We move beyond the hype to build robust, scalable AI solutions.
-                </p>
-              </div>
-              <ul className="space-y-2 mt-4 text-sm text-white/70">
-                {["Predictive Analytics", "Large Language Models", "Process Automation", "Computer Vision", "Machine Learning Ops", "Data Engineering"].map((item, i) => (
-                  <li key={i} className="flex items-center gap-2">
-                    <Icon name="arrow-right" size={14} className="text-[#38BDF8]" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </SpotlightCard>
+            <GradientCard
+              index="02"
+              title="Artificial Intelligence"
+              description="Practical intelligence. Commercial impact. Our AI capabilities automate workflows, enhance decision-making, and unlock new revenue streams. We move beyond the hype to build robust, scalable AI solutions."
+              items={[
+                "Predictive Analytics",
+                "Large Language Models",
+                "Process Automation",
+                "Computer Vision",
+                "Machine Learning Ops",
+                "Data Engineering"
+              ]}
+              icon={
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="7" y="7" width="10" height="10" rx="1.5" />
+                  <path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3" />
+                </svg>
+              }
+            />
           </motion.div>
         </div>
       </div>
