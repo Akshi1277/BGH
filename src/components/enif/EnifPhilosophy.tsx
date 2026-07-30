@@ -1,9 +1,217 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion, useInView } from "framer-motion";
 
 const ease = [0.16, 1, 0.3, 1] as const;
+
+function InteractiveCodeTerminal() {
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: false, margin: "-80px" });
+  const [activeStep, setActiveStep] = useState(0);
+  const [isCopied, setIsCopied] = useState(false);
+
+  // Re-run execution animation every time section enters viewport
+  useEffect(() => {
+    if (!isInView) {
+      setActiveStep(0);
+      return;
+    }
+
+    const timers: NodeJS.Timeout[] = [];
+    
+    // Step 0: Const declaration (0ms)
+    // Step 1: Function header (400ms)
+    timers.push(setTimeout(() => setActiveStep(1), 400));
+    // Step 2: removeFriction() executed (900ms)
+    timers.push(setTimeout(() => setActiveStep(2), 900));
+    // Step 3: simplifyComplexity() executed (1400ms)
+    timers.push(setTimeout(() => setActiveStep(3), 1400));
+    // Step 4: enableHumanPotential() executed (1900ms)
+    timers.push(setTimeout(() => setActiveStep(4), 1900));
+    // Step 5: Return statement (2400ms)
+    timers.push(setTimeout(() => setActiveStep(5), 2400));
+    // Step 6: Complete (2800ms)
+    timers.push(setTimeout(() => setActiveStep(6), 2800));
+
+    return () => timers.forEach(clearTimeout);
+  }, [isInView]);
+
+  const handleReRun = () => {
+    setActiveStep(0);
+    setTimeout(() => setActiveStep(1), 300);
+    setTimeout(() => setActiveStep(2), 800);
+    setTimeout(() => setActiveStep(3), 1300);
+    setTimeout(() => setActiveStep(4), 1800);
+    setTimeout(() => setActiveStep(5), 2300);
+    setTimeout(() => setActiveStep(6), 2700);
+  };
+
+  const handleCopy = () => {
+    const codeText = `const corePrinciple = "Simplicity through engineering";\n\nfunction buildSystem() {\n  removeFriction();\n  simplifyComplexity();\n  enableHumanPotential();\n  return InvisibleSoftware;\n}`;
+    navigator.clipboard.writeText(codeText);
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000);
+  };
+
+  return (
+    <div ref={containerRef} className="w-full rounded-2xl border border-[#38BDF8]/30 bg-[#04070D]/95 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] overflow-hidden">
+      {/* Terminal macOS Titlebar Header */}
+      <div className="flex items-center justify-between px-4 py-3 border-b border-[#38BDF8]/20 bg-[#08101E]/90">
+        <div className="flex items-center gap-2">
+          <div className="w-3 h-3 rounded-full bg-red-500/80 hover:bg-red-500 transition-colors shadow-[0_0_8px_rgba(239,68,68,0.5)] cursor-pointer" />
+          <div className="w-3 h-3 rounded-full bg-yellow-500/80 hover:bg-yellow-500 transition-colors shadow-[0_0_8px_rgba(234,179,8,0.5)] cursor-pointer" />
+          <div className="w-3 h-3 rounded-full bg-emerald-500/80 hover:bg-emerald-500 transition-colors shadow-[0_0_8px_rgba(16,185,129,0.5)] cursor-pointer" />
+        </div>
+
+      
+
+       
+      </div>
+
+      {/* Code Editor Body */}
+      <div className="p-6 sm:p-8 font-mono text-xs sm:text-sm md:text-base leading-relaxed text-[#F8FAFC] select-none">
+        {/* Line 1 */}
+        <motion.div
+          initial={{ opacity: 0, x: -10 }}
+          animate={activeStep >= 0 ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.3 }}
+          className="flex items-center gap-3 py-0.5"
+        >
+          <span className="text-[#38BDF8]/40 text-xs w-5 text-right shrink-0">1</span>
+          <p>
+            <span className="text-[#38BDF8] font-bold">const</span>{" "}
+            <span className="text-white font-semibold">corePrinciple</span> ={" "}
+            <span className="text-emerald-400 font-medium drop-shadow-[0_0_10px_rgba(52,211,153,0.3)]">
+              "Simplicity through engineering"
+            </span>
+            ;
+          </p>
+        </motion.div>
+
+        {/* Blank line */}
+        <div className="py-1" />
+
+        {/* Line 3: Function declaration */}
+        <motion.div
+          initial={{ opacity: 0, x: -10 }}
+          animate={activeStep >= 1 ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.3 }}
+          className="flex items-center gap-3 py-0.5"
+        >
+          <span className="text-[#38BDF8]/40 text-xs w-5 text-right shrink-0">2</span>
+          <p>
+            <span className="text-[#38BDF8] font-bold">function</span>{" "}
+            <span className="text-yellow-300 font-bold">buildSystem</span>() {"{"}
+          </p>
+        </motion.div>
+
+        {/* Line 4: removeFriction() */}
+        <motion.div
+          initial={{ opacity: 0, x: -10 }}
+          animate={activeStep >= 2 ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.3 }}
+          className={`flex items-center justify-between py-1 px-2 rounded-lg transition-colors duration-300 ${
+            activeStep === 2 ? "bg-[#38BDF8]/15 border-l-2 border-[#38BDF8]" : "hover:bg-white/5"
+          }`}
+        >
+          <div className="flex items-center gap-3">
+            <span className="text-[#38BDF8]/40 text-xs w-5 text-right shrink-0">3</span>
+            <p className="pl-4 text-[#38BDF8]">
+              <span className="text-sky-300">removeFriction</span>();
+            </p>
+          </div>
+          {activeStep >= 2 && (
+            <span className="text-emerald-400 font-mono text-[10px] tracking-wider uppercase flex items-center gap-1 font-bold">
+              <span>✓ EXECUTED</span>
+            </span>
+          )}
+        </motion.div>
+
+        {/* Line 5: simplifyComplexity() */}
+        <motion.div
+          initial={{ opacity: 0, x: -10 }}
+          animate={activeStep >= 3 ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.3 }}
+          className={`flex items-center justify-between py-1 px-2 rounded-lg transition-colors duration-300 ${
+            activeStep === 3 ? "bg-[#38BDF8]/15 border-l-2 border-[#38BDF8]" : "hover:bg-white/5"
+          }`}
+        >
+          <div className="flex items-center gap-3">
+            <span className="text-[#38BDF8]/40 text-xs w-5 text-right shrink-0">4</span>
+            <p className="pl-4 text-[#38BDF8]">
+              <span className="text-sky-300">simplifyComplexity</span>();
+            </p>
+          </div>
+          {activeStep >= 3 && (
+            <span className="text-emerald-400 font-mono text-[10px] tracking-wider uppercase flex items-center gap-1 font-bold">
+              <span>✓ EXECUTED</span>
+            </span>
+          )}
+        </motion.div>
+
+        {/* Line 6: enableHumanPotential() */}
+        <motion.div
+          initial={{ opacity: 0, x: -10 }}
+          animate={activeStep >= 4 ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.3 }}
+          className={`flex items-center justify-between py-1 px-2 rounded-lg transition-colors duration-300 ${
+            activeStep === 4 ? "bg-[#38BDF8]/15 border-l-2 border-[#38BDF8]" : "hover:bg-white/5"
+          }`}
+        >
+          <div className="flex items-center gap-3">
+            <span className="text-[#38BDF8]/40 text-xs w-5 text-right shrink-0">5</span>
+            <p className="pl-4 text-[#38BDF8]">
+              <span className="text-sky-300">enableHumanPotential</span>();
+            </p>
+          </div>
+          {activeStep >= 4 && (
+            <span className="text-emerald-400 font-mono text-[10px] tracking-wider uppercase flex items-center gap-1 font-bold">
+              <span>✓ EXECUTED</span>
+            </span>
+          )}
+        </motion.div>
+
+        {/* Line 7: return InvisibleSoftware */}
+        <motion.div
+          initial={{ opacity: 0, x: -10 }}
+          animate={activeStep >= 5 ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.3 }}
+          className="flex items-center gap-3 py-1"
+        >
+          <span className="text-[#38BDF8]/40 text-xs w-5 text-right shrink-0">6</span>
+          <p className="pl-4">
+            <span className="text-[#38BDF8] font-bold">return</span>{" "}
+            <span className="text-white font-bold tracking-wide drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]">
+              InvisibleSoftware
+            </span>
+            ;
+          </p>
+        </motion.div>
+
+        {/* Line 8: Closing brace */}
+        <motion.div
+          initial={{ opacity: 0, x: -10 }}
+          animate={activeStep >= 5 ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.3 }}
+          className="flex items-center gap-3 py-0.5"
+        >
+          <span className="text-[#38BDF8]/40 text-xs w-5 text-right shrink-0">7</span>
+          <p>{"}"}</p>
+        </motion.div>
+
+        {/* Active Typing Cursor Line */}
+        <div className="flex items-center gap-3 py-1 mt-1">
+          <span className="text-[#38BDF8]/40 text-xs w-5 text-right shrink-0">8</span>
+          <div className="flex items-center gap-1">
+            <span className="text-[#38BDF8] font-bold text-xs">$</span>
+            <span className="w-2 h-4 bg-[#38BDF8] animate-pulse inline-block" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function EnifPhilosophy() {
   return (
@@ -36,34 +244,7 @@ export default function EnifPhilosophy() {
           </div>
           
           <div className="lg:col-span-7">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, ease, delay: 0.2 }}
-              className="w-full rounded-2xl border border-[#38BDF8]/20 bg-[#04070D]/90 backdrop-blur-md shadow-[0_0_40px_rgba(56,189,248,0.15)] overflow-hidden"
-            >
-              <div className="flex items-center px-4 py-3 border-b border-[#38BDF8]/20 bg-[#38BDF8]/5">
-                <div className="flex gap-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50" />
-                  <div className="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50" />
-                </div>
-                <div className="mx-auto text-xs font-mono text-[#38BDF8]/60">enif-sys-core.ts</div>
-              </div>
-              <div className="p-6 font-mono text-sm md:text-base leading-relaxed text-[#38BDF8]/70">
-                <p><span className="text-[#38BDF8]">const</span> <span className="text-white">corePrinciple</span> = <span className="text-green-400">"Simplicity through engineering"</span>;</p>
-                <br />
-                <p><span className="text-[#38BDF8]">function</span> <span className="text-yellow-200">buildSystem</span>() {'{'}</p>
-                <p className="pl-4">removeFriction();</p>
-                <p className="pl-4">simplifyComplexity();</p>
-                <p className="pl-4">enableHumanPotential();</p>
-                <p className="pl-4"><span className="text-[#38BDF8]">return</span> <span className="text-white">InvisibleSoftware</span>;</p>
-                <p>{'}'}</p>
-                <br />
-                <p className="animate-pulse">_</p>
-              </div>
-            </motion.div>
+            <InteractiveCodeTerminal />
           </div>
         </div>
       </div>

@@ -154,13 +154,13 @@
 html {
   color-scheme: light;
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
   background-color: var(--color-surface);   /* chalk white              */
   color: var(--color-ink);                  /* warm graphite            */
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 img, video {

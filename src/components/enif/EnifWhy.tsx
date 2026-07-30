@@ -174,33 +174,32 @@ export default function EnifWhy() {
             </motion.p>
           </div>
 
-          {/* Scroll-Driven 3D Card Stack */}
-          <div className="md:col-span-7 w-full max-w-full overflow-hidden">
-            <ContainerScroll className="min-h-[160vh] md:min-h-[300vh] space-y-6 md:space-y-8 pb-6 md:pb-32">
+          {/* Scroll-Driven Card Stack */}
+          <div className="md:col-span-7 w-full">
+            <ContainerScroll className="min-h-[220vh] md:min-h-[300vh] space-y-6 md:space-y-8 pb-16 md:pb-32">
               {WHY_CARDS.map((card, index) => (
                 <CardSticky
                   key={card.id}
-                  index={index + 2}
-                  incrementY={18}
-                  incrementZ={10}
-                  className="rounded-2xl sm:rounded-3xl border border-[#38BDF8]/20 bg-[#0A101F]/95 p-4 sm:p-8 shadow-[0_10px_40px_rgba(0,0,0,0.5)] backdrop-blur-xl w-full max-w-full overflow-hidden"
+                  index={index}
+                  incrementY={28}
+                  className="rounded-2xl sm:rounded-3xl border border-[#38BDF8]/30 bg-[#080E1B] p-5 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.8)] w-full antialiased"
                 >
                   <div className="flex flex-col gap-4 sm:gap-8 items-start w-full max-w-full">
                     <div className="flex items-center justify-between gap-4 w-full mb-1 sm:mb-2">
-                      <div className="px-2.5 py-1 bg-[#38BDF8]/10 text-[#38BDF8] border border-[#38BDF8]/20 rounded-full font-mono text-[9px] sm:text-[10px] tracking-widest uppercase">
+                      <div className="px-2.5 py-1 bg-[#38BDF8]/15 text-[#38BDF8] border border-[#38BDF8]/30 rounded-full font-mono text-[9px] sm:text-[10px] tracking-widest uppercase font-bold">
                         {card.tag}
                       </div>
-                      <h3 className="text-xl sm:text-3xl font-bold text-[#38BDF8] opacity-50">
+                      <h3 className="text-xl sm:text-3xl font-bold text-[#38BDF8] opacity-60 font-mono">
                         {String(index + 1).padStart(2, "0")}
                       </h3>
                     </div>
                     
                     <div className="w-full max-w-full">
-                      <h3 className="text-lg sm:text-2xl md:text-3xl font-bold tracking-tight text-white mb-2 sm:mb-4">
+                      <h3 className="text-lg sm:text-2xl md:text-3xl font-bold tracking-tight text-white mb-2 sm:mb-4 subpixel-antialiased">
                         {card.title}
                       </h3>
 
-                      <p className="text-[#94A3B8] text-xs sm:text-sm md:text-base leading-relaxed mb-4 sm:mb-8">
+                      <p className="text-[#CBD5E1] text-xs sm:text-sm md:text-base leading-relaxed mb-4 sm:mb-8 font-normal subpixel-antialiased">
                         {card.description}
                       </p>
 

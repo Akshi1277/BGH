@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import OrbitingSkills from "../ui/orbiting-skills";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -27,8 +28,9 @@ export default function EnifTech() {
       {/* Deep Space Radial Background - Theme A */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#081A33_0%,#05101F_40%,#04070D_80%)] pointer-events-none z-0" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-[#38BDF8]/[0.07] blur-[120px] rounded-full pointer-events-none z-0" />
+      
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
-        <div className="mb-12 md:mb-16 max-w-2xl text-center mx-auto">
+        <div className="mb-8 md:mb-12 max-w-2xl text-center mx-auto">
           <motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -49,6 +51,18 @@ export default function EnifTech() {
           </motion.h2>
         </div>
 
+        {/* 21st.dev Orbiting Skills Animated Component */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease, delay: 0.2 }}
+          className="mb-10"
+        >
+          <OrbitingSkills />
+        </motion.div>
+
+        {/* Full Technology Stack Tags */}
         <div className="flex flex-wrap justify-center gap-2.5 sm:gap-4 max-w-4xl mx-auto">
           {TECHNOLOGIES.map((tech, i) => (
             <motion.div
