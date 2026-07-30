@@ -33,14 +33,6 @@ const PATHWAYS: { icon: IconName; title: string; description: string; href: stri
     href: "mailto:hello@brahmglobalholdings.com?subject=Partnership Inquiry",
     accent: "var(--color-persimmon)",
   },
-  {
-    icon: "compass",
-    title: "INVESTMENT OPPORTUNITIES",
-    description:
-      "We explore opportunities aligned with our long-term philosophy and our core sectors of technology, education, hospitality, sport, luxury consumer brands and emerging industries.",
-    href: "mailto:hello@brahmglobalholdings.com?subject=Investment Opportunity",
-    accent: "var(--color-cobalt)",
-  },
 ];
 
 function PathwayCard({
@@ -197,8 +189,8 @@ export default function CTA() {
           </motion.div>
         </div>
 
-        {/* ── 4 Pathway cards ───────────────────────────────────── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        {/* ── 3 Pathway cards ───────────────────────────────────── */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {PATHWAYS.map((p, i) => (
             <PathwayCard key={p.title} pathway={p} delay={0.35 + i * 0.08} />
           ))}

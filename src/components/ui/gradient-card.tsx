@@ -12,6 +12,7 @@ export interface GradientCardProps {
   icon?: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
+  theme?: "light" | "dark";
 }
 
 export const GradientCard = ({
@@ -24,6 +25,7 @@ export const GradientCard = ({
   icon,
   className = "",
   style,
+  theme = "dark",
 }: GradientCardProps = {}) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -315,7 +317,7 @@ export const GradientCard = ({
                     <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M8 0L9.4 5.4L14.8 5.4L10.6 8.8L12 14.2L8 10.8L4 14.2L5.4 8.8L1.2 5.4L6.6 5.4L8 0Z"
-                        fill="white"
+                        fill="currentColor"
                       />
                     </svg>
                   )}
@@ -336,7 +338,7 @@ export const GradientCard = ({
               }}
             >
               <motion.h3
-                className="text-2xl font-medium text-white mb-3"
+                className="text-2xl font-medium mb-3 text-white"
                 style={{
                   letterSpacing: "-0.01em",
                   lineHeight: 1.2,
@@ -382,7 +384,7 @@ export const GradientCard = ({
             }}
           >
             {items && items.length > 0 ? (
-              <ul className="space-y-2 mt-2 text-sm text-white/70 border-t border-white/10 pt-4">
+              <ul className="space-y-2 mt-2 text-sm pt-4 border-t text-white/70 border-white/10">
                 {items.map((item, i) => (
                   <li key={i} className="flex items-center gap-2 font-mono-ui text-xs text-[#94A3B8]">
                     <svg className="w-3.5 h-3.5 text-[#38BDF8] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -395,7 +397,7 @@ export const GradientCard = ({
             ) : (
               <motion.a
                 href={learnMoreHref}
-                className="inline-flex items-center text-white text-sm font-medium group"
+                className="inline-flex items-center text-sm font-medium group text-white"
                 initial={{ opacity: 0.7 }}
                 animate={{
                   opacity: 0.9,
@@ -423,7 +425,7 @@ export const GradientCard = ({
                 >
                   <path
                     d="M1 8H15M15 8L8 1M15 8L8 15"
-                    stroke="white"
+                    stroke="currentColor"
                     strokeWidth="1.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"

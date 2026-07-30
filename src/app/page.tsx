@@ -1,7 +1,7 @@
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
-import TheGroup from "@/components/Capabilities";
 import About from "@/components/About";
+import HowWeBuild from "@/components/HowWeBuild";
 import TheBrahmStandard from "@/components/TheBrahmStandard";
 import Portfolio from "@/components/Portfolio";
 import FoundersVision from "@/components/FoundersVision";
@@ -15,8 +15,8 @@ export default function Home() {
       <Hero />
       <TheBrahmStandard />
       <Marquee />
-      <TheGroup />
       <About />
+      <HowWeBuild />
       <Portfolio />
       <FoundersVision />
       <GlobalPresence />

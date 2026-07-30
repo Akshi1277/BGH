@@ -1,12 +1,30 @@
 import ProcessFlow from "./ProcessFlow";
 
 const STEPS = [
-  "Discover Opportunities",
-  "Validate Markets",
-  "Build Products",
-  "Launch Commercially",
-  "Scale Sustainably",
-  "Expand Internationally",
+  {
+    title: "Identify",
+    description: "We recognise opportunities where innovation, operational excellence and long-term demand intersect.",
+  },
+  {
+    title: "Validate",
+    description: "Every opportunity is rigorously assessed through research, commercial viability and strategic alignment before resources are committed.",
+  },
+  {
+    title: "Build",
+    description: "We design, engineer and establish businesses with strong operational foundations, exceptional products and scalable systems.",
+  },
+  {
+    title: "Operate",
+    description: "Execution defines every successful enterprise. We focus relentlessly on governance, leadership, customer experience and operational excellence.",
+  },
+  {
+    title: "Grow",
+    description: "Through disciplined investment, innovation and strategic expansion, our companies strengthen their market position while creating sustainable long-term value.",
+  },
+  {
+    title: "Endure",
+    description: "Our objective is not simply growth, but permanence—building institutions capable of evolving, leading and creating value for generations.",
+  },
 ];
 
 export default function HowWeBuild() {
@@ -16,10 +34,10 @@ export default function HowWeBuild() {
       eyebrow="How We Build"
       heading={
         <>
-          The <span className="italic text-accent">BRAHM</span> Framework.
+          The <span className="italic text-accent">BRAHM</span> Framework
         </>
       }
-      description="Every venture follows the same disciplined process — this framework allows every company within the Group to grow with consistency, clarity and operational discipline."
+      description="A disciplined approach to creating, operating and growing enduring enterprises. Every company within BRAHM Global Holdings is built upon the same disciplined methodology—one that transforms ideas into enduring enterprises through strategic thinking, operational excellence and long-term ownership."
       steps={STEPS}
     />
   );

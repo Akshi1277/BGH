@@ -18,7 +18,10 @@ const STEPS = [
 
 export default function EnifMethod() {
   return (
-    <section id="method" className="py-24 md:py-32 bg-[#04070D] border-b border-[#38BDF8]/10 overflow-hidden">
+    <section id="method" className="py-24 md:py-32 bg-[#060C17] border-b border-[#38BDF8]/10 relative overflow-hidden">
+      {/* Deep Space Radial Background */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#081A33_0%,#060C17_50%,#04070D_100%)] pointer-events-none z-0" />
+      <div className="absolute top-1/2 right-1/4 w-[500px] h-[300px] bg-[#0EA5E9]/[0.04] blur-[100px] rounded-full pointer-events-none z-0" />
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop">
         <div className="mb-16 md:mb-24">
           <motion.h2
@@ -26,7 +29,7 @@ export default function EnifMethod() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease }}
-            className="font-display text-4xl md:text-5xl text-white mb-6"
+            className="font-display text-4xl md:text-5xl text-white leading-[1.18] tracking-[-0.01em] mb-6"
           >
             The ENIF Method
           </motion.h2>

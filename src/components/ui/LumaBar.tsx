@@ -1,56 +1,164 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
+
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { StarButton } from "./StarButton";
-import GooeyNav from "../reactbits/GooeyNav";
 
-const navItems = [
-  { label: "Capabilities", href: "#capabilities" },
-  { label: "Why ENIF", href: "#why-enif" },
-  { label: "Method", href: "#method" },
+const NAV_ITEMS = [
+  { name: "Capabilities", href: "#capabilities" },
+  { name: "Why ENIF", href: "#why-enif" },
+  { name: "Method", href: "#method" },
+  { name: "Philosophy", href: "#philosophy" },
+  { name: "Tech Stack", href: "#tech" },
 ];
 
 export const LumaBar = ({ className }: { className?: string }) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <motion.header
-      initial={{ y: -100, opacity: 0 }}
+      initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
-        "fixed top-4 left-1/2 -translate-x-1/2 z-50",
-        "w-[95%] max-w-7xl rounded-full",
-        "border border-white/10 bg-[#04070D]/60 backdrop-blur-lg shadow-2xl shadow-black/50",
-        "flex items-center justify-between px-4 md:px-6 py-2.5",
+        "fixed top-0 left-0 right-0 z-50 w-full py-4 transition-colors duration-500 pointer-events-auto",
         className
       )}
     >
-      <Link href="/enif" className="flex items-center gap-3 group">
-        <div className="relative w-8 h-8 rounded-full overflow-hidden border border-[#38BDF8]/30 group-hover:border-[#38BDF8]/60 transition-colors">
-          <Image src="/eniflogo.png" alt="ENIF" fill sizes="32px" className="object-cover" />
+      {/* Smooth Fading Background Overlay on Scroll */}
+      <div
+        className={cn(
+          "absolute inset-0 pointer-events-none transition-all duration-500 ease-in-out",
+          isScrolled
+            ? "opacity-100 bg-[#04070D]/90 backdrop-blur-xl border-b border-[#38BDF8]/20 shadow-[0_4px_30px_rgba(0,0,0,0.8)]"
+            : "opacity-0 bg-transparent border-b border-transparent backdrop-blur-none"
+        )}
+      />
+
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-12 flex items-center justify-between">
+        {/* Left: Scaled Big ENIF Logo (Clean & Standalone) */}
+        <Link href="/enif" className="flex items-center group select-none">
+          <div className="relative w-12 h-12 md:w-14 md:h-14 transition-transform duration-300 group-hover:scale-105">
+            <Image
+              src="/eniflogo.png"
+              alt="ENIF Logo"
+              fill
+              sizes="56px"
+              className="object-contain drop-shadow-[0_0_15px_rgba(56,189,248,0.25)]"
+              priority
+            />
+          </div>
+        </Link>
+
+        {/* 21st.dev Tubelight Sliding Tabs (100% Mathematically Centered) */}
+        <nav className="hidden md:flex items-center gap-2 absolute left-1/2 -translate-x-1/2">
+          {NAV_ITEMS.map((item) => (
+            <a
+              key={item.name}
+              href={item.href}
+              className="relative px-4 py-1.5 text-xs font-medium tracking-wide text-[#94A3B8] hover:text-white transition-colors duration-200 select-none"
+            >
+              <span className="relative z-10">{item.name}</span>
+            </a>
+          ))}
+        </nav>
+
+        {/* Right: BGH-Themed "Back to BGH" Button (Matching BGH Navbar Theme) */}
+        <div className="flex items-center gap-3">
+          <StarButton
+            href="/"
+            shimmerColor="#34D399"
+            shimmerDuration="3s"
+            background="rgba(10, 13, 11, 0.95)"
+            className="hidden sm:inline-flex py-2 px-5 text-[11px] font-mono-ui uppercase tracking-[0.14em] font-bold text-[#F4F4F0] hover:text-[#34D399] transition-colors border border-[#34D399]/30 hover:border-[#34D399]/70 shadow-[0_0_15px_rgba(52,211,153,0.15)] group"
+          >
+            <div className="flex items-center gap-2">
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-[#34D399] group-hover:-translate-x-1 transition-transform duration-200"
+              >
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+              </svg>
+              <span>RETURN TO GROUP</span>
+            </div>
+          </StarButton>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 rounded-lg text-[#94A3B8] hover:text-[#38BDF8] hover:bg-white/10 transition-colors"
+            aria-label="Toggle navigation menu"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              {mobileMenuOpen ? (
+                <path d="M18 6L6 18M6 6l12 12" />
+              ) : (
+                <path d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
         </div>
-        <span className="text-[#F4F4F0] font-medium tracking-wide text-sm group-hover:text-[#38BDF8] transition-colors">
-          ENIF
-        </span>
-      </Link>
-      
-      <div className="hidden md:block">
-        <GooeyNav
-          items={navItems}
-          particleCount={12}
-          particleDistances={[70, 10]}
-          particleR={80}
-          initialActiveIndex={0}
-          animationTime={500}
-          timeVariance={200}
-        />
       </div>
 
-      <StarButton href="#contact" className="py-2 px-5 text-xs">
-        Start a Conversation
-      </StarButton>
+      {/* Mobile Drawer */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="relative z-10 md:hidden mt-2 p-4 rounded-2xl bg-[#04070D]/95 border border-[#38BDF8]/30 backdrop-blur-2xl shadow-2xl flex flex-col gap-2 mx-4"
+          >
+            <Link
+              href="/"
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-4 py-2.5 rounded-xl text-xs font-mono-ui uppercase tracking-[0.14em] font-bold text-[#F4F4F0] bg-[#0A0D0B] border border-[#34D399]/40 hover:bg-[#141A16] transition-colors flex items-center gap-2"
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-[#34D399]">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+              </svg>
+              <span>RETURN TO GROUP</span>
+            </Link>
+            {NAV_ITEMS.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                onClick={() => {
+                  setActiveTab(item.name);
+                  setMobileMenuOpen(false);
+                }}
+                className="px-4 py-2.5 rounded-xl text-sm text-[#94A3B8] hover:text-white hover:bg-[#38BDF8]/10 transition-colors font-medium"
+              >
+                {item.name}
+              </a>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 };

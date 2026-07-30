@@ -10,20 +10,23 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function EnifHero() {
   return (
-    <section className="relative overflow-hidden bg-[#04070D] text-[#F8FAFC] pt-28 pb-20 md:pt-36 md:pb-28 border-b border-[#38BDF8]/10 min-h-[90vh] flex items-center">
+    <section className="relative overflow-hidden bg-[#04070D] text-[#F8FAFC] pt-28 pb-20 md:pt-36 md:pb-28 min-h-[90vh] flex items-center border-b border-[#38BDF8]/20">
       {/* Dark Mesh Shader Background */}
       <div className="absolute inset-0 z-0 opacity-70">
         <MeshGradient
           className="absolute inset-0 w-full h-full"
           colors={["#02040A", "#05101F", "#081A33", "#0C2547", "#05101F"]}
-          speed={0.15}
+          speed={0.3}
         />
         <MeshGradient
           className="absolute inset-0 w-full h-full opacity-30 mix-blend-screen pointer-events-none"
           colors={["#04070D", "#0A1F3D", "#38BDF8", "#0EA5E9"]}
-          speed={0.1}
+          speed={0.25}
         />
       </div>
+
+      {/* Smooth Bottom Blend Transition Layer */}
+      <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-b from-transparent via-[#05101F]/80 to-[#081A33] pointer-events-none z-[1]" />
 
       {/* Structural grid */}
       <div
@@ -46,24 +49,23 @@ export default function EnifHero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease }}
-            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-[#38BDF8]/25 bg-[#38BDF8]/[0.08] backdrop-blur-md mb-8 shadow-[0_0_15px_rgba(56,189,248,0.05)]"
+            className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-[#38BDF8]/20 bg-[#38BDF8]/[0.05] backdrop-blur-md mb-10 shadow-[0_0_15px_rgba(56,189,248,0.03)]"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8] animate-pulse shadow-[0_0_6px_#38BDF8]" />
-            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#38BDF8] font-medium">
+            <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.25em] text-[#38BDF8]/90 font-medium">
               ENIF Technologies — A BRAHM Global Holdings Company
             </span>
           </motion.div>
 
           {/* Headline */}
           <motion.h1
-            className="font-display text-[2.8rem] sm:text-5xl xl:text-[3.6rem] leading-[1.06] tracking-tight text-[#F8FAFC] mb-5 drop-shadow-2xl"
+            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] leading-[1.12] tracking-[-0.01em] text-[#F8FAFC] mb-6 drop-shadow-2xl max-w-5xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease, delay: 0.1 }}
           >
             Engineering the{" "}
             <motion.span
-              className="italic font-normal bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(56,189,248,0.3)]"
+              className="inline-block pr-3 -mr-3 italic font-normal bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(56,189,248,0.3)]"
               style={{
                 backgroundImage:
                   "linear-gradient(110deg, #38BDF8 0%, #7DD3FC 40%, #FFFFFF 54%, #7DD3FC 68%, #38BDF8 100%)",
@@ -85,7 +87,7 @@ export default function EnifHero() {
 
           {/* Tagline */}
           <motion.p
-            className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#38BDF8]/50 mb-6"
+            className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.3em] text-[#38BDF8]/60 mb-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.22 }}
@@ -95,7 +97,7 @@ export default function EnifHero() {
 
           {/* Description */}
           <motion.p
-            className="text-[1.05rem] md:text-lg text-[#94A3B8] max-w-[480px] mb-5 font-light leading-relaxed drop-shadow-sm"
+            className="text-base md:text-lg text-[#94A3B8] max-w-xl mb-8 font-light tracking-wide leading-[1.8] drop-shadow-sm"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease, delay: 0.3 }}
@@ -105,7 +107,7 @@ export default function EnifHero() {
 
           {/* Ethos pull-quote */}
           <motion.blockquote
-            className="text-sm text-[#64748B] italic mb-10 border-l-2 border-[#38BDF8]/20 pl-4"
+            className="text-base md:text-lg font-display text-[#64748B] italic mb-12 border-l-2 border-[#38BDF8]/30 pl-5 tracking-wide leading-relaxed max-w-lg mx-auto md:mx-0 text-left"
             initial={{ opacity: 0, x: -8 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease, delay: 0.4 }}

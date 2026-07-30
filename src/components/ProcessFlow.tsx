@@ -16,12 +16,17 @@ const item: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.55, ease } },
 };
 
+interface ProcessStep {
+  title: string;
+  description?: string;
+}
+
 interface ProcessFlowProps {
   id: string;
   eyebrow: string;
   heading: React.ReactNode;
   description?: string;
-  steps: string[];
+  steps: ProcessStep[];
   accent?: "accent" | "cobalt" | "cyan";
   theme?: "light" | "dark";
 }
@@ -105,10 +110,10 @@ export default function ProcessFlow({
           className="flex flex-col md:flex-row md:flex-wrap items-stretch gap-3 md:gap-0"
         >
           {steps.map((step, i) => (
-            <React.Fragment key={step}>
+            <React.Fragment key={step.title}>
               <motion.div
                 variants={item}
-                className={`flex-1 min-w-[140px] border ${accentBorder} backdrop-blur-md rounded-xl p-5 md:p-6 flex flex-col gap-3 group hover:border-cyan-400/50 transition-all duration-300`}
+                className={`flex-1 min-w-[160px] border ${accentBorder} backdrop-blur-md rounded-xl p-5 md:p-6 flex flex-col gap-3 group hover:border-cyan-400/50 transition-all duration-300`}
               >
                 <span className={`font-mono-ui text-[11px] tracking-widest ${accentText}`}>
                   0{i + 1}
@@ -118,8 +123,13 @@ export default function ProcessFlow({
                     isDark ? "text-[#F8FAFC]" : "text-ink"
                   }`}
                 >
-                  {step}
+                  {step.title}
                 </span>
+                {step.description && (
+                  <p className={`text-xs leading-relaxed ${isDark ? "text-[#94A3B8]" : "text-ink-muted"}`}>
+                    {step.description}
+                  </p>
+                )}
               </motion.div>
 
               {i < steps.length - 1 && (

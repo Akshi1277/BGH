@@ -84,10 +84,14 @@ function ParticleCanvas() {
 
 /* ─── Category badges ───────────────────────────────────────────── */
 const CATEGORIES: { icon: IconName; label: string; pos: string; delay: number }[] = [
-  { icon: "cpu",         label: "Technology",     pos: "top-[2%] left-1/2 -translate-x-1/2",  delay: 0    },
-  { icon: "trending-up", label: "Sport & Media",  pos: "-right-12 top-1/2 -translate-y-1/2",  delay: 0.12 },
-  { icon: "globe",       label: "Education",      pos: "bottom-[2%] left-1/2 -translate-x-1/2", delay: 0.24 },
-  { icon: "droplet",     label: "Luxury & Consumer",pos: "-left-12 top-1/2 -translate-y-1/2", delay: 0.36 },
+  { icon: "cpu",         label: "Technology",              pos: "top-[2%] left-1/2 -translate-x-1/2",  delay: 0    },
+  { icon: "globe",       label: "Education",               pos: "top-[15%] right-[5%]", delay: 0.1  },
+  { icon: "trending-up", label: "Sport",                   pos: "-right-16 top-1/2 -translate-y-1/2",  delay: 0.2  },
+  { icon: "cup",         label: "Hospitality",             pos: "bottom-[15%] right-[5%]", delay: 0.3  },
+  { icon: "droplet",     label: "Luxury",                  pos: "bottom-[2%] left-1/2 -translate-x-1/2", delay: 0.4  },
+  { icon: "cloud",       label: "Artificial Intelligence", pos: "bottom-[15%] left-[5%]", delay: 0.5  },
+  { icon: "layers",      label: "Commerce",                pos: "-left-16 top-1/2 -translate-y-1/2", delay: 0.6  },
+  { icon: "compass",     label: "Future Ventures",         pos: "top-[15%] left-[5%]", delay: 0.7  },
 ];
 
 const HERO_PILLARS = [

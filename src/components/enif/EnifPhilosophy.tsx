@@ -2,15 +2,15 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Waves } from "../reactbits/Waves";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function EnifPhilosophy() {
   return (
     <section id="philosophy" className="py-24 md:py-32 bg-[#04070D] border-b border-[#38BDF8]/10 relative overflow-hidden">
-      {/* React Bits Waves background */}
-      <Waves lineColor="rgba(56, 189, 248, 0.08)" waveSpeedX={0.015} waveAmpY={30} className="opacity-70" />
+      {/* Deep Space Radial Background */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#081A33_0%,#05101F_40%,#04070D_80%)] pointer-events-none z-0" />
+      <div className="absolute bottom-1/3 left-1/3 w-[500px] h-[300px] bg-[#38BDF8]/[0.06] blur-[100px] rounded-full pointer-events-none z-0" />
 
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -20,7 +20,7 @@ export default function EnifPhilosophy() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, ease }}
-              className="font-display text-4xl md:text-5xl text-white mb-6"
+              className="font-display text-4xl md:text-5xl text-white leading-[1.18] tracking-[-0.01em] mb-6"
             >
               Our Philosophy
             </motion.h2>
@@ -29,7 +29,7 @@ export default function EnifPhilosophy() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, ease, delay: 0.1 }}
-              className="text-[#94A3B8] text-lg md:text-xl leading-relaxed mb-8 font-light"
+              className="text-[#94A3B8] text-lg md:text-xl leading-relaxed tracking-[0.01em] mb-8 font-light max-w-xl"
             >
               We believe exceptional software is invisible. The greatest technology removes friction, simplifies complexity and enables people to achieve more with less effort.
             </motion.p>

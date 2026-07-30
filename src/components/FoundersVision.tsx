@@ -38,13 +38,64 @@ export default function FoundersVision() {
           ))}
         </div>
 
+        {/* The Vision Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-start">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.8, ease }}
+            className="lg:col-span-5 flex flex-col gap-6"
+          >
+            <span className="font-mono-ui text-xs text-accent uppercase tracking-[0.25em] block">
+              OUR FOUNDING PHILOSOPHY
+            </span>
+            <h2 className="font-display text-4xl md:text-5xl text-paper-ink leading-tight">
+              Beyond Business. <br /><span className="italic font-normal text-accent">Towards Legacy.</span>
+            </h2>
+            <p className="text-xl text-paper-ink font-light mt-2">
+              BRAHM Global Holdings was established with a different ambition. <br/>
+              Building Institutions That Endure.
+            </p>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.8, ease, delay: 0.2 }}
+            className="lg:col-span-7 flex flex-col gap-6 text-paper-muted font-light leading-relaxed"
+          >
+            <p>
+              BRAHM Global Holdings was founded on the belief that the world's most respected organisations are not defined by the industries they enter, but by the principles upon which they are built.
+            </p>
+            <p>
+              Markets evolve. Technologies advance. Industries are continually transformed. Yet integrity, disciplined leadership, operational excellence and long-term thinking remain the foundations of every enduring enterprise.
+            </p>
+            <p>
+              For this reason, we do not measure success by the number of companies we establish, the speed at which we grow or the trends we pursue. We measure success by the strength of the institutions we build, the people they develop, the industries they strengthen and the value they continue to create over generations.
+            </p>
+            <p>
+              Each company within BRAHM Global Holdings is established with a distinct purpose and independent identity, yet united by a common standard of excellence. Together, they form an organisation designed not simply to adapt to change, but to help shape it.
+            </p>
+            <div className="p-6 my-4 border border-accent/20 bg-accent/5 rounded-xl text-paper-ink">
+              <p className="font-display text-xl leading-relaxed">
+                Our ambition is neither to build the largest group nor the fastest-growing one. It is to build one of lasting significance.
+              </p>
+            </div>
+            <p>
+              One that earns trust through its actions, pursues excellence without compromise and creates enduring value for generations to come. That is the standard by which BRAHM Global Holdings intends to be judged.
+            </p>
+          </motion.div>
+        </div>
+
         {/* Defining Institutional Quote */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.8, ease }}
-          className="max-w-4xl mx-auto text-center flex flex-col items-center gap-6"
+          transition={{ duration: 0.8, ease, delay: 0.3 }}
+          className="max-w-4xl mx-auto text-center flex flex-col items-center gap-6 mt-32"
         >
           <span className="font-mono-ui text-xs text-accent uppercase tracking-[0.25em] block">
             THE INSTITUTIONAL VISION

@@ -146,6 +146,9 @@ export default function About() {
               <p>
                 Every business within the Group contributes to a greater purpose: To build an institution that continues to grow, adapt and lead for generations to come.
               </p>
+              <p>
+                We believe exceptional businesses are created through vision, disciplined execution and the courage to think beyond the next quarter. Our responsibility is not simply to build companies. It is to create enterprises capable of remaining relevant for generations.
+              </p>
             </motion.div>
 
             {/* One Group One Standard Banner */}
