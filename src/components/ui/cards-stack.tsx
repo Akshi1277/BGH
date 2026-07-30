@@ -32,7 +32,7 @@ const CardSticky = React.forwardRef<HTMLDivElement, CardStickyProps>(
   (
     {
       index,
-      incrementY = 10,
+      incrementY = 16,
       incrementZ = 10,
       children,
       className,
@@ -49,7 +49,7 @@ const CardSticky = React.forwardRef<HTMLDivElement, CardStickyProps>(
         ref={ref}
         layout="position"
         style={{
-          top: y,
+          top: `calc(${y}px + env(safe-area-inset-top, 0px))`,
           z,
           backfaceVisibility: "hidden",
           ...style,

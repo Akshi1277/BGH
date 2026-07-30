@@ -168,7 +168,7 @@ export default function About() {
 
           {/* 3-card principles grid */}
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5 mb-10"
+            className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 mb-10"
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-80px" }}

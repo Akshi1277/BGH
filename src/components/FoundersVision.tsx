@@ -18,7 +18,7 @@ export default function FoundersVision() {
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
         
         {/* Qualitative Stats Bar */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-24 divide-y md:divide-y-0 md:divide-x divide-paper-line border-b border-paper-line pb-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-16 md:mb-24 border-b border-paper-line pb-12 md:pb-16">
           {QUALITATIVE_STATS.map((s, i) => (
             <motion.div
               key={s.value}
@@ -26,12 +26,12 @@ export default function FoundersVision() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, ease, delay: i * 0.08 }}
-              className="flex flex-col items-center md:items-start pt-4 md:pt-0 md:pl-6 first:pl-0 text-center md:text-left"
+              className="flex flex-col items-center md:items-start text-center md:text-left"
             >
-              <span className="font-display text-2xl md:text-3xl text-accent font-medium mb-1">
+              <span className="font-display text-xl sm:text-2xl md:text-3xl text-accent font-medium mb-1">
                 {s.value}
               </span>
-              <span className="font-mono-ui text-xs uppercase tracking-[0.18em] text-paper-muted">
+              <span className="font-mono-ui text-[11px] sm:text-xs uppercase tracking-[0.18em] text-paper-muted">
                 {s.label}
               </span>
             </motion.div>

@@ -128,22 +128,25 @@ function getCardProps(
   sideOffset: number
 ): CardProps {
   const cx = -(cardW / 2);
+  const isSmall = typeof window !== "undefined" && window.innerWidth < 640;
+  const sideRotate = isSmall ? 24 : 44;
+  const sideOpacity = isSmall ? 0.35 : 0.55;
   if (offset === 0)
     return { x: cx, rotateY: 0, scale: 1, opacity: 1, zIndex: 10 };
   if (offset === -1)
     return {
       x: cx - sideOffset,
-      rotateY: 44,
+      rotateY: sideRotate,
       scale: 0.8,
-      opacity: 0.55,
+      opacity: sideOpacity,
       zIndex: 5,
     };
   if (offset === 1)
     return {
       x: cx + sideOffset,
-      rotateY: -44,
+      rotateY: -sideRotate,
       scale: 0.8,
-      opacity: 0.55,
+      opacity: sideOpacity,
       zIndex: 5,
     };
   return { x: cx, rotateY: 0, scale: 0.65, opacity: 0, zIndex: 0 };
@@ -157,8 +160,9 @@ export default function Portfolio() {
   useEffect(() => {
     const update = () => {
       const w = window.innerWidth;
-      if (w < 640) setDims({ cardW: 260, sideOffset: 170 });
-      else if (w < 1024) setDims({ cardW: 320, sideOffset: 230 });
+      if (w < 480) setDims({ cardW: Math.max(240, Math.min(w - 48, 280)), sideOffset: Math.max(100, Math.min((w - 48) * 0.48, 140)) });
+      else if (w < 640) setDims({ cardW: 300, sideOffset: 180 });
+      else if (w < 1024) setDims({ cardW: 340, sideOffset: 240 });
       else setDims({ cardW: 400, sideOffset: 310 });
     };
     update();

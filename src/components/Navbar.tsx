@@ -67,13 +67,13 @@ export default function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className={`w-full top-0 fixed z-50 transition-all duration-300 ${
+        className={`w-full top-0 fixed z-50 transition-all duration-300 pt-[env(safe-area-inset-top,0px)] ${
           scrolled
             ? "bg-[#0A0D0B]/90 backdrop-blur-md border-b border-white/10 shadow-lg"
             : "bg-transparent border-b border-transparent"
         }`}
       >
-        <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop flex justify-between items-center h-20">
+        <div className="max-w-[var(--spacing-container-max)] mx-auto px-4 sm:px-margin-mobile md:px-margin-desktop flex justify-between items-center h-20">
           <Wordmark />
 
           <div className="hidden md:flex items-center gap-8">
@@ -81,7 +81,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-label font-mono-ui uppercase text-white/70 hover:text-[#34D399] transition-colors"
+                className="text-label font-mono-ui uppercase text-white/70 hover:text-[#34D399] transition-colors py-2"
               >
                 {link.label}
               </Link>
@@ -98,7 +98,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setOpen(true)}
-            className="md:hidden text-[#F4F4F0] p-2 -mr-2"
+            className="md:hidden text-[#F4F4F0] p-2 -mr-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg hover:bg-white/5 active:bg-white/10"
             aria-label="Open menu"
           >
             <Icon name="menu" size={24} />
@@ -113,19 +113,19 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[60] bg-[#0A0D0B] text-[#F4F4F0] flex flex-col md:hidden"
+            className="fixed inset-0 z-[60] bg-[#0A0D0B] text-[#F4F4F0] flex flex-col md:hidden pt-[env(safe-area-inset-top,0px)] pb-[env(safe-area-inset-bottom,0px)] overflow-y-auto"
           >
-            <div className="flex justify-between items-center h-20 px-margin-mobile shrink-0 border-b border-white/10">
+            <div className="flex justify-between items-center h-20 px-4 sm:px-margin-mobile shrink-0 border-b border-white/10">
               <Wordmark />
               <button
                 onClick={() => setOpen(false)}
-                className="text-[#F4F4F0] p-2 -mr-2"
+                className="text-[#F4F4F0] p-2 -mr-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg hover:bg-white/5 active:bg-white/10"
                 aria-label="Close menu"
               >
                 <Icon name="close" size={24} />
               </button>
             </div>
-            <div className="flex flex-col justify-center gap-8 px-margin-mobile flex-1">
+            <div className="flex flex-col justify-center gap-6 sm:gap-8 px-4 sm:px-margin-mobile flex-1 py-8">
               {LINKS.map((link, i) => (
                 <motion.div
                   key={link.href}
@@ -136,23 +136,23 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="group flex items-baseline gap-4 py-2 border-b border-white/10"
+                    className="group flex items-baseline gap-4 py-3 border-b border-white/10 active:text-[#34D399]"
                   >
                     <span className="font-mono-ui text-xs tracking-widest text-[#34D399]">
                       0{i + 1}
                     </span>
-                    <span className="font-display text-3xl text-[#F4F4F0] group-hover:text-[#34D399] transition-colors">
+                    <span className="font-display text-2xl sm:text-3xl text-[#F4F4F0] group-hover:text-[#34D399] transition-colors">
                       {link.label}
                     </span>
                   </Link>
                 </motion.div>
               ))}
             </div>
-            <div className="p-margin-mobile pb-10 shrink-0">
+            <div className="p-4 sm:p-margin-mobile pb-[max(2.5rem,env(safe-area-inset-bottom))] shrink-0">
               <StarButton
                 href="/enif"
                 onClick={() => setOpen(false)}
-                className="w-full font-mono-ui uppercase tracking-[0.1em] font-bold py-4 h-auto"
+                className="w-full font-mono-ui uppercase tracking-[0.1em] font-bold py-4 h-auto justify-center"
               >
                 ENIF
               </StarButton>

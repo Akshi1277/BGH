@@ -120,9 +120,9 @@ export default function Footer({ theme }: FooterProps) {
         </div>
 
         {/* Links Columns */}
-        <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-10">
+        <div className="md:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10">
           {COLUMNS.map((col) => (
-            <div key={col.heading} className="flex flex-col gap-4">
+            <div key={col.heading} className="flex flex-col gap-3 sm:gap-4">
               <span
                 className={`font-mono-ui text-label uppercase tracking-[0.15em] mb-1 font-bold ${
                   isDark ? "text-[#38BDF8]" : "text-accent"
@@ -134,7 +134,7 @@ export default function Footer({ theme }: FooterProps) {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className={`text-sm inline-block transition-all duration-200 hover:translate-x-0.5 ${
+                  className={`text-sm inline-block py-1 transition-all duration-200 hover:translate-x-0.5 ${
                     isDark
                       ? "text-[#94A3B8] hover:text-[#38BDF8]"
                       : "text-ink-muted hover:text-accent"

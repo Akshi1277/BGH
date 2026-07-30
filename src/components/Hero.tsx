@@ -136,7 +136,7 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-[#0A0D0B] text-[#F4F4F0] pt-28 pb-16 md:pt-36 md:pb-20 border-b border-white/10"
+      className="relative min-h-[100svh] min-h-screen flex flex-col justify-between overflow-hidden bg-[#0A0D0B] text-[#F4F4F0] pt-28 pb-16 md:pt-36 md:pb-20 border-b border-white/10"
     >
       {/* ── Background layer ─────────────────────────────────────── */}
       <div
@@ -157,7 +157,7 @@ export default function Hero() {
       </div>
 
       {/* ── Main grid ────────────────────────────────────────────── */}
-      <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center my-auto">
+      <div className="max-w-[var(--spacing-container-max)] mx-auto px-4 sm:px-margin-mobile md:px-margin-desktop relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center my-auto">
 
         {/* Left column */}
         <div className="flex flex-col gap-6">
@@ -166,15 +166,15 @@ export default function Hero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease }}
-            className="inline-flex items-center gap-2 text-eyebrow font-mono-ui text-[#34D399] tracking-[0.25em] uppercase"
+            className="inline-flex items-center gap-2 text-eyebrow font-mono-ui text-[#34D399] tracking-[0.2em] sm:tracking-[0.25em] uppercase flex-wrap"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#34D399]" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#34D399] shrink-0" />
             <span>BRAHM GLOBAL HOLDINGS • LONDON</span>
           </motion.div>
 
           {/* Main Headline */}
           <motion.h1
-            className="font-display text-hero text-[#F4F4F0] max-w-2xl leading-[1.1]"
+            className="font-display text-hero text-[#F4F4F0] max-w-2xl leading-[1.1] min-w-0"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease, delay: 0.1 }}
@@ -202,7 +202,7 @@ export default function Hero() {
 
           {/* Subhead & Paragraph */}
           <motion.p
-            className="text-lg md:text-xl text-[#34D399] font-display font-light"
+            className="text-base sm:text-lg md:text-xl text-[#34D399] font-display font-light"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease, delay: 0.18 }}
@@ -221,7 +221,7 @@ export default function Hero() {
 
           {/* Quote line */}
           <motion.p
-            className="text-sm text-white/50 italic border-l border-[#34D399]/40 pl-4 py-1 max-w-lg"
+            className="text-xs sm:text-sm text-white/50 italic border-l border-[#34D399]/40 pl-4 py-1 max-w-lg"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease, delay: 0.3 }}
@@ -238,7 +238,7 @@ export default function Hero() {
           >
             <Link
               href="/#group"
-              className="inline-flex items-center gap-2 bg-[#1F5C43] text-white px-8 py-4 rounded-full text-label font-mono-ui uppercase tracking-[0.12em] font-bold hover:bg-[#2A7A5A] transition-colors duration-300 shadow-[0_0_20px_rgba(31,92,67,0.4)] group"
+              className="inline-flex items-center gap-2 bg-[#1F5C43] text-white px-7 sm:px-8 py-3.5 sm:py-4 rounded-full text-label font-mono-ui uppercase tracking-[0.12em] font-bold hover:bg-[#2A7A5A] transition-colors duration-300 shadow-[0_0_20px_rgba(31,92,67,0.4)] group min-h-[44px]"
             >
               Explore the Group
               <Icon
@@ -247,6 +247,27 @@ export default function Hero() {
                 className="group-hover:translate-x-1 transition-transform duration-200"
               />
             </Link>
+          </motion.div>
+
+          {/* Mobile Category Badges Grid (< lg screens) */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.45 }}
+            className="lg:hidden mt-6 pt-6 border-t border-white/10 flex flex-wrap gap-2"
+          >
+            <span className="w-full text-[10px] font-mono-ui text-[#34D399] uppercase tracking-widest mb-1 font-semibold">
+              SECTORS & VENTURES
+            </span>
+            {CATEGORIES.map((c) => (
+              <div
+                key={c.label}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/15 bg-[#121815]/90 text-[10px] font-mono-ui uppercase tracking-wider text-white/80"
+              >
+                <Icon name={c.icon} size={12} className="text-[#34D399]" />
+                <span>{c.label}</span>
+              </div>
+            ))}
           </motion.div>
         </div>
 

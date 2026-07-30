@@ -48,19 +48,19 @@ export default function EnifMethod() {
             />
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-8 gap-8 md:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-6 sm:gap-8 md:gap-4">
             {STEPS.map((step, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, ease, delay: i * 0.1 }}
-                className="relative flex flex-col items-center text-center group"
+                transition={{ duration: 0.8, ease, delay: i * 0.08 }}
+                className="relative flex flex-col items-center text-center group p-3 rounded-xl border border-white/5 bg-white/[0.02] sm:border-0 sm:bg-transparent"
               >
-                <div className="w-4 h-4 rounded-full bg-[#04070D] border-2 border-[#38BDF8]/50 z-10 mb-4 group-hover:bg-[#38BDF8] group-hover:border-[#38BDF8] transition-colors duration-300 group-hover:shadow-[0_0_15px_rgba(56,189,248,0.5)]" />
-                <span className="text-[#38BDF8] font-mono-ui text-xs mb-2 opacity-60">0{i + 1}</span>
-                <span className="text-white font-medium text-sm md:text-base">{step}</span>
+                <div className="w-4 h-4 rounded-full bg-[#04070D] border-2 border-[#38BDF8]/50 z-10 mb-3 group-hover:bg-[#38BDF8] group-hover:border-[#38BDF8] transition-colors duration-300 group-hover:shadow-[0_0_15px_rgba(56,189,248,0.5)]" />
+                <span className="text-[#38BDF8] font-mono-ui text-[11px] mb-1 opacity-70 font-semibold">0{i + 1}</span>
+                <span className="text-white font-medium text-xs sm:text-sm md:text-base leading-snug">{step}</span>
               </motion.div>
             ))}
           </div>

@@ -10,7 +10,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function EnifHero() {
   return (
-    <section className="relative overflow-hidden bg-[#04070D] text-[#F8FAFC] pt-32 pb-20 md:pt-40 md:pb-28 min-h-[90vh] flex items-center border-b border-[#38BDF8]/20">
+    <section className="relative overflow-hidden bg-[#04070D] text-[#F8FAFC] pt-28 pb-16 md:pt-40 md:pb-28 min-h-[90svh] min-h-[90vh] flex items-center border-b border-[#38BDF8]/20">
       {/* Dark Mesh Shader Background - Color Tuned to ENIF Logo Palette */}
       <div className="absolute inset-0 z-0 opacity-80">
         <MeshGradient
@@ -39,7 +39,7 @@ export default function EnifHero() {
         }}
       />
 
-      <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
 
         {/* ── Centered Hero Content ── */}
         <div className="lg:col-span-12 flex flex-col items-center justify-center text-center">
@@ -49,9 +49,9 @@ export default function EnifHero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease }}
-            className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-[#38BDF8]/20 bg-[#38BDF8]/[0.05] backdrop-blur-md mb-10 shadow-[0_0_15px_rgba(56,189,248,0.03)]"
+            className="inline-flex items-center gap-3 px-4 sm:px-5 py-2 rounded-full border border-[#38BDF8]/20 bg-[#38BDF8]/[0.05] backdrop-blur-md mb-8 sm:mb-10 shadow-[0_0_15px_rgba(56,189,248,0.03)]"
           >
-            <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.25em] text-[#38BDF8]/90 font-medium">
+            <span className="font-mono text-[9px] sm:text-[10px] md:text-[11px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#38BDF8]/90 font-medium">
               ENIF Technologies — A BRAHM Global Holdings Company
             </span>
           </motion.div>

@@ -37,7 +37,7 @@ export const LumaBar = ({ className }: { className?: string }) => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 w-full py-3 transition-colors duration-500 pointer-events-auto",
+        "fixed top-0 left-0 right-0 z-50 w-full py-3 pt-[calc(0.75rem+env(safe-area-inset-top,0px))] transition-colors duration-500 pointer-events-auto",
         className
       )}
     >
@@ -51,15 +51,15 @@ export const LumaBar = ({ className }: { className?: string }) => {
         )}
       />
 
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-12 flex items-center justify-between">
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 md:px-12 flex items-center justify-between">
         {/* Left: ENIF Logo (High-Res & Crisp Rendering) */}
         <Link href="/enif" className="flex items-center group select-none">
-          <div className="relative w-12 h-12 md:w-16 md:h-16 transition-transform duration-300 group-hover:scale-105">
+          <div className="relative w-10 h-10 md:w-16 md:h-16 transition-transform duration-300 group-hover:scale-105">
             <Image
               src="/image copy 7.png"
               alt="ENIF Logo"
               fill
-              sizes="300px"
+              sizes="(max-width: 768px) 40px, 64px"
               quality={100}
               className="object-contain drop-shadow-[0_0_15px_rgba(56,189,248,0.3)]"
               priority
@@ -110,7 +110,7 @@ export const LumaBar = ({ className }: { className?: string }) => {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg text-[#94A3B8] hover:text-[#38BDF8] hover:bg-white/10 transition-colors"
+            className="md:hidden p-2 rounded-lg text-[#94A3B8] hover:text-[#38BDF8] hover:bg-white/10 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
             aria-label="Toggle navigation menu"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -132,12 +132,12 @@ export const LumaBar = ({ className }: { className?: string }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="relative z-10 md:hidden mt-2 p-4 rounded-2xl bg-[#04070D]/95 border border-[#38BDF8]/30 backdrop-blur-2xl shadow-2xl flex flex-col gap-2 mx-4"
+            className="relative z-10 md:hidden mt-2 p-4 rounded-2xl bg-[#04070D]/95 border border-[#38BDF8]/30 backdrop-blur-2xl shadow-2xl flex flex-col gap-2 mx-4 max-h-[calc(100vh-6rem)] overflow-y-auto"
           >
             <Link
               href="/"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-4 py-2.5 rounded-xl text-xs font-mono-ui uppercase tracking-[0.14em] font-bold text-[#F4F4F0] bg-[#0A0D0B] border border-[#34D399]/40 hover:bg-[#141A16] transition-colors flex items-center gap-2"
+              className="px-4 py-3 rounded-xl text-xs font-mono-ui uppercase tracking-[0.14em] font-bold text-[#F4F4F0] bg-[#0A0D0B] border border-[#34D399]/40 hover:bg-[#141A16] transition-colors flex items-center justify-center gap-2 min-h-[44px]"
             >
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-[#34D399]">
                 <path d="M19 12H5M12 19l-7-7 7-7" />
@@ -151,7 +151,7 @@ export const LumaBar = ({ className }: { className?: string }) => {
                 onClick={() => {
                   setMobileMenuOpen(false);
                 }}
-                className="px-4 py-2.5 rounded-xl text-sm text-[#94A3B8] hover:text-white hover:bg-[#38BDF8]/10 transition-colors font-medium"
+                className="px-4 py-3 rounded-xl text-sm text-[#94A3B8] hover:text-white hover:bg-[#38BDF8]/10 transition-colors font-medium min-h-[44px] flex items-center"
               >
                 {item.name}
               </a>

@@ -181,26 +181,26 @@ export default function EnifWhy() {
                 <CardSticky
                   key={card.id}
                   index={index + 2}
-                  incrementY={30}
+                  incrementY={18}
                   incrementZ={10}
-                  className="rounded-3xl border border-[#38BDF8]/20 bg-[#0A101F]/95 p-8 shadow-[0_10px_40px_rgba(0,0,0,0.5)] backdrop-blur-xl w-full"
+                  className="rounded-2xl sm:rounded-3xl border border-[#38BDF8]/20 bg-[#0A101F]/95 p-5 sm:p-8 shadow-[0_10px_40px_rgba(0,0,0,0.5)] backdrop-blur-xl w-full"
                 >
-                  <div className="flex flex-col gap-8 items-start">
-                    <div className="flex items-center justify-between gap-4 w-full mb-2">
+                  <div className="flex flex-col gap-6 sm:gap-8 items-start">
+                    <div className="flex items-center justify-between gap-4 w-full mb-1 sm:mb-2">
                       <div className="px-3 py-1 bg-[#38BDF8]/10 text-[#38BDF8] border border-[#38BDF8]/20 rounded-full font-mono text-[10px] tracking-widest uppercase">
                         {card.tag}
                       </div>
-                      <h3 className="text-3xl font-bold text-[#38BDF8] opacity-50">
+                      <h3 className="text-2xl sm:text-3xl font-bold text-[#38BDF8] opacity-50">
                         {String(index + 1).padStart(2, "0")}
                       </h3>
                     </div>
                     
-                    <div>
-                      <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-white mb-4">
+                    <div className="w-full">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-white mb-3 sm:mb-4">
                         {card.title}
                       </h3>
 
-                      <p className="text-[#94A3B8] text-sm md:text-base leading-relaxed mb-8">
+                      <p className="text-[#94A3B8] text-xs sm:text-sm md:text-base leading-relaxed mb-6 sm:mb-8">
                         {card.description}
                       </p>
 
