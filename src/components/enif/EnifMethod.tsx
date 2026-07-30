@@ -18,9 +18,9 @@ const STEPS = [
 
 export default function EnifMethod() {
   return (
-    <section id="method" className="py-24 md:py-32 bg-[#060C17] border-b border-[#38BDF8]/10 relative overflow-hidden">
-      {/* Deep Space Radial Background */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#081A33_0%,#060C17_50%,#04070D_100%)] pointer-events-none z-0" />
+    <section id="method" className="py-24 md:py-32 bg-[#02040A] border-b border-[#38BDF8]/10 relative overflow-hidden">
+      {/* Dark Theme B Ambient Overlay */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#050D1A_0%,#02040A_60%,#010206_100%)] pointer-events-none z-0" />
       <div className="absolute top-1/2 right-1/4 w-[500px] h-[300px] bg-[#0EA5E9]/[0.04] blur-[100px] rounded-full pointer-events-none z-0" />
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop">
         <div className="mb-16 md:mb-24">

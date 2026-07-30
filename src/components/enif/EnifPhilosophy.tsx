@@ -7,9 +7,9 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function EnifPhilosophy() {
   return (
-    <section id="philosophy" className="py-24 md:py-32 bg-[#04070D] border-b border-[#38BDF8]/10 relative overflow-hidden">
-      {/* Deep Space Radial Background */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#081A33_0%,#05101F_40%,#04070D_80%)] pointer-events-none z-0" />
+    <section id="philosophy" className="py-24 md:py-32 bg-[#02040A] border-b border-[#38BDF8]/10 relative overflow-hidden">
+      {/* Dark Theme B Ambient Overlay */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#050D1A_0%,#02040A_60%,#010206_100%)] pointer-events-none z-0" />
       <div className="absolute bottom-1/3 left-1/3 w-[500px] h-[300px] bg-[#38BDF8]/[0.06] blur-[100px] rounded-full pointer-events-none z-0" />
 
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">

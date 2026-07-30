@@ -8,10 +8,10 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function EnifCapabilities() {
   return (
-    <section id="capabilities" className="py-24 md:py-32 bg-[#0A101F] text-[#F8FAFC] border-b border-[#38BDF8]/10 relative overflow-hidden">
-      {/* Seamless Camouflage Gradient Blend & Ambient Space Radial Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,#0D1B36_0%,#0A101F_40%,#04070D_80%)] pointer-events-none z-0" />
-      <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-[#081A33] to-transparent pointer-events-none z-0" />
+    <section id="capabilities" className="py-24 md:py-32 bg-[#02040A] text-[#F8FAFC] border-b border-[#38BDF8]/10 relative overflow-hidden">
+      {/* Dark Theme B Ambient Overlay & Transition */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#050D1A_0%,#02040A_60%,#010206_100%)] pointer-events-none z-0" />
+      <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-[#04070D] to-transparent pointer-events-none z-0" />
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-[#38BDF8]/[0.05] blur-[120px] rounded-full pointer-events-none z-0" />
 
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">

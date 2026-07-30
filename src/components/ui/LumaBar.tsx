@@ -37,7 +37,7 @@ export const LumaBar = ({ className }: { className?: string }) => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 w-full py-4 transition-colors duration-500 pointer-events-auto",
+        "fixed top-0 left-0 right-0 z-50 w-full py-3 transition-colors duration-500 pointer-events-auto",
         className
       )}
     >
@@ -52,15 +52,16 @@ export const LumaBar = ({ className }: { className?: string }) => {
       />
 
       <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-12 flex items-center justify-between">
-        {/* Left: Scaled Big ENIF Logo (Clean & Standalone) */}
+        {/* Left: ENIF Logo (High-Res & Crisp Rendering) */}
         <Link href="/enif" className="flex items-center group select-none">
-          <div className="relative w-12 h-12 md:w-14 md:h-14 transition-transform duration-300 group-hover:scale-105">
+          <div className="relative w-12 h-12 md:w-16 md:h-16 transition-transform duration-300 group-hover:scale-105">
             <Image
-              src="/eniflogo.png"
+              src="/image copy 7.png"
               alt="ENIF Logo"
               fill
-              sizes="56px"
-              className="object-contain drop-shadow-[0_0_15px_rgba(56,189,248,0.25)]"
+              sizes="300px"
+              quality={100}
+              className="object-contain drop-shadow-[0_0_15px_rgba(56,189,248,0.3)]"
               priority
             />
           </div>
@@ -148,7 +149,6 @@ export const LumaBar = ({ className }: { className?: string }) => {
                 key={item.name}
                 href={item.href}
                 onClick={() => {
-                  setActiveTab(item.name);
                   setMobileMenuOpen(false);
                 }}
                 className="px-4 py-2.5 rounded-xl text-sm text-[#94A3B8] hover:text-white hover:bg-[#38BDF8]/10 transition-colors font-medium"

@@ -22,9 +22,7 @@ export default function EnifPage() {
       <LumaBar />
       <EnifHero />
       <EnifCapabilities />
-
       <EnifWhy />
-      <EnifMethod />
       <EnifPhilosophy />
       <EnifTech />
       <EnifCTA />

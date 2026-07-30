@@ -23,9 +23,9 @@ const TECHNOLOGIES = [
 
 export default function EnifTech() {
   return (
-    <section id="tech" className="py-24 md:py-32 bg-[#0B1221] border-b border-[#38BDF8]/10 overflow-hidden relative">
-      {/* Deep Space Radial Background */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#081A33_0%,#0A101F_40%,#04070D_100%)] pointer-events-none z-0" />
+    <section id="tech" className="py-24 md:py-32 bg-[#04070D] border-b border-[#38BDF8]/10 overflow-hidden relative">
+      {/* Deep Space Radial Background - Theme A */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#081A33_0%,#05101F_40%,#04070D_80%)] pointer-events-none z-0" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-[#38BDF8]/[0.07] blur-[120px] rounded-full pointer-events-none z-0" />
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
         <div className="mb-12 md:mb-16 max-w-2xl text-center mx-auto">

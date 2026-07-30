@@ -10,23 +10,23 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function EnifHero() {
   return (
-    <section className="relative overflow-hidden bg-[#04070D] text-[#F8FAFC] pt-28 pb-20 md:pt-36 md:pb-28 min-h-[90vh] flex items-center border-b border-[#38BDF8]/20">
-      {/* Dark Mesh Shader Background */}
-      <div className="absolute inset-0 z-0 opacity-70">
+    <section className="relative overflow-hidden bg-[#04070D] text-[#F8FAFC] pt-32 pb-20 md:pt-40 md:pb-28 min-h-[90vh] flex items-center border-b border-[#38BDF8]/20">
+      {/* Dark Mesh Shader Background - Color Tuned to ENIF Logo Palette */}
+      <div className="absolute inset-0 z-0 opacity-80">
         <MeshGradient
           className="absolute inset-0 w-full h-full"
-          colors={["#02040A", "#05101F", "#081A33", "#0C2547", "#05101F"]}
+          colors={["#020612", "#051329", "#0A284D", "#0E3E75", "#030B1C"]}
           speed={0.3}
         />
         <MeshGradient
-          className="absolute inset-0 w-full h-full opacity-30 mix-blend-screen pointer-events-none"
-          colors={["#04070D", "#0A1F3D", "#38BDF8", "#0EA5E9"]}
+          className="absolute inset-0 w-full h-full opacity-40 mix-blend-screen pointer-events-none"
+          colors={["#030A1D", "#0284C7", "#38BDF8", "#00D2FF", "#0B2B52"]}
           speed={0.25}
         />
       </div>
 
       {/* Smooth Bottom Blend Transition Layer */}
-      <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-b from-transparent via-[#05101F]/80 to-[#081A33] pointer-events-none z-[1]" />
+      <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-b from-transparent via-[#051329]/80 to-[#04070D] pointer-events-none z-[1]" />
 
       {/* Structural grid */}
       <div
