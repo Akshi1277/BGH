@@ -1,76 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 import { MeshGradient } from "@paper-design/shaders-react";
 import Icon from "../Icon";
 import { StarButton } from "../ui/StarButton";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
-const DECK_TABS = [
-  {
-    id: "architecture",
-    label: "Cloud Architecture",
-    tag: "v4.9.2 Active",
-    icon: "cube",
-    title: "Distributed Enterprise Infrastructure",
-    description: "Multi-region, zero-downtime microservices built for extreme throughput and resilience.",
-    metrics: [
-      { label: "Uptime SLA", value: "99.999%" },
-      { label: "Avg Latency", value: "< 8.4ms" },
-      { label: "Global Nodes", value: "142 Active" },
-    ],
-    codeSnippet: `// ENIF Edge Cluster Config
-cluster.deploy({
-  region: "global-edge",
-  failover: "zero-data-loss",
-  encryption: "AES-256-GCM"
-});`,
-  },
-  {
-    id: "ai",
-    label: "AI Systems",
-    tag: "LLM Pipeline",
-    icon: "cpu",
-    title: "Practical AI & Autonomous Workflows",
-    description: "Enterprise-grade intelligence pipelines for automated decisions, data extraction, and predictive ops.",
-    metrics: [
-      { label: "Inference Speed", value: "1.2k tok/s" },
-      { label: "Accuracy Score", value: "99.8%" },
-      { label: "Models Scaled", value: "34 Live" },
-    ],
-    codeSnippet: `// Autonomous Agent Pipeline
-agent.orchestrate({
-  model: "enif-neural-v2",
-  reasoning: "chain-of-thought",
-  verification: "strict"
-});`,
-  },
-  {
-    id: "security",
-    label: "Enterprise Security",
-    tag: "SOC2 Type II",
-    icon: "shield",
-    title: "Bank-Grade Security & Governance",
-    description: "Strict isolation, continuous vulnerability auditing, and immutable telemetry for enterprise compliance.",
-    metrics: [
-      { label: "Threat Guard", value: "Real-time" },
-      { label: "Compliance", value: "ISO 27001" },
-      { label: "Audit Trails", value: "Immutable" },
-    ],
-    codeSnippet: `// Governance Verification
-security.verifyPolicy({
-  zeroTrust: true,
-  auditLog: "cryptographic-ledger"
-});`,
-  },
-];
-
 export default function EnifHero() {
-  const [activeTabId, setActiveTabId] = useState("architecture");
-  const activeTab = DECK_TABS.find((t) => t.id === activeTabId) || DECK_TABS[0];
-
   return (
     <section className="relative overflow-hidden bg-[#04070D] text-[#F8FAFC] pt-28 pb-20 md:pt-36 md:pb-28 border-b border-[#38BDF8]/10 min-h-[90vh] flex items-center">
       {/* Dark Mesh Shader Background */}
@@ -84,7 +22,6 @@ export default function EnifHero() {
           className="absolute inset-0 w-full h-full opacity-30 mix-blend-screen pointer-events-none"
           colors={["#04070D", "#0A1F3D", "#38BDF8", "#0EA5E9"]}
           speed={0.1}
-          wireframe={true}
         />
       </div>
 
