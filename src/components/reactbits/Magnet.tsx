@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, ReactNode } from "react";
+import React, { useRef, ReactNode, useCallback } from "react";
 
 interface MagnetProps {
   children: ReactNode;
@@ -17,31 +17,46 @@ export function Magnet({
   magnetStrength = 2,
   className = "",
 }: MagnetProps) {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
   const magnetRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number | null>(null);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (disabled || !magnetRef.current) return;
 
-    const { left, top, width, height } = magnetRef.current.getBoundingClientRect();
-    const centerX = left + width / 2;
-    const centerY = top + height / 2;
+    const x = e.clientX;
+    const y = e.clientY;
 
-    const distX = Math.abs(centerX - e.clientX);
-    const distY = Math.abs(centerY - e.clientY);
+    if (rafRef.current !== null) return; // already have a frame queued
 
-    if (distX < width / 2 + padding && distY < height / 2 + padding) {
-      const offsetX = (e.clientX - centerX) / magnetStrength;
-      const offsetY = (e.clientY - centerY) / magnetStrength;
-      setPosition({ x: offsetX, y: offsetY });
-    } else {
-      setPosition({ x: 0, y: 0 });
+    rafRef.current = requestAnimationFrame(() => {
+      rafRef.current = null;
+      if (!magnetRef.current) return;
+      const { left, top, width, height } = magnetRef.current.getBoundingClientRect();
+      const centerX = left + width / 2;
+      const centerY = top + height / 2;
+
+      const distX = Math.abs(centerX - x);
+      const distY = Math.abs(centerY - y);
+
+      if (distX < width / 2 + padding && distY < height / 2 + padding) {
+        const offsetX = (x - centerX) / magnetStrength;
+        const offsetY = (y - centerY) / magnetStrength;
+        magnetRef.current.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 0)`;
+      } else {
+        magnetRef.current.style.transform = `translate3d(0px, 0px, 0)`;
+      }
+    });
+  }, [disabled, magnetStrength, padding]);
+
+  const handleMouseLeave = useCallback(() => {
+    if (rafRef.current !== null) {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
     }
-  };
-
-  const handleMouseLeave = () => {
-    setPosition({ x: 0, y: 0 });
-  };
+    if (magnetRef.current) {
+      magnetRef.current.style.transform = `translate3d(0px, 0px, 0)`;
+    }
+  }, []);
 
   return (
     <div
@@ -49,9 +64,7 @@ export function Magnet({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       className={`inline-block transition-transform duration-200 ease-out ${className}`}
-      style={{
-        transform: `translate3d(${position.x}px, ${position.y}px, 0)`,
-      }}
+      style={{ willChange: 'transform' }}
     >
       {children}
     </div>

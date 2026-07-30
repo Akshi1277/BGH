@@ -2,7 +2,6 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Magnet } from "../reactbits/Magnet";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -55,12 +54,9 @@ export default function EnifTech() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, ease, delay: i * 0.05 }}
+              className="px-6 py-3 rounded-full border border-white/10 bg-white/[0.03] text-[#F8FAFC]/90 text-sm md:text-base font-medium shadow-sm hover:border-[#38BDF8]/50 hover:bg-[#38BDF8]/10 hover:text-[#38BDF8] hover:shadow-[0_0_20px_rgba(56,189,248,0.3)] transition-all cursor-pointer"
             >
-              <Magnet magnetStrength={3} padding={60}>
-                <div className="px-6 py-3 rounded-full border border-white/10 bg-white/[0.03] text-[#F8FAFC]/90 text-sm md:text-base font-medium shadow-sm hover:border-[#38BDF8]/50 hover:bg-[#38BDF8]/10 hover:text-[#38BDF8] hover:shadow-[0_0_20px_rgba(56,189,248,0.3)] transition-all cursor-pointer">
-                  {tech}
-                </div>
-              </Magnet>
+              {tech}
             </motion.div>
           ))}
         </div>

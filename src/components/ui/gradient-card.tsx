@@ -1,5 +1,5 @@
 'use client'
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 
 export interface GradientCardProps {
@@ -27,33 +27,36 @@ export const GradientCard = ({
 }: GradientCardProps = {}) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
-  const [, setMousePosition] = useState({ x: 0, y: 0 });
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
+  const rafRef = useRef<number | null>(null);
 
-  // Handle mouse movement for 3D effect
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (cardRef.current) {
+  // rAF-throttled mouse handler: reads DOM rect only once per animation frame
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const cx = e.clientX;
+    const cy = e.clientY;
+    if (rafRef.current !== null) return;
+    rafRef.current = requestAnimationFrame(() => {
+      rafRef.current = null;
+      if (!cardRef.current) return;
       const rect = cardRef.current.getBoundingClientRect();
-
-      // Calculate mouse position relative to card center
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-
-      setMousePosition({ x, y });
-
-      // Calculate rotation (limited range for subtle effect)
-      const rotateX = -(y / rect.height) * 5; // Max 5 degrees rotation
-      const rotateY = (x / rect.width) * 5; // Max 5 degrees rotation
-
+      const x = cx - rect.left - rect.width / 2;
+      const y = cy - rect.top - rect.height / 2;
+      const rotateX = -(y / rect.height) * 5;
+      const rotateY = (x / rect.width) * 5;
       setRotation({ x: rotateX, y: rotateY });
-    }
-  };
+    });
+  }, []);
 
   // Reset rotation when not hovering
-  const handleMouseLeave = () => {
+  const handleMouseLeave = useCallback(() => {
+    if (rafRef.current !== null) {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
+    }
     setIsHovered(false);
     setRotation({ x: 0, y: 0 });
-  };
+  }, []);
 
   return (
     <div className={`w-full flex items-center justify-center ${className}`}>
@@ -84,56 +87,38 @@ export const GradientCard = ({
         onMouseLeave={handleMouseLeave}
         onMouseMove={handleMouseMove}
       >
-        {/* Subtle glass reflection overlay */}
-        <motion.div
-          className="absolute inset-0 z-35 pointer-events-none"
+        {/* Subtle glass reflection overlay — plain div, opacity via CSS transition */}
+        <div
+          className="absolute inset-0 z-[35] pointer-events-none transition-opacity duration-400"
           style={{
             background: "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 80%, rgba(255,255,255,0.05) 100%)",
             backdropFilter: "blur(2px)",
-          }}
-          animate={{
             opacity: isHovered ? 0.7 : 0.5,
-            rotateX: -rotation.x * 0.2,
-            rotateY: -rotation.y * 0.2,
-            z: 1,
-          }}
-          transition={{
-            duration: 0.4,
-            ease: "easeOut",
           }}
         />
 
-        {/* Dark background with black gradient like in the image */}
-        <motion.div
+        {/* Dark background — static, plain div */}
+        <div
           className="absolute inset-0 z-0"
           style={{
             background: "linear-gradient(180deg, #000000 0%, #000000 70%)",
           }}
-          animate={{
-            z: -1,
-          }}
         />
 
-        {/* Noise texture overlay */}
-        <motion.div
+        {/* Noise texture overlay — static, plain div */}
+        <div
           className="absolute inset-0 opacity-30 mix-blend-overlay z-10"
           style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
           }}
-          animate={{
-            z: -0.5,
-          }}
         />
 
-        {/* Subtle finger smudge texture for realism */}
-        <motion.div
-          className="absolute inset-0 opacity-10 mix-blend-soft-light z-11 pointer-events-none"
+        {/* Subtle finger smudge texture — static, plain div */}
+        <div
+          className="absolute inset-0 opacity-10 mix-blend-soft-light z-[11] pointer-events-none"
           style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='smudge'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.01' numOctaves='3' seed='5' stitchTiles='stitch'/%3E%3CfeGaussianBlur stdDeviation='10'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23smudge)'/%3E%3C/svg%3E")`,
             backdropFilter: "blur(1px)",
-          }}
-          animate={{
-            z: -0.25,
           }}
         />
 

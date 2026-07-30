@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useRef, useCallback } from "react";
 import { cn } from "@/lib/utils";
 
 export const SpotlightCard = ({
@@ -10,43 +10,44 @@ export const SpotlightCard = ({
   className?: string;
 }) => {
   const divRef = useRef<HTMLDivElement>(null);
-  const [isFocused, setIsFocused] = useState(false);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [opacity, setOpacity] = useState(0);
+  const spotlightRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number | null>(null);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!divRef.current || isFocused) return;
+  // Throttle via rAF — only one update per frame regardless of mouse speed
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (!divRef.current || !spotlightRef.current) return;
 
-    const div = divRef.current;
-    const rect = div.getBoundingClientRect();
+    const x = e.clientX;
+    const y = e.clientY;
 
-    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-  };
+    if (rafRef.current !== null) return; // already scheduled this frame
 
-  const handleFocus = () => {
-    setIsFocused(true);
-    setOpacity(1);
-  };
+    rafRef.current = requestAnimationFrame(() => {
+      rafRef.current = null;
+      if (!divRef.current || !spotlightRef.current) return;
+      const rect = divRef.current.getBoundingClientRect();
+      const posX = x - rect.left;
+      const posY = y - rect.top;
+      spotlightRef.current.style.background = `radial-gradient(500px circle at ${posX}px ${posY}px, rgba(56, 189, 248, 0.25), transparent 60%)`;
+    });
+  }, []);
 
-  const handleBlur = () => {
-    setIsFocused(false);
-    setOpacity(0);
-  };
+  const handleMouseEnter = useCallback(() => {
+    if (spotlightRef.current) spotlightRef.current.style.opacity = "1";
+  }, []);
 
-  const handleMouseEnter = () => {
-    setOpacity(1);
-  };
-
-  const handleMouseLeave = () => {
-    setOpacity(0);
-  };
+  const handleMouseLeave = useCallback(() => {
+    if (spotlightRef.current) spotlightRef.current.style.opacity = "0";
+    if (rafRef.current !== null) {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
+    }
+  }, []);
 
   return (
     <div
       ref={divRef}
       onMouseMove={handleMouseMove}
-      onFocus={handleFocus}
-      onBlur={handleBlur}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className={cn(
@@ -55,11 +56,9 @@ export const SpotlightCard = ({
       )}
     >
       <div
-        className="pointer-events-none absolute -inset-px transition duration-300"
-        style={{
-          opacity,
-          background: `radial-gradient(500px circle at ${position.x}px ${position.y}px, rgba(56, 189, 248, 0.25), transparent 60%)`,
-        }}
+        ref={spotlightRef}
+        className="pointer-events-none absolute -inset-px transition-opacity duration-300"
+        style={{ opacity: 0, willChange: 'background' }}
       />
       {children}
     </div>

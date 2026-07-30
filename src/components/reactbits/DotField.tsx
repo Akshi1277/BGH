@@ -49,11 +49,13 @@ const DotField = memo(({
   ...rest
 }: DotFieldProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
   const glowRef = useRef<SVGCircleElement>(null);
   const dotsRef = useRef<Dot[]>([]);
   const mouseRef = useRef({ x: -9999, y: -9999, prevX: -9999, prevY: -9999, speed: 0 });
   const rafRef = useRef<number | null>(null);
+  const isVisibleRef = useRef(false);
   const sizeRef = useRef({ w: 0, h: 0, offsetX: 0, offsetY: 0 });
   const glowOpacity = useRef(0);
   const engagement = useRef(0);
@@ -234,13 +236,29 @@ const DotField = memo(({
 
       ctx!.fill();
 
-      rafRef.current = requestAnimationFrame(tick);
+      // Only schedule next frame if still visible
+      if (isVisibleRef.current) {
+        rafRef.current = requestAnimationFrame(tick);
+      } else {
+        rafRef.current = null;
+      }
     }
 
     doResize();
     window.addEventListener('resize', resize);
     window.addEventListener('mousemove', onMouseMove, { passive: true });
-    rafRef.current = requestAnimationFrame(tick);
+
+    // IntersectionObserver: pause loop when off-screen, resume when visible
+    const intersectionObserver = new IntersectionObserver(
+      ([entry]) => {
+        isVisibleRef.current = entry.isIntersecting;
+        if (entry.isIntersecting && rafRef.current === null) {
+          rafRef.current = requestAnimationFrame(tick);
+        }
+      },
+      { rootMargin: '100px' }
+    );
+    if (containerRef.current) intersectionObserver.observe(containerRef.current);
 
     rebuildRef.current = () => {
       const { w, h } = sizeRef.current;
@@ -253,6 +271,7 @@ const DotField = memo(({
       clearTimeout(resizeTimer);
       window.removeEventListener('resize', resize);
       window.removeEventListener('mousemove', onMouseMove);
+      intersectionObserver.disconnect();
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -262,7 +281,7 @@ const DotField = memo(({
   }, [dotRadius, dotSpacing]);
 
   return (
-    <div className={`w-full h-full relative pointer-events-none ${className}`} {...rest}>
+    <div ref={containerRef} className={`w-full h-full relative pointer-events-none ${className}`} style={{ willChange: 'transform' }} {...rest}>
       <canvas
         ref={canvasRef}
         style={{

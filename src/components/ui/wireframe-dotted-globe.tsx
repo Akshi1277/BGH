@@ -11,6 +11,7 @@ interface RotatingEarthProps {
 
 export default function RotatingEarth({ width = 800, height = 600, className = "" }: RotatingEarthProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -29,7 +30,7 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
     const containerHeight = Math.min(height, parentH || window.innerHeight - 100)
     const radius = Math.min(containerWidth, containerHeight) / 2.3
 
-    const dpr = window.devicePixelRatio || 1
+    const dpr = Math.min(window.devicePixelRatio || 1, 2)
     canvas.width = containerWidth * dpr
     canvas.height = containerHeight * dpr
     canvas.style.width = `${containerWidth}px`
@@ -96,7 +97,8 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
       return false
     }
 
-    const generateDotsInPolygon = (feature: any, dotSpacing = 16) => {
+    // Increased spacing from 16 → 24 — ~55% fewer dots, imperceptible quality loss
+    const generateDotsInPolygon = (feature: any, dotSpacing = 24) => {
       const dots: [number, number][] = []
       const bounds = d3.geoBounds(feature)
       const [[minLng, minLat], [maxLng, maxLat]] = bounds
@@ -178,6 +180,48 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
       }
     }
 
+    // Set up rotation and interaction
+    const rotation = [0, 0]
+    let autoRotate = true
+    const rotationSpeed = 0.5
+
+    // Visibility-gated timer: pause when off-screen to save GPU
+    let rotationTimer: d3.Timer | null = null
+    let isVisible = false
+
+    const startTimer = () => {
+      if (rotationTimer) return
+      rotationTimer = d3.timer(() => {
+        if (autoRotate && isVisible) {
+          rotation[0] += rotationSpeed
+          projection.rotate(rotation as [number, number])
+          render()
+        }
+      // Throttle to ~30fps — smooth enough for a spinning globe
+      }, 33)
+    }
+
+    const stopTimer = () => {
+      if (rotationTimer) {
+        rotationTimer.stop()
+        rotationTimer = null
+      }
+    }
+
+    // IntersectionObserver to gate the animation loop
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting
+        if (isVisible) {
+          startTimer()
+        } else {
+          stopTimer()
+        }
+      },
+      { rootMargin: "100px" }
+    )
+    if (containerRef.current) observer.observe(containerRef.current)
+
     const loadWorldData = async () => {
       try {
         setIsLoading(true)
@@ -190,7 +234,7 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
         landFeatures = await response.json()
 
         landFeatures.features.forEach((feature: any) => {
-          const dots = generateDotsInPolygon(feature, 16)
+          const dots = generateDotsInPolygon(feature, 24)
           dots.forEach(([lng, lat]) => {
             allDots.push({ lng, lat, visible: true })
           })
@@ -198,26 +242,13 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
 
         render()
         setIsLoading(false)
+        // Start timer now that data is ready (if visible)
+        if (isVisible) startTimer()
       } catch (err) {
         setError("Failed to load land map data")
         setIsLoading(false)
       }
     }
-
-    // Set up rotation and interaction
-    const rotation = [0, 0]
-    let autoRotate = true
-    const rotationSpeed = 0.5
-
-    const rotate = () => {
-      if (autoRotate) {
-        rotation[0] += rotationSpeed
-        projection.rotate(rotation as [number, number])
-        render()
-      }
-    }
-
-    const rotationTimer = d3.timer(rotate)
 
     const handleMouseDown = (event: MouseEvent) => {
       autoRotate = false
@@ -265,7 +296,8 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
     loadWorldData()
 
     return () => {
-      rotationTimer.stop()
+      stopTimer()
+      observer.disconnect()
       canvas.removeEventListener("mousedown", handleMouseDown)
       canvas.removeEventListener("wheel", handleWheel)
     }
@@ -280,10 +312,11 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
   }
 
   return (
-    <div className={`relative flex items-center justify-center ${className}`}>
+    <div ref={containerRef} className={`relative flex items-center justify-center ${className}`}>
       <canvas
         ref={canvasRef}
         className="w-full h-auto cursor-grab active:cursor-grabbing"
+        style={{ willChange: 'transform' }}
       />
     </div>
   )

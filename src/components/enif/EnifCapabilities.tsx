@@ -3,7 +3,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { GradientCard } from "../ui/gradient-card";
-import DotField from "../reactbits/DotField";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -12,24 +11,6 @@ export default function EnifCapabilities() {
     <section id="capabilities" className="py-24 md:py-32 bg-[#04070D] text-white border-b border-[#38BDF8]/10 relative overflow-hidden">
       {/* Background radial for depth */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(56,189,248,0.05),transparent_50%)] pointer-events-none z-0" />
-      
-      {/* Interactive DotField Background */}
-      <div className="absolute inset-0 z-0 opacity-100 pointer-events-none">
-        <DotField
-          dotRadius={1.5}
-          dotSpacing={14}
-          cursorRadius={500}
-          cursorForce={0.1}
-          bulgeOnly={true}
-          bulgeStrength={67}
-          glowRadius={160}
-          waveAmplitude={0}
-          sparkle={false}
-          gradientFrom="rgba(56, 189, 248, 0.85)"
-          gradientTo="rgba(56, 189, 248, 0.55)"
-          glowColor="#04070D"
-        />
-      </div>
 
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
         <div className="mb-16 md:mb-24 max-w-3xl">
