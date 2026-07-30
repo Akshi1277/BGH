@@ -124,38 +124,85 @@ export const LumaBar = ({ className }: { className?: string }) => {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer (Inspired by BRAHM Navbar Drawer) */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="relative z-10 md:hidden mt-2 p-4 rounded-2xl bg-[#04070D]/95 border border-[#38BDF8]/30 backdrop-blur-2xl shadow-2xl flex flex-col gap-2 mx-4 max-h-[calc(100vh-6rem)] overflow-y-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[60] bg-[#04070D] text-[#F8FAFC] flex flex-col md:hidden pt-[env(safe-area-inset-top,0px)] pb-[env(safe-area-inset-bottom,0px)] overflow-y-auto"
           >
-            <Link
-              href="/"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-4 py-3 rounded-xl text-xs font-mono-ui uppercase tracking-[0.14em] font-bold text-[#F4F4F0] bg-[#0A0D0B] border border-[#34D399]/40 hover:bg-[#141A16] transition-colors flex items-center justify-center gap-2 min-h-[44px]"
-            >
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-[#34D399]">
-                <path d="M19 12H5M12 19l-7-7 7-7" />
-              </svg>
-              <span>RETURN TO GROUP</span>
-            </Link>
-            {NAV_ITEMS.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                }}
-                className="px-4 py-3 rounded-xl text-sm text-[#94A3B8] hover:text-white hover:bg-[#38BDF8]/10 transition-colors font-medium min-h-[44px] flex items-center"
+            {/* Header bar inside mobile menu */}
+            <div className="flex justify-between items-center h-20 px-4 sm:px-8 shrink-0 border-b border-[#38BDF8]/20 bg-[#04070D]/80 backdrop-blur-xl">
+              <Link href="/enif" onClick={() => setMobileMenuOpen(false)} className="flex items-center group">
+                <div className="relative w-10 h-10">
+                  <Image
+                    src="/image copy 7.png"
+                    alt="ENIF Logo"
+                    fill
+                    sizes="40px"
+                    quality={100}
+                    className="object-contain drop-shadow-[0_0_15px_rgba(56,189,248,0.3)]"
+                    priority
+                  />
+                </div>
+              </Link>
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-[#F8FAFC] p-2 -mr-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg hover:bg-white/10 active:bg-white/15 transition-colors"
+                aria-label="Close menu"
               >
-                {item.name}
-              </a>
-            ))}
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M18 6L6 18M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Menu Links with 01, 02 indices */}
+            <div className="flex flex-col justify-center gap-4 sm:gap-6 px-6 sm:px-8 flex-1 py-8">
+              {NAV_ITEMS.map((item, i) => (
+                <motion.div
+                  key={item.name}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.06 * i }}
+                >
+                  <a
+                    href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="group flex items-baseline gap-4 py-3 border-b border-[#38BDF8]/15 active:text-[#38BDF8]"
+                  >
+                    <span className="font-mono text-xs tracking-widest text-[#38BDF8] font-bold">
+                      0{i + 1}
+                    </span>
+                    <span className="font-display text-2xl sm:text-3xl text-white group-hover:text-[#38BDF8] transition-colors">
+                      {item.name}
+                    </span>
+                  </a>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Bottom Action Button - Return to Group */}
+            <div className="p-6 sm:p-8 pb-[max(2.5rem,env(safe-area-inset-bottom))] shrink-0">
+              <StarButton
+                href="/"
+                onClick={() => setMobileMenuOpen(false)}
+                shimmerColor="#34D399"
+                shimmerDuration="3s"
+                background="rgba(10, 13, 11, 0.95)"
+                className="w-full py-4 h-auto justify-center font-mono-ui uppercase tracking-[0.14em] font-bold text-[#F4F4F0] border border-[#34D399]/40 shadow-[0_0_20px_rgba(52,211,153,0.2)]"
+              >
+                <div className="flex items-center gap-2">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-[#34D399]">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                  </svg>
+                  <span>RETURN TO GROUP</span>
+                </div>
+              </StarButton>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

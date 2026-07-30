@@ -10,7 +10,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function EnifHero() {
   return (
-    <section className="relative overflow-hidden bg-[#04070D] text-[#F8FAFC] pt-28 pb-16 md:pt-40 md:pb-28 min-h-[90svh] min-h-[90vh] flex items-center border-b border-[#38BDF8]/20">
+    <section className="relative overflow-hidden bg-[#04070D] text-[#F8FAFC] pt-[calc(4rem+env(safe-area-inset-top,0px))] pb-6 md:pt-40 md:pb-28 min-h-[100svh] min-h-screen flex flex-col justify-center items-center border-b border-[#38BDF8]/20">
       {/* Dark Mesh Shader Background - Color Tuned to ENIF Logo Palette */}
       <div className="absolute inset-0 z-0 opacity-80">
         <MeshGradient
@@ -26,7 +26,7 @@ export default function EnifHero() {
       </div>
 
       {/* Smooth Bottom Blend Transition Layer */}
-      <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-b from-transparent via-[#051329]/80 to-[#04070D] pointer-events-none z-[1]" />
+      <div className="absolute bottom-0 inset-x-0 h-28 md:h-40 bg-gradient-to-b from-transparent via-[#051329]/80 to-[#04070D] pointer-events-none z-[1]" />
 
       {/* Structural grid */}
       <div
@@ -39,33 +39,33 @@ export default function EnifHero() {
         }}
       />
 
-      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 relative z-10 my-auto">
 
         {/* ── Centered Hero Content ── */}
-        <div className="lg:col-span-12 flex flex-col items-center justify-center text-center">
+        <div className="flex flex-col items-center justify-center text-center">
 
           {/* Eyebrow pill */}
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease }}
-            className="inline-flex items-center gap-3 px-4 sm:px-5 py-2 rounded-full border border-[#38BDF8]/20 bg-[#38BDF8]/[0.05] backdrop-blur-md mb-8 sm:mb-10 shadow-[0_0_15px_rgba(56,189,248,0.03)]"
+            className="inline-flex items-center gap-2 sm:gap-3 px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full border border-[#38BDF8]/20 bg-[#38BDF8]/[0.05] backdrop-blur-md mb-4 sm:mb-8 shadow-[0_0_15px_rgba(56,189,248,0.03)]"
           >
-            <span className="font-mono text-[9px] sm:text-[10px] md:text-[11px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#38BDF8]/90 font-medium">
-              ENIF Technologies — A BRAHM Global Holdings Company
+            <span className="font-mono text-[9px] sm:text-[10px] md:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.25em] text-[#38BDF8]/90 font-medium">
+              ENIF Technologies — A BRAHM Company
             </span>
           </motion.div>
 
           {/* Headline */}
           <motion.h1
-            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] leading-[1.12] tracking-[-0.01em] text-[#F8FAFC] mb-6 drop-shadow-2xl max-w-5xl"
+            className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] leading-[1.12] tracking-[-0.01em] text-[#F8FAFC] mb-3 sm:mb-6 drop-shadow-2xl max-w-5xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease, delay: 0.1 }}
           >
             Engineering the{" "}
             <motion.span
-              className="inline-block pr-3 -mr-3 italic font-normal bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(56,189,248,0.3)]"
+              className="inline-block pr-2 -mr-2 italic font-normal bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(56,189,248,0.3)]"
               style={{
                 backgroundImage:
                   "linear-gradient(110deg, #38BDF8 0%, #7DD3FC 40%, #FFFFFF 54%, #7DD3FC 68%, #38BDF8 100%)",
@@ -87,7 +87,7 @@ export default function EnifHero() {
 
           {/* Tagline */}
           <motion.p
-            className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.3em] text-[#38BDF8]/60 mb-8"
+            className="font-mono text-[9px] sm:text-[10px] md:text-[11px] uppercase tracking-[0.25em] text-[#38BDF8]/60 mb-4 sm:mb-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.22 }}
@@ -97,17 +97,17 @@ export default function EnifHero() {
 
           {/* Description */}
           <motion.p
-            className="text-base md:text-lg text-[#94A3B8] max-w-xl mb-8 font-light tracking-wide leading-[1.8] drop-shadow-sm"
+            className="text-xs sm:text-base md:text-lg text-[#94A3B8] max-w-xl mb-5 sm:mb-8 font-light tracking-wide leading-relaxed drop-shadow-sm px-2"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease, delay: 0.3 }}
           >
-            We design, engineer, and operate mission-critical digital products — from enterprise software platforms to autonomous AI pipelines. End-to-end responsibility, from first principle to production.
+            We design, engineer, and operate mission-critical digital products — from enterprise software platforms to autonomous AI pipelines.
           </motion.p>
 
-          {/* Ethos pull-quote */}
+          {/* Ethos pull-quote - hidden on small mobile to fit 100svh cleanly */}
           <motion.blockquote
-            className="text-base md:text-lg font-display text-[#64748B] italic mb-12 border-l-2 border-[#38BDF8]/30 pl-5 tracking-wide leading-relaxed max-w-lg mx-auto md:mx-0 text-left"
+            className="hidden sm:block text-sm md:text-lg font-display text-[#64748B] italic mb-8 border-l-2 border-[#38BDF8]/30 pl-4 tracking-wide leading-relaxed max-w-lg mx-auto text-left"
             initial={{ opacity: 0, x: -8 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease, delay: 0.4 }}
@@ -115,19 +115,19 @@ export default function EnifHero() {
             "Technology can be outsourced. Responsibility cannot."
           </motion.blockquote>
 
-          {/* CTAs */}
+          {/* CTAs - Full width on mobile */}
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease, delay: 0.46 }}
-            className="flex flex-wrap items-center gap-4 mb-12"
+            className="w-full sm:w-auto flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 max-w-xs sm:max-w-none mx-auto"
           >
-            <StarButton href="#contact" icon={<Icon name="arrow-right" size={16} />}>
+            <StarButton href="#contact" icon={<Icon name="arrow-right" size={16} />} className="w-full sm:w-auto justify-center">
               Start a Conversation
             </StarButton>
             <a
               href="#capabilities"
-              className="px-6 py-3 rounded-3xl border border-white/15 bg-white/[0.04] hover:bg-white/[0.07] hover:border-[#38BDF8]/35 text-[#F8FAFC] text-sm font-medium transition-all duration-200 active:scale-[0.97] backdrop-blur-sm flex items-center gap-2 group shadow-xl"
+              className="w-full sm:w-auto px-6 py-3 rounded-3xl border border-white/15 bg-white/[0.04] hover:bg-white/[0.07] hover:border-[#38BDF8]/35 text-[#F8FAFC] text-xs sm:text-sm font-medium transition-all duration-200 active:scale-[0.97] backdrop-blur-sm flex items-center justify-center gap-2 group shadow-xl"
             >
               <span>Explore Capabilities</span>
               <Icon
@@ -137,7 +137,6 @@ export default function EnifHero() {
               />
             </a>
           </motion.div>
-
 
         </div>
       </div>

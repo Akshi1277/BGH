@@ -253,7 +253,7 @@ export const GradientCard = ({
 
         {/* Card content */}
         <motion.div
-          className="relative flex flex-col h-full p-8 z-40 justify-between"
+          className="relative flex flex-col h-full p-6 sm:p-8 z-40 justify-between"
           animate={{
             z: 2,
           }}
