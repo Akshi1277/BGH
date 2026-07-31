@@ -131,8 +131,10 @@ export default function EnifWhy() {
   return (
     <section id="why-enif" className="bg-[#04070D] border-b border-[#38BDF8]/10 relative">
       {/* Deep Space Radial Background */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#081A33_0%,#05101F_40%,#04070D_80%)] pointer-events-none z-0" />
-      <div className="absolute top-1/3 left-1/4 w-[500px] h-[300px] bg-[#38BDF8]/[0.07] blur-[100px] rounded-full pointer-events-none z-0" />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#081A33_0%,#05101F_40%,#04070D_80%)]" />
+        <div className="absolute top-1/3 left-1/4 w-[500px] h-[300px] bg-[#38BDF8]/[0.07] blur-[100px] rounded-full" />
+      </div>
 
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-4 sm:px-margin-mobile md:px-margin-desktop relative z-10 pt-14 md:pt-32">
         
@@ -176,7 +178,7 @@ export default function EnifWhy() {
 
           {/* Scroll-Driven Card Stack */}
           <div className="md:col-span-7 w-full">
-            <ContainerScroll className="min-h-[180vh] md:min-h-[300vh] flex flex-col gap-6 md:gap-8 pb-16 md:pb-32">
+            <ContainerScroll className="min-h-[220vh] md:min-h-[300vh] flex flex-col gap-4 sm:gap-6 md:gap-8 pb-16 md:pb-32">
               {WHY_CARDS.map((card, index) => (
                 <CardSticky
                   key={card.id}
