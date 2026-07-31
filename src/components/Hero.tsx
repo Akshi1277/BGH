@@ -136,7 +136,7 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[100svh] min-h-screen flex flex-col justify-between overflow-hidden bg-[#0A0D0B] text-[#F4F4F0] pt-28 pb-16 md:pt-36 md:pb-20 border-b border-white/10"
+      className="relative md:min-h-[100svh] md:min-h-screen flex flex-col justify-between overflow-hidden bg-[#0A0D0B] text-[#F4F4F0] pt-24 pb-10 sm:pt-32 sm:pb-16 md:pt-36 md:pb-20 border-b border-white/10"
     >
       {/* ── Background layer ─────────────────────────────────────── */}
       <div
@@ -157,7 +157,7 @@ export default function Hero() {
       </div>
 
       {/* ── Main grid ────────────────────────────────────────────── */}
-      <div className="max-w-[var(--spacing-container-max)] mx-auto px-4 sm:px-margin-mobile md:px-margin-desktop relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center my-auto">
+      <div className="max-w-[var(--spacing-container-max)] mx-auto px-4 sm:px-margin-mobile md:px-margin-desktop relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center md:my-auto">
 
         {/* Left column */}
         <div className="flex flex-col gap-6">

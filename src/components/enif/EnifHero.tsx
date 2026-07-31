@@ -10,7 +10,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function EnifHero() {
   return (
-    <section className="relative overflow-hidden bg-[#04070D] text-[#F8FAFC] pt-[calc(4rem+env(safe-area-inset-top,0px))] pb-6 md:pt-40 md:pb-28 min-h-[100svh] min-h-screen flex flex-col justify-center items-center border-b border-[#38BDF8]/20">
+    <section className="relative overflow-hidden bg-[#04070D] text-[#F8FAFC] pt-24 pb-12 sm:pt-32 sm:pb-20 md:pt-40 md:pb-28 md:min-h-[100svh] md:min-h-screen flex flex-col justify-center items-center border-b border-[#38BDF8]/20">
       {/* Dark Mesh Shader Background - Color Tuned to ENIF Logo Palette */}
       <div className="absolute inset-0 z-0 opacity-80">
         <MeshGradient
@@ -39,7 +39,7 @@ export default function EnifHero() {
         }}
       />
 
-      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 relative z-10 my-auto">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 relative z-10 md:my-auto">
 
         {/* ── Centered Hero Content ── */}
         <div className="flex flex-col items-center justify-center text-center">
