@@ -25,7 +25,7 @@ export default function EnifHero({ onSplineLoad }: EnifHeroProps = {}) {
   return (
     <>
       <EnifLoader isLoading={!splineLoaded} />
-      <section className="relative overflow-hidden bg-[#04070D] text-[#F8FAFC] pt-24 pb-12 sm:pt-32 sm:pb-20 md:pt-40 md:pb-28 md:min-h-[100svh] md:min-h-screen flex flex-col justify-center items-center border-b border-[#38BDF8]/20">
+      <section className="relative overflow-hidden bg-[#04070D] text-[#F8FAFC] pt-24 pb-12 sm:pt-32 sm:pb-20 md:pt-40 md:pb-28 min-h-[100svh] min-h-screen flex flex-col justify-center items-center border-b border-[#38BDF8]/20">
         {/* Interactive 3D Scene — the hero's background */}
         <div className="absolute inset-0 z-0 opacity-90 pointer-events-none">
           <SplineScene
