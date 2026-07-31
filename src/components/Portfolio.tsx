@@ -34,13 +34,14 @@ const VENTURES: Venture[] = [
     name: "ENIF",
     tagline: "Engineering the Intelligence Behind Modern Business.",
     url: "brahmglobalholdings.com/enif",
+    imageSrc: "/image copy 8.png",
     imageAlt: "ENIF Technologies",
+    logo: "/eniflogo.png",
     aspectRatio: "1892/952",
     description:
       "ENIF is the engineering company of BRAHM Global Holdings, designing intelligent software, enterprise platforms and artificial intelligence that power both our own businesses and organisations worldwide. From ambitious start-ups to established enterprises, ENIF transforms complex ideas into secure, scalable and commercially successful digital products.",
     cta: "Explore ENIF →",
     href: "/enif",
-    variant: "gradient",
   },
   {
     number: "02",
@@ -305,11 +306,15 @@ export default function Portfolio() {
                         <img
                           src={venture.logo}
                           alt=""
-                          className="h-5 w-auto object-contain shrink-0 rounded-sm opacity-90"
+                          className="object-contain shrink-0 rounded-sm opacity-90"
+                          style={{ height: 20, width: 'auto', maxWidth: 80 }}
                           loading="eager"
                         />
                       ) : (
-                        <span className="h-5 w-5 shrink-0 rounded-sm bg-accent flex items-center justify-center font-mono-ui text-[9px] text-surface font-bold">
+                        <span 
+                          className="shrink-0 rounded-sm bg-accent flex items-center justify-center font-mono-ui text-[9px] text-surface font-bold"
+                          style={{ height: 20, width: 20 }}
+                        >
                           E
                         </span>
                       )}

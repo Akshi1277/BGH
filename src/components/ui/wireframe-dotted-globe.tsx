@@ -7,9 +7,12 @@ interface RotatingEarthProps {
   width?: number
   height?: number
   className?: string
+  /** Wheel-to-zoom calls preventDefault() on scroll — disable when embedding
+   * inside a scroll-driven layout so hovering the globe doesn't hijack page scroll. */
+  enableZoom?: boolean
 }
 
-export default function RotatingEarth({ width = 800, height = 600, className = "" }: RotatingEarthProps) {
+export default function RotatingEarth({ width = 800, height = 600, className = "", enableZoom = true }: RotatingEarthProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -291,7 +294,7 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
     }
 
     canvas.addEventListener("mousedown", handleMouseDown)
-    canvas.addEventListener("wheel", handleWheel)
+    if (enableZoom) canvas.addEventListener("wheel", handleWheel)
 
     loadWorldData()
 
@@ -299,9 +302,9 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
       stopTimer()
       observer.disconnect()
       canvas.removeEventListener("mousedown", handleMouseDown)
-      canvas.removeEventListener("wheel", handleWheel)
+      if (enableZoom) canvas.removeEventListener("wheel", handleWheel)
     }
-  }, [width, height])
+  }, [width, height, enableZoom])
 
   if (error) {
     return (

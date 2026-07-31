@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ContainerScroll, CardSticky } from "../ui/cards-stack";
+import RotatingEarth from "../ui/wireframe-dotted-globe";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -75,19 +76,17 @@ const WHY_CARDS: ScrollCardItem[] = [
     description: "Multi-region deployments across four continents, backed by round-the-clock telemetry and a sub-10ms edge-response target.",
     icon: "globe",
     visual: (
-      <div className="w-full max-w-full overflow-hidden p-3 sm:p-4 rounded-2xl bg-[#020408]/90 border border-white/10 shadow-inner">
-        <div className="flex items-center justify-between text-[9px] sm:text-[10px] font-mono text-white/40 mb-2 sm:mb-3 pb-2 border-b border-white/5">
+      <div className="w-full max-w-full overflow-hidden rounded-2xl bg-[#020408]/90 border border-white/10 shadow-inner">
+        <div className="flex items-center justify-between text-[9px] sm:text-[10px] font-mono text-white/40 px-3 sm:px-4 pt-3 sm:pt-4">
           <span>GLOBAL EDGE COVERAGE</span>
           <span className="text-emerald-400">&lt; 10ms TARGET</span>
         </div>
-        <div className="grid grid-cols-2 gap-1.5 sm:gap-2 font-mono text-[10px] sm:text-[11px]">
-          {["Americas", "EMEA", "APAC", "LATAM"].map((region) => (
-            <div key={region} className="flex items-center justify-between px-2.5 py-1 sm:py-1.5 rounded-lg bg-white/[0.02] border border-white/5">
-              <span className="text-[#94A3B8]">{region}</span>
-              <span className="text-[#38BDF8] font-semibold">Active</span>
-            </div>
-          ))}
-        </div>
+        <RotatingEarth
+          width={360}
+          height={240}
+          enableZoom={false}
+          className="w-full h-48 sm:h-56"
+        />
       </div>
     ),
   },
