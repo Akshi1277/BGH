@@ -68,7 +68,7 @@ export function EnifLoader({ isLoading }: EnifLoaderProps) {
               />
             </div>
 
-            {/* Subtle status text */}
+            {/* Unique, engaging status text */}
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -76,9 +76,9 @@ export function EnifLoader({ isLoading }: EnifLoaderProps) {
               className="flex items-center gap-2"
             >
               <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#94A3B8]/60">
-                {phase === 0 && "Establishing Uplink"}
-                {phase === 1 && "Initializing Environment"}
-                {phase === 2 && "Syncing Spline Data"}
+                {phase === 0 && "Polishing every pixel"}
+                {phase === 1 && "Warming up the engines"}
+                {phase === 2 && "Preparing your experience"}
               </span>
               <motion.span 
                 animate={{ opacity: [1, 0, 1] }}
