@@ -57,6 +57,11 @@ export default function Navbar() {
     };
   }, [open]);
 
+  useEffect(() => {
+    setOpen(false);
+    document.body.style.overflow = "";
+  }, [pathname]);
+
   if (pathname?.startsWith("/enif")) {
     return null;
   }
