@@ -19,25 +19,39 @@ interface ScrollCardItem {
 const WHY_CARDS: ScrollCardItem[] = [
   {
     id: "01",
-    tag: "ARCHITECTURE",
-    title: "First-Principles Engineering",
-    description: "We design systems from first principles — no bloated frameworks, no speculative abstractions, no dependency we can't justify.",
+    tag: "APPROACH",
+    title: "Purpose-Built Solutions",
+    description: "We build systems tailored specifically to your business goals—eliminating unnecessary complexity and focusing purely on what drives value.",
     icon: "cpu",
     visual: (
-      <div className="w-full max-w-full overflow-hidden p-3 sm:p-4 rounded-2xl bg-[#020408]/90 border border-white/10 font-mono text-xs text-[#38BDF8] shadow-inner">
-        <div className="flex items-center justify-between text-[9px] sm:text-[10px] text-white/40 mb-2 sm:mb-3 pb-2 border-b border-white/5">
-          <span>WHAT WE DELIBERATELY CUT</span>
-          <span className="text-emerald-400 font-semibold">● OPINIONATED</span>
+      <div className="w-full max-w-full overflow-hidden p-4 rounded-2xl bg-[#020408]/90 border border-white/10 text-xs shadow-inner">
+        <div className="flex items-center justify-between text-[10px] font-mono text-[#38BDF8] mb-3 pb-2 border-b border-white/5">
+          <span>BUSINESS ALIGNMENT</span>
+          <span className="text-emerald-400 font-semibold">● DIRECT OWNERSHIP</span>
         </div>
-        <div className="flex flex-col gap-1.5 sm:gap-2 text-[10px] sm:text-[11px]">
+        <div className="flex flex-col gap-2.5">
           {[
-            "Framework lock-in",
-            "Speculative abstractions",
-            "Unowned third-party dependencies",
-          ].map((cut) => (
-            <div key={cut} className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-white/[0.02] border border-white/5">
-              <span className="text-red-400/70 font-bold shrink-0">✕</span>
-              <span className="text-[#CBD5E1]">{cut}</span>
+            {
+              title: "Focused Execution",
+              desc: "We prioritize your core business objectives over unnecessary, unproven technology.",
+            },
+            {
+              title: "Clear Processes",
+              desc: "Every system is designed to be easily understood and seamlessly adopted by your internal teams.",
+            },
+            {
+              title: "Long-Term Flexibility",
+              desc: "You retain complete control over your digital assets, ensuring agility as your business evolves.",
+            },
+          ].map((item, idx) => (
+            <div key={idx} className="p-2.5 rounded-xl bg-white/[0.02] border border-white/5 flex flex-col gap-0.5">
+              <span className="text-white font-medium text-xs flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8]" />
+                {item.title}
+              </span>
+              <span className="text-[#94A3B8] text-[11px] font-light leading-relaxed pl-3.5">
+                {item.desc}
+              </span>
             </div>
           ))}
         </div>
@@ -48,23 +62,39 @@ const WHY_CARDS: ScrollCardItem[] = [
     id: "02",
     tag: "LONGEVITY",
     title: "Built to Evolve, Not Rebuild",
-    description: "Modular architecture designed to grow with your business for a decade or more, without forcing a costly full rebuild.",
+    description: "Our approach ensures your digital platforms can grow and adapt seamlessly, avoiding the costly cycle of complete system replacements.",
     icon: "layers",
     visual: (
-      <div className="w-full max-w-full overflow-hidden p-3 sm:p-4 rounded-2xl bg-[#020408]/90 border border-white/10 shadow-inner">
-        <div className="flex items-center justify-between text-[9px] sm:text-[10px] font-mono text-white/40 mb-2 sm:mb-3 pb-2 border-b border-white/5">
-          <span>PLATFORM LIFECYCLE</span>
-          <span className="text-[#38BDF8]">ACTIVE</span>
+      <div className="w-full max-w-full overflow-hidden p-4 rounded-2xl bg-[#020408]/90 border border-white/10 shadow-inner">
+        <div className="flex items-center justify-between text-[10px] font-mono text-[#38BDF8] mb-3 pb-2 border-b border-white/5">
+          <span>ADAPTIVE FOUNDATIONS</span>
+          <span className="text-emerald-400 font-semibold">● FUTURE-PROOF</span>
         </div>
-        <div className="grid grid-cols-2 gap-2 sm:gap-3 font-mono text-xs">
-          <div className="p-2.5 sm:p-3 rounded-xl bg-white/[0.03] border border-white/5">
-            <div className="text-[9px] sm:text-[10px] text-[#94A3B8] mb-0.5 sm:mb-1">AVAILABILITY TARGET</div>
-            <div className="text-base sm:text-lg font-bold text-white">99.999%</div>
-          </div>
-          <div className="p-2.5 sm:p-3 rounded-xl bg-white/[0.03] border border-white/5">
-            <div className="text-[9px] sm:text-[10px] text-[#94A3B8] mb-0.5 sm:mb-1">DESIGN LIFECYCLE</div>
-            <div className="text-base sm:text-lg font-bold text-emerald-400">10+ Years</div>
-          </div>
+        <div className="grid grid-cols-1 gap-2 text-xs">
+          {[
+            {
+              title: "Flexible Architecture",
+              desc: "Business rules are designed to accommodate rapid change without disrupting your daily operations.",
+            },
+            {
+              title: "Seamless Transitions",
+              desc: "New capabilities are introduced smoothly, ensuring your team and customers experience zero friction.",
+            },
+            {
+              title: "Continuous Optimization",
+              desc: "We proactively monitor performance to guarantee consistent, high-quality experiences day after day.",
+            },
+          ].map((item, idx) => (
+            <div key={idx} className="p-2.5 rounded-xl bg-white/[0.02] border border-white/5 flex flex-col gap-0.5">
+              <span className="text-white font-medium text-xs flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                {item.title}
+              </span>
+              <span className="text-[#94A3B8] text-[11px] font-light leading-relaxed pl-3.5">
+                {item.desc}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     ),
@@ -72,46 +102,59 @@ const WHY_CARDS: ScrollCardItem[] = [
   {
     id: "03",
     tag: "RELIABILITY",
-    title: "Global Operations & Edge Coverage",
-    description: "Multi-region deployments across four continents, backed by round-the-clock telemetry and a sub-10ms edge-response target.",
+    title: "Uninterrupted Performance",
+    description: "Consistent, high-speed performance across all regions, ensuring your team and customers have reliable access whenever they need it.",
     icon: "globe",
     visual: (
       <div className="w-full max-w-full overflow-hidden rounded-2xl bg-[#020408]/90 border border-white/10 shadow-inner">
-        <div className="flex items-center justify-between text-[9px] sm:text-[10px] font-mono text-white/40 px-3 sm:px-4 pt-3 sm:pt-4">
-          <span>GLOBAL EDGE COVERAGE</span>
-          <span className="text-emerald-400">&lt; 10ms TARGET</span>
+        <div className="flex items-center justify-between text-[10px] font-mono text-[#38BDF8] px-4 pt-4">
+          <span>GLOBAL ACCESSIBILITY</span>
+          <span className="text-emerald-400 font-semibold">● ALWAYS ONLINE</span>
         </div>
         <RotatingEarth
           width={360}
-          height={240}
+          height={220}
           enableZoom={false}
-          className="w-full h-48 sm:h-56"
+          className="w-full h-48 sm:h-52"
         />
       </div>
     ),
   },
   {
     id: "04",
-    tag: "GOVERNANCE",
-    title: "Enterprise-Grade Security & Standards",
-    description: "Engineered to align with SOC2 Type II, ISO 27001, and zero-trust data-sovereignty standards from day one.",
+    tag: "TRUST",
+    title: "Built-In Safety & Governance",
+    description: "Comprehensive safety protocols integrated from day one, providing absolute peace of mind for you, your stakeholders, and your clients.",
     icon: "shield",
     visual: (
-      <div className="w-full max-w-full overflow-hidden p-3 sm:p-4 rounded-2xl bg-[#020408]/90 border border-white/10 shadow-inner">
-        <div className="flex items-center justify-between text-[9px] sm:text-[10px] font-mono text-white/40 mb-2 sm:mb-3 pb-2 border-b border-white/5">
-          <span>SECURITY STANDARDS</span>
-          <span className="text-[#38BDF8]">BUILT-IN</span>
+      <div className="w-full max-w-full overflow-hidden p-4 rounded-2xl bg-[#020408]/90 border border-white/10 shadow-inner">
+        <div className="flex items-center justify-between text-[10px] font-mono text-[#38BDF8] mb-3 pb-2 border-b border-white/5">
+          <span>SECURITY & COMPLIANCE</span>
+          <span className="text-emerald-400 font-semibold">● PROTECTED</span>
         </div>
-        <div className="grid grid-cols-2 gap-1.5 sm:gap-2 text-xs">
+        <div className="grid grid-cols-1 gap-2 text-xs">
           {[
-            { label: "SOC2 Type II", val: "Aligned" },
-            { label: "ISO 27001", val: "Aligned" },
-            { label: "Zero-Trust", val: "Enforced" },
-            { label: "Audit Logs", val: "Immutable" },
-          ].map((s) => (
-            <div key={s.label} className="p-1.5 sm:p-2 rounded-lg bg-[#38BDF8]/[0.04] border border-[#38BDF8]/20 flex flex-col">
-              <span className="text-[#94A3B8] text-[9px] font-mono">{s.label}</span>
-              <span className="text-white font-medium text-[11px] sm:text-xs mt-0.5">{s.val}</span>
+            {
+              title: "Transparent Operations",
+              desc: "Every action within the system is carefully logged, providing a clear and reliable operational history.",
+            },
+            {
+              title: "Data Privacy Focus",
+              desc: "Client information is kept strictly separated, ensuring absolute confidentiality and regulatory compliance.",
+            },
+            {
+              title: "Proactive Protection",
+              desc: "Foundational safety measures are embedded natively to protect against modern business risks.",
+            },
+          ].map((item, idx) => (
+            <div key={idx} className="p-2.5 rounded-xl bg-white/[0.02] border border-white/5 flex flex-col gap-0.5">
+              <span className="text-white font-medium text-xs flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8]" />
+                {item.title}
+              </span>
+              <span className="text-[#94A3B8] text-[11px] font-light leading-relaxed pl-3.5">
+                {item.desc}
+              </span>
             </div>
           ))}
         </div>
@@ -165,7 +208,7 @@ export default function EnifWhy() {
               transition={{ duration: 0.8, ease, delay: 0.2 }}
               className="text-[#94A3B8] text-sm md:text-lg leading-relaxed tracking-[0.01em] font-light max-w-lg"
             >
-              We design software systems from core physics upward. Zero bloated frameworks, zero unnecessary abstractions, and zero technical debt.
+              We design software systems focused purely on business outcomes. Unmatched reliability, effortless scalability, and complete alignment with your operational goals.
             </motion.p>
           </div>
 
