@@ -9,6 +9,7 @@ const Spline = lazy(() => import("@splinetool/react-spline"));
 interface SplineSceneProps {
   scene: string;
   className?: string;
+  onLoad?: () => void;
 }
 
 /**
@@ -19,7 +20,7 @@ interface SplineSceneProps {
  * page. We stop() the Application whenever the canvas leaves the viewport
  * (or the tab is backgrounded) and play() it again when it's back in view.
  */
-export function SplineScene({ scene, className }: SplineSceneProps) {
+export function SplineScene({ scene, className, onLoad }: SplineSceneProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const appRef = useRef<Application | null>(null);
   const isVisibleRef = useRef(true);
@@ -83,6 +84,7 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
           onLoad={(app) => {
             appRef.current = app;
             if (!isVisibleRef.current || document.hidden) app.stop();
+            if (onLoad) onLoad();
           }}
         />
       </Suspense>

@@ -1,24 +1,39 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Icon from "../Icon";
 import { StarButton } from "../ui/StarButton";
 import { SplineScene } from "../ui/splite";
 import { Spotlight } from "../ui/spotlight";
+import { EnifLoader } from "./EnifLoader";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
-export default function EnifHero() {
+interface EnifHeroProps {
+  onSplineLoad?: () => void;
+}
+
+export default function EnifHero({ onSplineLoad }: EnifHeroProps = {}) {
+  const [splineLoaded, setSplineLoaded] = useState(false);
+
+  const handleSplineLoad = () => {
+    setSplineLoaded(true);
+    if (onSplineLoad) onSplineLoad();
+  };
+
   return (
-    <section className="relative overflow-hidden bg-[#04070D] text-[#F8FAFC] pt-24 pb-12 sm:pt-32 sm:pb-20 md:pt-40 md:pb-28 md:min-h-[100svh] md:min-h-screen flex flex-col justify-center items-center border-b border-[#38BDF8]/20">
-      {/* Interactive 3D Scene — the hero's background */}
-      <div className="absolute inset-0 z-0 opacity-90 pointer-events-none">
-        <SplineScene
-          scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-          className="w-full h-full"
-        />
-      </div>
+    <>
+      <EnifLoader isLoading={!splineLoaded} />
+      <section className="relative overflow-hidden bg-[#04070D] text-[#F8FAFC] pt-24 pb-12 sm:pt-32 sm:pb-20 md:pt-40 md:pb-28 md:min-h-[100svh] md:min-h-screen flex flex-col justify-center items-center border-b border-[#38BDF8]/20">
+        {/* Interactive 3D Scene — the hero's background */}
+        <div className="absolute inset-0 z-0 opacity-90 pointer-events-none">
+          <SplineScene
+            scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+            className="w-full h-full"
+            onLoad={handleSplineLoad}
+          />
+        </div>
 
       {/* Cursor-reactive glow */}
       <Spotlight className="from-[#38BDF8] via-[#38BDF8]/60 to-transparent" size={520} />
@@ -129,5 +144,6 @@ export default function EnifHero() {
         </div>
       </div>
     </section>
+    </>
   );
 }
