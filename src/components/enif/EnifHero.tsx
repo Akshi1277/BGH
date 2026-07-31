@@ -2,28 +2,26 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { MeshGradient } from "@paper-design/shaders-react";
 import Icon from "../Icon";
 import { StarButton } from "../ui/StarButton";
+import { SplineScene } from "../ui/splite";
+import { Spotlight } from "../ui/spotlight";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function EnifHero() {
   return (
     <section className="relative overflow-hidden bg-[#04070D] text-[#F8FAFC] pt-24 pb-12 sm:pt-32 sm:pb-20 md:pt-40 md:pb-28 md:min-h-[100svh] md:min-h-screen flex flex-col justify-center items-center border-b border-[#38BDF8]/20">
-      {/* Dark Mesh Shader Background - Color Tuned to ENIF Logo Palette */}
-      <div className="absolute inset-0 z-0 opacity-80">
-        <MeshGradient
-          className="absolute inset-0 w-full h-full"
-          colors={["#020612", "#051329", "#0A284D", "#0E3E75", "#030B1C"]}
-          speed={0.3}
-        />
-        <MeshGradient
-          className="absolute inset-0 w-full h-full opacity-40 mix-blend-screen pointer-events-none"
-          colors={["#030A1D", "#0284C7", "#38BDF8", "#00D2FF", "#0B2B52"]}
-          speed={0.25}
+      {/* Interactive 3D Scene — the hero's background */}
+      <div className="absolute inset-0 z-0 opacity-90 pointer-events-none">
+        <SplineScene
+          scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+          className="w-full h-full"
         />
       </div>
+
+      {/* Cursor-reactive glow */}
+      <Spotlight className="from-[#38BDF8] via-[#38BDF8]/60 to-transparent" size={520} />
 
       {/* Smooth Bottom Blend Transition Layer */}
       <div className="absolute bottom-0 inset-x-0 h-28 md:h-40 bg-gradient-to-b from-transparent via-[#051329]/80 to-[#04070D] pointer-events-none z-[1]" />
@@ -44,17 +42,7 @@ export default function EnifHero() {
         {/* ── Centered Hero Content ── */}
         <div className="flex flex-col items-center justify-center text-center">
 
-          {/* Eyebrow pill */}
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease }}
-            className="inline-flex items-center gap-2 sm:gap-3 px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full border border-[#38BDF8]/20 bg-[#38BDF8]/[0.05] backdrop-blur-md mb-4 sm:mb-8 shadow-[0_0_15px_rgba(56,189,248,0.03)]"
-          >
-            <span className="font-mono text-[9px] sm:text-[10px] md:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.25em] text-[#38BDF8]/90 font-medium">
-              ENIF Technologies — A BRAHM Company
-            </span>
-          </motion.div>
+         
 
           {/* Headline */}
           <motion.h1

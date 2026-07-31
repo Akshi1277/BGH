@@ -4,83 +4,11 @@ import React, { useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { MeshGradient } from "@paper-design/shaders-react";
 import Icon, { IconName } from "./Icon";
+import { Spotlight } from "./ui/spotlight";
 
 const ease = [0.25, 1, 0.5, 1] as const;
-
-/* ─── Particle data (deterministic, SSR-safe) ───────────────────── */
-const PARTICLE_DATA = Array.from({ length: 28 }, (_, i) => ({
-  x: (i * 37.3) % 100,        // % of canvas width
-  y: (i * 53.7) % 100,        // % of canvas height
-  size: 1 + (i % 3) * 0.7,
-  duration: 8 + (i % 5) * 3,  // seconds per cycle
-  phase: (i * 0.38 * Math.PI * 2) % (Math.PI * 2), // start phase
-  opacity: 0.12 + (i % 4) * 0.07,
-  driftX: i % 2 === 0 ? 7 : -7,
-}));
-
-/* ─── Canvas particle layer ─────────────────────────────────────── */
-function ParticleCanvas() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    const resize = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    };
-    resize();
-    const ro = new ResizeObserver(resize);
-    ro.observe(canvas);
-
-    let rafId: number;
-
-    const draw = (t: number) => {
-      const w = canvas.width;
-      const h = canvas.height;
-      ctx.clearRect(0, 0, w, h);
-
-      for (const p of PARTICLE_DATA) {
-        const s = t / 1000 / p.duration;
-        const angle = s * Math.PI * 2 + p.phase;
-        const dy = Math.sin(angle) * 11;
-        const dx = Math.sin(angle) * p.driftX * 0.5;
-        const alpha = p.opacity * (0.35 + 0.65 * (0.5 + 0.5 * Math.sin(angle)));
-
-        ctx.beginPath();
-        ctx.arc(
-          (p.x / 100) * w + dx,
-          (p.y / 100) * h + dy,
-          p.size / 2,
-          0,
-          Math.PI * 2
-        );
-        ctx.fillStyle = `rgba(52,211,153,${(alpha * 1.5).toFixed(3)})`;
-        ctx.fill();
-      }
-
-      rafId = requestAnimationFrame(draw);
-    };
-
-    rafId = requestAnimationFrame(draw);
-    return () => {
-      cancelAnimationFrame(rafId);
-      ro.disconnect();
-    };
-  }, []);
-
-  return (
-    <canvas
-      ref={canvasRef}
-      aria-hidden
-      className="absolute inset-0 w-full h-full pointer-events-none"
-    />
-  );
-}
 
 /* ─── Category badges ───────────────────────────────────────────── */
 const CATEGORIES: { icon: IconName; label: string; pos: string; delay: number }[] = [
@@ -143,7 +71,19 @@ export default function Hero() {
         aria-hidden
         className="absolute inset-0 pointer-events-none overflow-hidden"
       >
-        <ParticleCanvas />
+        {/* Dark mesh shader background, tuned to the BGH green palette */}
+        <div className="absolute inset-0 opacity-80">
+          <MeshGradient
+            className="absolute inset-0 w-full h-full"
+            colors={["#04070A", "#0A0D0B", "#0F1F17", "#123A28", "#060907"]}
+            speed={0.3}
+          />
+          <MeshGradient
+            className="absolute inset-0 w-full h-full opacity-40 mix-blend-screen pointer-events-none"
+            colors={["#081410", "#1F5C43", "#34D399", "#5EEAD4", "#0B2A1F"]}
+            speed={0.25}
+          />
+        </div>
 
         <div
           className="absolute top-1/2 right-0 -translate-y-1/2 pointer-events-none"
@@ -155,6 +95,9 @@ export default function Hero() {
           }}
         />
       </div>
+
+      {/* Cursor-reactive glow */}
+      <Spotlight className="from-[#34D399] via-[#34D399]/60 to-transparent" size={480} />
 
       {/* ── Main grid ────────────────────────────────────────────── */}
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-4 sm:px-margin-mobile md:px-margin-desktop relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center md:my-auto">

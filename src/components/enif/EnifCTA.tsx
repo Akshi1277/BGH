@@ -61,13 +61,13 @@ export default function EnifCTA() {
             </motion.div>
           </div>
 
-          {/* Right Side: Robot Waving Video */}
+          {/* Right Side: Robot Waving Video with Slanted Clip-Path Reveal Animation */}
           <motion.div
             className="w-full md:w-5/12 h-[320px] sm:h-[400px] md:h-[440px] relative overflow-hidden rounded-2xl sm:rounded-3xl border border-[#38BDF8]/30 bg-black shadow-[0_20px_60px_rgba(0,0,0,0.8)]"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            initial={{ clipPath: "polygon(100% 0, 100% 0, 100% 100%, 100% 100%)" }}
+            whileInView={{ clipPath: "polygon(18% 0, 100% 0, 100% 100%, 0% 100%)" }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 1.2, ease: "circOut" }}
           >
             <video
               ref={videoRef}

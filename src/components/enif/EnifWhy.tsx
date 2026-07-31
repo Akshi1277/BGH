@@ -20,26 +20,25 @@ const WHY_CARDS: ScrollCardItem[] = [
     id: "01",
     tag: "ARCHITECTURE",
     title: "First-Principles Engineering",
-    description: "We design software systems from core physics upward. Zero bloated frameworks, zero unnecessary abstractions, and zero technical debt.",
+    description: "We design systems from first principles — no bloated frameworks, no speculative abstractions, no dependency we can't justify.",
     icon: "cpu",
     visual: (
       <div className="w-full max-w-full overflow-hidden p-3 sm:p-4 rounded-2xl bg-[#020408]/90 border border-white/10 font-mono text-xs text-[#38BDF8] shadow-inner">
         <div className="flex items-center justify-between text-[9px] sm:text-[10px] text-white/40 mb-2 sm:mb-3 pb-2 border-b border-white/5">
-          <span>SYSTEM PIPELINE</span>
-          <span className="text-emerald-400 font-semibold">● OPTIMIZED</span>
+          <span>WHAT WE DELIBERATELY CUT</span>
+          <span className="text-emerald-400 font-semibold">● OPINIONATED</span>
         </div>
-        <div className="flex flex-wrap sm:flex-nowrap items-center justify-between gap-1.5 sm:gap-2 text-[10px] sm:text-[11px]">
-          <div className="px-2 py-1 rounded-lg bg-[#38BDF8]/10 border border-[#38BDF8]/30 text-white font-medium shrink-0">
-            [Client Edge]
-          </div>
-          <span className="text-[#38BDF8] animate-pulse shrink-0 text-[10px]">➔ 0.4ms ➔</span>
-          <div className="px-2 py-1 rounded-lg bg-[#38BDF8]/15 border border-[#38BDF8]/50 text-[#38BDF8] font-bold shrink-0">
-            [Core Engine]
-          </div>
-          <span className="text-[#38BDF8] animate-pulse shrink-0 text-[10px]">➔ 1.2ms ➔</span>
-          <div className="px-2 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-medium shrink-0">
-            [Zero-Trust DB]
-          </div>
+        <div className="flex flex-col gap-1.5 sm:gap-2 text-[10px] sm:text-[11px]">
+          {[
+            "Framework lock-in",
+            "Speculative abstractions",
+            "Unowned third-party dependencies",
+          ].map((cut) => (
+            <div key={cut} className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-white/[0.02] border border-white/5">
+              <span className="text-red-400/70 font-bold shrink-0">✕</span>
+              <span className="text-[#CBD5E1]">{cut}</span>
+            </div>
+          ))}
         </div>
       </div>
     ),
@@ -48,22 +47,22 @@ const WHY_CARDS: ScrollCardItem[] = [
     id: "02",
     tag: "LONGEVITY",
     title: "Built to Evolve, Not Rebuild",
-    description: "Extensible micro-modular architecture designed to grow seamlessly with your business over a 10+ year lifecycle.",
+    description: "Modular architecture designed to grow with your business for a decade or more, without forcing a costly full rebuild.",
     icon: "layers",
     visual: (
       <div className="w-full max-w-full overflow-hidden p-3 sm:p-4 rounded-2xl bg-[#020408]/90 border border-white/10 shadow-inner">
         <div className="flex items-center justify-between text-[9px] sm:text-[10px] font-mono text-white/40 mb-2 sm:mb-3 pb-2 border-b border-white/5">
-          <span>UPTIME & SLA</span>
-          <span className="text-[#38BDF8]">v4.9.2 PROD</span>
+          <span>PLATFORM LIFECYCLE</span>
+          <span className="text-[#38BDF8]">ACTIVE</span>
         </div>
         <div className="grid grid-cols-2 gap-2 sm:gap-3 font-mono text-xs">
           <div className="p-2.5 sm:p-3 rounded-xl bg-white/[0.03] border border-white/5">
-            <div className="text-[9px] sm:text-[10px] text-[#94A3B8] mb-0.5 sm:mb-1">AVAILABILITY</div>
+            <div className="text-[9px] sm:text-[10px] text-[#94A3B8] mb-0.5 sm:mb-1">AVAILABILITY TARGET</div>
             <div className="text-base sm:text-lg font-bold text-white">99.999%</div>
           </div>
           <div className="p-2.5 sm:p-3 rounded-xl bg-white/[0.03] border border-white/5">
-            <div className="text-[9px] sm:text-[10px] text-[#94A3B8] mb-0.5 sm:mb-1">TECH DEBT</div>
-            <div className="text-base sm:text-lg font-bold text-emerald-400">0.0%</div>
+            <div className="text-[9px] sm:text-[10px] text-[#94A3B8] mb-0.5 sm:mb-1">DESIGN LIFECYCLE</div>
+            <div className="text-base sm:text-lg font-bold text-emerald-400">10+ Years</div>
           </div>
         </div>
       </div>
@@ -73,24 +72,19 @@ const WHY_CARDS: ScrollCardItem[] = [
     id: "03",
     tag: "RELIABILITY",
     title: "Global Operations & Edge Coverage",
-    description: "International engineering leadership operating continuous multi-region deployments with 24/7 telemetry monitoring.",
+    description: "Multi-region deployments across four continents, backed by round-the-clock telemetry and a sub-10ms edge-response target.",
     icon: "globe",
     visual: (
       <div className="w-full max-w-full overflow-hidden p-3 sm:p-4 rounded-2xl bg-[#020408]/90 border border-white/10 shadow-inner">
         <div className="flex items-center justify-between text-[9px] sm:text-[10px] font-mono text-white/40 mb-2 sm:mb-3 pb-2 border-b border-white/5">
-          <span>GLOBAL EDGE CLUSTERS</span>
-          <span className="text-emerald-400">● 142 NODES ACTIVE</span>
+          <span>GLOBAL EDGE COVERAGE</span>
+          <span className="text-emerald-400">&lt; 10ms TARGET</span>
         </div>
         <div className="grid grid-cols-2 gap-1.5 sm:gap-2 font-mono text-[10px] sm:text-[11px]">
-          {[
-            { region: "Americas", latency: "< 4.2ms" },
-            { region: "EMEA", latency: "< 6.8ms" },
-            { region: "APAC", latency: "< 9.1ms" },
-            { region: "LATAM", latency: "< 7.5ms" },
-          ].map((r) => (
-            <div key={r.region} className="flex items-center justify-between px-2.5 py-1 sm:py-1.5 rounded-lg bg-white/[0.02] border border-white/5">
-              <span className="text-[#94A3B8]">{r.region}</span>
-              <span className="text-[#38BDF8] font-semibold">{r.latency}</span>
+          {["Americas", "EMEA", "APAC", "LATAM"].map((region) => (
+            <div key={region} className="flex items-center justify-between px-2.5 py-1 sm:py-1.5 rounded-lg bg-white/[0.02] border border-white/5">
+              <span className="text-[#94A3B8]">{region}</span>
+              <span className="text-[#38BDF8] font-semibold">Active</span>
             </div>
           ))}
         </div>
@@ -100,21 +94,21 @@ const WHY_CARDS: ScrollCardItem[] = [
   {
     id: "04",
     tag: "GOVERNANCE",
-    title: "Bank-Grade Security & Standards",
-    description: "Built strictly to satisfy compliance, ISO 27001, SOC2 Type II, and strict data sovereignty frameworks.",
+    title: "Enterprise-Grade Security & Standards",
+    description: "Engineered to align with SOC2 Type II, ISO 27001, and zero-trust data-sovereignty standards from day one.",
     icon: "shield",
     visual: (
       <div className="w-full max-w-full overflow-hidden p-3 sm:p-4 rounded-2xl bg-[#020408]/90 border border-white/10 shadow-inner">
         <div className="flex items-center justify-between text-[9px] sm:text-[10px] font-mono text-white/40 mb-2 sm:mb-3 pb-2 border-b border-white/5">
-          <span>SECURITY PROTOCOLS</span>
-          <span className="text-[#38BDF8]">VERIFIED</span>
+          <span>SECURITY STANDARDS</span>
+          <span className="text-[#38BDF8]">BUILT-IN</span>
         </div>
         <div className="grid grid-cols-2 gap-1.5 sm:gap-2 text-xs">
           {[
-            { label: "SOC2 Type II", val: "Compliant" },
-            { label: "ISO 27001", val: "Certified" },
+            { label: "SOC2 Type II", val: "Aligned" },
+            { label: "ISO 27001", val: "Aligned" },
             { label: "Zero-Trust", val: "Enforced" },
-            { label: "Telemetry", val: "Immutable" },
+            { label: "Audit Logs", val: "Immutable" },
           ].map((s) => (
             <div key={s.label} className="p-1.5 sm:p-2 rounded-lg bg-[#38BDF8]/[0.04] border border-[#38BDF8]/20 flex flex-col">
               <span className="text-[#94A3B8] text-[9px] font-mono">{s.label}</span>
