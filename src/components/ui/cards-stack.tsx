@@ -41,17 +41,22 @@ const CardSticky = React.forwardRef<HTMLDivElement, CardStickyProps>(
     },
     ref
   ) => {
-    const topOffset = 80 + index * incrementY;
-
     return (
       <motion.div
         ref={ref}
-        style={{
-          top: `calc(${topOffset}px + env(safe-area-inset-top, 0px))`,
-          zIndex: 10 + index,
-          ...style,
-        }}
-        className={cn("sticky antialiased subpixel-antialiased", className)}
+        style={
+          {
+            "--top-offset-mobile": `${76 + index * 20}px`,
+            "--top-offset-desktop": `${88 + index * incrementY}px`,
+            top: `calc(var(--top-offset, 80px) + env(safe-area-inset-top, 0px))`,
+            zIndex: 10 + index,
+            ...style,
+          } as React.CSSProperties
+        }
+        className={cn(
+          "sticky antialiased subpixel-antialiased [--top-offset:var(--top-offset-mobile)] md:[--top-offset:var(--top-offset-desktop)]",
+          className
+        )}
         {...props}
       >
         {children}

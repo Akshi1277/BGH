@@ -313,9 +313,9 @@ export default function OrbitingSkills() {
   ];
 
   return (
-    <div className="w-full flex items-center justify-center overflow-hidden py-6">
+    <div className="w-full flex items-center justify-center overflow-visible py-2 sm:py-6">
       <div 
-        className="relative w-[340px] h-[340px] sm:w-[440px] sm:h-[440px] flex items-center justify-center"
+        className="relative w-[440px] h-[440px] flex items-center justify-center scale-[0.72] min-[380px]:scale-[0.82] min-[440px]:scale-[0.9] sm:scale-100 origin-center transition-transform duration-300 -my-12 min-[380px]:-my-8 sm:my-0"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >

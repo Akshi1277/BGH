@@ -162,13 +162,7 @@ export default function Footer({ theme }: FooterProps) {
           >
             &copy; 2026 BRAHM Global Holdings Ltd. All Rights Reserved.
           </div>
-          <div
-            className={`text-[11px] font-mono-ui uppercase tracking-[0.15em] ${
-              isDark ? "text-[#38BDF8]" : "text-accent"
-            }`}
-          >
-            Independent. Privately Held. Built for Generations.
-          </div>
+         
         </div>
       </div>
     </motion.footer>

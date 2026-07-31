@@ -176,7 +176,7 @@ export default function EnifWhy() {
 
           {/* Scroll-Driven Card Stack */}
           <div className="md:col-span-7 w-full">
-            <ContainerScroll className="min-h-[220vh] md:min-h-[300vh] space-y-6 md:space-y-8 pb-16 md:pb-32">
+            <ContainerScroll className="min-h-[180vh] md:min-h-[300vh] flex flex-col gap-6 md:gap-8 pb-16 md:pb-32">
               {WHY_CARDS.map((card, index) => (
                 <CardSticky
                   key={card.id}

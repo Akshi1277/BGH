@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Icon from "../Icon";
 import { StarButton } from "../ui/StarButton";
@@ -8,6 +8,16 @@ import { StarButton } from "../ui/StarButton";
 const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function EnifCTA() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch((err) => {
+        console.log("Autoplay playback error:", err);
+      });
+    }
+  }, []);
+
   return (
     <section id="contact" className="py-20 sm:py-32 md:py-36 bg-[#02040A] relative overflow-hidden border-t border-[#38BDF8]/10">
       {/* Dark Theme B Ambient Overlay */}
@@ -51,20 +61,22 @@ export default function EnifCTA() {
             </motion.div>
           </div>
 
-          {/* Right Side: Robot Waving Video with Slanted Clip-Path Reveal Animation */}
+          {/* Right Side: Robot Waving Video */}
           <motion.div
-            className="w-full md:w-5/12 h-[340px] sm:h-[400px] md:h-[440px] relative overflow-hidden rounded-2xl sm:rounded-3xl border border-[#38BDF8]/30 bg-black shadow-[0_20px_60px_rgba(0,0,0,0.8)]"
-            initial={{ clipPath: "polygon(100% 0, 100% 0, 100% 100%, 100% 100%)" }}
-            whileInView={{ clipPath: "polygon(18% 0, 100% 0, 100% 100%, 0% 100%)" }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 1.2, ease: "circOut" }}
+            className="w-full md:w-5/12 h-[320px] sm:h-[400px] md:h-[440px] relative overflow-hidden rounded-2xl sm:rounded-3xl border border-[#38BDF8]/30 bg-black shadow-[0_20px_60px_rgba(0,0,0,0.8)]"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <video
+              ref={videoRef}
               src="/kling_20260730_VIDEO_Duration___5960_0 (online-video-cutter.com).mp4"
               autoPlay
               loop
               muted
               playsInline
+              preload="auto"
               className="w-full h-full object-cover object-top scale-[1.65] sm:scale-[1.8] origin-top -translate-y-[6%] translate-x-[6%] pointer-events-none"
             />
           </motion.div>
