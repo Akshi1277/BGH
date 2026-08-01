@@ -2,6 +2,7 @@ import React from "react";
 
 export type IconName =
   | "arrow-right"
+  | "arrow-down"
   | "menu"
   | "close"
   | "cube"
@@ -20,6 +21,7 @@ export type IconName =
 
 const paths: Record<IconName, React.ReactNode> = {
   "arrow-right": <path d="M4 12h16M13 5l7 7-7 7" />,
+  "arrow-down": <path d="M12 5v14M19 12l-7 7-7-7" />,
   "arrow-up-right": <path d="M7 17 17 7M8 7h9v9" />,
   menu: <path d="M3 6h18M3 12h18M3 18h18" />,
   close: <path d="M6 6l12 12M18 6L6 18" />,
