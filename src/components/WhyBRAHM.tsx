@@ -6,34 +6,33 @@ import Icon, { IconName } from "./Icon";
 
 const ease = [0.25, 1, 0.5, 1] as const;
 
-const TRUST: { icon: IconName; stat: string; label: string; description: string }[] = [
+const DIFFERENTIATORS: { icon: IconName; stat: string; label: string; description: string }[] = [
   {
-    icon: "globe",
-    stat: "UK",
-    label: "Headquartered & Engineered",
+    icon: "layers",
+    stat: "Build",
+    label: "We build, not just fund",
     description:
-      "Built to the standard our home market demands, then shipped with that same discipline to every business we serve.",
+      "Unlike traditional venture capital that deploys capital and waits, we establish, engineer and operate businesses directly.",
   },
   {
     icon: "compass",
-    stat: "Multi-Sector",
-    label: "One Discipline, Every Industry",
+    stat: "Endure",
+    label: "Decades, not exit cycles",
     description:
-      "From sport to education to luxury goods to hospitality, and beyond — proof our engineering standard travels across sectors, not just one.",
+      "Unlike private equity firms optimised for 5-year exits, we build institutions designed to remain relevant for the next century.",
   },
   {
     icon: "shield",
-    stat: "100%",
-    label: "Designed & Engineered In-House",
+    stat: "In-House",
+    label: "Engineered by us",
     description:
-      "Every company in our Group is built by our own team, through ENIF. No outsourced core, no black-box vendors, no excuses.",
+      "Every company in our Group is powered by our own engineering division, ENIF. No black-box vendors, no outsourced core.",
   },
 ];
 
-export default function GlobalPresence() {
+export default function WhyBRAHM() {
   return (
-    <section id="trust" className="section-y bg-surface-soft relative">
-      {/* ── Gradient blend from Portfolio (surface) above ── */}
+    <section id="why-brahm" className="section-y bg-surface-soft relative">
       <div
         aria-hidden
         className="absolute top-0 left-0 right-0 h-20 pointer-events-none"
@@ -48,23 +47,22 @@ export default function GlobalPresence() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, ease }}
           >
-            Why Businesses Trust Us
+            THE BRAHM DIFFERENCE
           </motion.span>
           <motion.h2
-            className="font-display text-display text-ink"
+            className="font-display text-4xl md:text-5xl text-ink leading-tight"
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.75, ease, delay: 0.08 }}
           >
-            Discipline that <span className="italic text-accent">travels</span>.
+            Built <span className="italic text-accent">differently</span>.
           </motion.h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-surface-line border border-surface-line">
-          {TRUST.map((t, idx) => (
+          {DIFFERENTIATORS.map((t, idx) => (
             <div key={t.label} className="bg-surface-soft p-10 md:p-12 flex flex-col items-center text-center group relative overflow-hidden">
-              {/* Left border reveal on hover */}
               <span className="absolute left-0 top-0 h-full w-[2px] bg-accent origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-500 ease-out" />
               <motion.div
                 initial={{ opacity: 0, y: 24 }}
@@ -81,7 +79,7 @@ export default function GlobalPresence() {
                 >
                   {t.stat}
                 </motion.span>
-                <h3 className="font-mono-ui text-label uppercase tracking-[0.1em] text-ink">
+                <h3 className="font-mono-ui text-[11px] uppercase tracking-[0.1em] text-ink font-bold">
                   {t.label}
                 </h3>
                 <p className="text-sm text-ink-muted leading-relaxed max-w-xs">

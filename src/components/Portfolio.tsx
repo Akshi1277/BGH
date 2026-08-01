@@ -200,7 +200,7 @@ export default function Portfolio() {
           className="mb-16 max-w-3xl"
         >
           <span className="text-eyebrow font-mono-ui text-accent block mb-4 uppercase tracking-[0.2em]">
-            THE BRAHM GROUP
+            GROUP COMPANIES
           </span>
           <h2 className="font-display text-4xl md:text-5xl text-ink leading-tight mb-6">
             Building Institutions <span className="italic font-normal text-accent">That Endure.</span>
@@ -397,24 +397,7 @@ export default function Portfolio() {
           </div>
         </motion.div>
 
-        {/* ── Closing Statement Banner ──────────────────────────── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.7, ease, delay: 0.2 }}
-          className="mt-20 p-8 md:p-10 rounded-2xl border border-accent/20 bg-accent/5 text-center max-w-4xl mx-auto"
-        >
-          <span className="font-mono-ui text-xs text-accent uppercase tracking-[0.2em] block mb-3 font-semibold">
-            Group Governance & Ownership
-          </span>
-          <h4 className="font-display text-2xl md:text-3xl text-ink mb-4">
-            One Group. Five Companies. <span className="italic font-normal text-accent">One Enduring Standard.</span>
-          </h4>
-          <p className="text-sm md:text-base text-ink-muted font-light leading-relaxed max-w-2xl mx-auto">
-            Although each company serves a different industry, every enterprise within BRAHM Global Holdings is created with the same ambition—to build organisations defined by exceptional quality, disciplined execution and enduring value.
-          </p>
-        </motion.div>
+
 
       </div>
     </section>

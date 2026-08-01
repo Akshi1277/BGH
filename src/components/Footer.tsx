@@ -20,10 +20,10 @@ const COLUMNS = [
   {
     heading: "THE GROUP",
     links: [
-      { label: "Who We Are", href: "/#who-we-are" },
+      { label: "The Mandate", href: "/#mandate" },
+      { label: "Our Sectors", href: "/#sectors" },
       { label: "Our Philosophy", href: "/#standard" },
-      { label: "Our Companies", href: "/#companies" },
-      { label: "Contact", href: "/#contact" },
+      { label: "Group Companies", href: "/#companies" },
     ],
   },
   {

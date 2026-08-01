@@ -9,9 +9,9 @@ import Icon from "./Icon";
 import { StarButton } from "./ui/StarButton";
 
 const LINKS = [
-  { label: "Home", href: "/" },
-  { label: "The Group", href: "/#group" },
-  { label: "Ventures", href: "/#companies" },
+  { label: "The Mandate", href: "/#mandate" },
+  { label: "Sectors", href: "/#sectors" },
+  { label: "Group Companies", href: "/#companies" },
   { label: "Contact", href: "/#contact" },
 ];
 

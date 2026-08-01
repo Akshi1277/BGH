@@ -158,7 +158,7 @@ export default function CTA() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="font-display text-3xl md:text-5xl text-ink max-w-3xl leading-tight"
           >
-            Every Enduring Enterprise Begins With a Conversation.
+            Every Great Institution Begins With a Conversation.
           </motion.h2>
 
           <motion.div
@@ -169,7 +169,7 @@ export default function CTA() {
             className="space-y-4 text-ink-muted text-base md:text-lg max-w-2xl mt-6 font-light leading-relaxed"
           >
             <p>
-              Whether you are establishing a new venture, seeking a strategic technology partner, exploring investment opportunities or considering a long-term partnership, we welcome conversations with ambitious organisations and exceptional people who share our commitment to building lasting value.
+              Whether you are establishing a new venture, seeking a strategic technology partner, or considering a long-term collaboration, we welcome conversations with ambitious organisations who share our commitment to building lasting value.
             </p>
             <p className="text-ink font-normal italic">
               If your ambition is to create something designed to endure, we would be pleased to begin the conversation.

@@ -145,31 +145,12 @@ export default function Hero() {
 
           {/* Subhead & Paragraph */}
           <motion.p
-            className="text-base sm:text-lg md:text-xl text-[#34D399] font-display font-light"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease, delay: 0.18 }}
-          >
-            Creating companies with the ambition to shape industries and create lasting value.
-          </motion.p>
-
-          <motion.p
             className="text-lede text-[#A0AAA4] max-w-xl font-light"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease, delay: 0.24 }}
           >
-            <span className="text-[#F4F4F0] font-medium">BRAHM Global Holdings</span> is an international venture builder and holding company creating exceptional businesses across technology, education, sport, hospitality and premium consumer brands.
-          </motion.p>
-
-          {/* Quote line */}
-          <motion.p
-            className="text-xs sm:text-sm text-white/50 italic border-l border-[#34D399]/40 pl-4 py-1 max-w-lg"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease, delay: 0.3 }}
-          >
-            "We build businesses with the ambition to remain relevant long after their founders."
+            <span className="text-[#F4F4F0] font-medium">BRAHM Global Holdings</span> is an international venture builder and holding company creating exceptional businesses across technology, education, sport, hospitality and premium consumer brands. We build companies with the ambition to shape industries and create lasting value.
           </motion.p>
 
           {/* Explore CTA Button */}
