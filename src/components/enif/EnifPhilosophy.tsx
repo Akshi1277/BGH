@@ -85,7 +85,7 @@ function InteractiveCodeTerminal() {
                   : line.type === "command"
                   ? "text-white font-semibold"
                   : line.type === "success"
-                  ? "text-emerald-400 mt-2"
+                  ? "text-[#38BDF8] font-semibold mt-2"
                   : "text-[#38BDF8]/80"
               }`}
             >

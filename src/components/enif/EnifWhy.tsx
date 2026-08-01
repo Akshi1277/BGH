@@ -24,10 +24,10 @@ const WHY_CARDS: ScrollCardItem[] = [
     description: "We build systems tailored specifically to your business goals—eliminating unnecessary complexity and focusing purely on what drives value.",
     icon: "cpu",
     visual: (
-      <div className="w-full max-w-full overflow-hidden p-4 rounded-2xl bg-[#020408]/90 border border-white/10 text-xs shadow-inner">
+      <div className="w-full max-w-full overflow-hidden p-4 rounded-2xl bg-[#02040A]/90 border border-white/10 text-xs shadow-inner">
         <div className="flex items-center justify-between text-[10px] font-mono text-[#38BDF8] mb-3 pb-2 border-b border-white/5">
           <span>BUSINESS ALIGNMENT</span>
-          <span className="text-emerald-400 font-semibold">● DIRECT OWNERSHIP</span>
+          <span className="text-[#38BDF8] font-semibold">● DIRECT OWNERSHIP</span>
         </div>
         <div className="flex flex-col gap-2.5">
           {[
@@ -65,10 +65,10 @@ const WHY_CARDS: ScrollCardItem[] = [
     description: "Our approach ensures your digital platforms can grow and adapt seamlessly, avoiding the costly cycle of complete system replacements.",
     icon: "layers",
     visual: (
-      <div className="w-full max-w-full overflow-hidden p-4 rounded-2xl bg-[#020408]/90 border border-white/10 shadow-inner">
+      <div className="w-full max-w-full overflow-hidden p-4 rounded-2xl bg-[#02040A]/90 border border-white/10 shadow-inner">
         <div className="flex items-center justify-between text-[10px] font-mono text-[#38BDF8] mb-3 pb-2 border-b border-white/5">
           <span>ADAPTIVE FOUNDATIONS</span>
-          <span className="text-emerald-400 font-semibold">● FUTURE-PROOF</span>
+          <span className="text-[#38BDF8] font-semibold">● FUTURE-PROOF</span>
         </div>
         <div className="grid grid-cols-1 gap-2 text-xs">
           {[
@@ -87,7 +87,7 @@ const WHY_CARDS: ScrollCardItem[] = [
           ].map((item, idx) => (
             <div key={idx} className="p-2.5 rounded-xl bg-white/[0.02] border border-white/5 flex flex-col gap-0.5">
               <span className="text-white font-medium text-xs flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8]" />
                 {item.title}
               </span>
               <span className="text-[#94A3B8] text-[11px] font-light leading-relaxed pl-3.5">
@@ -106,10 +106,10 @@ const WHY_CARDS: ScrollCardItem[] = [
     description: "Consistent, high-speed performance across all regions, ensuring your team and customers have reliable access whenever they need it.",
     icon: "globe",
     visual: (
-      <div className="w-full max-w-full overflow-hidden rounded-2xl bg-[#020408]/90 border border-white/10 shadow-inner">
+      <div className="w-full max-w-full overflow-hidden rounded-2xl bg-[#02040A]/90 border border-white/10 shadow-inner">
         <div className="flex items-center justify-between text-[10px] font-mono text-[#38BDF8] px-4 pt-4">
           <span>GLOBAL ACCESSIBILITY</span>
-          <span className="text-emerald-400 font-semibold">● ALWAYS ONLINE</span>
+          <span className="text-[#38BDF8] font-semibold">● ALWAYS ONLINE</span>
         </div>
         <RotatingEarth
           width={360}
@@ -127,10 +127,10 @@ const WHY_CARDS: ScrollCardItem[] = [
     description: "Comprehensive safety protocols integrated from day one, providing absolute peace of mind for you, your stakeholders, and your clients.",
     icon: "shield",
     visual: (
-      <div className="w-full max-w-full overflow-hidden p-4 rounded-2xl bg-[#020408]/90 border border-white/10 shadow-inner">
+      <div className="w-full max-w-full overflow-hidden p-4 rounded-2xl bg-[#02040A]/90 border border-white/10 shadow-inner">
         <div className="flex items-center justify-between text-[10px] font-mono text-[#38BDF8] mb-3 pb-2 border-b border-white/5">
           <span>SECURITY & COMPLIANCE</span>
-          <span className="text-emerald-400 font-semibold">● PROTECTED</span>
+          <span className="text-[#38BDF8] font-semibold">● PROTECTED</span>
         </div>
         <div className="grid grid-cols-1 gap-2 text-xs">
           {[
@@ -220,7 +220,7 @@ export default function EnifWhy() {
                   key={card.id}
                   index={index}
                   incrementY={28}
-                  className="rounded-2xl sm:rounded-3xl border border-[#38BDF8]/30 bg-[#080E1B] p-5 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.8)] w-full antialiased"
+                  className="rounded-2xl sm:rounded-3xl border border-[#38BDF8]/30 bg-[#04070D]/95 p-5 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.8)] w-full antialiased"
                 >
                   <div className="flex flex-col gap-4 sm:gap-8 items-start w-full max-w-full">
                     <div className="flex items-center justify-between gap-4 w-full mb-1 sm:mb-2">

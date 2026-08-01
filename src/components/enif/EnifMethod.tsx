@@ -23,7 +23,7 @@ export default function EnifMethod() {
     <section id="method" className="py-24 md:py-32 bg-[#02040A] border-b border-[#38BDF8]/10 relative overflow-hidden">
       {/* Dark Theme Ambient Overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#050D1A_0%,#02040A_60%,#010206_100%)] pointer-events-none z-0" />
-      <div className="absolute top-1/2 right-1/4 w-[500px] h-[300px] bg-[#0EA5E9]/[0.04] blur-[100px] rounded-full pointer-events-none z-0" />
+      <div className="absolute top-1/2 right-1/4 w-[500px] h-[300px] bg-[#38BDF8]/[0.04] blur-[100px] rounded-full pointer-events-none z-0" />
       
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
         <div className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
