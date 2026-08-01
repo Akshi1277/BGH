@@ -6,7 +6,6 @@ import EnifCapabilities from "@/components/enif/EnifCapabilities";
 import EnifWhy from "@/components/enif/EnifWhy";
 import EnifPhilosophy from "@/components/enif/EnifPhilosophy";
 import EnifMethod from "@/components/enif/EnifMethod";
-import EnifTech from "@/components/enif/EnifTech";
 import EnifCTA from "@/components/enif/EnifCTA";
 import Footer from "@/components/Footer";
 
@@ -23,8 +22,8 @@ export default function EnifPage() {
       <EnifHero />
       <EnifCapabilities />
       <EnifWhy />
+      <EnifMethod />
       <EnifPhilosophy />
-      <EnifTech />
       <EnifCTA />
       <div className="bg-[#04070D]">
         <Footer theme="dark" />
