@@ -21,12 +21,25 @@ export default function EnifCTA() {
 
           {/* Left Side: Enterprise CTA Content */}
           <div className="w-full md:w-7/12 flex flex-col items-start text-left">
+            <motion.div
+              initial={reduce ? false : { opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, ease }}
+              className="inline-flex items-center gap-3 mb-5"
+            >
+              <span className="w-8 h-px bg-[#38BDF8]" />
+              <span className="font-mono text-[#38BDF8] text-[10px] sm:text-[11px] uppercase tracking-[0.2em] font-semibold">
+                Engagement
+              </span>
+            </motion.div>
+
             <motion.h2
               initial={reduce ? false : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, ease }}
-              className="font-display text-4xl sm:text-5xl md:text-6xl text-white leading-[1.12] tracking-[-0.01em] mb-6"
+              className="font-display text-4xl sm:text-5xl md:text-6xl text-white leading-[1.12] tracking-[-0.03em] mb-6"
             >
               Engineer the Future of Your Organisation.
             </motion.h2>
@@ -36,7 +49,7 @@ export default function EnifCTA() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, ease, delay: 0.1 }}
-              className="text-[#94A3B8] text-base md:text-xl font-light leading-relaxed tracking-[0.01em] mb-10 max-w-xl"
+              className="text-[#94A3B8] text-base md:text-xl font-light leading-relaxed tracking-[0.01em] mb-10 max-w-[60ch]"
             >
               Partner with the engineering team behind BRAHM Global Holdings.
             </motion.p>

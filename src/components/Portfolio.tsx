@@ -187,7 +187,7 @@ export default function Portfolio() {
   return (
     <section
       id="companies"
-      className="section-y bg-surface overflow-hidden border-t border-surface-line"
+      className="section-y bg-paper text-paper-ink overflow-hidden border-y border-paper-line"
     >
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop">
 

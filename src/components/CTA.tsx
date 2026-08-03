@@ -113,7 +113,7 @@ export default function CTA() {
   return (
     <section
       id="contact"
-      className="relative section-y bg-surface overflow-hidden"
+      className="relative section-y bg-paper text-paper-ink border-y border-paper-line overflow-hidden"
     >
       <div
         className="absolute inset-0 pointer-events-none"

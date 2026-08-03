@@ -47,7 +47,7 @@ const SECTORS = [
 
 export default function GroupSectors() {
   return (
-    <section id="sectors" className="section-y bg-surface relative">
+    <section id="sectors" className="section-y bg-surface relative border-y border-surface-line/40">
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop">
         
         {/* Clean Stacked Header (Headline + max-65ch body for optimal typography readability) */}

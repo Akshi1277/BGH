@@ -83,7 +83,7 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative lg:h-screen lg:max-h-[100vh] min-h-[660px] flex flex-col justify-between overflow-hidden bg-[#0A0D0B] text-[#F4F4F0] pt-16 pb-4 sm:pt-20 sm:pb-6 md:pt-20 md:pb-6 border-b border-white/10"
+      className="relative lg:h-screen lg:max-h-[100vh] min-h-[660px] flex flex-col justify-between overflow-hidden bg-[#0A0D0B] text-[#F4F4F0] pt-24 pb-6 sm:pt-24 sm:pb-6 md:pt-20 md:pb-6 border-b border-white/10"
     >
       {/* ── Background layer ─────────────────────────────────────── */}
       <div
@@ -136,7 +136,7 @@ export default function Hero() {
 
           {/* Main Headline */}
           <motion.h1
-            className="font-display text-4xl sm:text-5xl lg:text-5xl xl:text-6xl text-[#F4F4F0] leading-[1.06] min-w-0 tracking-[-0.03em]"
+            className="font-display text-3xl sm:text-5xl lg:text-5xl xl:text-6xl text-[#F4F4F0] leading-[1.06] min-w-0 tracking-[-0.03em]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease, delay: 0.1 }}
@@ -191,26 +191,33 @@ export default function Hero() {
             </Link>
           </motion.div>
 
-          {/* Mobile Category Badges Grid (< lg screens) */}
+          {/* Mobile Category Badges Grid (< lg screens) — Horizontal Scroll Pill Bar */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.45 }}
-            className="lg:hidden mt-4 pt-4 border-t border-white/10 flex flex-wrap gap-2"
+            className="lg:hidden mt-4 pt-4 border-t border-white/10"
           >
-            <span className="w-full text-[10px] font-mono-ui text-[#34D399] uppercase tracking-widest mb-1 font-semibold">
-              SECTORS & VENTURES
-            </span>
-            {CATEGORIES.map((c) => (
-              <Link
-                key={c.label}
-                href="/#sectors"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/15 bg-[#121815]/90 text-[10px] font-mono-ui uppercase tracking-wider text-white/80 hover:border-[#34D399]/50 hover:text-[#34D399] transition-colors duration-200"
-              >
-                <Icon name={c.icon} size={12} className="text-[#34D399]" />
-                <span>{c.label}</span>
-              </Link>
-            ))}
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-[10px] font-mono-ui text-[#34D399] uppercase tracking-widest font-semibold">
+                SECTORS &amp; VENTURES
+              </span>
+              <span className="text-[9px] font-mono-ui text-white/40 uppercase tracking-wider">
+                SWIPE →
+              </span>
+            </div>
+            <div className="flex items-center gap-2 overflow-x-auto pb-2 pt-1 no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
+              {CATEGORIES.map((c) => (
+                <Link
+                  key={c.label}
+                  href="/#sectors"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/15 bg-[#121815]/90 text-[10px] font-mono-ui uppercase tracking-wider text-white/80 shrink-0 hover:border-[#34D399]/50 hover:text-[#34D399] transition-colors duration-200"
+                >
+                  <Icon name={c.icon} size={12} className="text-[#34D399]" />
+                  <span>{c.label}</span>
+                </Link>
+              ))}
+            </div>
           </motion.div>
         </div>
 
@@ -314,7 +321,7 @@ export default function Hero() {
       </div>
 
       {/* ── Hero Footer Pillars & Tagline ─────────────────────────── */}
-      <div className="relative z-10 max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop w-full pt-4 border-t border-white/10 mt-2">
+      <div className="relative z-10 max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop w-full pt-4 pb-8 sm:pb-4 border-t border-white/10 mt-2">
         <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-center mb-2">
           {HERO_PILLARS.map((pillar, i) => (
             <motion.div

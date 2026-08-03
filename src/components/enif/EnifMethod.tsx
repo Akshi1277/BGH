@@ -33,9 +33,9 @@ export default function EnifMethod() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, ease }}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#38BDF8]/30 bg-[#38BDF8]/10 mb-5 backdrop-blur-md"
+              className="inline-flex items-center gap-3 mb-5"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8] animate-pulse" />
+              <span className="w-8 h-px bg-[#38BDF8]" />
               <span className="font-mono text-[#38BDF8] text-[10px] sm:text-[11px] uppercase tracking-[0.2em] font-semibold">
                 Delivery Framework
               </span>
@@ -46,7 +46,7 @@ export default function EnifMethod() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, ease, delay: 0.1 }}
-              className="font-display text-4xl md:text-5xl text-white leading-[1.18] tracking-[-0.01em] mb-6"
+              className="font-display text-4xl md:text-5xl text-white leading-[1.18] tracking-[-0.025em] mb-6"
             >
               The Engineering Method
             </motion.h2>

@@ -54,27 +54,22 @@ export default function EnifHero({ onSplineLoad }: EnifHeroProps = {}) {
           {/* ── Left-Aligned Architectural Hero Content ── */}
           <div className="flex flex-col items-start justify-center text-left w-full md:w-2/3 lg:w-3/5">
             
-            {/* Structural Line Above */}
-            <motion.div 
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="h-px w-16 bg-[#38BDF8] mb-6 sm:mb-8 origin-left"
-            />
-
-            {/* Tagline */}
-            <motion.p
-              className="font-mono text-[9px] sm:text-[10px] md:text-[11px] uppercase tracking-[0.25em] text-[#38BDF8] mb-4 sm:mb-6 font-semibold"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.22 }}
+            {/* Tagline with Inline Accent Line */}
+            <motion.div
+              className="flex items-center gap-3 mb-4 sm:mb-6"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
             >
-              ENIF Technologies — BRAHM Global Holdings
-            </motion.p>
+              <span className="w-8 sm:w-10 h-px bg-[#38BDF8]" />
+              <span className="font-mono text-[9px] sm:text-[10px] md:text-[11px] uppercase tracking-[0.25em] text-[#38BDF8] font-semibold">
+                ENIF Technologies — BRAHM Global Holdings
+              </span>
+            </motion.div>
 
             {/* Headline */}
             <motion.h1
-              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] leading-[1.05] tracking-[-0.02em] text-[#F8FAFC] mb-5 sm:mb-8 drop-shadow-2xl max-w-5xl"
+              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] leading-[1.05] tracking-[-0.035em] text-[#F8FAFC] mb-5 sm:mb-8 drop-shadow-2xl max-w-5xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease, delay: 0.1 }}
@@ -85,7 +80,7 @@ export default function EnifHero({ onSplineLoad }: EnifHeroProps = {}) {
 
             {/* Description */}
             <motion.p
-              className="text-sm sm:text-base md:text-lg text-[#94A3B8] max-w-xl mb-8 sm:mb-10 font-light tracking-[0.01em] leading-relaxed drop-shadow-sm border-l border-[#38BDF8]/20 pl-4 sm:pl-6"
+              className="text-sm sm:text-base md:text-lg text-[#94A3B8] max-w-[58ch] mb-8 sm:mb-10 font-light tracking-[0.01em] leading-relaxed drop-shadow-sm border-l border-[#38BDF8]/20 pl-4 sm:pl-6"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease, delay: 0.3 }}

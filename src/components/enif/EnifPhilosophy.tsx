@@ -126,9 +126,9 @@ export default function EnifPhilosophy() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, ease }}
-              className="inline-flex items-center gap-3 px-3 py-1 border border-[#38BDF8]/20 bg-[#38BDF8]/10 rounded-full mb-8"
+              className="inline-flex items-center gap-3 mb-8"
             >
-              <span className="w-1.5 h-1.5 bg-[#38BDF8] rounded-full animate-pulse" />
+              <span className="w-8 h-px bg-[#38BDF8]" />
               <span className="font-mono text-[#38BDF8] text-[10px] sm:text-[11px] uppercase tracking-[0.2em] font-semibold">
                 Philosophy
               </span>

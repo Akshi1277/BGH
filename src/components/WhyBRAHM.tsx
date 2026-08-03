@@ -8,7 +8,7 @@ const ease = [0.25, 1, 0.5, 1] as const;
 
 export default function WhyBRAHM() {
   return (
-    <section id="why-brahm" className="section-y bg-surface relative overflow-hidden">
+    <section id="why-brahm" className="section-y bg-surface relative overflow-hidden border-y border-surface-line/40">
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
         
         {/* Header */}
