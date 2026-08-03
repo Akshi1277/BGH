@@ -1,20 +1,9 @@
 "use client";
 
-import React from "react";
-import { motion, Variants } from "framer-motion";
-import Icon from "./Icon";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const ease = [0.25, 1, 0.5, 1] as const;
-
-const container: Variants = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.08 } },
-};
-
-const item: Variants = {
-  hidden: { opacity: 0, y: 18 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease } },
-};
 
 interface ProcessStep {
   title: string;
@@ -41,6 +30,18 @@ export default function ProcessFlow({
   theme = "light",
 }: ProcessFlowProps) {
   const isDark = theme === "dark";
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const activeStep = steps[activeIdx] || steps[0];
+
+  // Auto-cycle through stages every 4.5 seconds
+  useEffect(() => {
+    if (isPaused || steps.length === 0) return;
+    const interval = setInterval(() => {
+      setActiveIdx((prev) => (prev + 1) % steps.length);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [isPaused, steps.length]);
 
   const accentText =
     accent === "cyan"
@@ -48,13 +49,6 @@ export default function ProcessFlow({
       : accent === "cobalt"
       ? "text-cobalt"
       : "text-accent";
-
-  const accentBorder =
-    isDark
-      ? "border-cyan-500/20 bg-[#0A101F]/80 text-[#F8FAFC]"
-      : accent === "cobalt"
-      ? "border-cobalt/30 bg-surface text-ink"
-      : "border-accent/30 bg-surface text-ink";
 
   return (
     <section
@@ -66,9 +60,11 @@ export default function ProcessFlow({
       } relative overflow-hidden`}
     >
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
-        <div className="max-w-2xl mb-16">
+        
+        {/* Header */}
+        <div className="max-w-[65ch] mb-12 md:mb-16">
           <motion.span
-            className={`text-eyebrow font-mono-ui ${accentText} block mb-4 uppercase tracking-[0.2em]`}
+            className={`text-eyebrow font-mono-ui ${accentText} block mb-3 uppercase tracking-[0.2em]`}
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -76,8 +72,9 @@ export default function ProcessFlow({
           >
             {eyebrow}
           </motion.span>
+          
           <motion.h2
-            className={`font-display text-display ${
+            className={`font-display text-4xl md:text-5xl leading-tight mb-4 ${
               isDark ? "text-[#F8FAFC]" : "text-ink"
             }`}
             initial={{ opacity: 0, y: 18 }}
@@ -87,11 +84,12 @@ export default function ProcessFlow({
           >
             {heading}
           </motion.h2>
+
           {description && (
             <motion.p
               className={`${
                 isDark ? "text-[#94A3B8]" : "text-ink-muted"
-              } mt-4 max-w-lg text-lede`}
+              } text-lede font-light leading-relaxed`}
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
@@ -102,50 +100,107 @@ export default function ProcessFlow({
           )}
         </div>
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          className="flex flex-col md:flex-row md:flex-wrap items-stretch gap-3 md:gap-0"
-        >
-          {steps.map((step, i) => (
-            <React.Fragment key={step.title}>
-              <motion.div
-                variants={item}
-                className={`flex-1 min-w-[160px] border ${accentBorder} backdrop-blur-md rounded-xl p-5 md:p-6 flex flex-col gap-3 group hover:border-cyan-400/50 transition-all duration-300`}
-              >
-                <span className={`font-mono-ui text-[11px] tracking-widest ${accentText}`}>
-                  0{i + 1}
-                </span>
-                <span
-                  className={`font-display text-base md:text-lg leading-snug ${
-                    isDark ? "text-[#F8FAFC]" : "text-ink"
-                  }`}
+        {/* Connected Horizontal Timeline Stepper */}
+        <div className="mb-10 overflow-x-auto pb-4 pt-2 no-scrollbar">
+          <div className="flex items-center min-w-[720px] relative border-b border-surface-line/80 pb-6">
+            {steps.map((step, idx) => {
+              const isSelected = activeIdx === idx;
+              return (
+                <button
+                  key={step.title}
+                  onClick={() => {
+                    setActiveIdx(idx);
+                    setIsPaused(true);
+                  }}
+                  onMouseEnter={() => setIsPaused(true)}
+                  onMouseLeave={() => setIsPaused(false)}
+                  className="flex-1 group text-left relative px-3 transition-all duration-300 focus:outline-none cursor-pointer"
                 >
-                  {step.title}
-                </span>
-                {step.description && (
-                  <p className={`text-xs leading-relaxed ${isDark ? "text-[#94A3B8]" : "text-ink-muted"}`}>
-                    {step.description}
-                  </p>
-                )}
-              </motion.div>
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className={`w-8 h-8 rounded-full flex items-center justify-center font-mono-ui text-xs transition-all duration-300 ${
+                      isSelected
+                        ? "bg-accent text-surface shadow-md scale-110 font-bold"
+                        : "bg-surface border border-surface-line text-ink-muted group-hover:border-accent/40"
+                    }`}>
+                      0{idx + 1}
+                    </span>
+                    <span className={`font-display text-base transition-colors duration-300 ${
+                      isSelected ? "text-accent font-semibold" : "text-ink group-hover:text-accent"
+                    }`}>
+                      {step.title}
+                    </span>
+                  </div>
 
-              {i < steps.length - 1 && (
-                <motion.div
-                  variants={item}
-                  className="flex items-center justify-center shrink-0 py-2 md:py-0 md:px-2"
-                >
-                  <span className={`${accentText} opacity-60 rotate-90 md:rotate-0`}>
-                    <Icon name="arrow-right" size={16} />
+                  {/* Active Indicator Bar */}
+                  {isSelected && (
+                    <motion.div
+                      layoutId="activePipelineBar"
+                      className="absolute bottom-[-25px] left-0 right-0 h-[3px] bg-accent"
+                      transition={{ duration: 0.3, ease: "easeOut" }}
+                    />
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Dynamic Detail Card Inspector with Smooth Auto-Cycle Progress Bar */}
+        <div 
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          className={`border ${isDark ? "bg-[#0A101F]/80 border-cyan-500/20" : "bg-surface border-surface-line"} rounded-2xl p-8 md:p-12 shadow-sm min-h-[220px] flex flex-col justify-between relative overflow-hidden group`}
+        >
+          {/* Top Auto-Cycle Countdown Progress Line */}
+          <div className="absolute top-0 left-0 right-0 h-1 bg-surface-line/40 overflow-hidden pointer-events-none">
+            {!isPaused && (
+              <motion.div
+                key={`progress-${activeIdx}`}
+                className="h-full bg-accent"
+                initial={{ width: "0%" }}
+                animate={{ width: "100%" }}
+                transition={{ duration: 4.5, ease: "linear" }}
+              />
+            )}
+          </div>
+
+          <span className="absolute left-0 top-0 h-full w-[4px] bg-accent" />
+          
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeIdx}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.35, ease }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+            >
+              <div className="lg:col-span-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="font-mono-ui text-xs text-accent uppercase tracking-widest font-semibold">
+                    STAGE 0{activeIdx + 1} OF 0{steps.length}
                   </span>
-                </motion.div>
-              )}
-            </React.Fragment>
-          ))}
-        </motion.div>
+                </div>
+                <h3 className={`font-display text-3xl ${isDark ? "text-white" : "text-ink"} font-normal mb-1`}>
+                  {activeStep.title}
+                </h3>
+              </div>
+
+              <div className={`lg:col-span-8 border-t lg:border-t-0 lg:border-l ${isDark ? "border-cyan-500/20" : "border-surface-line"} pt-6 lg:pt-0 lg:pl-8`}>
+                <p className={`text-lg ${isDark ? "text-[#94A3B8]" : "text-ink-muted"} leading-relaxed font-light`}>
+                  {activeStep.description}
+                </p>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
       </div>
     </section>
   );
 }
+
+
+
+
+

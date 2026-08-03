@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Icon from "./Icon";
 
 const ease = [0.25, 1, 0.5, 1] as const;
@@ -36,11 +36,13 @@ const PRINCIPLES = [
 ];
 
 export default function PhilosophyStandard() {
+  const [openIdx, setOpenIdx] = useState<number | null>(0);
+
   return (
     <section id="standard" className="section-y bg-paper text-paper-ink border-y border-paper-line relative overflow-hidden">
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative z-20">
         
-        {/* ── Left: editorial statement card ───────────────────── */}
+        {/* Left: Editorial Statement Card */}
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -54,7 +56,6 @@ export default function PhilosophyStandard() {
               background: "linear-gradient(160deg, #F8F6F2 0%, #EAF2EC 60%, #D8EBE1 100%)",
             }}
           >
-            {/* Corner bracket decorations */}
             <span className="absolute top-4 left-4   w-5 h-5 border-t border-l border-accent-deep/40" />
             <span className="absolute top-4 right-4  w-5 h-5 border-t border-r border-accent-deep/40" />
             <span className="absolute bottom-4 left-4  w-5 h-5 border-b border-l border-accent-deep/40" />
@@ -89,9 +90,9 @@ export default function PhilosophyStandard() {
           </div>
         </motion.div>
 
-        {/* ── Right: principles grid ───────────────────── */}
+        {/* Right: Interactive Accordion List */}
         <div className="lg:col-span-7">
-          <div className="mb-12">
+          <div className="mb-10">
             <motion.span
               className="font-mono-ui text-eyebrow text-accent block mb-3 uppercase tracking-[0.2em]"
               initial={{ opacity: 0, y: 14 }}
@@ -102,7 +103,7 @@ export default function PhilosophyStandard() {
               OUR PHILOSOPHY
             </motion.span>
             <motion.h2
-              className="font-display text-3xl md:text-5xl text-paper-ink leading-tight mb-6"
+              className="font-display text-3xl md:text-5xl text-paper-ink leading-tight mb-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
@@ -118,44 +119,62 @@ export default function PhilosophyStandard() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.65, ease, delay: 0.16 }}
             >
-              Every company within BRAHM Global Holdings operates independently while being governed by the same institutional principles. Different industries. One philosophy.
+              Every company within BRAHM Global Holdings operates independently while being governed by the same institutional principles.
             </motion.p>
           </div>
 
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5"
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={{
-              hidden: { opacity: 0 },
-              show: { opacity: 1, transition: { staggerChildren: 0.11 } },
-            }}
-          >
-            {PRINCIPLES.map((p, i) => (
-              <motion.div
-                key={p.title}
-                variants={{
-                  hidden: { opacity: 0, y: 22 },
-                  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
-                }}
-                className="group p-7 rounded-2xl border border-paper-line bg-paper-high flex flex-col justify-between hover:border-accent/40 hover:shadow-[0_10px_30px_-10px_rgba(31,92,67,0.12)] transition-all duration-300 relative overflow-hidden"
-              >
-                <div>
-                  <div className="w-10 h-10 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent mb-6 group-hover:scale-110 transition-transform">
-                    <Icon name={p.icon} size={20} />
-                  </div>
-                  <h3 className="font-display text-xl text-paper-ink mb-3">{p.title}</h3>
-                  <p className="text-sm text-paper-muted font-light leading-relaxed">{p.description}</p>
+          {/* Accordion Container */}
+          <div className="divide-y divide-paper-line border-y border-paper-line">
+            {PRINCIPLES.map((p, idx) => {
+              const isOpen = openIdx === idx;
+              return (
+                <div key={p.title} className={`py-5 transition-all duration-300 ${isOpen ? "pl-3 border-l-2 border-accent bg-accent/5" : ""}`}>
+                  <button
+                    onClick={() => setOpenIdx(isOpen ? null : idx)}
+                    className="w-full flex items-center justify-between text-left group focus:outline-none cursor-pointer"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-300 ${
+                        isOpen ? "bg-accent text-surface" : "bg-accent/10 text-accent group-hover:bg-accent/20"
+                      }`}>
+                        <Icon name={p.icon} size={20} />
+                      </div>
+                      <h3 className={`font-display text-2xl transition-colors duration-300 ${
+                        isOpen ? "text-accent" : "text-paper-ink group-hover:text-accent"
+                      }`}>
+                        {p.title}
+                      </h3>
+                    </div>
+
+                    <span className={`w-8 h-8 rounded-full border flex items-center justify-center font-mono-ui text-sm transition-all duration-300 ${
+                      isOpen ? "border-accent text-accent rotate-45" : "border-paper-line text-paper-muted group-hover:border-accent"
+                    }`}>
+                      +
+                    </span>
+                  </button>
+
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.35, ease }}
+                        className="overflow-hidden"
+                      >
+                        <p className="pt-4 pl-14 text-base text-paper-muted font-light leading-relaxed max-w-xl">
+                          {p.description}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
-                
-                {/* Accent hover line */}
-                <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-accent group-hover:w-full transition-[width] duration-500 ease-out" />
-              </motion.div>
-            ))}
-          </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
   );
 }
+

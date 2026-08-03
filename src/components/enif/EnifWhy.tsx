@@ -233,7 +233,7 @@ export default function EnifWhy() {
                     </div>
                     
                     <div className="w-full max-w-full">
-                      <h3 className="text-lg sm:text-2xl md:text-3xl font-bold tracking-tight text-white mb-2 sm:mb-4 subpixel-antialiased">
+                      <h3 className="font-display text-lg sm:text-2xl md:text-3xl font-medium tracking-[-0.01em] text-white mb-2 sm:mb-4 subpixel-antialiased">
                         {card.title}
                       </h3>
 

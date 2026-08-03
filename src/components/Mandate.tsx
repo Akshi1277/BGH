@@ -20,7 +20,6 @@ export default function Mandate() {
             className="lg:col-span-5 flex flex-col gap-6"
           >
             <div className="inline-flex items-center gap-2 text-eyebrow font-mono-ui text-accent tracking-[0.2em] uppercase">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
               <span>THE MANDATE</span>
             </div>
             
@@ -35,13 +34,13 @@ export default function Mandate() {
             </p>
           </motion.div>
 
-          {/* Right: Body Copy */}
+          {/* Right: Body Copy with Editorial Vertical Hair-line Divider & 58ch Measure Bound */}
           <motion.div 
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease, delay: 0.2 }}
-            className="lg:col-span-7 flex flex-col gap-6 text-paper-muted font-light leading-relaxed text-lg"
+            className="lg:col-span-7 flex flex-col gap-6 text-paper-muted font-light leading-relaxed text-lg lg:border-l lg:border-paper-line/80 lg:pl-12 max-w-[58ch]"
           >
             <p>
               BRAHM Global Holdings was founded on the belief that the world's most respected organisations are not defined by the industries they enter, but by the principles upon which they are built.

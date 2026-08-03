@@ -17,7 +17,14 @@ export type IconName =
   | "droplet"
   | "layers"
   | "trending-up"
-  | "users";
+  | "users"
+  | "graduation-cap"
+  | "trophy"
+  | "utensils"
+  | "diamond"
+  | "brain"
+  | "shopping-bag"
+  | "rocket";
 
 const paths: Record<IconName, React.ReactNode> = {
   "arrow-right": <path d="M4 12h16M13 5l7 7-7 7" />,
@@ -65,7 +72,6 @@ const paths: Record<IconName, React.ReactNode> = {
   droplet: (
     <path d="M12 3s6 6.8 6 11.2A6 6 0 0 1 6 14.2C6 9.8 12 3 12 3z" />
   ),
-  
   layers: (
     <>
       <path d="M12 2L2 7l10 5 10-5-10-5z" />
@@ -79,6 +85,48 @@ const paths: Record<IconName, React.ReactNode> = {
       <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
       <circle cx="9" cy="7" r="4" />
       <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+    </>
+  ),
+  "graduation-cap": (
+    <>
+      <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+      <path d="M6 12.5v5c0 2 3 3.5 6 3.5s6-1.5 6-3.5v-5" />
+    </>
+  ),
+  trophy: (
+    <>
+      <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.66V17M14 14.66V17M18 4H6v7a6 6 0 0 0 12 0V4z" />
+    </>
+  ),
+  utensils: (
+    <>
+      <path d="M18 2v20M21 15V2a5 5 0 0 0-5 5v8h5zM3 2v7c0 1.1.9 2 2 2h2a2 2 0 0 0 2-2V2M6 2v20" />
+    </>
+  ),
+  diamond: (
+    <>
+      <path d="M6 3h12l4 6-10 12L2 9z" />
+      <path d="M12 3v18M2 9h20M7.5 3l4.5 6 4.5-6" />
+    </>
+  ),
+  brain: (
+    <>
+      <path d="M12 3c.6 3.8 2.6 5.8 6.4 6.4-3.8.6-5.8 2.6-6.4 6.4-.6-3.8-2.6-5.8-6.4-6.4 3.8-.6 5.8-2.6 6.4-6.4z" />
+      <path d="M4.5 2.5c.3 1.8 1.4 2.9 3.2 3.2-1.8.3-2.9 1.4-3.2 3.2-.3-1.8-1.4-2.9-3.2-3.2 1.8-.3 2.9-1.4 3.2-3.2z" />
+      <path d="M19.5 15.5c.3 1.8 1.4 2.9 3.2 3.2-1.8.3-2.9 1.4-3.2 3.2-.3-1.8-1.4-2.9-3.2-3.2 1.8-.3 2.9-1.4 3.2-3.2z" />
+    </>
+  ),
+  "shopping-bag": (
+    <>
+      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18" />
+      <path d="M16 10a4 4 0 0 1-8 0" />
+    </>
+  ),
+  rocket: (
+    <>
+      <path d="M12 2c4.5 2 6.5 6.5 6.5 11l-3.5 3.5h-6L5.5 13C5.5 8.5 7.5 4 12 2z" />
+      <circle cx="12" cy="8.5" r="2" />
+      <path d="M5.5 13l-3.5 3.5V20h3.5l3.5-3.5M18.5 13l3.5 3.5V20h-3.5l-3.5-3.5" />
     </>
   ),
 };

@@ -28,7 +28,7 @@ export default function EnifHero({ onSplineLoad }: EnifHeroProps = {}) {
         <div className="absolute inset-0 z-0 opacity-70 pointer-events-none mix-blend-screen" style={{ filter: 'contrast(1.2) grayscale(0.2)' }}>
           <SplineScene
             scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-            className="w-full h-full object-cover origin-right scale-110 translate-x-[15%]"
+            className="w-full h-full object-cover origin-center scale-105 translate-x-[14%] md:translate-x-[19%] lg:translate-x-[22%]"
             onLoad={handleSplineLoad}
           />
         </div>

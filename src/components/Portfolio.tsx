@@ -248,8 +248,8 @@ export default function Portfolio() {
                     className={[
                       "w-full rounded-xl overflow-hidden border bg-surface transition-colors duration-500",
                       isCenter
-                        ? "border-accent/40 shadow-[0_24px_72px_-20px_rgba(0,0,0,0.2)]"
-                        : "border-surface-line cursor-pointer",
+                        ? "border-accent/60 shadow-[0_30px_90px_-15px_rgba(31,92,67,0.35),0_0_40px_rgba(52,211,153,0.15)] ring-1 ring-accent/30"
+                        : "border-surface-line/80 hover:border-accent/30 cursor-pointer shadow-md",
                     ].join(" ")}
                   >
                     {/* Browser chrome */}

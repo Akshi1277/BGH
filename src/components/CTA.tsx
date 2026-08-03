@@ -82,9 +82,15 @@ function PathwayCard({
           </motion.span>
         </div>
 
-        <h3 className="font-mono-ui text-xs font-bold text-ink uppercase tracking-[0.14em] mb-3">
-          {pathway.title}
-        </h3>
+        <div className="flex items-center justify-between mb-4">
+          <span className="inline-flex items-center gap-1.5 text-[9px] font-mono-ui uppercase tracking-wider text-accent font-semibold bg-accent/10 px-2 py-0.5 rounded-full border border-accent/20">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+            LIVE NODE
+          </span>
+          <h3 className="font-mono-ui text-xs font-bold text-ink uppercase tracking-[0.14em]">
+            {pathway.title}
+          </h3>
+        </div>
 
         <p className="text-sm leading-relaxed text-ink-muted font-light">
           {pathway.description}

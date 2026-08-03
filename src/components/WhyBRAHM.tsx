@@ -2,46 +2,19 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import Icon, { IconName } from "./Icon";
+import Icon from "./Icon";
 
 const ease = [0.25, 1, 0.5, 1] as const;
 
-const DIFFERENTIATORS: { icon: IconName; stat: string; label: string; description: string }[] = [
-  {
-    icon: "layers",
-    stat: "Build",
-    label: "We build, not just fund",
-    description:
-      "Unlike traditional venture capital that deploys capital and waits, we establish, engineer and operate businesses directly.",
-  },
-  {
-    icon: "compass",
-    stat: "Endure",
-    label: "Decades, not exit cycles",
-    description:
-      "Unlike private equity firms optimised for 5-year exits, we build institutions designed to remain relevant for the next century.",
-  },
-  {
-    icon: "shield",
-    stat: "In-House",
-    label: "Engineered by us",
-    description:
-      "Every company in our Group is powered by our own engineering division, ENIF. No black-box vendors, no outsourced core.",
-  },
-];
-
 export default function WhyBRAHM() {
   return (
-    <section id="why-brahm" className="section-y bg-surface-soft relative">
-      <div
-        aria-hidden
-        className="absolute top-0 left-0 right-0 h-20 pointer-events-none"
-        style={{ background: "linear-gradient(to bottom, var(--color-surface), transparent)" }}
-      />
-      <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop">
-        <div className="text-center max-w-2xl mx-auto mb-20">
+    <section id="why-brahm" className="section-y bg-surface relative overflow-hidden">
+      <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
+        
+        {/* Header */}
+        <div className="max-w-[65ch] mb-16">
           <motion.span
-            className="text-eyebrow font-mono-ui text-accent block mb-5"
+            className="text-eyebrow font-mono-ui text-accent block mb-3 uppercase tracking-[0.2em]"
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -60,36 +33,123 @@ export default function WhyBRAHM() {
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-surface-line border border-surface-line">
-          {DIFFERENTIATORS.map((t, idx) => (
-            <div key={t.label} className="bg-surface-soft p-10 md:p-12 flex flex-col items-center text-center group relative overflow-hidden">
-              <span className="absolute left-0 top-0 h-full w-[2px] bg-accent origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-500 ease-out" />
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6, delay: idx * 0.12, ease }}
-                className="flex flex-col items-center text-center gap-5"
-              >
-                <Icon name={t.icon} size={24} className="text-accent" />
-                <motion.span
-                  className="font-display text-3xl text-ink"
-                  whileHover={{ y: -2 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {t.stat}
-                </motion.span>
-                <h3 className="font-mono-ui text-[11px] uppercase tracking-[0.1em] text-ink font-bold">
-                  {t.label}
-                </h3>
-                <p className="text-sm text-ink-muted leading-relaxed max-w-xs">
-                  {t.description}
-                </p>
-              </motion.div>
+        {/* 3-Column Comparison Matrix — 100% Horizontally Aligned Across All 3 Cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+          
+          {/* 01 Traditional VC */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease }}
+            className="bg-surface-soft border border-surface-line rounded-2xl p-8 flex flex-col justify-between"
+          >
+            <div>
+              <span className="font-mono-ui text-[11px] uppercase tracking-widest text-ink-muted block mb-3 font-semibold">
+                01 • TRADITIONAL VC
+              </span>
+              <h3 className="font-display text-2xl text-ink mb-6 h-[3.25rem] flex items-center font-normal">
+                Deploy & Pray
+              </h3>
+              <ul className="space-y-3.5 text-sm text-ink-muted font-light">
+                <li className="flex items-start gap-2.5 min-h-[3.25rem]">
+                  <span className="text-red-500/70 font-mono font-bold mt-0.5">✕</span>
+                  <span>Outsources technology & core operations</span>
+                </li>
+                <li className="flex items-start gap-2.5 min-h-[3.25rem]">
+                  <span className="text-red-500/70 font-mono font-bold mt-0.5">✕</span>
+                  <span>Short 3-5 year exit pressure</span>
+                </li>
+                <li className="flex items-start gap-2.5 min-h-[3.25rem]">
+                  <span className="text-red-500/70 font-mono font-bold mt-0.5">✕</span>
+                  <span>Passive board governance</span>
+                </li>
+              </ul>
             </div>
-          ))}
+            <div className="pt-4 border-t border-surface-line text-xs font-mono-ui text-ink-muted/70 uppercase">
+              Horizon: Short-Term Exit
+            </div>
+          </motion.div>
+
+          {/* 02 Private Equity */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease, delay: 0.1 }}
+            className="bg-surface-soft border border-surface-line rounded-2xl p-8 flex flex-col justify-between"
+          >
+            <div>
+              <span className="font-mono-ui text-[11px] uppercase tracking-widest text-ink-muted block mb-3 font-semibold">
+                02 • PRIVATE EQUITY
+              </span>
+              <h3 className="font-display text-2xl text-ink mb-6 h-[3.25rem] flex items-center font-normal">
+                Financial Engineering
+              </h3>
+              <ul className="space-y-3.5 text-sm text-ink-muted font-light">
+                <li className="flex items-start gap-2.5 min-h-[3.25rem]">
+                  <span className="text-red-500/70 font-mono font-bold mt-0.5">✕</span>
+                  <span>Cost cutting over product innovation</span>
+                </li>
+                <li className="flex items-start gap-2.5 min-h-[3.25rem]">
+                  <span className="text-red-500/70 font-mono font-bold mt-0.5">✕</span>
+                  <span>Financial leverage & debt loading</span>
+                </li>
+                <li className="flex items-start gap-2.5 min-h-[3.25rem]">
+                  <span className="text-red-500/70 font-mono font-bold mt-0.5">✕</span>
+                  <span>Transactional turnarounds</span>
+                </li>
+              </ul>
+            </div>
+            <div className="pt-4 border-t border-surface-line text-xs font-mono-ui text-ink-muted/70 uppercase">
+              Horizon: 5-Year Liquidation
+            </div>
+          </motion.div>
+
+          {/* 03 BRAHM Global Holdings (Highlighted) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease, delay: 0.2 }}
+            className="bg-[#051A10] text-white border border-emerald-500/30 rounded-2xl p-8 flex flex-col justify-between shadow-2xl relative overflow-hidden"
+          >
+            <span className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
+
+            <div>
+              <span className="font-mono-ui text-[11px] uppercase tracking-widest text-emerald-400 block mb-3 font-semibold">
+                03 • THE BRAHM WAY
+              </span>
+
+              <h3 className="font-display text-2xl text-white mb-6 h-[3.25rem] flex items-center italic font-normal">
+                Direct Enterprise Building
+              </h3>
+
+              <ul className="space-y-3.5 text-sm text-emerald-100/90 font-light">
+                <li className="flex items-start gap-2.5 min-h-[3.25rem]">
+                  <span className="text-emerald-400 font-bold mt-0.5">✓</span>
+                  <span><strong>100% In-House Tech:</strong> Core powered directly by our engineering arm ENIF</span>
+                </li>
+                <li className="flex items-start gap-2.5 min-h-[3.25rem]">
+                  <span className="text-emerald-400 font-bold mt-0.5">✓</span>
+                  <span><strong>Generational Horizon:</strong> Building institutions designed for lasting permanence</span>
+                </li>
+                <li className="flex items-start gap-2.5 min-h-[3.25rem] mb-4">
+                  <span className="text-emerald-400 font-bold mt-0.5">✓</span>
+                  <span><strong>Direct Execution:</strong> Strategic leadership, governance & operational control</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="pt-4 border-t border-emerald-900/80 text-xs font-mono-ui text-emerald-400 uppercase font-semibold">
+              Horizon: Generational
+            </div>
+          </motion.div>
+
         </div>
+
       </div>
     </section>
   );
 }
+
