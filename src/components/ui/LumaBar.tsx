@@ -8,6 +8,9 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { StarButton } from "./StarButton";
 
+import { LimelightNav, NavItem } from "@/components/ui/limelight-nav";
+import { Cpu, ShieldCheck, Layers, Lightbulb, Mail } from "lucide-react";
+
 const NAV_ITEMS = [
   { name: "Capabilities", href: "#capabilities" },
   { name: "Why ENIF", href: "#why-enif" },
@@ -20,6 +23,58 @@ export const LumaBar = ({ className }: { className?: string }) => {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSectionIndex, setActiveSectionIndex] = useState(-1);
+
+  const isClickScrollingRef = React.useRef(false);
+  const clickTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+
+  const scrollToSection = (targetId: string, index: number) => {
+    isClickScrollingRef.current = true;
+    setActiveSectionIndex(index);
+
+    const el = document.getElementById(targetId);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+
+    if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
+    clickTimeoutRef.current = setTimeout(() => {
+      isClickScrollingRef.current = false;
+    }, 850);
+  };
+
+  const limelightNavItems: NavItem[] = [
+    {
+      id: "capabilities",
+      icon: <Cpu />,
+      label: "Capabilities",
+      onClick: () => scrollToSection("capabilities", 0),
+    },
+    {
+      id: "why-enif",
+      icon: <ShieldCheck />,
+      label: "Why ENIF",
+      onClick: () => scrollToSection("why-enif", 1),
+    },
+    {
+      id: "method",
+      icon: <Layers />,
+      label: "Method",
+      onClick: () => scrollToSection("method", 2),
+    },
+    {
+      id: "philosophy",
+      icon: <Lightbulb />,
+      label: "Philosophy",
+      onClick: () => scrollToSection("philosophy", 3),
+    },
+    {
+      id: "contact",
+      icon: <Mail />,
+      label: "Contact",
+      onClick: () => scrollToSection("contact", 4),
+    },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,6 +86,56 @@ export const LumaBar = ({ className }: { className?: string }) => {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Dynamic Scroll-Spy using IntersectionObserver for high performance (avoids layout thrashing)
+  useEffect(() => {
+    const sectionIds = ["capabilities", "why-enif", "method", "philosophy", "contact"];
+    
+    // We'll track the currently visible sections
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (isClickScrollingRef.current) return;
+
+        // Find the first intersecting entry
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = sectionIds.indexOf(entry.target.id);
+            if (index !== -1) {
+              setActiveSectionIndex(index);
+            }
+          }
+        });
+      },
+      {
+        rootMargin: "-20% 0px -60% 0px", // Triggers when section is roughly in the top middle of viewport
+        threshold: 0
+      }
+    );
+
+    // Observe all sections
+    sectionIds.forEach((id) => {
+      const section = document.getElementById(id);
+      if (section) observer.observe(section);
+    });
+
+    // Handle unhighlighting when above the first section (in Hero)
+    const handleTopScroll = () => {
+      if (isClickScrollingRef.current) return;
+      if (window.scrollY < window.innerHeight * 0.5) {
+        setActiveSectionIndex(-1);
+      }
+    };
+    
+    // We still need a lightweight scroll listener just for the hero section un-highlighting, 
+    // but we can throttle it or just let it be since window.scrollY doesn't cause reflows.
+    window.addEventListener("scroll", handleTopScroll, { passive: true });
+    handleTopScroll();
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", handleTopScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -81,18 +186,17 @@ export const LumaBar = ({ className }: { className?: string }) => {
           </div>
         </Link>
 
-        {/* 21st.dev Tubelight Sliding Tabs (100% Mathematically Centered) */}
-        <nav className="hidden md:flex items-center gap-2 absolute left-1/2 -translate-x-1/2">
-          {NAV_ITEMS.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="relative px-4 py-1.5 text-xs font-medium tracking-wide text-[#94A3B8] hover:text-white transition-colors duration-200 select-none"
-            >
-              <span className="relative z-10">{item.name}</span>
-            </a>
-          ))}
-        </nav>
+        {/* Limelight Navigation Bar (Centered with Dynamic Scroll-Spy) */}
+        <div className="hidden md:flex items-center absolute left-1/2 -translate-x-1/2 z-20">
+          <LimelightNav
+            items={limelightNavItems}
+            activeIndex={activeSectionIndex}
+            onTabChange={(index) => setActiveSectionIndex(index)}
+            className="bg-[#080C14]/90 border-[#38BDF8]/25 text-[#F8FAFC] backdrop-blur-md shadow-[0_8px_32px_rgba(4,7,13,0.8),0_0_15px_rgba(56,189,248,0.15)]"
+            limelightClassName="bg-[#38BDF8] text-[#38BDF8] shadow-[0_0_15px_#38BDF8,0_0_30px_#38BDF8]"
+            iconClassName="text-[#38BDF8]"
+          />
+        </div>
 
         {/* Right: BGH-Themed "Back to BGH" Button (Matching BGH Navbar Theme) */}
         <div className="flex items-center gap-3">

@@ -24,8 +24,8 @@ export default function EnifHero({ onSplineLoad }: EnifHeroProps = {}) {
     <>
       <EnifLoader isLoading={!splineLoaded} />
       <section className="relative overflow-hidden bg-[#04070D] text-[#F8FAFC] pt-24 pb-12 sm:pt-32 sm:pb-20 md:pt-40 md:pb-28 min-h-[100svh] min-h-screen flex flex-col justify-center border-b border-[#38BDF8]/20">
-        {/* Interactive 3D Scene — retained as requested */}
-        <div className="absolute inset-0 z-0 opacity-70 pointer-events-none mix-blend-screen" style={{ filter: 'contrast(1.2) grayscale(0.2)' }}>
+        {/* Interactive 3D Scene */}
+        <div className="absolute inset-0 z-0 opacity-70 pointer-events-none">
           <SplineScene
             scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
             className="w-full h-full object-cover origin-center scale-105 translate-x-[14%] md:translate-x-[19%] lg:translate-x-[22%]"

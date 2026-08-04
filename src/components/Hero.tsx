@@ -3,7 +3,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform, useInView } from "framer-motion";
 import { MeshGradient } from "@paper-design/shaders-react";
 import Icon, { IconName } from "./Icon";
 import { Spotlight } from "./ui/spotlight";
@@ -32,6 +32,7 @@ const HERO_PILLARS = [
 /* ─── Hero ──────────────────────────────────────────────────────── */
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { margin: "0px 0px -200px 0px" });
   const [orbitAngle, setOrbitAngle] = useState(0);
 
   const mouseX = useMotionValue(0);
@@ -41,11 +42,13 @@ export default function Hero() {
   const rotateY = useTransform(springX, [-0.5, 0.5], [-6, 6]);
   const rotateX = useTransform(springY, [-0.5, 0.5], [5, -5]);
 
-  // Track continuous orbit angle for synchronized badge glowing
+  // Track continuous orbit angle for synchronized badge glowing - Paused when out of view
   useEffect(() => {
     let start: number;
     let rafId: number;
     const duration = 14000; // 14 seconds for a 360-degree rotation
+
+    if (!isInView) return;
 
     const updateAngle = (now: number) => {
       if (!start) start = now;
@@ -57,7 +60,7 @@ export default function Hero() {
 
     rafId = requestAnimationFrame(updateAngle);
     return () => cancelAnimationFrame(rafId);
-  }, []);
+  }, [isInView]);
 
   useEffect(() => {
     const el = sectionRef.current;
@@ -91,18 +94,20 @@ export default function Hero() {
         className="absolute inset-0 pointer-events-none overflow-hidden"
       >
         {/* Dark mesh shader background, tuned to the BGH green palette */}
-        <div className="absolute inset-0 opacity-80">
-          <MeshGradient
-            className="absolute inset-0 w-full h-full"
-            colors={["#04070A", "#0A0D0B", "#0F1F17", "#123A28", "#060907"]}
-            speed={0.3}
-          />
-          <MeshGradient
-            className="absolute inset-0 w-full h-full opacity-40 mix-blend-screen pointer-events-none"
-            colors={["#081410", "#1F5C43", "#34D399", "#5EEAD4", "#0B2A1F"]}
-            speed={0.25}
-          />
-        </div>
+        {isInView && (
+          <div className="absolute inset-0 opacity-80">
+            <MeshGradient
+              className="absolute inset-0 w-full h-full"
+              colors={["#04070A", "#0A0D0B", "#0F1F17", "#123A28", "#060907"]}
+              speed={0.3}
+            />
+            <MeshGradient
+              className="absolute inset-0 w-full h-full opacity-40 mix-blend-screen pointer-events-none"
+              colors={["#081410", "#1F5C43", "#34D399", "#5EEAD4", "#0B2A1F"]}
+              speed={0.25}
+            />
+          </div>
+        )}
 
         <div
           className="absolute top-1/2 right-0 -translate-y-1/2 pointer-events-none"
