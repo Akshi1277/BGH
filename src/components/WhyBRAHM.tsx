@@ -65,6 +65,10 @@ export default function WhyBRAHM() {
                   <span className="text-red-500/70 font-mono font-bold mt-0.5">✕</span>
                   <span>Passive board governance</span>
                 </li>
+                <li className="flex items-start gap-2.5 min-h-[3.25rem]">
+                  <span className="text-red-500/70 font-mono font-bold mt-0.5">✕</span>
+                  <span>Fragmented agency relationships</span>
+                </li>
               </ul>
             </div>
             <div className="pt-4 border-t border-surface-line text-xs font-mono-ui text-ink-muted/70 uppercase">
@@ -99,6 +103,10 @@ export default function WhyBRAHM() {
                 <li className="flex items-start gap-2.5 min-h-[3.25rem]">
                   <span className="text-red-500/70 font-mono font-bold mt-0.5">✕</span>
                   <span>Transactional turnarounds</span>
+                </li>
+                <li className="flex items-start gap-2.5 min-h-[3.25rem]">
+                  <span className="text-red-500/70 font-mono font-bold mt-0.5">✕</span>
+                  <span>Generic brand & marketing approach</span>
                 </li>
               </ul>
             </div>
@@ -135,9 +143,13 @@ export default function WhyBRAHM() {
                   <span className="text-emerald-400 font-bold mt-0.5">✓</span>
                   <span><strong>Generational Horizon:</strong> Building institutions designed for lasting permanence</span>
                 </li>
-                <li className="flex items-start gap-2.5 min-h-[3.25rem] mb-4">
+                <li className="flex items-start gap-2.5 min-h-[3.25rem]">
                   <span className="text-emerald-400 font-bold mt-0.5">✓</span>
                   <span><strong>Direct Execution:</strong> Strategic leadership, governance & operational control</span>
+                </li>
+                <li className="flex items-start gap-2.5 min-h-[3.25rem] mb-4">
+                  <span className="text-emerald-400 font-bold mt-0.5">✓</span>
+                  <span><strong>In-House Brand & Media:</strong> Identities crafted directly by 7AURIGA</span>
                 </li>
               </ul>
             </div>

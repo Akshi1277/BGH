@@ -11,6 +11,7 @@ const COLUMNS = [
     heading: "OUR GROUP",
     links: [
       { label: "ENIF", href: "/enif" },
+      { label: "7 AURIGA", href: "/7auriga" },
       { label: "Talent Pro League", href: "/#companies" },
       { label: "London School of Academics & Arts", href: "/#companies" },
       { label: "Alayn", href: "/#companies" },
@@ -42,13 +43,13 @@ interface FooterProps {
 
 export default function Footer({ theme }: FooterProps) {
   const pathname = usePathname();
-  const isDark = theme === "dark" || pathname === "/enif";
+  const isDark = theme === "dark" || pathname === "/enif" || pathname === "/7auriga";
 
   return (
     <motion.footer
       className={`w-full ${
         isDark
-          ? "bg-[#04070D] text-[#F8FAFC] border-t border-cyan-500/20"
+          ? "bg-[#04070D] text-[#F8FAFC] border-t border-[#E0115F]/20"
           : "bg-surface border-t border-surface-line"
       }`}
       initial={{ opacity: 0, y: 16 }}

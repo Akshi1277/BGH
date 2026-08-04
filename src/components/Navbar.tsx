@@ -62,7 +62,7 @@ export default function Navbar() {
     document.body.style.overflow = "";
   }, [pathname]);
 
-  if (pathname?.startsWith("/enif")) {
+  if (pathname?.startsWith("/enif") || pathname?.startsWith("/7auriga")) {
     return null;
   }
 
@@ -81,7 +81,7 @@ export default function Navbar() {
         <div className="max-w-[var(--spacing-container-max)] mx-auto px-4 sm:px-margin-mobile md:px-margin-desktop flex justify-between items-center h-20">
           <Wordmark />
 
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
             {LINKS.map((link) => (
               <Link
                 key={link.href}
@@ -91,14 +91,24 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <motion.div whileHover={{ y: -1 }} transition={{ duration: 0.15 }}>
-              <StarButton
-                href="/enif"
-                className="font-mono-ui uppercase tracking-[0.12em] font-bold"
-              >
-                ENIF
-              </StarButton>
-            </motion.div>
+            <div className="flex items-center gap-3">
+              <motion.div whileHover={{ y: -1 }} transition={{ duration: 0.15 }}>
+                <StarButton
+                  href="/enif"
+                  className="font-mono-ui uppercase tracking-[0.12em] font-bold"
+                >
+                  ENIF
+                </StarButton>
+              </motion.div>
+              <motion.div whileHover={{ y: -1 }} transition={{ duration: 0.15 }}>
+                <StarButton
+                  href="/7auriga"
+                  className="font-mono-ui uppercase tracking-[0.12em] font-bold !from-[#E0115F] !via-[#9B111E] !to-[#E0115F]"
+                >
+                  7 AURIGA
+                </StarButton>
+              </motion.div>
+            </div>
           </div>
 
           <button
@@ -153,13 +163,20 @@ export default function Navbar() {
                 </motion.div>
               ))}
             </div>
-            <div className="p-4 sm:p-margin-mobile pb-[max(2.5rem,env(safe-area-inset-bottom))] shrink-0">
+            <div className="p-4 sm:p-margin-mobile pb-[max(2.5rem,env(safe-area-inset-bottom))] shrink-0 flex flex-col gap-3">
               <StarButton
                 href="/enif"
                 onClick={() => setOpen(false)}
-                className="w-full font-mono-ui uppercase tracking-[0.1em] font-bold py-4 h-auto justify-center"
+                className="w-full font-mono-ui uppercase tracking-[0.1em] font-bold py-3.5 h-auto justify-center"
               >
                 ENIF
+              </StarButton>
+              <StarButton
+                href="/7auriga"
+                onClick={() => setOpen(false)}
+                className="w-full font-mono-ui uppercase tracking-[0.1em] font-bold py-3.5 h-auto justify-center !from-[#E0115F] !via-[#9B111E] !to-[#E0115F]"
+              >
+                7 AURIGA
               </StarButton>
             </div>
           </motion.div>

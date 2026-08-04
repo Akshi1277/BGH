@@ -45,6 +45,21 @@ const VENTURES: Venture[] = [
   },
   {
     number: "02",
+    tag: "BRAND, MEDIA & COMMUNICATIONS",
+    badge: "Group Company",
+    name: "7AURIGA",
+    tagline: "Building Brands of Enduring Influence.",
+    url: "brahmglobalholdings.com/7auriga",
+    imageAlt: "7AURIGA Brand & Media",
+    aspectRatio: "1892/952",
+    variant: "gradient",
+    description:
+      "7AURIGA is the brand, media and creative company of BRAHM Global Holdings. We help organisations define who they are, how they are understood, and how they will be remembered — building identities designed to remain relevant long after they are launched.",
+    cta: "Explore 7AURIGA",
+    href: "/7auriga",
+  },
+  {
+    number: "03",
     tag: "SPORTS TECHNOLOGY",
     badge: "Group Company",
     name: "Talent Pro League",
@@ -60,7 +75,7 @@ const VENTURES: Venture[] = [
     href: "https://talentproleague.football",
   },
   {
-    number: "03",
+    number: "04",
     tag: "EDUCATION",
     badge: "Group Company",
     name: "London School of Academics & Arts",
@@ -76,7 +91,7 @@ const VENTURES: Venture[] = [
     href: "/#contact",
   },
   {
-    number: "04",
+    number: "05",
     tag: "HOSPITALITY TECHNOLOGY",
     badge: "Group Company",
     name: "Alayn",
@@ -92,7 +107,7 @@ const VENTURES: Venture[] = [
     href: "https://alaynai.com",
   },
   {
-    number: "05",
+    number: "06",
     tag: "LUXURY CONSUMER BRANDS",
     badge: "Group Company",
     name: "Luxure De Eden",

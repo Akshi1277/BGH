@@ -24,9 +24,11 @@ export type IconName =
   | "diamond"
   | "brain"
   | "shopping-bag"
-  | "rocket";
+  | "rocket"
+  | "play";
 
 const paths: Record<IconName, React.ReactNode> = {
+  play: <polygon points="5 3 19 12 5 21 5 3" fill="currentColor" />,
   "arrow-right": <path d="M4 12h16M13 5l7 7-7 7" />,
   "arrow-down": <path d="M12 5v14M19 12l-7 7-7-7" />,
   "arrow-up-right": <path d="M7 17 17 7M8 7h9v9" />,

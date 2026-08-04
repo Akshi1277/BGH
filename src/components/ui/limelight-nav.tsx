@@ -46,6 +46,7 @@ export type LimelightNavProps = {
   limelightClassName?: string;
   iconContainerClassName?: string;
   iconClassName?: string;
+  activeIconClassName?: string;
   showLabels?: boolean;
 };
 
@@ -61,6 +62,7 @@ export const LimelightNav = ({
   limelightClassName,
   iconContainerClassName,
   iconClassName,
+  activeIconClassName,
   showLabels = true,
 }: LimelightNavProps) => {
   const [internalActiveIndex, setInternalActiveIndex] = useState(defaultActiveIndex);
@@ -120,7 +122,9 @@ export const LimelightNav = ({
         >
           {cloneElement(icon as React.ReactElement<{ className?: string }>, {
             className: `w-5 h-5 transition-all duration-200 ease-in-out ${
-              activeIndex === index ? 'opacity-100 scale-105 text-white' : 'opacity-45 text-zinc-400 hover:opacity-70'
+              activeIndex === index
+                ? `opacity-100 scale-105 ${activeIconClassName || 'text-white'}`
+                : 'opacity-45 text-zinc-400 hover:opacity-70'
             } ${icon.props.className || ''} ${iconClassName || ''}`,
           })}
           {showLabels && label && (
