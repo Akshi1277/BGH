@@ -74,7 +74,8 @@
 
   /* ─── Fonts ───────────────────────────────────────────────────────  */
   --font-display: "var(--font-playfair)", Georgia, serif;
-  --font-sans:    "var(--font-inter)", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-tech-display: "var(--font-tech-display)", -apple-system, sans-serif;
+  --font-sans:    "var(--font-sans)", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono:    "var(--font-jbmono)", ui-monospace, "SFMono-Regular", monospace;
 
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
@@ -82,6 +83,7 @@
 
 /* ─── Font utilities ──────────────────────────────────────────────── */
 @utility font-display  { font-family: var(--font-display); }
+@utility font-tech-display { font-family: var(--font-tech-display); }
 @utility font-sans-ui  { font-family: var(--font-sans); }
 @utility font-mono-ui  { font-family: var(--font-mono); }
 

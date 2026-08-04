@@ -92,7 +92,7 @@ export default function EnifCapabilities() {
               <span className="w-8 h-px bg-[#38BDF8]/40" />
               <span className="text-[#38BDF8] font-mono text-xs tracking-[0.2em] uppercase font-semibold">Capabilities</span>
             </div>
-            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl text-white leading-[1.1] tracking-[-0.025em] max-w-2xl">
+            <h2 className="font-tech-display text-4xl sm:text-5xl md:text-6xl text-white leading-[1.1] tracking-[-0.025em] max-w-2xl">
               Institutional-Grade Engineering
             </h2>
           </div>
@@ -138,10 +138,10 @@ export default function EnifCapabilities() {
 
                   {/* Bottom: Content */}
                   <div className="mt-12 sm:mt-16 relative z-10">
-                    <h3 className="font-display text-3xl sm:text-4xl text-[#F8FAFC] leading-[1.1] tracking-[-0.025em] mb-4">
+                    <h3 className="font-tech-display text-3xl sm:text-4xl text-[#F8FAFC] leading-[1.1] tracking-[-0.025em] mb-4">
                       {cap.title}
                     </h3>
-                    <p className="text-[#94A3B8] text-sm sm:text-base leading-relaxed max-w-lg mb-8">
+                    <p className="text-[#94A3B8] text-sm sm:text-base leading-relaxed max-w-lg mb-4">
                       {cap.description}
                     </p>
 

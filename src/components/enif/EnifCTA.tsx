@@ -39,7 +39,7 @@ export default function EnifCTA() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, ease }}
-              className="font-display text-4xl sm:text-5xl md:text-6xl text-white leading-[1.12] tracking-[-0.03em] mb-6"
+              className="font-tech-display text-4xl sm:text-5xl md:text-6xl text-white leading-[1.12] tracking-[-0.03em] mb-6"
             >
               Engineer the Future of Your Organisation.
             </motion.h2>

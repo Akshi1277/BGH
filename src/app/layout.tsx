@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Inter, JetBrains_Mono } from "next/font/google";
+import { Playfair_Display, Plus_Jakarta_Sans, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 
@@ -9,8 +9,13 @@ const playfair = Playfair_Display({
   style: ["normal", "italic"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-sans",
+  subsets: ["latin"],
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-tech-display",
   subsets: ["latin"],
 });
 
@@ -68,9 +73,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${inter.variable} ${jbmono.variable} h-full antialiased`}
+      className={`${playfair.variable} ${jakarta.variable} ${spaceGrotesk.variable} ${jbmono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-surface text-ink font-sans-ui relative">
+      <body className="min-h-full flex flex-col bg-surface text-ink font-sans-ui relative selection:bg-accent selection:text-white">
         <div
           aria-hidden
           className="grain-overlay pointer-events-none fixed inset-0 z-[999]"

@@ -196,7 +196,7 @@ export default function EnifWhy() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, ease, delay: 0.1 }}
-              className="font-display text-3xl sm:text-4xl md:text-6xl text-white leading-[1.15] tracking-[-0.025em] mb-4 sm:mb-6"
+              className="font-tech-display text-3xl sm:text-4xl md:text-6xl text-white leading-[1.15] tracking-[-0.025em] mb-4 sm:mb-6"
             >
               Why Organisations Choose ENIF.
             </motion.h2>
@@ -233,7 +233,7 @@ export default function EnifWhy() {
                     </div>
                     
                     <div className="w-full max-w-full">
-                      <h3 className="font-display text-lg sm:text-2xl md:text-3xl font-medium tracking-[-0.025em] text-white mb-2 sm:mb-4 subpixel-antialiased">
+                      <h3 className="font-tech-display text-lg sm:text-2xl md:text-3xl font-medium tracking-[-0.025em] text-white mb-2 sm:mb-4 subpixel-antialiased">
                         {card.title}
                       </h3>
 

@@ -141,7 +141,7 @@ export default function Hero() {
 
           {/* Main Headline */}
           <motion.h1
-            className="font-display text-3xl sm:text-5xl lg:text-5xl xl:text-6xl text-[#F4F4F0] leading-[1.06] min-w-0 tracking-[-0.03em]"
+            className="font-display text-3xl sm:text-5xl lg:text-5xl xl:text-6xl text-[#F4F4F0] leading-[1.06] min-w-0 tracking-[-0.03em] text-balance"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease, delay: 0.1 }}
@@ -167,16 +167,19 @@ export default function Hero() {
           </motion.h1>
 
           {/* Subhead & Paragraph (Enforcing typography-designer 65ch measure rule) */}
-          <motion.p
-            className="text-base sm:text-lg text-[#A0AAA4] font-light leading-[1.65] max-w-[55ch]"
+          <motion.div
+            className="flex flex-col gap-5 text-base sm:text-lg text-[#A0AAA4] font-light leading-[1.65] max-w-[55ch]"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease, delay: 0.24 }}
           >
-            <span className="text-[#F4F4F0] font-medium">Creating companies with the ambition to shape industries and create lasting value.</span>
-            <br /><br />
-            BRAHM Global Holdings is an international venture builder and holding company creating exceptional businesses across technology, education, sport, hospitality and premium consumer brands.
-          </motion.p>
+            <p className="text-[#F4F4F0] font-medium text-balance">
+              Building enterprises with the ambition to shape industries and drive lasting value.
+            </p>
+            <p className="text-balance">
+              BRAHM Global Holdings is an international venture builder and holding company creating exceptional businesses across technology, education, sport, hospitality and premium consumer brands.
+            </p>
+          </motion.div>
 
           {/* Explore CTA Button */}
           <motion.div

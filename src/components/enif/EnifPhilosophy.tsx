@@ -139,7 +139,7 @@ export default function EnifPhilosophy() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, ease, delay: 0.1 }}
-              className="font-display text-4xl sm:text-5xl md:text-6xl text-[#F8FAFC] leading-[1.05] tracking-[-0.03em] mb-6"
+              className="font-tech-display text-4xl sm:text-5xl md:text-6xl text-[#F8FAFC] leading-[1.05] tracking-[-0.03em] mb-6"
             >
               Principles of Engineering.
             </motion.h2>
@@ -181,7 +181,7 @@ export default function EnifPhilosophy() {
                     0{idx + 1}
                   </div>
                   <div>
-                    <h3 className="font-display text-xl text-white mb-2">
+                    <h3 className="font-tech-display text-xl text-white mb-2">
                       {tenet.title}
                     </h3>
                     <p className="text-[#64748B] text-sm md:text-base leading-relaxed font-light">

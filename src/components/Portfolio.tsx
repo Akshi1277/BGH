@@ -40,7 +40,7 @@ const VENTURES: Venture[] = [
     aspectRatio: "1892/952",
     description:
       "ENIF is the engineering company of BRAHM Global Holdings, designing intelligent software, enterprise platforms and artificial intelligence that power both our own businesses and organisations worldwide. From ambitious start-ups to established enterprises, ENIF transforms complex ideas into secure, scalable and commercially successful digital products.",
-    cta: "Explore ENIF →",
+    cta: "Explore ENIF",
     href: "/enif",
   },
   {
@@ -56,7 +56,7 @@ const VENTURES: Venture[] = [
     aspectRatio: "1892/952",
     description:
       "Talent Pro League is a next-generation football ecosystem connecting players, clubs, coaches, leagues and commercial partners through intelligent technology designed to modernise competition management, talent development and grassroots participation. Built to strengthen the future of football through innovation, accessibility and community.",
-    cta: "Explore Talent Pro League →",
+    cta: "Explore Talent Pro League",
     href: "https://talentproleague.football",
   },
   {
@@ -72,7 +72,7 @@ const VENTURES: Venture[] = [
     aspectRatio: "1913/953",
     description:
       "London School of Academics & Arts delivers internationally accessible education through British educators, intelligent technology and personalised learning experiences. Combining academic excellence with AI-powered learning, LSAA prepares learners around the world for the opportunities of tomorrow.",
-    cta: "Explore LSAA →",
+    cta: "Explore LSAA",
     href: "/#contact",
   },
   {
@@ -88,7 +88,7 @@ const VENTURES: Venture[] = [
     aspectRatio: "1896/952",
     description:
       "Alayn is an intelligent hospitality platform combining artificial intelligence, operational excellence and modern customer experience to help cafés, restaurants and hospitality groups operate more efficiently, grow sustainably and build stronger customer relationships. Designed to become the operating system behind the next generation of hospitality businesses.",
-    cta: "Explore Alayn →",
+    cta: "Explore Alayn",
     href: "https://alaynai.com",
   },
   {
@@ -104,7 +104,7 @@ const VENTURES: Venture[] = [
     aspectRatio: "1892/952",
     description:
       "Luxure De Eden is a contemporary luxury fragrance house creating refined perfumes inspired by craftsmanship, artistic expression and timeless sophistication. Every collection is designed to deliver an immersive sensory experience while celebrating modern luxury with enduring character.",
-    cta: "Explore Luxure De Eden →",
+    cta: "Explore Luxure De Eden",
     href: "/#contact",
   },
 ];

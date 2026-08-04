@@ -46,7 +46,7 @@ export default function EnifMethod() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, ease, delay: 0.1 }}
-              className="font-display text-4xl md:text-5xl text-white leading-[1.18] tracking-[-0.025em] mb-6"
+              className="font-tech-display text-4xl md:text-5xl text-white leading-[1.18] tracking-[-0.025em] mb-6"
             >
               The Engineering Method
             </motion.h2>

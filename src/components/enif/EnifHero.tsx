@@ -69,7 +69,7 @@ export default function EnifHero({ onSplineLoad }: EnifHeroProps = {}) {
 
             {/* Headline */}
             <motion.h1
-              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] leading-[1.05] tracking-[-0.035em] text-[#F8FAFC] mb-5 sm:mb-8 drop-shadow-2xl max-w-5xl"
+              className="font-tech-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] leading-[1.05] tracking-[-0.035em] text-[#F8FAFC] mb-5 sm:mb-8 drop-shadow-2xl max-w-5xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease, delay: 0.1 }}
