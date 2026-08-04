@@ -23,7 +23,7 @@ const CATEGORIES: { icon: IconName; label: string; pos: string; delay: number; a
 ];
 
 const HERO_PILLARS = [
-  "Institutional Mandate",
+  "London Headquarters",
   "Global Operations",
   "Engineering Excellence",
   "Long-term Ownership",
@@ -168,7 +168,9 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease, delay: 0.24 }}
           >
-            <span className="text-[#F4F4F0] font-medium">BRAHM Global Holdings</span> is a multi-sector venture builder and holding group. We engineer, operate, and scale category-defining enterprises designed for generational permanence.
+            <span className="text-[#F4F4F0] font-medium">Creating companies with the ambition to shape industries and create lasting value.</span>
+            <br /><br />
+            BRAHM Global Holdings is an international venture builder and holding company creating exceptional businesses across technology, education, sport, hospitality and premium consumer brands.
           </motion.p>
 
           {/* Explore CTA Button */}
@@ -340,7 +342,7 @@ export default function Hero() {
         </div>
 
         <div className="text-center font-mono-ui text-[10px] uppercase tracking-[0.2em] text-[#34D399]/80 pt-1">
-          Headquartered in London • Built for International Impact
+          Headquartered in London • Built for International Markets
         </div>
       </div>
     </section>

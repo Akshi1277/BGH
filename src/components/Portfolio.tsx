@@ -57,7 +57,7 @@ const VENTURES: Venture[] = [
     description:
       "Talent Pro League is a next-generation football ecosystem connecting players, clubs, coaches, leagues and commercial partners through intelligent technology designed to modernise competition management, talent development and grassroots participation. Built to strengthen the future of football through innovation, accessibility and community.",
     cta: "Explore Talent Pro League →",
-    href: "/#contact",
+    href: "https://talentproleague.football",
   },
   {
     number: "03",
@@ -89,7 +89,7 @@ const VENTURES: Venture[] = [
     description:
       "Alayn is an intelligent hospitality platform combining artificial intelligence, operational excellence and modern customer experience to help cafés, restaurants and hospitality groups operate more efficiently, grow sustainably and build stronger customer relationships. Designed to become the operating system behind the next generation of hospitality businesses.",
     cta: "Explore Alayn →",
-    href: "/#contact",
+    href: "https://alaynai.com",
   },
   {
     number: "05",
@@ -205,9 +205,14 @@ export default function Portfolio() {
           <h2 className="font-display text-4xl md:text-5xl text-ink leading-tight mb-6">
             Building Institutions <span className="italic font-normal text-accent">That Endure.</span>
           </h2>
-          <p className="text-base md:text-lg text-ink-muted font-light leading-relaxed">
-            Every company within BRAHM Global Holdings is established with a distinct purpose, independent identity and long-term ambition. Together they represent our commitment to creating enduring enterprises capable of shaping industries, advancing technology and creating lasting value for generations.
-          </p>
+          <div className="text-base md:text-lg text-ink-muted font-light leading-relaxed space-y-4">
+            <p>
+              Every company within BRAHM Global Holdings operates independently while benefiting from the Group's leadership, engineering capability, operational expertise and long-term strategic direction.
+            </p>
+            <p className="italic text-ink font-normal">
+              Different industries. One philosophy. One uncompromising standard of excellence.
+            </p>
+          </div>
         </motion.div>
 
         {/* ── 3-D Carousel ─────────────────────────────────────── */}

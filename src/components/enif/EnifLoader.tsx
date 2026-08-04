@@ -13,33 +13,33 @@ export function EnifLoader({ isLoading }: EnifLoaderProps) {
   const [show, setShow] = useState(true);
   const [progress, setProgress] = useState(0);
 
-  // Fast percentage counter for smooth visual feedback
+  // Progress counter synchronized with Spline 3D download state
   useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress((p) => {
-        if (p >= 100) {
-          clearInterval(timer);
-          return 100;
-        }
-        return Math.min(100, p + Math.floor(Math.random() * 15 + 10));
-      });
-    }, 80);
-
-    return () => clearInterval(timer);
-  }, []);
-
-  // Safety fallback: Auto-dismiss loader after 1.2s max so user is NEVER trapped waiting
-  useEffect(() => {
-    const fallbackTimer = setTimeout(() => {
-      setShow(false);
-    }, 1200);
-
     if (!isLoading) {
-      const dismissTimer = setTimeout(() => setShow(false), 200);
+      // 3D Scene is loaded! Complete progress to 100% and dismiss smoothly
+      setProgress(100);
+      const dismissTimer = setTimeout(() => setShow(false), 450);
       return () => clearTimeout(dismissTimer);
     }
 
-    return () => clearTimeout(fallbackTimer);
+    // While 3D Scene is still downloading, tick progress up to 90% max
+    const timer = setInterval(() => {
+      setProgress((p) => {
+        if (p >= 90) return 90;
+        return Math.min(90, p + Math.floor(Math.random() * 8 + 4));
+      });
+    }, 120);
+
+    // Safety fallback: dismiss after 12s max if Spline fails on extreme slow network
+    const fallbackTimer = setTimeout(() => {
+      setProgress(100);
+      setTimeout(() => setShow(false), 400);
+    }, 12000);
+
+    return () => {
+      clearInterval(timer);
+      clearTimeout(fallbackTimer);
+    };
   }, [isLoading]);
 
   return (

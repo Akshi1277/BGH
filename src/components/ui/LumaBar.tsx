@@ -13,7 +13,7 @@ const NAV_ITEMS = [
   { name: "Why ENIF", href: "#why-enif" },
   { name: "Method", href: "#method" },
   { name: "Philosophy", href: "#philosophy" },
-  { name: "Tech Stack", href: "#tech" },
+  { name: "Contact", href: "#contact" },
 ];
 
 export const LumaBar = ({ className }: { className?: string }) => {

@@ -112,15 +112,20 @@ export default function PhilosophyStandard() {
               One Group. <br />
               <span className="italic font-normal text-accent">One Enduring Standard.</span>
             </motion.h2>
-            <motion.p
-              className="text-paper-muted font-light leading-relaxed text-lg max-w-xl"
+            <motion.div
+              className="text-paper-muted font-light leading-relaxed text-lg max-w-xl space-y-4"
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.65, ease, delay: 0.16 }}
             >
-              Every company within BRAHM Global Holdings operates independently while being governed by the same institutional principles.
-            </motion.p>
+              <p>
+                We believe exceptional businesses are created through vision, disciplined execution and the courage to think beyond the next quarter.
+              </p>
+              <p>
+                Our responsibility is not simply to build companies. It is to create enterprises capable of remaining relevant for generations.
+              </p>
+            </motion.div>
           </div>
 
           {/* Accordion Container */}

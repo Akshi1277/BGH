@@ -100,7 +100,7 @@ export default function Footer({ theme }: FooterProps) {
                 isDark ? "text-[#38BDF8]" : "text-accent"
               }`}
             >
-              Building Institutions That Endure.
+              Building Tomorrow's Institutions.
             </h4>
             <p
               className={`text-sm leading-relaxed font-light ${
