@@ -18,7 +18,7 @@ const CAPABILITIES = [
     items: ["Process Digitisation", "Operational Tools", "Core Business Systems"],
     // Span 2 columns in the bento grid for the first item
     colSpan: "md:col-span-2 lg:col-span-8",
-    height: "h-auto md:h-[420px]"
+    height: "h-full min-h-[420px]"
   },
   {
     index: "02",
@@ -28,7 +28,7 @@ const CAPABILITIES = [
     description: "Data architectures and predictive models designed to unlock insights and automate complex workflows.",
     items: ["Data Architecture", "Predictive Modelling", "Workflow Automation"],
     colSpan: "md:col-span-2 lg:col-span-4",
-    height: "h-auto md:h-[420px]"
+    height: "h-full min-h-[420px]"
   },
   {
     index: "03",
@@ -38,7 +38,7 @@ const CAPABILITIES = [
     description: "Scalable platforms built for high-performance and absolute reliability under immense load.",
     items: ["Platform Architecture", "Scalability", "B2B Ecosystems"],
     colSpan: "md:col-span-2 lg:col-span-4",
-    height: "h-auto md:h-[380px]"
+    height: "h-full min-h-[380px]"
   },
   {
     index: "04",
@@ -48,7 +48,7 @@ const CAPABILITIES = [
     description: "Secure, highly available environments architected for maximum uptime and zero-trust security.",
     items: ["Cloud Architecture", "DevOps Pipelines", "Zero-Trust Security"],
     colSpan: "md:col-span-2 lg:col-span-8",
-    height: "h-auto md:h-[380px]"
+    height: "h-full min-h-[380px]"
   },
 ];
 
@@ -71,11 +71,9 @@ export default function EnifCapabilities() {
   const reduce = useReducedMotion();
 
   return (
-    <section id="capabilities" className="py-24 md:py-32 lg:py-40 bg-[#02040A] relative overflow-hidden">
+    <section id="capabilities" className="py-24 md:py-32 lg:py-40 bg-[#0B1121] relative overflow-hidden">
       {/* Ethereal Glass Background Elements */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,#050D1A_0%,#02040A_60%,#010206_100%)] pointer-events-none z-0" />
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[400px] bg-[#38BDF8]/[0.03] blur-[120px] rounded-full pointer-events-none z-0" />
-      <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[500px] bg-[#0A1A30]/[0.4] blur-[150px] rounded-full pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-[#0B1121] pointer-events-none z-0" />
 
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
         
@@ -115,14 +113,8 @@ export default function EnifCapabilities() {
               variants={itemVariants}
               className={`group ${cap.colSpan} ${cap.height}`}
             >
-              {/* Double-Bezel Outer Shell */}
-              <div className="h-full w-full bg-white/[0.02] p-1.5 sm:p-2 rounded-[2rem] sm:rounded-[2.5rem] border border-white/[0.04] ring-1 ring-black/50 shadow-2xl relative overflow-hidden transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]">
-                
-                {/* Subtle Hover Glow on Outer Shell */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#38BDF8]/0 via-transparent to-[#38BDF8]/0 group-hover:from-[#38BDF8]/[0.05] group-hover:to-[#38BDF8]/[0.02] transition-colors duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] pointer-events-none" />
-
-                {/* Inner Core */}
-                <div className="h-full w-full bg-[#050810]/80 backdrop-blur-2xl rounded-[calc(2rem-0.375rem)] sm:rounded-[calc(2.5rem-0.5rem)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] border border-white/[0.05] p-8 sm:p-10 flex flex-col justify-between relative overflow-hidden z-10">
+              {/* Solid Architectural Card */}
+              <div className="h-full w-full bg-[#0F172A] rounded-[2rem] sm:rounded-[2.5rem] border border-[#334155] hover:border-[#475569] p-8 sm:p-10 flex flex-col justify-between relative overflow-hidden transition-colors duration-500 z-10 group-hover:bg-[#1E293B]">
                   
                   {/* Top: Badges */}
                   <div className="flex items-start justify-between gap-4">
@@ -152,7 +144,7 @@ export default function EnifCapabilities() {
                           key={idx}
                           className="flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-black/40 border border-white/[0.06] rounded-full group/pill hover:bg-white/[0.04] hover:border-white/[0.1] active:scale-[0.97] transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] cursor-default"
                         >
-                          <div className="w-1.5 h-1.5 rounded-full bg-[#38BDF8]/40 group-hover/pill:bg-[#38BDF8] group-hover/pill:shadow-[0_0_8px_rgba(56,189,248,0.6)] transition-all duration-300" />
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#38BDF8]/40 group-hover/pill:bg-[#38BDF8] transition-all duration-300" />
                           <span className="text-white/70 font-mono text-[10px] sm:text-xs tracking-wide">
                             {item}
                           </span>
@@ -163,7 +155,6 @@ export default function EnifCapabilities() {
                   
                   {/* Subtle noise/texture overlay for the editorial luxury feel */}
                   <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.015] pointer-events-none mix-blend-overlay" />
-                </div>
               </div>
             </motion.div>
           ))}

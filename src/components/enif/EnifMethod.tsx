@@ -20,10 +20,9 @@ export default function EnifMethod() {
   const reduce = useReducedMotion();
 
   return (
-    <section id="method" className="py-24 md:py-32 bg-[#02040A] border-b border-[#38BDF8]/10 relative overflow-hidden">
+    <section id="method" className="py-24 md:py-32 bg-[#0F172A] border-b border-[#38BDF8]/10 relative overflow-hidden">
       {/* Dark Theme Ambient Overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#050D1A_0%,#02040A_60%,#010206_100%)] pointer-events-none z-0" />
-      <div className="absolute top-1/2 right-1/4 w-[500px] h-[300px] bg-[#38BDF8]/[0.04] blur-[100px] rounded-full pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-[#0F172A] pointer-events-none z-0" />
       
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
         <div className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
@@ -69,7 +68,7 @@ export default function EnifMethod() {
             <div className="absolute top-[28px] md:top-1/2 md:-translate-y-1/2 left-[5%] right-[5%] h-[2px] bg-[#38BDF8]/10 hidden md:block" />
             {/* Animated glowing progress line */}
             <motion.div 
-              className="absolute top-[28px] md:top-1/2 md:-translate-y-1/2 h-[2px] bg-gradient-to-r from-transparent via-[#38BDF8] to-transparent hidden md:block"
+              className="absolute top-[28px] md:top-1/2 md:-translate-y-1/2 h-[2px] bg-gradient-to-r from-transparent via-white/40 to-transparent hidden md:block"
               animate={reduce ? false : { left: ["-10%", "100%"] }}
               transition={{ duration: 4, ease: "linear", repeat: Infinity }}
               style={{ width: "25%" }}
@@ -86,9 +85,9 @@ export default function EnifMethod() {
                 transition={{ duration: 0.8, ease, delay: i * 0.08 }}
                 className="relative flex flex-col items-center text-center group p-3 rounded-xl border border-white/5 bg-white/[0.02] sm:border-0 sm:bg-transparent"
               >
-                <div className="w-4 h-4 rounded-full bg-[#04070D] border-2 border-[#38BDF8]/50 z-10 mb-3 group-hover:bg-[#38BDF8] group-hover:border-[#38BDF8] transition-colors duration-300 group-hover:shadow-[0_0_15px_rgba(56,189,248,0.5)] relative">
+                <div className="w-4 h-4 rounded-full bg-[#1E293B] border-2 border-white/40 z-10 mb-3 group-hover:bg-white group-hover:border-white transition-colors duration-300 relative">
                    <motion.div 
-                      className="absolute inset-0 rounded-full bg-[#38BDF8]"
+                      className="absolute inset-0 rounded-full bg-white/80"
                       initial={{ opacity: 0, scale: 0.5 }}
                       whileHover={{ opacity: 1, scale: 1.5 }}
                       transition={{ duration: 0.2 }}

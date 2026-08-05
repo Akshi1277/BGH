@@ -39,7 +39,7 @@ export default function EnifHero() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-[#04070D] text-[#F8FAFC] pt-24 pb-12 sm:pt-32 sm:pb-20 md:pt-40 md:pb-28 min-h-[100svh] min-h-screen flex flex-col justify-center border-b border-[#38BDF8]/20">
+    <section className="relative overflow-hidden bg-[#0F172A] text-[#F8FAFC] pt-24 pb-12 sm:pt-32 sm:pb-20 md:pt-40 md:pb-28 min-h-[100svh] min-h-screen flex flex-col justify-center border-b border-[#1E293B]">
       {/* Background Video Scene */}
       <div className="absolute inset-0 z-0 opacity-70 pointer-events-none flex items-center justify-center overflow-hidden">
         <video
@@ -63,10 +63,10 @@ export default function EnifHero() {
       </div>
 
       {/* Smooth Bottom Blend Transition Layer */}
-      <div className="absolute bottom-0 inset-x-0 h-28 md:h-40 bg-gradient-to-b from-transparent via-[#04070D]/80 to-[#04070D] pointer-events-none z-[1]" />
+      <div className="absolute bottom-0 inset-x-0 h-28 md:h-40 bg-gradient-to-b from-transparent via-[#0F172A]/80 to-[#0F172A] pointer-events-none z-[1]" />
       
       {/* Left-side dark gradient to ensure text readability */}
-      <div className="absolute inset-0 w-full md:w-3/4 bg-gradient-to-r from-[#04070D] via-[#04070D]/90 to-transparent pointer-events-none z-[1]" />
+      <div className="absolute inset-0 w-full md:w-3/4 bg-gradient-to-r from-[#0F172A] via-[#0F172A]/90 to-transparent pointer-events-none z-[1]" />
 
       {/* Structural grid */}
       <div

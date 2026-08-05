@@ -24,10 +24,10 @@ const WHY_CARDS: ScrollCardItem[] = [
     description: "We build systems tailored specifically to your business goals—eliminating unnecessary complexity and focusing purely on what drives value.",
     icon: "cpu",
     visual: (
-      <div className="w-full max-w-full overflow-hidden p-4 rounded-2xl bg-[#02040A]/90 border border-white/10 text-xs shadow-inner">
-        <div className="flex items-center justify-between text-[10px] font-mono text-[#38BDF8] mb-3 pb-2 border-b border-white/5">
+      <div className="w-full max-w-full overflow-hidden p-4 rounded-2xl bg-[#1E293B] border border-white/10 text-xs shadow-inner">
+        <div className="flex items-center justify-between text-[10px] font-mono text-white/40 mb-3 pb-2 border-b border-white/5">
           <span>BUSINESS ALIGNMENT</span>
-          <span className="text-[#38BDF8] font-semibold">● DIRECT OWNERSHIP</span>
+          <span className="text-white/60 font-semibold">● DIRECT OWNERSHIP</span>
         </div>
         <div className="flex flex-col gap-2.5">
           {[
@@ -46,7 +46,7 @@ const WHY_CARDS: ScrollCardItem[] = [
           ].map((item, idx) => (
             <div key={idx} className="p-2.5 rounded-xl bg-white/[0.02] border border-white/5 flex flex-col gap-0.5">
               <span className="text-white font-medium text-xs flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
                 {item.title}
               </span>
               <span className="text-[#94A3B8] text-[11px] font-light leading-relaxed pl-3.5">
@@ -66,9 +66,9 @@ const WHY_CARDS: ScrollCardItem[] = [
     icon: "layers",
     visual: (
       <div className="w-full max-w-full overflow-hidden p-4 rounded-2xl bg-[#02040A]/90 border border-white/10 shadow-inner">
-        <div className="flex items-center justify-between text-[10px] font-mono text-[#38BDF8] mb-3 pb-2 border-b border-white/5">
+        <div className="flex items-center justify-between text-[10px] font-mono text-white/40 mb-3 pb-2 border-b border-white/5">
           <span>ADAPTIVE FOUNDATIONS</span>
-          <span className="text-[#38BDF8] font-semibold">● FUTURE-PROOF</span>
+          <span className="text-white/60 font-semibold">● FUTURE-PROOF</span>
         </div>
         <div className="grid grid-cols-1 gap-2 text-xs">
           {[
@@ -87,7 +87,7 @@ const WHY_CARDS: ScrollCardItem[] = [
           ].map((item, idx) => (
             <div key={idx} className="p-2.5 rounded-xl bg-white/[0.02] border border-white/5 flex flex-col gap-0.5">
               <span className="text-white font-medium text-xs flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
                 {item.title}
               </span>
               <span className="text-[#94A3B8] text-[11px] font-light leading-relaxed pl-3.5">
@@ -106,10 +106,10 @@ const WHY_CARDS: ScrollCardItem[] = [
     description: "Consistent, high-speed performance across all regions, ensuring your team and customers have reliable access whenever they need it.",
     icon: "globe",
     visual: (
-      <div className="w-full max-w-full overflow-hidden rounded-2xl bg-[#02040A]/90 border border-white/10 shadow-inner">
-        <div className="flex items-center justify-between text-[10px] font-mono text-[#38BDF8] px-4 pt-4">
+      <div className="w-full max-w-full overflow-hidden rounded-2xl bg-[#1E293B] border border-white/10 shadow-inner">
+        <div className="flex items-center justify-between text-[10px] font-mono text-white/40 px-4 pt-4">
           <span>GLOBAL ACCESSIBILITY</span>
-          <span className="text-[#38BDF8] font-semibold">● ALWAYS ONLINE</span>
+          <span className="text-white/60 font-semibold">● ALWAYS ONLINE</span>
         </div>
         <RotatingEarth
           width={360}
@@ -128,9 +128,9 @@ const WHY_CARDS: ScrollCardItem[] = [
     icon: "shield",
     visual: (
       <div className="w-full max-w-full overflow-hidden p-4 rounded-2xl bg-[#02040A]/90 border border-white/10 shadow-inner">
-        <div className="flex items-center justify-between text-[10px] font-mono text-[#38BDF8] mb-3 pb-2 border-b border-white/5">
+        <div className="flex items-center justify-between text-[10px] font-mono text-white/40 mb-3 pb-2 border-b border-white/5">
           <span>SECURITY & COMPLIANCE</span>
-          <span className="text-[#38BDF8] font-semibold">● PROTECTED</span>
+          <span className="text-white/60 font-semibold">● PROTECTED</span>
         </div>
         <div className="grid grid-cols-1 gap-2 text-xs">
           {[
@@ -149,7 +149,7 @@ const WHY_CARDS: ScrollCardItem[] = [
           ].map((item, idx) => (
             <div key={idx} className="p-2.5 rounded-xl bg-white/[0.02] border border-white/5 flex flex-col gap-0.5">
               <span className="text-white font-medium text-xs flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
                 {item.title}
               </span>
               <span className="text-[#94A3B8] text-[11px] font-light leading-relaxed pl-3.5">
@@ -168,8 +168,7 @@ export default function EnifWhy() {
     <section id="why-enif" className="bg-[#04070D] border-b border-[#38BDF8]/10 relative">
       {/* Deep Space Radial Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#081A33_0%,#05101F_40%,#04070D_80%)]" />
-        <div className="absolute top-1/3 left-1/4 w-[500px] h-[300px] bg-[#38BDF8]/[0.07] blur-[100px] rounded-full" />
+        <div className="absolute inset-0 bg-[#0B1121]" />
       </div>
 
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-4 sm:px-margin-mobile md:px-margin-desktop relative z-10 pt-14 md:pt-32">
@@ -220,14 +219,14 @@ export default function EnifWhy() {
                   key={card.id}
                   index={index}
                   incrementY={28}
-                  className="rounded-2xl sm:rounded-3xl border border-[#38BDF8]/30 bg-[#04070D]/95 p-5 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.8)] w-full antialiased"
+                  className="rounded-2xl sm:rounded-3xl border border-[#334155] bg-[#0F172A] p-5 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.8)] w-full antialiased"
                 >
                   <div className="flex flex-col gap-4 sm:gap-8 items-start w-full max-w-full">
                     <div className="flex items-center justify-between gap-4 w-full mb-1 sm:mb-2">
-                      <div className="px-2.5 py-1 bg-[#38BDF8]/15 text-[#38BDF8] border border-[#38BDF8]/30 rounded-full font-mono text-[9px] sm:text-[10px] tracking-widest uppercase font-bold">
+                      <div className="px-2.5 py-1 bg-white/5 text-white/60 border border-white/10 rounded-full font-mono text-[9px] sm:text-[10px] tracking-widest uppercase font-bold">
                         {card.tag}
                       </div>
-                      <h3 className="text-xl sm:text-3xl font-bold text-[#38BDF8] opacity-60 font-mono">
+                      <h3 className="text-xl sm:text-3xl font-bold text-white/20 font-mono">
                         {String(index + 1).padStart(2, "0")}
                       </h3>
                     </div>

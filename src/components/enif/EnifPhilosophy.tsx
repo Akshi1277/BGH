@@ -51,9 +51,9 @@ function InteractiveCodeTerminal() {
   };
 
   return (
-    <div className="rounded-xl overflow-hidden border border-[#38BDF8]/20 bg-[#02040A] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+    <div className="rounded-xl overflow-hidden border border-[#334155] bg-[#1E293B] shadow-2xl">
       {/* Terminal Header */}
-      <div className="flex items-center justify-between px-4 py-3 bg-[#081A33]/80 border-b border-[#38BDF8]/20 backdrop-blur-sm">
+      <div className="flex items-center justify-between px-4 py-3 bg-[#0F172A] border-b border-[#334155]">
         <div className="flex gap-2">
           <div className="w-3 h-3 rounded-full bg-red-500/80" />
           <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
@@ -85,12 +85,12 @@ function InteractiveCodeTerminal() {
                   : line.type === "command"
                   ? "text-white font-semibold"
                   : line.type === "success"
-                  ? "text-[#38BDF8] font-semibold mt-2"
-                  : "text-[#38BDF8]/80"
+                  ? "text-white font-semibold mt-2"
+                  : "text-white/60"
               }`}
             >
               {line.type === "command" && (
-                <span className="text-[#38BDF8] select-none">$</span>
+                <span className="text-white/40 select-none">$</span>
               )}
               <span>{line.text}</span>
             </motion.div>
@@ -99,7 +99,7 @@ function InteractiveCodeTerminal() {
             <motion.div
               animate={{ opacity: [1, 0] }}
               transition={{ repeat: Infinity, duration: 0.8 }}
-              className="w-2 h-4 bg-[#38BDF8] ml-5 mt-1"
+              className="w-2 h-4 bg-white/60 ml-5 mt-1"
             />
           )}
         </div>
@@ -112,10 +112,9 @@ export default function EnifPhilosophy() {
   const reduce = useReducedMotion();
 
   return (
-    <section id="philosophy" className="py-24 md:py-32 bg-[#04070D] text-[#F8FAFC] relative overflow-hidden border-b border-[#38BDF8]/10">
-      {/* Deep Space Background */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#081A33_0%,#05101F_40%,#04070D_80%)] pointer-events-none z-0" />
-      <div className="absolute top-1/2 left-1/4 w-[600px] h-[400px] bg-[#38BDF8]/[0.05] blur-[120px] rounded-full pointer-events-none z-0" />
+    <section id="philosophy" className="py-24 md:py-32 bg-[#0B1121] text-[#F8FAFC] relative overflow-hidden border-b border-[#38BDF8]/10">
+      {/* Solid Background */}
+      <div className="absolute inset-0 bg-[#0B1121] pointer-events-none z-0" />
 
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
