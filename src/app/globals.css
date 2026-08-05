@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
+
 @theme {
+
   /* ═══════════════════════════════════════════════════════════════════
      CHALK & PINE — Brahm Global Holdings
      Base: off-white chalk paper. Text: warm graphite ink.
@@ -78,8 +80,19 @@
   --font-sans:    "var(--font-sans)", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono:    "var(--font-jbmono)", ui-monospace, "SFMono-Regular", monospace;
 
+  /* ─── 7AURIGA DARK LUXURY PALETTE ──────────────────────────────── */
+  --color-auriga-bg:        #0D0B0B;   /* deep obsidian dark ground      */
+  --color-auriga-surface:   #161212;   /* dark card background           */
+  --color-auriga-secondary: #1A1614;   /* dark section background        */
+  --color-auriga-border:    #2E2424;   /* dark subtle border             */
+  --color-auriga-ruby:      #9B1C2E;   /* primary ruby accent            */
+  --color-auriga-crimson:   #C8374F;   /* bright crimson accent          */
+  --color-auriga-muted:     #9C8F8F;   /* muted text for dark mode       */
+  --color-auriga-text:      #FAF7F5;   /* crisp light foreground text    */
+
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
 }
+
 
 /* ─── Font utilities ──────────────────────────────────────────────── */
 @utility font-display  { font-family: var(--font-display); }
@@ -261,4 +274,270 @@ img, video {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-} 
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   7AURIGA PRACTICE SPECIFIC DESIGN TOKENS & UTILITIES
+   ═══════════════════════════════════════════════════════════════════ */
+:root {
+
+  --background: #0D0B0B;
+  --foreground: #FAF7F5;
+  --primary: #9B1C2E;
+  --primary-foreground: #FAF7F5;
+  --secondary: #1A1614;
+  --secondary-foreground: #FAF7F5;
+  --accent: #C8374F;
+  --accent-foreground: #FAF7F5;
+  --muted: #2A2020;
+  --muted-foreground: #9C8F8F;
+  --card: #161212;
+  --card-foreground: #FAF7F5;
+  --border: #2E2424;
+  --input: #2E2424;
+  --ring: #9B1C2E;
+  --radius: 0.75rem;
+  --font-serif: var(--font-serif-crimson), 'Crimson Text', Georgia, serif;
+}
+
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.text-hero-display {
+  font-size: clamp(4rem, 12vw, 10rem);
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+}
+
+.text-section-title {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+
+.text-manifesto {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  font-weight: 300;
+}
+
+.grid-lines-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: 90rem;
+  margin: 0 auto;
+  pointer-events: none;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  opacity: 0.08;
+}
+
+.grid-line-v {
+  width: 1px;
+  height: 100%;
+  background-color: rgba(155, 28, 46, 0.6);
+}
+
+.glass-card-dark {
+  background: rgba(13, 11, 11, 0.75);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid rgba(155, 28, 46, 0.2);
+}
+
+.ruby-glow {
+  box-shadow: 0 0 40px rgba(155, 28, 46, 0.25), 0 0 80px rgba(155, 28, 46, 0.1);
+}
+
+.ruby-glow-sm {
+  box-shadow: 0 0 20px rgba(155, 28, 46, 0.3);
+}
+
+.text-gradient-ruby {
+  background: linear-gradient(135deg, #C8374F 0%, #9B1C2E 50%, #7A1525 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-divider {
+  border-top: 1px solid rgba(46, 36, 36, 0.8);
+}
+
+.constellation-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  opacity: 0.6;
+}
+
+.practice-card-hover {
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.practice-card-hover:hover {
+  background-color: var(--secondary);
+  border-color: rgba(155, 28, 46, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 30px rgba(155, 28, 46, 0.15);
+}
+
+.shimmer-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(155, 28, 46, 0.06) 50%, transparent 100%);
+  transform: translateX(-150%) skewX(-20deg);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  padding: 1rem 2.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent);
+  box-shadow: 0 8px 30px rgba(155, 28, 46, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--foreground);
+  padding: 1rem 2.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid rgba(250, 247, 245, 0.2);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-ghost:hover {
+  border-color: rgba(155, 28, 46, 0.6);
+  color: var(--foreground);
+  background: rgba(155, 28, 46, 0.08);
+}
+
+/* Cinematic entrance animation */
+@keyframes cinematicEntrance {
+  0% {
+    transform: scale(1.35);
+    filter: blur(18px) grayscale(100%);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    filter: blur(0px) grayscale(0%);
+    opacity: 1;
+  }
+}
+
+.animate-cinematic {
+  animation: cinematicEntrance 4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Slide up fade */
+@keyframes slideUpFade {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUpFade 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Scroll-triggered animation */
+@keyframes animationIn {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+
+/* Shimmer */
+@keyframes shimmerMove {
+  0% { transform: translateX(-150%) skewX(-20deg); }
+  100% { transform: translateX(220%) skewX(-20deg); }
+}
+
+.animate-shimmer {
+  animation: shimmerMove 4s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+/* Constellation pulse */
+@keyframes constellationPulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.4); }
+}
+
+.animate-star-pulse {
+  animation: constellationPulse 3s ease-in-out infinite;
+}
+
+/* Scroll indicator */
+@keyframes scrollLine {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+.animate-scroll-line {
+  animation: scrollLine 2.5s ease-in-out infinite;
+}
+
+/* Animate on scroll system */
+.animate-on-scroll {
+  animation-play-state: paused !important;
+}
+.animate-on-scroll.in-view {
+  animation-play-state: running !important;
+}
+
+.anim-delay-1 { animation-delay: 0.1s; }
+.anim-delay-2 { animation-delay: 0.2s; }
+.anim-delay-3 { animation-delay: 0.3s; }
+.anim-delay-4 { animation-delay: 0.4s; }
+.anim-delay-5 { animation-delay: 0.5s; }
+ 

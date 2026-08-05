@@ -124,8 +124,12 @@ export function ConstellationCanvas() {
         style={{ background: "transparent" }}
       />
       {/* Subtle overlay to blend it perfectly with 7AURIGA */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#04070D] via-transparent to-[#04070D]" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#04070D] via-transparent to-[#04070D]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0D0B0B] via-transparent to-[#0D0B0B]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0D0B0B] via-transparent to-[#0D0B0B]" />
+
     </div>
   );
 }
+
+export default ConstellationCanvas;
+

@@ -1,37 +1,79 @@
-import type { Metadata } from "next";
-import { AurigaBar } from "@/components/ui/AurigaBar";
-import AurigaHero from "@/components/auriga/AurigaHero";
-import AurigaAbout from "@/components/auriga/AurigaAbout";
-import AurigaCapabilities from "@/components/auriga/AurigaCapabilities";
-import AurigaStandard from "@/components/auriga/AurigaStandard";
-import AurigaOrganisations from "@/components/auriga/AurigaOrganisations";
-import AurigaMethod from "@/components/auriga/AurigaMethod";
-import AurigaCTA from "@/components/auriga/AurigaCTA";
-import Footer from "@/components/Footer";
+import React from 'react';
+import type { Metadata } from 'next';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import HeroSection from './components/HeroSection';
+import PhilosophySection from './components/PhilosophySection';
+import PracticesSection from './components/PracticesSection';
+import StandardSection from './components/StandardSection';
+import OrganisationsSection from './components/OrganisationsSection';
 
 export const metadata: Metadata = {
-  title: "7AURIGA - Strategic Communications & Creative Company",
-  description: "7AURIGA builds perception. We build identities that endure. Brand, Media, and Communications.",
+  title: '7AURIGA — We Build Identities That Endure',
+  description:
+    '7AURIGA is the Identity Intelligence Practice of BRAHM Global Holdings. We build enduring organisational identities through strategic thinking, creative excellence and disciplined execution.',
+  alternates: {
+    canonical: '/7auriga',
+  },
 };
 
-export default function AurigaPage() {
+export default function AurigaHomePage() {
   return (
-    <div className="min-h-screen bg-[#04070D] text-[#F8FAFC] selection:bg-[#E0115F] selection:text-white">
-      {/* 7AURIGA Custom Navigation */}
-      <AurigaBar />
+    <div className="bg-[#0D0B0B] text-[#FAF7F5] min-h-screen relative selection:bg-[#9B1C2E] selection:text-white">
+      {/* Fixed vertical grid lines — architectural depth */}
+      <div className="grid-lines-overlay" aria-hidden="true">
+        <div className="grid-line-v" />
+        <div className="grid-line-v hidden md:block" />
+        <div className="grid-line-v hidden md:block" />
+        <div className="grid-line-v" />
+      </div>
 
-      <main>
-        <AurigaHero />
-        <AurigaAbout />
-        <AurigaCapabilities />
-        <AurigaStandard />
-        <AurigaMethod />
-        <AurigaOrganisations />
-        <AurigaCTA />
+      {/* Schema: Organization */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: '7AURIGA',
+            description:
+              'The Identity Intelligence Practice of BRAHM Global Holdings. Strategic Communications and Creative Company.',
+            url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+            logo: '/assets/images/app_logo.png',
+            parentOrganization: {
+              '@type': 'Organization',
+              name: 'BRAHM Global Holdings',
+            },
+          }),
+        }}
+      />
+
+      {/* Schema: WebPage */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebPage',
+            name: '7AURIGA — We Build Identities That Endure',
+            description:
+              '7AURIGA builds enduring identities for organisations through strategic communications, creative excellence and disciplined execution.',
+            url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+          }),
+        }}
+      />
+
+      <Header />
+
+      <main className="bg-[#0D0B0B] text-[#FAF7F5] min-h-screen relative z-10">
+        <HeroSection />
+        <PhilosophySection />
+        <PracticesSection />
+        <StandardSection />
+        <OrganisationsSection />
       </main>
 
-      {/* Global BGH Footer for consistency */}
-      <Footer />
+      <Footer theme="dark" />
     </div>
   );
 }
