@@ -270,10 +270,10 @@ export default function Portfolio() {
                 >
                   <div
                     className={[
-                      "w-full rounded-xl overflow-hidden border bg-surface transition-colors duration-500",
+                      "w-full rounded-none overflow-hidden border bg-transparent transition-all duration-500",
                       isCenter
-                        ? "border-accent/60 shadow-[0_30px_90px_-15px_rgba(31,92,67,0.35),0_0_40px_rgba(52,211,153,0.15)] ring-1 ring-accent/30"
-                        : "border-surface-line/80 hover:border-accent/30 cursor-pointer shadow-md",
+                        ? "border-ink scale-100"
+                        : "border-surface-line hover:border-ink/50 cursor-pointer scale-95 opacity-80",
                     ].join(" ")}
                   >
                     {/* Browser chrome */}

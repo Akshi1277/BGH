@@ -1,138 +1,179 @@
 'use client';
 
 import React, { useRef } from 'react';
-import AppImage from '@/components/ui/AppImage';
-import ConstellationCanvas from '@/components/auriga/ConstellationCanvas';
+import {
+  useScroll,
+  useSpring,
+  useTransform,
+  motion,
+  useReducedMotion,
+} from 'framer-motion';
+import CameraScrollCanvas from './CameraScrollCanvas';
 
 export default function HeroSection() {
-  const shimmerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const shouldReduceMotion = useReducedMotion();
+
+  // Scroll tracking for pinning (~350vh total outer height)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end end'],
+  });
+
+  // Smooth spring physics for butter-smooth scrubbing
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 160,
+    damping: 26,
+    restDelta: 0.0005,
+  });
+
+  // Transform ranges for 4 distinct narrative stages
+  // Stage 1: 0 - 0.22 (Assembled Camera)
+  const stage1Opacity = useTransform(smoothProgress, [0, 0.15, 0.22], [1, 1, 0]);
+  const stage1Y = useTransform(smoothProgress, [0, 0.22], [0, -30]);
+
+  // Stage 2: 0.22 - 0.48 (Lens Separation) - Left Aligned
+  const stage2Opacity = useTransform(smoothProgress, [0.20, 0.26, 0.42, 0.48], [0, 1, 1, 0]);
+  const stage2Y = useTransform(smoothProgress, [0.20, 0.26, 0.42, 0.48], [20, 0, 0, -20]);
+
+  // Stage 3: 0.48 - 0.75 (Internal Mechanism Exposed) - Right Aligned
+  const stage3Opacity = useTransform(smoothProgress, [0.46, 0.52, 0.68, 0.75], [0, 1, 1, 0]);
+  const stage3Y = useTransform(smoothProgress, [0.46, 0.52, 0.68, 0.75], [20, 0, 0, -20]);
+
+  // Stage 4: 0.75 - 1.0 (Full Exploded Stack) - Centered
+  const stage4Opacity = useTransform(smoothProgress, [0.73, 0.80, 1.0], [0, 1, 1]);
+  const stage4Y = useTransform(smoothProgress, [0.73, 0.80, 1.0], [25, 0, 0]);
 
   return (
-    <section
-      className="relative w-full min-h-screen bg-[#0D0B0B] text-[#FAF7F5] overflow-hidden flex flex-col justify-end pb-16 md:pb-28"
-      aria-label="Hero">
+    <div
+      ref={containerRef}
+      className="relative w-full bg-[#000000] text-[#FAF7F5] selection:bg-white/20 selection:text-white"
+      style={{ height: shouldReduceMotion ? '100vh' : '350vh' }}>
       
-      {/* Constellation canvas background */}
-      <ConstellationCanvas />
-
-      {/* Background Image — cinematic entrance */}
-      <div className="absolute inset-0 z-0 bg-[#0D0B0B]">
-        <AppImage
-          src="https://images.unsplash.com/photo-1644921100901-d11ab59d81c7"
-          alt="Sleek modern boardroom with floor-to-ceiling glass, deep shadow, dark steel walls, low-key institutional lighting"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover animate-cinematic opacity-0" />
+      {/* Pinned Viewport Container */}
+      <div className="sticky top-0 w-full h-screen overflow-hidden bg-[#000000] flex flex-col justify-between">
         
-        {/* Multi-layer gradient scrim */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0D0B0B] via-[#0D0B0B]/70 to-[#0D0B0B]/30" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0D0B0B]/70 via-transparent to-transparent" />
-        <div className="absolute inset-0" style={{ background: 'rgba(13,11,11,0.45)' }} />
-      </div>
-
-
-
-      {/* Main hero content */}
-      <div className="relative z-10 w-full max-w-[90rem] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-6 items-end">
-
-        {/* Left — Massive headline */}
-        <div className="md:col-span-7">
-          <div
-            className="flex items-center gap-3 mb-6 animate-slide-up opacity-0"
-            style={{ animationDelay: '1.1s' }}>
-            
-            <span className="h-px w-8 bg-[#9B1C2E]/70" />
-            <span className="text-xs font-mono uppercase tracking-[0.3em] text-[#FAF7F5]/70">
-              Brand · Media · Communications
-            </span>
-          </div>
-
-          <h1 className="font-sans font-extrabold text-[#FAF7F5] leading-[0.86] tracking-[-0.03em]">
-            <span
-              className="block text-hero-display animate-slide-up opacity-0"
-              style={{ animationDelay: '1.3s' }}>
-              
-              BUILD
-            </span>
-            <div
-              className="flex items-baseline gap-4 md:gap-6 animate-slide-up opacity-0"
-              style={{ animationDelay: '1.5s' }}>
-              
-              <span className="text-hero-display font-serif italic font-light text-[#FAF7F5]/50">
-                &amp;
-              </span>
-              <span className="text-hero-display text-gradient-ruby">ENDURE.</span>
+        {/* Main Center Canvas Stage */}
+        <div className="absolute inset-0 z-0 w-full h-full">
+          {shouldReduceMotion ? (
+            <div className="w-full h-full flex items-center justify-center p-8">
+              <img
+                src="/camera-frames/frame-0192.webp"
+                alt="7AURIGA Exploded Camera"
+                className="max-h-[70vh] object-contain opacity-90"
+              />
             </div>
-          </h1>
+          ) : (
+            <CameraScrollCanvas
+              scrollYProgress={smoothProgress}
+            />
+          )}
         </div>
 
-        {/* Right — Glassmorphism credential card */}
-        <div
-          className="md:col-span-4 md:col-start-9 flex flex-col justify-end pb-2 animate-slide-up opacity-0"
-          style={{ animationDelay: '1.7s' }}>
+        {/* Narrative Overlay Layer - Pure typography, no cards, no borders */}
+        <div className="relative z-10 w-full h-full max-w-[90rem] mx-auto px-6 md:px-12 flex items-center pointer-events-none">
           
-          <div className="relative overflow-hidden glass-card-dark p-8 rounded-2xl ruby-glow">
-            {/* Shimmer */}
-            <div ref={shimmerRef} className="shimmer-overlay animate-shimmer" />
-
-            <div className="relative z-10">
-              <p className="text-base md:text-lg text-[#FAF7F5]/85 font-light leading-relaxed mb-4">
-                Strategic Communications &amp; Creative Company.
-              </p>
-              <p className="text-sm md:text-base text-[#FAF7F5]/75 font-light leading-relaxed mb-8">
-                7AURIGA builds perception. The communications and creative company of BRAHM Global Holdings. We build the identities of organisations that intend to endure.
-              </p>
-
-              <div className="flex flex-col gap-5">
-                <div className="grid grid-cols-2 gap-4 border-t border-[#9B1C2E]/30 pt-6">
-                  <div>
-                    <span className="block text-[10px] uppercase tracking-[0.2em] text-[#9C8F8F] mb-1">
-                      Practices
-                    </span>
-                    <span className="text-2xl font-bold text-[#FAF7F5]">3</span>
-                  </div>
-                  <div>
-                    <span className="block text-[10px] uppercase tracking-[0.2em] text-[#9C8F8F] mb-1">
-                      Standard
-                    </span>
-                    <span className="text-2xl font-bold text-[#FAF7F5]">One</span>
-                  </div>
-                </div>
-
-                <a
-                  href="#contact"
-                  className="group flex items-center justify-between w-full pb-2 border-b border-[#FAF7F5]/20 hover:border-[#9B1C2E] transition-colors duration-300">
-                  
-                  <span className="text-sm font-semibold tracking-wide text-[#FAF7F5]">
-                    Start a Conversation
-                  </span>
-                  <svg
-                    className="w-4 h-4 text-[#FAF7F5] group-hover:translate-x-1 transition-transform duration-300"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}>
-                    
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </a>
-              </div>
+          {/* STAGE 1: Assembled Camera (0% - 22%) */}
+          <motion.div
+            style={{ opacity: stage1Opacity, y: stage1Y }}
+            className="absolute left-6 md:left-12 max-w-sm pointer-events-auto mt-20">
+            
+            <div className="flex items-center gap-3 mb-4">
+              <span className="h-px w-6 bg-[#9B1C2E]" />
+              <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#C8374F]">
+                01 — Identity Intelligence
+              </span>
             </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Scroll indicator */}
-      <div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-slide-up opacity-0"
-        style={{ animationDelay: '2.2s' }}>
-        
-        <span className="text-[10px] uppercase tracking-[0.3em] text-[#FAF7F5]/30">Scroll</span>
-        <div className="w-px h-12 overflow-hidden">
-          <div className="w-full h-full bg-gradient-to-b from-[#9B1C2E] to-transparent animate-scroll-line" />
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#FAF7F5] mb-6 tracking-tight leading-tight">
+              7AURIGA
+            </h1>
+
+            <p className="text-sm md:text-base font-light text-[#9C8F8F] leading-relaxed">
+              Identity, engineered to endure.
+            </p>
+          </motion.div>
+
+          {/* STAGE 2: Lens Separation (22% - 48%) - Left Aligned */}
+          <motion.div
+            style={{ opacity: stage2Opacity, y: stage2Y }}
+            className="absolute left-6 md:left-12 max-w-sm pointer-events-auto">
+            
+            <div className="flex items-center gap-3 mb-4">
+              <span className="h-px w-6 bg-[#9B1C2E]" />
+              <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#C8374F]">
+                Optical Precision
+              </span>
+            </div>
+
+            <h2 className="text-3xl md:text-4xl font-bold text-[#FAF7F5] mb-5 leading-tight tracking-tight">
+              Perception as an<br />exact science.
+            </h2>
+
+            <p className="text-sm md:text-base text-[#9C8F8F] font-light leading-relaxed">
+              Just as custom lens elements align light into unyielding focus, 7AURIGA calibrates every angle of institutional narrative to command authority.
+            </p>
+          </motion.div>
+
+          {/* STAGE 3: Mechanism Exposed (48% - 75%) - Right Aligned */}
+          <motion.div
+            style={{ opacity: stage3Opacity, y: stage3Y }}
+            className="absolute right-6 md:right-12 max-w-sm text-right pointer-events-auto">
+            
+            <div className="flex items-center justify-end gap-3 mb-4">
+              <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#C8374F]">
+                Architectural Depth
+              </span>
+              <span className="h-px w-6 bg-[#9B1C2E]" />
+            </div>
+
+            <h2 className="text-3xl md:text-4xl font-bold text-[#FAF7F5] mb-5 leading-tight tracking-tight">
+              192 components<br />of strategy.
+            </h2>
+
+            <p className="text-sm md:text-base text-[#9C8F8F] font-light leading-relaxed ml-auto">
+              Beneath a seamless exterior lies a sophisticated assembly of market positioning, crisis architecture, and stakeholder synchronization.
+            </p>
+          </motion.div>
+
+          {/* STAGE 4: Full Exploded Stack (75% - 100%) - Centered */}
+          <motion.div
+            style={{ opacity: stage4Opacity, y: stage4Y }}
+            className="absolute w-full left-0 flex flex-col items-center text-center pointer-events-auto mt-[40vh]">
+            
+            <div className="flex items-center gap-3 mb-4">
+              <span className="h-px w-6 bg-[#9B1C2E]" />
+              <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#C8374F]">
+                The 7AURIGA Standard
+              </span>
+              <span className="h-px w-6 bg-[#9B1C2E]" />
+            </div>
+
+            <h2 className="text-3xl md:text-5xl font-bold text-[#FAF7F5] mb-5 leading-tight tracking-tight">
+              Identities built<br />to endure.
+            </h2>
+
+            <div className="mt-4 flex items-center justify-center">
+              <a
+                href="#who-we-are"
+                className="inline-block pb-1 border-b border-[#C8374F] hover:border-[#FAF7F5] text-[#FAF7F5] text-xs font-semibold uppercase tracking-[0.2em] transition-colors duration-300">
+                Explore The Practice
+              </a>
+            </div>
+          </motion.div>
+
         </div>
+        
+        {/* Very subtle scroll indicator */}
+        <motion.div 
+          style={{ opacity: stage1Opacity }}
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 z-20 pointer-events-none">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[#C8374F]">
+            Scroll to deconstruct
+          </span>
+        </motion.div>
+
       </div>
-    </section>
+    </div>
   );
 }

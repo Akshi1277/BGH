@@ -9,45 +9,59 @@ const ease = [0.25, 1, 0.5, 1] as const;
 const SECTORS = [
   {
     index: "01",
-    shortName: "Tech & AI",
-    title: "Technology & Artificial Intelligence",
+    shortName: "Technology",
+    title: "Technology",
     description: "Building intelligent software and digital infrastructure.",
     image: "/images/sectors/tech.png",
   },
   {
     index: "02",
+    shortName: "Artificial Intelligence",
+    title: "Artificial Intelligence",
+    description: "Data architectures and predictive models designed to unlock insights.",
+    image: "/images/sectors/ai.png",
+  },
+  {
+    index: "03",
+    shortName: "Digital Commerce",
+    title: "Digital Commerce",
+    description: "Commercial infrastructure for global scale.",
+    image: "/images/sectors/commerce.png",
+  },
+  {
+    index: "04",
     shortName: "Sports & Media",
     title: "Sports & Media",
     description: "Digital competition, talent and entertainment.",
     image: "/images/sectors/sports.png",
   },
   {
-    index: "03",
+    index: "05",
     shortName: "Education",
     title: "Education",
     description: "Global learning platforms for the next generation.",
     image: "/images/sectors/education.png",
   },
   {
-    index: "04",
+    index: "06",
     shortName: "Hospitality",
     title: "Hospitality",
     description: "Premium concepts combining design, service and experience.",
     image: "/images/sectors/hospitality.png",
   },
   {
-    index: "05",
+    index: "07",
     shortName: "Luxury Brands",
-    title: "Luxury Consumer Brands",
+    title: "Luxury Brands",
     description: "Refined fragrance and lifestyle collections.",
     image: "/images/sectors/luxury.png",
   },
   {
-    index: "06",
-    shortName: "Digital Commerce",
-    title: "Digital Commerce",
-    description: "Commercial infrastructure for global scale.",
-    image: "/images/sectors/commerce.png",
+    index: "08",
+    shortName: "Future Ventures",
+    title: "Future Ventures",
+    description: "Incubating tomorrow's most ambitious ideas and markets.",
+    image: "/images/sectors/future.png",
   },
 ];
 
@@ -142,7 +156,7 @@ export default function GroupSectors() {
             hidden: { opacity: 0 },
             show: { opacity: 1, transition: { staggerChildren: 0.05 } },
           }}
-          className="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none gap-5 md:gap-6 pb-6 md:pb-0 scrollbar-none md:grid-cols-2 lg:grid-cols-3"
+          className="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none gap-5 md:gap-6 pb-6 md:pb-0 scrollbar-none md:grid-cols-2 lg:grid-cols-4"
         >
           {SECTORS.map((sector, idx) => {
             const isActive = activeIndex === idx;
@@ -156,30 +170,13 @@ export default function GroupSectors() {
                 }}
                 onClick={() => setActiveIndex(idx)}
                 onMouseEnter={() => setActiveIndex(idx)}
-                className={`snap-center min-w-[85vw] sm:min-w-[340px] md:min-w-0 flex-1 bg-paper rounded-2xl border p-8 md:p-10 flex flex-col justify-between min-h-[260px] md:min-h-[280px] group relative overflow-hidden transition-all duration-500 cursor-pointer shadow-sm ${
+                className={`snap-center min-w-[85vw] sm:min-w-[340px] md:min-w-0 flex-1 bg-transparent border-t border-b border-surface-line p-8 md:p-10 flex flex-col justify-between min-h-[260px] md:min-h-[280px] group relative overflow-hidden transition-all duration-500 cursor-pointer ${
                   isActive
-                    ? "border-accent/80 shadow-xl"
-                    : "border-surface-line/80 hover:border-accent/50 hover:shadow-xl"
+                    ? "border-ink bg-surface-soft"
+                    : "hover:border-ink/50 hover:bg-surface-soft"
                 }`}
               >
-                {/* Background Image Layer */}
-                <div
-                  className={`absolute inset-0 transition-opacity duration-700 ease-out pointer-events-none z-0 ${
-                    isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"
-                  }`}
-                >
-                  <Image
-                    src={sector.image}
-                    alt={sector.title}
-                    fill
-                    sizes="(max-width: 640px) 85vw, (max-width: 1024px) 50vw, 33vw"
-                    className={`object-cover object-center transition-transform duration-700 ease-out ${
-                      isActive ? "scale-100" : "scale-105 group-hover:scale-100"
-                    }`}
-                  />
-                  {/* Dark Vignette Overlay for maximum text legibility */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/65 to-black/40" />
-                </div>
+                {/* Purely typographic card, no images or vignettes */}
 
                 {/* Accent Left Border Indicator */}
                 {/* <span
@@ -215,16 +212,12 @@ export default function GroupSectors() {
                   {/* Title & Description */}
                   <div>
                     <h3
-                      className={`font-display text-2xl mb-3 transition-colors duration-300 ${
-                        isActive ? "text-white" : "text-ink group-hover:text-white"
-                      }`}
+                      className={`font-display text-2xl mb-3 transition-colors duration-300 text-ink`}
                     >
                       {sector.title}
                     </h3>
                     <p
-                      className={`text-sm leading-relaxed font-light transition-colors duration-300 ${
-                        isActive ? "text-zinc-200" : "text-ink-muted group-hover:text-zinc-200"
-                      }`}
+                      className={`text-sm leading-relaxed font-light transition-colors duration-300 text-ink-muted`}
                     >
                       {sector.description}
                     </p>

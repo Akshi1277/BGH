@@ -121,9 +121,8 @@ export default function WhyBRAHM() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease, delay: 0.2 }}
-            className="bg-[#051A10] text-white border border-emerald-500/30 rounded-2xl p-8 flex flex-col justify-between shadow-2xl relative overflow-hidden"
+            className="bg-[#0A0D0B] text-white border border-white/10 rounded-2xl p-8 flex flex-col justify-between relative overflow-hidden"
           >
-            <span className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
 
             <div>
               <span className="font-mono-ui text-[11px] uppercase tracking-widest text-emerald-400 block mb-3 font-semibold">

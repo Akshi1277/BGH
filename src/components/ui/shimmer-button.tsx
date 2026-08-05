@@ -60,17 +60,25 @@ export const ShimmerButton = React.forwardRef<
         />
 
         {/* Label & Icon */}
-        <span className="relative z-10 flex items-center justify-center gap-2 text-sm font-medium tracking-wide text-[#F8FAFC] group-hover:text-white transition-colors">
+        <span className="relative z-10 flex items-center justify-center gap-2 text-[11px] font-mono-ui uppercase tracking-widest text-[#F8FAFC] group-hover:text-white transition-colors font-semibold">
           {children}
           {icon && (
-            <span className="inline-flex items-center text-[#38BDF8] group-hover:translate-x-1 transition-transform duration-200">
+            <span
+              className="inline-flex items-center group-hover:translate-x-1 transition-transform duration-200"
+              style={{ color: shimmerColor }}
+            >
               {icon}
             </span>
           )}
         </span>
 
-        {/* Border Glow & Ambient Bloom */}
-        <div className="absolute inset-0 rounded-[inherit] border border-[#38BDF8]/30 shadow-[0_0_20px_rgba(56,189,248,0.18)] group-hover:border-[#38BDF8]/65 group-hover:shadow-[0_0_35px_rgba(56,189,248,0.4)] transition-all duration-300 pointer-events-none" />
+        {/* Ambient Bloom */}
+        <div 
+          className="absolute inset-0 rounded-[inherit] pointer-events-none transition-all duration-300 opacity-30 group-hover:opacity-70"
+          style={{
+            boxShadow: `inset 0 0 0 1px ${shimmerColor}, 0 0 20px ${shimmerColor}`,
+          }}
+        />
       </>
     );
 

@@ -152,7 +152,7 @@ export default function ProcessFlow({
         <div 
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
-          className={`border ${isDark ? "bg-[#0A101F]/80 border-cyan-500/20" : "bg-surface border-surface-line"} rounded-2xl p-8 md:p-12 shadow-sm min-h-[220px] flex flex-col justify-between relative overflow-hidden group`}
+          className={`border ${isDark ? "bg-[#0A101F]/80 border-cyan-500/20" : "bg-transparent border-surface-line"} rounded-none p-8 md:p-12 min-h-[220px] flex flex-col justify-between relative overflow-hidden group`}
         >
           {/* Top Auto-Cycle Countdown Progress Line */}
           <div className="absolute top-0 left-0 right-0 h-1 bg-surface-line/40 overflow-hidden pointer-events-none">

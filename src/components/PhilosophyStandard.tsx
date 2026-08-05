@@ -39,7 +39,7 @@ export default function PhilosophyStandard() {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
 
   return (
-    <section id="standard" className="section-y bg-paper text-paper-ink border-y border-paper-line relative overflow-hidden">
+    <section id="standard" className="section-y bg-transparent text-ink border-y border-surface-line relative overflow-hidden">
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative z-20">
         
         {/* Left: Editorial Statement Card */}
@@ -51,10 +51,7 @@ export default function PhilosophyStandard() {
           className="lg:col-span-5 lg:sticky lg:top-32"
         >
           <div
-            className="relative border border-paper-line rounded-2xl p-8 md:p-10 overflow-hidden shadow-sm"
-            style={{
-              background: "linear-gradient(160deg, #F8F6F2 0%, #EAF2EC 60%, #D8EBE1 100%)",
-            }}
+            className="relative border border-surface-line rounded-none p-8 md:p-10 overflow-hidden bg-transparent"
           >
             <span className="absolute top-4 left-4   w-5 h-5 border-t border-l border-accent-deep/40" />
             <span className="absolute top-4 right-4  w-5 h-5 border-t border-r border-accent-deep/40" />
@@ -65,7 +62,7 @@ export default function PhilosophyStandard() {
               THE INSTITUTIONAL STANDARD
             </p>
 
-            <blockquote className="font-display italic text-[1.85rem] md:text-[2.1rem] text-paper-ink leading-snug mb-8">
+            <blockquote className="font-display italic text-[1.85rem] md:text-[2.1rem] text-ink leading-snug mb-8">
               &ldquo;The strongest businesses are built with the patience to endure and the ambition to lead.&rdquo;
             </blockquote>
 
@@ -103,14 +100,14 @@ export default function PhilosophyStandard() {
               OUR PHILOSOPHY
             </motion.span>
             <motion.h2
-              className="font-display text-3xl md:text-5xl text-paper-ink leading-tight mb-4"
+              className="font-display text-3xl md:text-5xl text-ink leading-tight mb-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.75, ease, delay: 0.08 }}
             >
               One Group. <br />
-              <span className="italic font-normal text-accent">One Enduring Standard.</span>
+              <span className="italic font-normal text-ink/70">One Enduring Standard.</span>
             </motion.h2>
             <motion.div
               className="text-paper-muted font-light leading-relaxed text-lg max-w-xl space-y-4"
