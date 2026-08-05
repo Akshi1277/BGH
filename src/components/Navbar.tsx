@@ -9,7 +9,7 @@ import Icon from "./Icon";
 import { StarButton } from "./ui/StarButton";
 
 const LINKS = [
-  { label: "The Mandate", href: "/#mandate" },
+  { label: "The Vision", href: "/#vision" },
   { label: "Sectors", href: "/#sectors" },
   { label: "Group Companies", href: "/#companies" },
   { label: "Contact", href: "/#contact" },

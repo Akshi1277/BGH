@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import Icon from "./Icon";
 
 const ease = [0.25, 1, 0.5, 1] as const;
@@ -171,6 +171,8 @@ function getCardProps(
 export default function Portfolio() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef);
 
   const [dims, setDims] = useState({ cardW: 400, sideOffset: 300 });
   useEffect(() => {
@@ -187,13 +189,13 @@ export default function Portfolio() {
   }, []);
 
   useEffect(() => {
-    if (paused) return;
+    if (paused || !isInView) return;
     const t = setInterval(
       () => setActive((p) => (p + 1) % VENTURES.length),
       AUTO_MS
     );
     return () => clearInterval(t);
-  }, [paused, active]);
+  }, [paused, active, isInView]);
 
   const { cardW, sideOffset } = dims;
   const carouselH = Math.round(cardW * (952 / 1892) + 32 + 52);
@@ -201,6 +203,7 @@ export default function Portfolio() {
 
   return (
     <section
+      ref={sectionRef}
       id="companies"
       className="section-y bg-paper text-paper-ink overflow-hidden border-y border-paper-line"
     >

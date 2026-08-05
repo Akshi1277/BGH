@@ -7,7 +7,7 @@ const ease = [0.25, 1, 0.5, 1] as const;
 
 export default function Mandate() {
   return (
-    <section id="mandate" className="section-y bg-paper text-paper-ink border-b border-paper-line relative overflow-hidden">
+    <section id="vision" className="section-y bg-paper text-paper-ink border-b border-paper-line relative overflow-hidden">
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
@@ -20,7 +20,7 @@ export default function Mandate() {
             className="lg:col-span-5 flex flex-col gap-6"
           >
             <div className="inline-flex items-center gap-2 text-eyebrow font-mono-ui text-accent tracking-[0.2em] uppercase">
-              <span>THE MANDATE</span>
+              <span>THE VISION</span>
             </div>
             
             <blockquote className="font-display italic text-3xl md:text-4xl lg:text-5xl text-paper-ink leading-tight mt-4">

@@ -56,6 +56,7 @@ export const AurigaBar = ({ className }: { className?: string }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSectionIndex, setActiveSectionIndex] = useState(-1);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const isClickScrollingRef = React.useRef(false);
   const clickTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
@@ -63,6 +64,7 @@ export const AurigaBar = ({ className }: { className?: string }) => {
   const scrollToSection = (targetId: string, index: number) => {
     isClickScrollingRef.current = true;
     setActiveSectionIndex(index);
+    setHoveredIndex(null);
 
     const el = document.getElementById(targetId);
     if (el) {
@@ -78,6 +80,10 @@ export const AurigaBar = ({ className }: { className?: string }) => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+      // Clear active state if we are at the top (in the hero section)
+      if (window.scrollY < window.innerHeight * 0.4 && !isClickScrollingRef.current) {
+        setActiveSectionIndex(-1);
+      }
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -108,6 +114,8 @@ export const AurigaBar = ({ className }: { className?: string }) => {
     return () => observer.disconnect();
   }, []);
 
+  const currentPillIndex = hoveredIndex !== null ? hoveredIndex : activeSectionIndex;
+
   return (
     <>
       <header
@@ -125,59 +133,42 @@ export const AurigaBar = ({ className }: { className?: string }) => {
             <AurigaClapboardLogo />
           </Link>
 
-          {/* Desktop Center Links: Architectural Horizon */}
-          <nav className="hidden lg:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
-            {NAV_ITEMS.map((item, i) => {
-              const isActive = activeSectionIndex === i;
-              return (
-                <button
-                  key={item.name}
-                  onClick={() => scrollToSection(item.href.replace('#', ''), i)}
-                  className="relative group py-2 flex items-center gap-2"
-                >
-                  <span
-                    className={cn(
-                      "font-sans text-[11px] tracking-[0.2em] uppercase transition-colors duration-300",
-                      isActive ? "text-[#FAF7F5] font-bold" : "text-[#9C8F8F] font-semibold group-hover:text-[#FAF7F5]"
-                    )}
-                  >
-                    {item.name}
-                  </span>
-                  
-                  {/* The pulsing constellation star indicator */}
-                  <AnimatePresence>
-                    {isActive && (
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0 }}
-                        className="w-1.5 h-1.5 rounded-full bg-[#C8374F] shadow-[0_0_8px_#C8374F] animate-star-pulse"
-                      />
-                    )}
-                  </AnimatePresence>
-
-                  {/* The precision line (hover) */}
-                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-[1px] bg-[#2E2424] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] w-0 group-hover:w-full" />
-                  
-                  {/* The precision line (active) */}
-                  {isActive && (
-                    <motion.div
-                      layoutId="auriga-active-nav"
-                      className="absolute -bottom-1 left-0 right-0 h-[1px] bg-[#9B1C2E] shadow-[0_0_8px_rgba(155,28,46,0.6)]"
-                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                    />
-                  )}
-                </button>
-              );
-            })}
+          {/* Desktop Center Links: The Obsidian Glide Menu */}
+          <nav 
+            className="hidden lg:flex items-center absolute left-1/2 -translate-x-1/2 bg-[#161212]/50 border border-[#2E2424] rounded-full p-1.5 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.4)]"
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
+            {NAV_ITEMS.map((item, i) => (
+              <button
+                key={item.name}
+                onClick={() => scrollToSection(item.href.replace('#', ''), i)}
+                onMouseEnter={() => setHoveredIndex(i)}
+                className="relative rounded-full transition-colors"
+              >
+                {currentPillIndex === i && (
+                  <motion.div
+                    layoutId="auriga-nav-pill"
+                    className="absolute inset-0 bg-[#9B1C2E]/15 border border-[#9B1C2E]/30 backdrop-blur-md rounded-full shadow-[0_0_15px_rgba(155,28,46,0.15)]"
+                    transition={{ type: "spring", stiffness: 400, damping: 35 }}
+                  />
+                )}
+                <span className={cn(
+                  "relative z-10 block px-5 py-2.5 text-[10px] font-sans font-bold tracking-[0.2em] uppercase transition-colors duration-300",
+                  currentPillIndex === i ? "text-[#FAF7F5]" : "text-[#9C8F8F]"
+                )}>
+                  {item.name}
+                </span>
+              </button>
+            ))}
           </nav>
 
-          {/* Desktop Right Links: Brutalist Outline Button */}
+          {/* Desktop Right Links: Premium Tactile Button */}
           <div className="hidden md:flex items-center gap-6">
             <Link
               href="/"
-              className="hidden sm:inline-flex items-center justify-center py-2.5 px-6 text-[10px] font-sans font-bold tracking-[0.2em] uppercase text-[#FAF7F5] border border-[#2E2424] hover:border-[#9B1C2E] hover:bg-[#9B1C2E]/5 transition-all duration-500 group relative overflow-hidden"
+              className="hidden sm:inline-flex items-center justify-center py-2.5 px-6 text-[10px] font-sans font-bold tracking-[0.2em] uppercase text-[#FAF7F5] bg-[#161212] border border-[#2E2424] hover:border-[#9B1C2E] rounded-full transition-all duration-500 group relative overflow-hidden shadow-[0_4px_15px_rgba(0,0,0,0.3)]"
             >
+              <div className="absolute inset-0 bg-[#9B1C2E]/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
               <div className="flex items-center gap-3 relative z-10">
                 <svg
                   width="12"
@@ -188,14 +179,12 @@ export const AurigaBar = ({ className }: { className?: string }) => {
                   strokeWidth="2.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="text-[#C8374F] group-hover:-translate-x-1 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                  className="text-[#C8374F] group-hover:-translate-x-1 transition-transform duration-500 ease-out"
                 >
                   <path d="M19 12H5M12 19l-7-7 7-7" />
                 </svg>
                 <span>Return to Group</span>
               </div>
-              {/* Subtle hover fill line */}
-              <div className="absolute bottom-0 left-0 h-[2px] bg-[#9B1C2E] w-0 group-hover:w-full transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" />
             </Link>
           </div>
 
@@ -248,7 +237,7 @@ export const AurigaBar = ({ className }: { className?: string }) => {
             <div className="flex flex-col gap-3">
               <Link
                 href="/"
-                className="w-full flex py-4 px-5 text-[11px] font-sans font-bold uppercase tracking-[0.2em] text-[#FAF7F5] border border-[#2E2424] justify-center items-center gap-3 active:bg-[#9B1C2E]/10"
+                className="w-full flex py-4 px-5 text-[11px] font-sans font-bold uppercase tracking-[0.2em] text-[#FAF7F5] bg-[#161212] border border-[#2E2424] rounded-full justify-center items-center gap-3 active:bg-[#9B1C2E]/10"
               >
                 <svg
                   width="14"

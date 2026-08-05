@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 
 const ease = [0.25, 1, 0.5, 1] as const;
 
@@ -32,16 +32,18 @@ export default function ProcessFlow({
   const isDark = theme === "dark";
   const [activeIdx, setActiveIdx] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef);
   const activeStep = steps[activeIdx] || steps[0];
 
   // Auto-cycle through stages every 4.5 seconds
   useEffect(() => {
-    if (isPaused || steps.length === 0) return;
+    if (isPaused || !isInView || steps.length === 0) return;
     const interval = setInterval(() => {
       setActiveIdx((prev) => (prev + 1) % steps.length);
     }, 4500);
     return () => clearInterval(interval);
-  }, [isPaused, steps.length]);
+  }, [isPaused, isInView, steps.length]);
 
   const accentText =
     accent === "cyan"
@@ -52,6 +54,7 @@ export default function ProcessFlow({
 
   return (
     <section
+      ref={sectionRef}
       id={id}
       className={`section-y ${
         isDark
@@ -153,7 +156,7 @@ export default function ProcessFlow({
         >
           {/* Top Auto-Cycle Countdown Progress Line */}
           <div className="absolute top-0 left-0 right-0 h-1 bg-surface-line/40 overflow-hidden pointer-events-none">
-            {!isPaused && (
+            {(!isPaused && isInView) && (
               <motion.div
                 key={`progress-${activeIdx}`}
                 className="h-full bg-accent"

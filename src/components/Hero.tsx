@@ -131,7 +131,8 @@ export default function Hero() {
           {/* Eyebrow Label */}
           <motion.div
             initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6, ease }}
             className="inline-flex items-center gap-2 text-[11px] font-mono-ui text-[#34D399] tracking-[0.25em] uppercase flex-wrap font-semibold"
           >
@@ -143,7 +144,8 @@ export default function Hero() {
           <motion.h1
             className="font-display text-3xl sm:text-5xl lg:text-5xl xl:text-6xl text-[#F4F4F0] leading-[1.06] min-w-0 tracking-[-0.03em] text-balance"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8, ease, delay: 0.1 }}
           >
             Building Businesses That{" "}
@@ -170,7 +172,8 @@ export default function Hero() {
           <motion.div
             className="flex flex-col gap-5 text-base sm:text-lg text-[#A0AAA4] font-light leading-[1.65] max-w-[55ch]"
             initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.7, ease, delay: 0.24 }}
           >
             <p className="text-[#F4F4F0] font-medium text-balance">
@@ -185,7 +188,8 @@ export default function Hero() {
           <motion.div
             className="flex gap-4 mt-1 flex-wrap"
             initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6, ease, delay: 0.38 }}
           >
             <Link
@@ -204,7 +208,8 @@ export default function Hero() {
           {/* Mobile Category Badges Grid (< lg screens) — Horizontal Scroll Pill Bar */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.45 }}
             className="lg:hidden mt-4 pt-4 border-t border-white/10"
           >
@@ -237,7 +242,8 @@ export default function Hero() {
             className="relative aspect-square w-full max-w-[360px] xl:max-w-[400px] mx-auto origin-center"
             style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
             initial={{ opacity: 0, scale: 0.94 }}
-            animate={{ opacity: 1, scale: 1 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
             transition={{ duration: 1.2, ease, delay: 0.2 }}
           >
             {/* All 8 Radial Connector Rays */}
@@ -314,7 +320,8 @@ export default function Hero() {
                         : "border border-white/10 bg-[#121815]/90 text-white/70 group-hover/badge:border-[#34D399]/80 group-hover/badge:text-[#34D399] group-hover/badge:bg-[#121815] group-hover/badge:scale-105"
                     }`}
                     initial={{ opacity: 0, scale: 0.75 }}
-                    animate={{ opacity: 1, scale: 1 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
                     transition={{
                       opacity: { duration: 0.5, delay: 0.5 + c.delay },
                       scale: { duration: 0.3, ease: "easeOut" },
@@ -337,7 +344,8 @@ export default function Hero() {
             <motion.div
               key={pillar}
               initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.5 + i * 0.08 }}
               className="flex items-center gap-2 justify-center"
             >

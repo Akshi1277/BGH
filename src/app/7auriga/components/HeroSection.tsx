@@ -31,23 +31,7 @@ export default function HeroSection() {
         <div className="absolute inset-0" style={{ background: 'rgba(13,11,11,0.45)' }} />
       </div>
 
-      {/* Floating status tag */}
-      <div
-        className="absolute top-28 right-6 md:right-12 z-20 flex flex-col items-end gap-2 animate-slide-up opacity-0"
-        style={{ animationDelay: '2.5s' }}>
-        
-        <div className="px-4 py-2 rounded-lg glass-card-dark flex items-center gap-3">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#9B1C2E] animate-star-pulse" />
-          <span className="text-xs font-mono tracking-wider uppercase text-[#FAF7F5]/80">
-            Identity Intelligence™
-          </span>
-        </div>
-        <div className="px-4 py-2 rounded-lg glass-card-dark flex items-center gap-2">
-          <span className="text-xs font-mono tracking-wider uppercase text-[#9C8F8F]">
-            BRAHM Global Holdings
-          </span>
-        </div>
-      </div>
+
 
       {/* Main hero content */}
       <div className="relative z-10 w-full max-w-[90rem] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-6 items-end">
