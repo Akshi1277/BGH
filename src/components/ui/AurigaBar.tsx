@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import Icon from "../Icon";
 
@@ -16,38 +17,15 @@ const NAV_ITEMS = [
 
 export function AurigaClapboardLogo({ className = "" }: { className?: string }) {
   return (
-    <div className={`flex items-center gap-3 select-none ${className}`}>
-      {/* Vibrant Red Clapboard 7A Emblem */}
-      <div className="relative flex items-center justify-center">
-        <svg
-          width="42"
-          height="32"
-          viewBox="0 0 160 120"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="drop-shadow-[0_0_12px_rgba(155,28,46,0.6)]"
-        >
-          {/* Top Angled Clapperboard Stick */}
-          <path d="M10 28 L145 5 L155 24 L20 47 Z" fill="#9B1C2E" />
-          <path d="M42 22 L56 20 L48 39 L34 41 Z" fill="#0D0B0B" />
-          <path d="M74 17 L88 15 L80 34 L66 36 Z" fill="#0D0B0B" />
-          <path d="M106 12 L120 10 L112 29 L98 31 Z" fill="#0D0B0B" />
-          {/* Bottom 7A Block */}
-          <path d="M10 48 H150 V64 H72 L32 118 H10 L48 64 H10 V48 Z" fill="#9B1C2E" />
-          <path d="M72 64 L112 118 H148 L108 64 Z" fill="#9B1C2E" />
-          <path d="M80 84 H124 V94 H88 Z" fill="#9B1C2E" />
-        </svg>
-      </div>
-
-      {/* 7AURIGA Wordmark */}
-      <div className="flex flex-col leading-none">
-        <span className="font-display font-medium text-xl tracking-[-0.035em] text-[#FAF7F5]">
-          7AURIGA
-        </span>
-        <span className="font-mono text-[8px] tracking-[0.25em] text-[#C8374F] font-semibold uppercase mt-0.5">
-          Brand · Media · Communications
-        </span>
-      </div>
+    <div className={`flex items-center select-none ${className}`}>
+      <Image
+        src="/7auregalogo.png"
+        alt="7AURIGA Logo"
+        width={180}
+        height={60}
+        className="h-10 md:h-12 w-auto object-contain"
+        priority
+      />
     </div>
   );
 }

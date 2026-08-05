@@ -39,7 +39,7 @@ export default function AurigaHomePage() {
             description:
               'The Identity Intelligence Practice of BRAHM Global Holdings. Strategic Communications and Creative Company.',
             url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
-            logo: '/assets/images/app_logo.png',
+            logo: '/7auregalogo.png',
             parentOrganization: {
               '@type': 'Organization',
               name: 'BRAHM Global Holdings',

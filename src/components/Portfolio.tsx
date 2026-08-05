@@ -50,9 +50,10 @@ const VENTURES: Venture[] = [
     name: "7AURIGA",
     tagline: "Building Brands of Enduring Influence.",
     url: "brahmglobalholdings.com/7auriga",
+    logo: "/7auregalogo.png",
+    imageSrc: "/image copy 9.png",
     imageAlt: "7AURIGA Brand & Media",
     aspectRatio: "1892/952",
-    variant: "gradient",
     description:
       "7AURIGA is the brand, media and creative company of BRAHM Global Holdings. We help organisations define who they are, how they are understood, and how they will be remembered — building identities designed to remain relevant long after they are launched.",
     cta: "Explore 7AURIGA",
