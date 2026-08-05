@@ -6,6 +6,7 @@ import HowWeBuild from "@/components/HowWeBuild";
 import PhilosophyStandard from "@/components/PhilosophyStandard";
 import WhyBRAHM from "@/components/WhyBRAHM";
 import CTA from "@/components/CTA";
+import Clients from "@/components/Clients";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
       <HowWeBuild />
       <PhilosophyStandard />
       <WhyBRAHM />
+      <Clients />
       <CTA />
       <Footer theme="light" />
     </main>
