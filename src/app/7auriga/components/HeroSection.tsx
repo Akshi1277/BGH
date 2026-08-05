@@ -60,7 +60,7 @@ export default function HeroSection() {
             
             <span className="h-px w-8 bg-[#9B1C2E]/70" />
             <span className="text-xs font-mono uppercase tracking-[0.3em] text-[#FAF7F5]/70">
-              Est. 2024 · Auriga Constellation
+              Brand · Media · Communications
             </span>
           </div>
 
@@ -93,8 +93,11 @@ export default function HeroSection() {
             <div ref={shimmerRef} className="shimmer-overlay animate-shimmer" />
 
             <div className="relative z-10">
-              <p className="text-base md:text-lg text-[#FAF7F5]/85 font-light leading-relaxed mb-8">
-                The communications and creative company of BRAHM Global Holdings. We build the identities of organisations that intend to endure.
+              <p className="text-base md:text-lg text-[#FAF7F5]/85 font-light leading-relaxed mb-4">
+                Strategic Communications &amp; Creative Company.
+              </p>
+              <p className="text-sm md:text-base text-[#FAF7F5]/75 font-light leading-relaxed mb-8">
+                7AURIGA builds perception. The communications and creative company of BRAHM Global Holdings. We build the identities of organisations that intend to endure.
               </p>
 
               <div className="flex flex-col gap-5">
@@ -103,7 +106,7 @@ export default function HeroSection() {
                     <span className="block text-[10px] uppercase tracking-[0.2em] text-[#9C8F8F] mb-1">
                       Practices
                     </span>
-                    <span className="text-2xl font-bold text-[#FAF7F5]">4</span>
+                    <span className="text-2xl font-bold text-[#FAF7F5]">3</span>
                   </div>
                   <div>
                     <span className="block text-[10px] uppercase tracking-[0.2em] text-[#9C8F8F] mb-1">

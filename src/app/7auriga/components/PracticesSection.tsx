@@ -15,7 +15,7 @@ interface Practice {
 const practices: Practice[] = [
   {
     number: '01',
-    name: 'Identity',
+    name: 'Brand',
     tagline: 'Everything begins with clarity.',
     description:
       'We create strategic positioning, brand architecture, naming, identity systems and visual languages that establish enduring distinction — the foundations upon which organisations grow.',
@@ -25,7 +25,7 @@ const practices: Practice[] = [
   },
   {
     number: '02',
-    name: 'Narrative',
+    name: 'Media',
     tagline: 'Organisations become influential when their purpose is understood.',
     description:
       'Through executive communications, editorial strategy, campaigns, film and original content, we articulate ideas that build confidence, inspire belief and create lasting relevance.',
@@ -33,19 +33,11 @@ const practices: Practice[] = [
   },
   {
     number: '03',
-    name: 'Presence',
+    name: 'Communications',
     tagline: 'Consistency creates recognition.',
     description:
       'Across digital experiences, environments, visual systems and emerging media, we design coherent expressions that strengthen reputation through every interaction.',
-    colSpan: 'col-span-1',
-  },
-  {
-    number: '04',
-    name: 'Influence',
-    tagline: 'Enduring influence is earned, never purchased.',
-    description:
-      'Through strategic communications, partnerships and audience development, we help organisations expand their reach while preserving the integrity of their identity.',
-    colSpan: 'col-span-1',
+    colSpan: 'col-span-1 lg:col-span-2',
   },
 ];
 
@@ -92,15 +84,15 @@ export default function PracticesSection() {
           <div className="flex items-center gap-3 mb-8">
             <span className="h-px w-6 bg-[#9B1C2E]" />
             <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#C8374F]">
-              03 — Identity Intelligence™
+              03 — Creative Intelligence
             </span>
           </div>
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
             <h2 className="text-section-title text-[#FAF7F5]">
-              Our Practices.
+              Brand, Media &amp; Communications.
             </h2>
             <p className="text-sm text-[#9C8F8F] max-w-sm leading-relaxed uppercase tracking-wider">
-              Four capabilities. One enduring standard.
+              Three capabilities. One enduring standard.
             </p>
           </div>
         </div>
@@ -164,49 +156,28 @@ export default function PracticesSection() {
             </p>
           </div>
 
-          {/* [col-2 cs-1 rs-1]: Presence */}
+          {/* [col-2+3 cs-2 rs-1]: Communications */}
           <div
-            className="animate-on-scroll opacity-100 practice-card-hover relative overflow-hidden bg-[#161212] border border-[#2E2424] rounded-2xl p-8 flex flex-col justify-between min-h-[200px]"
+            className="lg:col-span-2 animate-on-scroll opacity-100 practice-card-hover relative overflow-hidden bg-[#161212] border border-[#2E2424] rounded-2xl p-8 flex flex-col justify-between min-h-[200px]"
             style={{ animation: 'animationIn 0.9s cubic-bezier(0.22,1,0.36,1) 0.35s both' }}
           >
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#C8374F]">
-                  {practices[2].number}
-                </span>
+            <div className="flex flex-col md:flex-row justify-between gap-6">
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#C8374F]">
+                    {practices[2].number}
+                  </span>
+                </div>
+                <h3 className="text-2xl md:text-3xl font-bold text-[#FAF7F5] mb-3 tracking-tight">
+                  {practices[2].name}
+                </h3>
+                <p className="text-sm font-semibold text-[#C8374F] mb-3 italic font-serif">
+                  {practices[2].tagline}
+                </p>
               </div>
-              <h3 className="text-2xl font-bold text-[#FAF7F5] mb-3 tracking-tight">
-                {practices[2].name}
-              </h3>
-              <p className="text-sm font-semibold text-[#C8374F] mb-3 italic font-serif">
-                {practices[2].tagline}
-              </p>
             </div>
             <p className="text-sm text-[#9C8F8F] leading-relaxed">
               {practices[2].description}
-            </p>
-          </div>
-
-          {/* [col-3 cs-1 rs-1]: Influence */}
-          <div
-            className="animate-on-scroll opacity-100 practice-card-hover relative overflow-hidden bg-[#161212] border border-[#2E2424] rounded-2xl p-8 flex flex-col justify-between min-h-[200px]"
-            style={{ animation: 'animationIn 0.9s cubic-bezier(0.22,1,0.36,1) 0.45s both' }}
-          >
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#C8374F]">
-                  {practices[3].number}
-                </span>
-              </div>
-              <h3 className="text-2xl font-bold text-[#FAF7F5] mb-3 tracking-tight">
-                {practices[3].name}
-              </h3>
-              <p className="text-sm font-semibold text-[#C8374F] mb-3 italic font-serif">
-                {practices[3].tagline}
-              </p>
-            </div>
-            <p className="text-sm text-[#9C8F8F] leading-relaxed">
-              {practices[3].description}
             </p>
           </div>
         </div>

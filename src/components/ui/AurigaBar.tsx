@@ -4,16 +4,13 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { LimelightNav, NavItem } from "@/components/ui/limelight-nav";
-import { Cpu, ShieldCheck, Layers, Lightbulb, Mail } from "lucide-react";
 import Icon from "../Icon";
-import { StarButton } from "./StarButton";
 
 const NAV_ITEMS = [
   { name: "Who We Are", href: "#who-we-are" },
-  { name: "Capabilities", href: "#capabilities" },
+  { name: "Practices", href: "#capabilities" },
   { name: "Standard", href: "#standard" },
-  { name: "Philosophy", href: "#how-we-work" },
+  { name: "Organisations", href: "#work-with-us" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -28,27 +25,27 @@ export function AurigaClapboardLogo({ className = "" }: { className?: string }) 
           viewBox="0 0 160 120"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="drop-shadow-[0_0_12px_rgba(255,45,85,0.6)]"
+          className="drop-shadow-[0_0_12px_rgba(155,28,46,0.6)]"
         >
           {/* Top Angled Clapperboard Stick */}
-          <path d="M10 28 L145 5 L155 24 L20 47 Z" fill="#E0115F" />
-          <path d="M42 22 L56 20 L48 39 L34 41 Z" fill="#04070D" />
-          <path d="M74 17 L88 15 L80 34 L66 36 Z" fill="#04070D" />
-          <path d="M106 12 L120 10 L112 29 L98 31 Z" fill="#04070D" />
+          <path d="M10 28 L145 5 L155 24 L20 47 Z" fill="#9B1C2E" />
+          <path d="M42 22 L56 20 L48 39 L34 41 Z" fill="#0D0B0B" />
+          <path d="M74 17 L88 15 L80 34 L66 36 Z" fill="#0D0B0B" />
+          <path d="M106 12 L120 10 L112 29 L98 31 Z" fill="#0D0B0B" />
           {/* Bottom 7A Block */}
-          <path d="M10 48 H150 V64 H72 L32 118 H10 L48 64 H10 V48 Z" fill="#E0115F" />
-          <path d="M72 64 L112 118 H148 L108 64 Z" fill="#E0115F" />
-          <path d="M80 84 H124 V94 H88 Z" fill="#E0115F" />
+          <path d="M10 48 H150 V64 H72 L32 118 H10 L48 64 H10 V48 Z" fill="#9B1C2E" />
+          <path d="M72 64 L112 118 H148 L108 64 Z" fill="#9B1C2E" />
+          <path d="M80 84 H124 V94 H88 Z" fill="#9B1C2E" />
         </svg>
       </div>
 
       {/* 7AURIGA Wordmark */}
       <div className="flex flex-col leading-none">
-        <span className="font-display font-medium text-xl tracking-[-0.035em] text-white">
+        <span className="font-display font-medium text-xl tracking-[-0.035em] text-[#FAF7F5]">
           7AURIGA
         </span>
-        <span className="font-mono text-[9px] tracking-[0.25em] text-[#E0115F] font-semibold uppercase mt-0.5">
-          Brand · Media · Comms
+        <span className="font-mono text-[8px] tracking-[0.25em] text-[#C8374F] font-semibold uppercase mt-0.5">
+          Brand · Media · Communications
         </span>
       </div>
     </div>
@@ -78,39 +75,6 @@ export const AurigaBar = ({ className }: { className?: string }) => {
     }, 850);
   };
 
-  const limelightNavItems: NavItem[] = [
-    {
-      id: "who-we-are",
-      icon: <ShieldCheck />,
-      label: "Who We Are",
-      onClick: () => scrollToSection("who-we-are", 0),
-    },
-    {
-      id: "capabilities",
-      icon: <Cpu />,
-      label: "Capabilities",
-      onClick: () => scrollToSection("capabilities", 1),
-    },
-    {
-      id: "standard",
-      icon: <Layers />,
-      label: "Standard",
-      onClick: () => scrollToSection("standard", 2),
-    },
-    {
-      id: "how-we-work",
-      icon: <Lightbulb />,
-      label: "Philosophy",
-      onClick: () => scrollToSection("how-we-work", 3),
-    },
-    {
-      id: "contact",
-      icon: <Mail />,
-      label: "Contact",
-      onClick: () => scrollToSection("contact", 4),
-    },
-  ];
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -120,7 +84,7 @@ export const AurigaBar = ({ className }: { className?: string }) => {
   }, []);
 
   useEffect(() => {
-    const sectionIds = ["who-we-are", "capabilities", "standard", "how-we-work", "contact"];
+    const sectionIds = ["who-we-are", "capabilities", "standard", "work-with-us", "contact"];
     const observer = new IntersectionObserver(
       (entries) => {
         if (isClickScrollingRef.current) return;
@@ -148,9 +112,9 @@ export const AurigaBar = ({ className }: { className?: string }) => {
     <>
       <header
         className={cn(
-          "fixed top-0 inset-x-0 z-50 transition-all duration-300 pt-[env(safe-area-inset-top,0px)]",
+          "fixed top-0 inset-x-0 z-50 transition-all duration-500 pt-[env(safe-area-inset-top,0px)]",
           isScrolled
-            ? "bg-[#04070D]/90 backdrop-blur-md border-b border-[#E0115F]/20 shadow-[0_10px_30px_rgba(0,0,0,0.8)]"
+            ? "bg-[#0D0B0B]/80 backdrop-blur-xl border-b border-[#2E2424]/50 shadow-[0_10px_40px_rgba(0,0,0,0.5)]"
             : "bg-transparent border-b border-transparent",
           className
         )}
@@ -161,42 +125,78 @@ export const AurigaBar = ({ className }: { className?: string }) => {
             <AurigaClapboardLogo />
           </Link>
 
-          {/* Center Floating Limelight Bar with Logo Red Spotlight */}
-          <div className="hidden lg:block absolute left-1/2 -translate-x-1/2">
-            <LimelightNav
-              items={limelightNavItems}
-              activeIndex={activeSectionIndex}
-              limelightClassName="!bg-[#E0115F] !text-[#E0115F] !shadow-[0_0_20px_#E0115F,0_0_40px_#E0115F]"
-              activeIconClassName="text-[#E0115F]"
-            />
-          </div>
+          {/* Desktop Center Links: Architectural Horizon */}
+          <nav className="hidden lg:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
+            {NAV_ITEMS.map((item, i) => {
+              const isActive = activeSectionIndex === i;
+              return (
+                <button
+                  key={item.name}
+                  onClick={() => scrollToSection(item.href.replace('#', ''), i)}
+                  className="relative group py-2 flex items-center gap-2"
+                >
+                  <span
+                    className={cn(
+                      "font-sans text-[11px] tracking-[0.2em] uppercase transition-colors duration-300",
+                      isActive ? "text-[#FAF7F5] font-bold" : "text-[#9C8F8F] font-semibold group-hover:text-[#FAF7F5]"
+                    )}
+                  >
+                    {item.name}
+                  </span>
+                  
+                  {/* The pulsing constellation star indicator */}
+                  <AnimatePresence>
+                    {isActive && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0 }}
+                        className="w-1.5 h-1.5 rounded-full bg-[#C8374F] shadow-[0_0_8px_#C8374F] animate-star-pulse"
+                      />
+                    )}
+                  </AnimatePresence>
 
-          {/* Desktop Right Links */}
+                  {/* The precision line (hover) */}
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-[1px] bg-[#2E2424] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] w-0 group-hover:w-full" />
+                  
+                  {/* The precision line (active) */}
+                  {isActive && (
+                    <motion.div
+                      layoutId="auriga-active-nav"
+                      className="absolute -bottom-1 left-0 right-0 h-[1px] bg-[#9B1C2E] shadow-[0_0_8px_rgba(155,28,46,0.6)]"
+                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    />
+                  )}
+                </button>
+              );
+            })}
+          </nav>
+
+          {/* Desktop Right Links: Brutalist Outline Button */}
           <div className="hidden md:flex items-center gap-6">
-            <StarButton
+            <Link
               href="/"
-              shimmerColor="#E0115F"
-              shimmerDuration="3s"
-              background="rgba(10, 13, 11, 0.95)"
-              className="hidden sm:inline-flex py-2 px-5 text-[11px] font-sans font-bold tracking-[0.14em] uppercase text-[#F4F4F0] hover:text-[#E0115F] transition-colors border border-[#E0115F]/30 hover:border-[#E0115F]/70 shadow-[0_0_15px_rgba(224,17,95,0.15)] group"
+              className="hidden sm:inline-flex items-center justify-center py-2.5 px-6 text-[10px] font-sans font-bold tracking-[0.2em] uppercase text-[#FAF7F5] border border-[#2E2424] hover:border-[#9B1C2E] hover:bg-[#9B1C2E]/5 transition-all duration-500 group relative overflow-hidden"
             >
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3 relative z-10">
                 <svg
-                  width="13"
-                  height="13"
+                  width="12"
+                  height="12"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="text-[#E0115F] group-hover:-translate-x-1 transition-transform duration-200"
+                  className="text-[#C8374F] group-hover:-translate-x-1 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
                 >
                   <path d="M19 12H5M12 19l-7-7 7-7" />
                 </svg>
-                <span>RETURN TO GROUP</span>
+                <span>Return to Group</span>
               </div>
-            </StarButton>
+              {/* Subtle hover fill line */}
+              <div className="absolute bottom-0 left-0 h-[2px] bg-[#9B1C2E] w-0 group-hover:w-full transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" />
+            </Link>
           </div>
 
           {/* Mobile Menu Trigger */}
@@ -218,13 +218,13 @@ export const AurigaBar = ({ className }: { className?: string }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] bg-[#04070D] text-[#F8FAFC] flex flex-col justify-between p-6 md:hidden"
+            className="fixed inset-0 z-[60] bg-[#0D0B0B] text-[#FAF7F5] flex flex-col justify-between p-6 md:hidden"
           >
-            <div className="flex justify-between items-center h-16 border-b border-white/10">
+            <div className="flex justify-between items-center h-16 border-b border-[#2E2424]">
               <AurigaClapboardLogo />
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-2 text-white"
+                className="p-2 text-[#9C8F8F] hover:text-[#FAF7F5] transition-colors"
                 aria-label="Close menu"
               >
                 <Icon name="close" size={24} />
@@ -237,39 +237,34 @@ export const AurigaBar = ({ className }: { className?: string }) => {
                   key={item.name}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="font-display text-2xl tracking-wider text-white hover:text-[#E0115F] border-b border-white/10 pb-3 flex items-center justify-between"
+                  className="font-sans font-bold text-2xl uppercase tracking-[0.1em] text-[#FAF7F5]/80 hover:text-[#C8374F] border-b border-[#2E2424] pb-4 flex items-center justify-between transition-colors"
                 >
                   <span>{item.name}</span>
-                  <span className="font-mono text-xs text-[#E0115F]">0{i + 1}</span>
+                  <span className="font-mono text-xs text-[#9B1C2E]">0{i + 1}</span>
                 </a>
               ))}
             </div>
 
             <div className="flex flex-col gap-3">
-              <StarButton
+              <Link
                 href="/"
-                shimmerColor="#E0115F"
-                shimmerDuration="3s"
-                background="rgba(10, 13, 11, 0.95)"
-                className="w-full flex py-3.5 px-5 text-[12px] font-sans font-bold uppercase tracking-[0.14em] text-[#F4F4F0] border border-[#E0115F]/30 shadow-[0_0_15px_rgba(224,17,95,0.15)] justify-center"
+                className="w-full flex py-4 px-5 text-[11px] font-sans font-bold uppercase tracking-[0.2em] text-[#FAF7F5] border border-[#2E2424] justify-center items-center gap-3 active:bg-[#9B1C2E]/10"
               >
-                <div className="flex items-center gap-2">
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-[#E0115F]"
-                  >
-                    <path d="M19 12H5M12 19l-7-7 7-7" />
-                  </svg>
-                  <span>RETURN TO GROUP</span>
-                </div>
-              </StarButton>
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-[#C8374F]"
+                >
+                  <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+                <span>Return to Group</span>
+              </Link>
             </div>
           </motion.div>
         )}

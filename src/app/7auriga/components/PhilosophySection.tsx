@@ -85,10 +85,10 @@ export default function PhilosophySection() {
               className="animate-on-scroll opacity-100 space-y-6"
               style={{ animation: 'animationIn 0.9s cubic-bezier(0.22,1,0.36,1) 0.35s both' }}>
               
-              <p className="text-base text-[#9C8F8F] leading-relaxed max-w-2xl">
+              <p className="text-base text-[#9C8F8F] leading-relaxed max-w-[65ch]">
                 At 7AURIGA, we believe the world's most admired organisations are built through clarity of purpose, exceptional creativity and disciplined execution. Our role is not merely to communicate brands — but to shape how they are understood, experienced and remembered.
               </p>
-              <p className="text-base text-[#9C8F8F] leading-relaxed max-w-2xl">
+              <p className="text-base text-[#9C8F8F] leading-relaxed max-w-[65ch]">
                 As the communications and creative company of BRAHM Global Holdings, we build the identities of our own ventures while partnering selectively with organisations whose ambitions reflect our standards.
               </p>
               <p className="text-sm font-semibold tracking-[0.1em] uppercase text-[#C8374F]">
