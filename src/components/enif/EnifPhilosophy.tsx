@@ -112,9 +112,9 @@ export default function EnifPhilosophy() {
   const reduce = useReducedMotion();
 
   return (
-    <section id="philosophy" className="py-24 md:py-32 bg-[#0B1121] text-[#F8FAFC] relative overflow-hidden border-b border-[#38BDF8]/10">
+    <section id="philosophy" className="py-24 md:py-32 bg-[#04070D] text-[#F8FAFC] relative overflow-hidden border-b border-[#38BDF8]/10">
       {/* Solid Background */}
-      <div className="absolute inset-0 bg-[#0B1121] pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-[#04070D] pointer-events-none z-0" />
 
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">

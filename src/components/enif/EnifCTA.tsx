@@ -11,9 +11,9 @@ export default function EnifCTA() {
   const reduce = useReducedMotion();
 
   return (
-    <section id="contact" className="py-24 sm:py-32 md:py-40 bg-[#02040A] relative overflow-hidden border-t border-[#38BDF8]/10">
+    <section id="contact" className="py-24 sm:py-32 md:py-40 bg-[#0F172A] relative overflow-hidden border-t border-[#38BDF8]/10">
       {/* Dark Theme Ambient Overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#050D1A_0%,#02040A_60%,#010206_100%)] pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#1E293B_0%,#0F172A_60%,#0F172A_100%)] pointer-events-none z-0" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#38BDF8]/[0.05] blur-[140px] rounded-full pointer-events-none z-0" />
 
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
