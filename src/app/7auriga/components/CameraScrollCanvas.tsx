@@ -3,6 +3,8 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { useScroll, useSpring, useTransform, motion, MotionValue } from 'framer-motion';
 
+import { useLoader } from './PageLoaderProvider';
+
 const TOTAL_FRAMES = 192;
 const BASE_PATH = '/camera-frames/frame-';
 
@@ -26,8 +28,7 @@ export default function CameraScrollCanvas({
   const imagesRef = useRef<(HTMLImageElement | ImageBitmap | null)[]>(new Array(TOTAL_FRAMES + 1).fill(null));
   const loadedCountRef = useRef(0);
   
-  const [loadedPercent, setLoadedPercent] = useState(0);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const loader = useLoader();
   const currentFrameRef = useRef(1);
 
   // Load and decode images off main thread
@@ -56,11 +57,11 @@ export default function CameraScrollCanvas({
         loadedCountRef.current += 1;
         
         const pct = Math.round((loadedCountRef.current / TOTAL_FRAMES) * 100);
-        setLoadedPercent(pct);
         if (onLoadProgress) onLoadProgress(pct);
-
-        if (loadedCountRef.current >= 5) {
-          setIsLoaded(true);
+        
+        if (loader) {
+          loader.setLoadedCount(loadedCountRef.current);
+          loader.setLoadedPercent(pct);
         }
 
         // Trigger draw if it's the current frame
@@ -99,6 +100,11 @@ export default function CameraScrollCanvas({
         };
         img.onerror = () => {
           loadedCountRef.current += 1;
+          if (loader) {
+            loader.setLoadedCount(loadedCountRef.current);
+            const pct = Math.round((loadedCountRef.current / TOTAL_FRAMES) * 100);
+            loader.setLoadedPercent(pct);
+          }
         };
       }
     });
@@ -206,34 +212,17 @@ export default function CameraScrollCanvas({
     return () => unsubscribe();
   }, [externalScrollProgress, renderFrameFromProgress]);
 
+  const loadedPercent = loader?.loadedPercent || 0;
+
   return (
-    <div className="relative w-full h-full bg-[#0D0B0B] flex items-center justify-center overflow-hidden">
+    <div className="relative w-full h-full bg-[#000000] flex items-center justify-center overflow-hidden">
       {/* Canvas */}
       <canvas
         ref={canvasRef}
-        className="w-full h-full object-contain pointer-events-none block"
+        className={`w-full h-full object-contain pointer-events-none block transition-opacity duration-1000 ${
+          loadedPercent === 100 ? 'opacity-100' : 'opacity-0'
+        }`}
       />
-
-      {/* Initial load indicator shimmer */}
-      {!isLoaded && loadedPercent < 100 && (
-        <div className="absolute inset-0 bg-[#0D0B0B]/80 backdrop-blur-sm flex flex-col items-center justify-center z-20 pointer-events-none transition-opacity duration-500">
-          <div className="flex items-center gap-3 mb-3">
-            <span className="w-2 h-2 rounded-full bg-[#9B1C2E] animate-ping" />
-            <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#FAF7F5]/70">
-              Initializing Optical Engine
-            </span>
-          </div>
-          <div className="w-48 h-1 bg-[#1A1818] rounded-full overflow-hidden border border-white/5">
-            <div
-              className="h-full bg-gradient-to-r from-[#9B1C2E] via-[#D4AF37] to-[#FAF7F5] transition-all duration-200"
-              style={{ width: `${loadedPercent}%` }}
-            />
-          </div>
-          <span className="text-[10px] font-mono text-[#FAF7F5]/40 mt-2">
-            {loadedPercent}% ({loadedCountRef.current}/{TOTAL_FRAMES} FRAMES)
-          </span>
-        </div>
-      )}
     </div>
   );
 }
