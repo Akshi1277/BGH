@@ -173,12 +173,12 @@ export const LumaBar = ({ className }: { className?: string }) => {
       <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 md:px-12 flex items-center justify-between">
         {/* Left: ENIF Logo (High-Res & Crisp Rendering) */}
         <Link href="/enif" className="flex items-center group select-none">
-          <div className="relative w-10 h-10 md:w-16 md:h-16 transition-transform duration-300 group-hover:scale-105">
+          <div className="relative w-32 h-12 md:w-40 md:h-16 transition-transform duration-300 group-hover:scale-105">
             <Image
-              src="/image copy 7.png"
+              src="/eniflogo.png"
               alt="ENIF Logo"
               fill
-              sizes="(max-width: 768px) 40px, 64px"
+              sizes="(max-width: 768px) 128px, 160px"
               quality={100}
               className="object-contain drop-shadow-[0_0_15px_rgba(56,189,248,0.3)]"
               priority
@@ -253,12 +253,12 @@ export const LumaBar = ({ className }: { className?: string }) => {
             {/* Header bar inside mobile menu */}
             <div className="flex justify-between items-center h-20 px-4 sm:px-8 shrink-0 border-b border-[#38BDF8]/20 bg-[#04070D]/80 backdrop-blur-xl">
               <Link href="/enif" onClick={() => setMobileMenuOpen(false)} className="flex items-center group">
-                <div className="relative w-10 h-10">
+                <div className="relative w-32 h-12">
                   <Image
-                    src="/image copy 7.png"
+                    src="/eniflogo.png"
                     alt="ENIF Logo"
                     fill
-                    sizes="40px"
+                    sizes="128px"
                     quality={100}
                     className="object-contain drop-shadow-[0_0_15px_rgba(56,189,248,0.3)]"
                     priority

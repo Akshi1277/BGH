@@ -1,6 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import Image from 'next/image';
 
 interface LoaderContextType {
   loadedPercent: number;
@@ -73,11 +74,17 @@ export default function PageLoaderProvider({ children }: { children: React.React
             </div>
 
             {/* Subtle Minimalist Branding */}
-            <div className="flex items-center gap-6 opacity-60">
+            <div className="flex items-center gap-6 opacity-80 mt-4">
               <span className="h-px w-12 md:w-24 bg-[#9B1C2E]" />
-              <span className="text-[9px] md:text-[10px] font-semibold uppercase tracking-[0.4em] text-[#FAF7F5]">
-                7AURIGA
-              </span>
+              <div className="relative h-8 md:h-12 w-40 md:w-48 flex items-center justify-center">
+                <Image
+                  src="/new7auregalogo.png"
+                  alt="7AURIGA Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
               <span className="h-px w-12 md:w-24 bg-[#9B1C2E]" />
             </div>
 

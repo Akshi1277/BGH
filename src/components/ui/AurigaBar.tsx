@@ -19,7 +19,7 @@ export function AurigaClapboardLogo({ className = "" }: { className?: string }) 
   return (
     <div className={`flex items-center select-none ${className}`}>
       <Image
-        src="/7auregalogo.png"
+        src="/new7auregalogo.png"
         alt="7AURIGA Logo"
         width={180}
         height={60}
