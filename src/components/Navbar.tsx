@@ -6,11 +6,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import Icon from "./Icon";
-import { StarButton } from "./ui/StarButton";
 
 const LINKS = [
-  { label: "The Vision", href: "/#vision" },
-  { label: "Sectors", href: "/#sectors" },
+  { label: "Home", href: "/#vision" },
+  { label: "Group", href: "/#sectors" },
   { label: "Group Companies", href: "/#companies" },
   { label: "Contact", href: "/#contact" },
 ];
@@ -93,21 +92,20 @@ export default function Navbar() {
             ))}
             <div className="flex items-center gap-3">
               <motion.div whileHover={{ y: -1 }} transition={{ duration: 0.15 }}>
-                <StarButton
+                <Link
                   href="/enif"
-                  className="font-mono-ui uppercase tracking-[0.12em] font-bold"
+                  className="px-5 py-2.5 bg-ink text-surface rounded-full text-xs font-mono-ui uppercase tracking-[0.12em] font-bold hover:bg-accent transition-colors flex items-center justify-center"
                 >
                   ENIF
-                </StarButton>
+                </Link>
               </motion.div>
               <motion.div whileHover={{ y: -1 }} transition={{ duration: 0.15 }}>
-                <StarButton
+                <Link
                   href="/7auriga"
-                  className="font-mono-ui uppercase tracking-[0.12em] font-bold"
-                  shimmerColor="#E0115F"
+                  className="px-5 py-2.5 bg-ink text-surface rounded-full text-xs font-mono-ui uppercase tracking-[0.12em] font-bold hover:bg-accent transition-colors flex items-center justify-center"
                 >
                   7 AURIGA
-                </StarButton>
+                </Link>
               </motion.div>
             </div>
           </div>
@@ -165,21 +163,20 @@ export default function Navbar() {
               ))}
             </div>
             <div className="p-4 sm:p-margin-mobile pb-[max(2.5rem,env(safe-area-inset-bottom))] shrink-0 flex flex-col gap-3">
-              <StarButton
+              <Link
                 href="/enif"
                 onClick={() => setOpen(false)}
-                className="w-full font-mono-ui uppercase tracking-[0.1em] font-bold py-3.5 h-auto justify-center"
+                className="w-full px-6 py-4 bg-ink text-surface rounded-full text-xs font-mono-ui uppercase tracking-[0.1em] font-bold hover:bg-accent transition-colors flex items-center justify-center"
               >
                 ENIF
-              </StarButton>
-              <StarButton
+              </Link>
+              <Link
                 href="/7auriga"
                 onClick={() => setOpen(false)}
-                className="w-full font-mono-ui uppercase tracking-[0.1em] font-bold py-3.5 h-auto justify-center"
-                shimmerColor="#E0115F"
+                className="w-full px-6 py-4 bg-ink text-surface rounded-full text-xs font-mono-ui uppercase tracking-[0.1em] font-bold hover:bg-accent transition-colors flex items-center justify-center"
               >
                 7 AURIGA
-              </StarButton>
+              </Link>
             </div>
           </motion.div>
         )}
