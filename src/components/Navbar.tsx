@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import Icon from "./Icon";
+import { ShinyButton } from "./ui/shiny-button";
 
 const LINKS = [
   { label: "Home", href: "/#vision" },
@@ -92,20 +93,26 @@ export default function Navbar() {
             ))}
             <div className="flex items-center gap-3">
               <motion.div whileHover={{ y: -1 }} transition={{ duration: 0.15 }}>
-                <Link
+                <ShinyButton
                   href="/enif"
-                  className="px-5 py-2.5 bg-ink text-surface rounded-full text-xs font-mono-ui uppercase tracking-[0.12em] font-bold hover:bg-accent transition-colors flex items-center justify-center"
+                  className="!px-5 !py-2.5 text-xs font-mono-ui uppercase tracking-[0.12em] font-bold"
+                  highlight="#38BDF8"
+                  highlightSubtle="#7DD3FC"
+                  baseBg="linear-gradient(135deg, #082f49 0%, #04070D 100%)"
                 >
                   ENIF
-                </Link>
+                </ShinyButton>
               </motion.div>
               <motion.div whileHover={{ y: -1 }} transition={{ duration: 0.15 }}>
-                <Link
+                <ShinyButton
                   href="/7auriga"
-                  className="px-5 py-2.5 bg-ink text-surface rounded-full text-xs font-mono-ui uppercase tracking-[0.12em] font-bold hover:bg-accent transition-colors flex items-center justify-center"
+                  className="!px-5 !py-2.5 text-xs font-mono-ui uppercase tracking-[0.12em] font-bold"
+                  highlight="#E0115F"
+                  highlightSubtle="#FF2A70"
+                  baseBg="linear-gradient(135deg, #7A0A30 0%, #290210 100%)"
                 >
                   7 AURIGA
-                </Link>
+                </ShinyButton>
               </motion.div>
             </div>
           </div>
@@ -163,20 +170,26 @@ export default function Navbar() {
               ))}
             </div>
             <div className="p-4 sm:p-margin-mobile pb-[max(2.5rem,env(safe-area-inset-bottom))] shrink-0 flex flex-col gap-3">
-              <Link
+              <ShinyButton
                 href="/enif"
                 onClick={() => setOpen(false)}
-                className="w-full px-6 py-4 bg-ink text-surface rounded-full text-xs font-mono-ui uppercase tracking-[0.1em] font-bold hover:bg-accent transition-colors flex items-center justify-center"
+                className="w-full !px-6 !py-4 text-xs font-mono-ui uppercase tracking-[0.1em] font-bold"
+                highlight="#38BDF8"
+                highlightSubtle="#7DD3FC"
+                baseBg="linear-gradient(135deg, #082f49 0%, #04070D 100%)"
               >
                 ENIF
-              </Link>
-              <Link
+              </ShinyButton>
+              <ShinyButton
                 href="/7auriga"
                 onClick={() => setOpen(false)}
-                className="w-full px-6 py-4 bg-ink text-surface rounded-full text-xs font-mono-ui uppercase tracking-[0.1em] font-bold hover:bg-accent transition-colors flex items-center justify-center"
+                className="w-full !px-6 !py-4 text-xs font-mono-ui uppercase tracking-[0.1em] font-bold"
+                highlight="#E0115F"
+                highlightSubtle="#FF2A70"
+                baseBg="linear-gradient(135deg, #7A0A30 0%, #290210 100%)"
               >
                 7 AURIGA
-              </Link>
+              </ShinyButton>
             </div>
           </motion.div>
         )}
