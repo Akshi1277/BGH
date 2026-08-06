@@ -112,7 +112,7 @@ export default function HeroSection() {
             </h2>
 
             <p className="text-sm md:text-base text-[#9C8F8F] font-light leading-relaxed">
-              7AURIGA is the communications and creative company of BRAHM Global Holdings. Our work extends beyond communication. We help organisations define who they are, how they are understood and how they will be remembered.
+              7AURIGA is the communications and creative company of BRAHM Global Holdings. Our work extends beyond communication. We exist to shape how organisations are understood, experienced and remembered.
             </p>
           </motion.div>
 
