@@ -1,255 +1,183 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
-import { ContainerScroll, CardSticky } from "../ui/cards-stack";
+import { motion, useReducedMotion } from "framer-motion";
 import RotatingEarth from "../ui/wireframe-dotted-globe";
 
-const ease = [0.16, 1, 0.3, 1] as const;
-
-interface ScrollCardItem {
-  id: string;
-  tag: string;
-  title: string;
-  description: string;
-  icon: string;
-  visual: React.ReactNode;
-}
-
-const WHY_CARDS: ScrollCardItem[] = [
+const WHY_ITEMS = [
   {
     id: "01",
     tag: "APPROACH",
     title: "Purpose-Built Solutions",
-    description: "We build systems tailored specifically to your business goals—eliminating unnecessary complexity and focusing purely on what drives value.",
-    icon: "cpu",
-    visual: (
-      <div className="w-full max-w-full overflow-hidden p-4 rounded-2xl bg-[#1E293B] border border-white/10 text-xs shadow-inner">
-        <div className="flex items-center justify-between text-[10px] font-mono text-white/40 mb-3 pb-2 border-b border-white/5">
-          <span>BUSINESS ALIGNMENT</span>
-          <span className="text-white/60 font-semibold">● DIRECT OWNERSHIP</span>
-        </div>
-        <div className="flex flex-col gap-2.5">
-          {[
-            {
-              title: "Focused Execution",
-              desc: "We prioritize your core business objectives over unnecessary, unproven technology.",
-            },
-            {
-              title: "Clear Processes",
-              desc: "Every system is designed to be easily understood and seamlessly adopted by your internal teams.",
-            },
-            {
-              title: "Long-Term Flexibility",
-              desc: "You retain complete control over your digital assets, ensuring agility as your business evolves.",
-            },
-          ].map((item, idx) => (
-            <div key={idx} className="p-2.5 rounded-xl bg-white/[0.02] border border-white/5 flex flex-col gap-0.5">
-              <span className="text-white font-medium text-xs flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
-                {item.title}
-              </span>
-              <span className="text-[#94A3B8] text-[11px] font-light leading-relaxed pl-3.5">
-                {item.desc}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-    ),
+    description: "We build systems tailored specifically to your business goals—eliminating unnecessary complexity and focusing purely on what drives value. Every system is designed to be easily understood and seamlessly adopted by your internal teams.",
+    metrics: [
+      { label: "Business Alignment", value: "100%" },
+      { label: "Direct Ownership", value: "Client-held" }
+    ]
   },
   {
     id: "02",
     tag: "LONGEVITY",
     title: "Built to Evolve, Not Rebuild",
-    description: "Our approach ensures your digital platforms can grow and adapt seamlessly, avoiding the costly cycle of complete system replacements.",
-    icon: "layers",
-    visual: (
-      <div className="w-full max-w-full overflow-hidden p-4 rounded-2xl bg-[#02040A]/90 border border-white/10 shadow-inner">
-        <div className="flex items-center justify-between text-[10px] font-mono text-white/40 mb-3 pb-2 border-b border-white/5">
-          <span>ADAPTIVE FOUNDATIONS</span>
-          <span className="text-white/60 font-semibold">● FUTURE-PROOF</span>
-        </div>
-        <div className="grid grid-cols-1 gap-2 text-xs">
-          {[
-            {
-              title: "Flexible Architecture",
-              desc: "Business rules are designed to accommodate rapid change without disrupting your daily operations.",
-            },
-            {
-              title: "Seamless Transitions",
-              desc: "New capabilities are introduced smoothly, ensuring your team and customers experience zero friction.",
-            },
-            {
-              title: "Continuous Optimization",
-              desc: "We proactively monitor performance to guarantee consistent, high-quality experiences day after day.",
-            },
-          ].map((item, idx) => (
-            <div key={idx} className="p-2.5 rounded-xl bg-white/[0.02] border border-white/5 flex flex-col gap-0.5">
-              <span className="text-white font-medium text-xs flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
-                {item.title}
-              </span>
-              <span className="text-[#94A3B8] text-[11px] font-light leading-relaxed pl-3.5">
-                {item.desc}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-    ),
+    description: "Our approach ensures your digital platforms can grow and adapt seamlessly, avoiding the costly cycle of complete system replacements. Business rules are designed to accommodate rapid change without disrupting operations.",
+    metrics: [
+      { label: "Adaptive Foundations", value: "Modular" },
+      { label: "Architecture", value: "Future-proof" }
+    ]
   },
   {
     id: "03",
     tag: "RELIABILITY",
     title: "Uninterrupted Performance",
-    description: "Consistent, high-speed performance across all regions, ensuring your team and customers have reliable access whenever they need it.",
-    icon: "globe",
-    visual: (
-      <div className="w-full max-w-full overflow-hidden rounded-2xl bg-[#1E293B] border border-white/10 shadow-inner">
-        <div className="flex items-center justify-between text-[10px] font-mono text-white/40 px-4 pt-4">
-          <span>GLOBAL ACCESSIBILITY</span>
-          <span className="text-white/60 font-semibold">● ALWAYS ONLINE</span>
-        </div>
-        <RotatingEarth
-          width={360}
-          height={220}
-          enableZoom={false}
-          className="w-full h-48 sm:h-52"
-        />
-      </div>
-    ),
+    description: "Consistent, high-speed performance across all regions, ensuring your team and customers have reliable access whenever they need it. We proactively monitor performance to guarantee consistent, high-quality experiences.",
+    metrics: [
+      { label: "Global Uptime", value: "99.999%" },
+      { label: "Latency Target", value: "<50ms" }
+    ]
   },
   {
     id: "04",
     tag: "TRUST",
     title: "Built-In Safety & Governance",
-    description: "Comprehensive safety protocols integrated from day one, providing absolute peace of mind for you, your stakeholders, and your clients.",
-    icon: "shield",
-    visual: (
-      <div className="w-full max-w-full overflow-hidden p-4 rounded-2xl bg-[#02040A]/90 border border-white/10 shadow-inner">
-        <div className="flex items-center justify-between text-[10px] font-mono text-white/40 mb-3 pb-2 border-b border-white/5">
-          <span>SECURITY & COMPLIANCE</span>
-          <span className="text-white/60 font-semibold">● PROTECTED</span>
-        </div>
-        <div className="grid grid-cols-1 gap-2 text-xs">
-          {[
-            {
-              title: "Transparent Operations",
-              desc: "Every action within the system is carefully logged, providing a clear and reliable operational history.",
-            },
-            {
-              title: "Data Privacy Focus",
-              desc: "Client information is kept strictly separated, ensuring absolute confidentiality and regulatory compliance.",
-            },
-            {
-              title: "Proactive Protection",
-              desc: "Foundational safety measures are embedded natively to protect against modern business risks.",
-            },
-          ].map((item, idx) => (
-            <div key={idx} className="p-2.5 rounded-xl bg-white/[0.02] border border-white/5 flex flex-col gap-0.5">
-              <span className="text-white font-medium text-xs flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
-                {item.title}
-              </span>
-              <span className="text-[#94A3B8] text-[11px] font-light leading-relaxed pl-3.5">
-                {item.desc}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-    ),
+    description: "Comprehensive safety protocols integrated from day one, providing absolute peace of mind for you, your stakeholders, and your clients. Client information is kept strictly separated, ensuring regulatory compliance.",
+    metrics: [
+      { label: "Security Protocol", value: "Zero-Trust" },
+      { label: "Compliance", value: "Enterprise Grade" }
+    ]
   },
 ];
 
 export default function EnifWhy() {
+  const reduce = useReducedMotion();
+
   return (
-    <section id="why-enif" className="bg-[#04070D] border-b border-[#38BDF8]/10 relative">
-      {/* Deep Space Radial Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute inset-0 bg-[#04070D]" />
-      </div>
-
-      <div className="max-w-[var(--spacing-container-max)] mx-auto px-4 sm:px-margin-mobile md:px-margin-desktop relative z-10 pt-14 md:pt-32">
+    <section id="why-enif" className="py-24 md:py-32 lg:py-40 bg-[#04070D] border-b border-[#334155]/50 relative">
+      <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
         
-        <div className="grid md:grid-cols-12 md:gap-12 items-start">
+        {/* Section Header */}
+        <div className="mb-16 md:mb-24 max-w-2xl">
+          <motion.div
+            initial={reduce ? false : { opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-3 mb-6"
+          >
+            <span className="w-8 h-[2px] bg-[#38BDF8]" />
+            <span className="font-mono text-[#38BDF8] text-[10px] sm:text-[11px] uppercase tracking-[0.2em] font-bold">
+              The ENIF Advantage
+            </span>
+          </motion.div>
+          <motion.h2
+            initial={reduce ? false : { opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-tech-display text-4xl sm:text-5xl md:text-6xl text-[#F8FAFC] leading-[1.05] tracking-[-0.03em] mb-6"
+          >
+            Why Organisations Choose ENIF.
+          </motion.h2>
+          <motion.p
+            initial={reduce ? false : { opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-[#94A3B8] text-sm md:text-base leading-relaxed tracking-[0.01em] font-light"
+          >
+            We design software systems focused purely on business outcomes. Unmatched reliability, effortless scalability, and complete alignment with your operational goals.
+          </motion.p>
+        </div>
+
+        {/* Dashboard Layout: Left Cards, Right Globe */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
-          {/* Section Header (Sticky on Desktop) */}
-          <div className="md:col-span-5 md:sticky md:top-32 md:h-fit mb-8 md:mb-0">
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, ease }}
-              className="inline-flex items-center gap-3 mb-4 sm:mb-6"
-            >
-              <span className="w-8 h-px bg-[#38BDF8]" />
-              <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-[#38BDF8] font-semibold">
-                The ENIF Advantage
-              </span>
-            </motion.div>
-
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, ease, delay: 0.1 }}
-              className="font-tech-display text-3xl sm:text-4xl md:text-6xl text-white leading-[1.15] tracking-[-0.025em] mb-4 sm:mb-6"
-            >
-              Why Organisations Choose ENIF.
-            </motion.h2>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, ease, delay: 0.2 }}
-              className="text-[#94A3B8] text-sm md:text-lg leading-relaxed tracking-[0.01em] font-light max-w-lg"
-            >
-              We design software systems focused purely on business outcomes. Unmatched reliability, effortless scalability, and complete alignment with your operational goals.
-            </motion.p>
-          </div>
-
-          {/* Scroll-Driven Card Stack */}
-          <div className="md:col-span-7 w-full">
-            <ContainerScroll className="flex flex-col gap-[15vh] sm:gap-[25vh] md:gap-[40vh] pb-[20vh] md:pb-[30vh]">
-              {WHY_CARDS.map((card, index) => (
-                <CardSticky
-                  key={card.id}
-                  index={index}
-                  incrementY={28}
-                  className="rounded-2xl sm:rounded-3xl border border-[#334155] bg-[#0F172A] p-5 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.8)] w-full antialiased"
-                >
-                  <div className="flex flex-col gap-4 sm:gap-8 items-start w-full max-w-full">
-                    <div className="flex items-center justify-between gap-4 w-full mb-1 sm:mb-2">
-                      <div className="px-2.5 py-1 bg-white/5 text-white/60 border border-white/10 rounded-full font-mono text-[9px] sm:text-[10px] tracking-widest uppercase font-bold">
-                        {card.tag}
-                      </div>
-                      <h3 className="text-xl sm:text-3xl font-bold text-white/20 font-mono">
-                        {String(index + 1).padStart(2, "0")}
-                      </h3>
-                    </div>
-                    
-                    <div className="w-full max-w-full">
-                      <h3 className="font-tech-display text-lg sm:text-2xl md:text-3xl font-medium tracking-[-0.025em] text-white mb-2 sm:mb-4 subpixel-antialiased">
-                        {card.title}
-                      </h3>
-
-                      <p className="text-[#CBD5E1] text-xs sm:text-sm md:text-base leading-relaxed mb-4 sm:mb-8 font-normal subpixel-antialiased">
-                        {card.description}
-                      </p>
-
-                      <div className="w-full max-w-full overflow-hidden">
-                        {card.visual}
-                      </div>
-                    </div>
+          {/* Left Column: Data Cards */}
+          <div className="lg:col-span-6 flex flex-col gap-6">
+            {WHY_ITEMS.map((item, idx) => (
+              <motion.div
+                key={item.id}
+                initial={reduce ? false : { opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="p-6 md:p-8 bg-[#04070D] border border-[#334155]/50 rounded-xl"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div className="font-mono text-[10px] text-[#38BDF8] tracking-widest font-bold">
+                    {item.tag}
                   </div>
-                </CardSticky>
-              ))}
-            </ContainerScroll>
+                </div>
+                
+                <h3 className="font-tech-display text-xl sm:text-2xl text-white mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-[#94A3B8] text-sm font-light leading-relaxed mb-6">
+                  {item.description}
+                </p>
+
+                {/* Metrics */}
+                <div className="grid grid-cols-2 gap-4 pt-4 border-t border-[#334155]/30">
+                  {item.metrics.map((metric, mIdx) => (
+                    <div key={mIdx}>
+                      <div className="font-mono text-[9px] text-[#64748B] uppercase tracking-widest mb-1">
+                        {metric.label}
+                      </div>
+                      <div className="font-mono text-xs text-[#F8FAFC]">
+                        {metric.value}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
           </div>
 
+          {/* Right Column: Sticky Globe Display */}
+          <div className="lg:col-span-6 lg:sticky lg:top-32 h-[400px] lg:h-[600px] bg-[#04070D] border border-[#334155]/50 rounded-xl overflow-hidden flex flex-col relative">
+            
+            {/* Control Panel Header */}
+            <div className="flex items-center justify-between px-6 py-4 border-b border-[#334155]/50 bg-[#0F172A]">
+              <div className="flex items-center gap-3">
+                <span className="font-mono text-[10px] text-[#38BDF8] tracking-widest font-bold uppercase">
+                  Global Infrastructure
+                </span>
+              </div>
+            </div>
+
+            {/* Globe Container */}
+            <div className="flex-1 relative flex items-center justify-center overflow-hidden">
+              <RotatingEarth
+                width={500}
+                height={500}
+                enableZoom={false}
+                className="w-[120%] h-[120%] md:w-full md:h-full object-cover mix-blend-screen opacity-80"
+              />
+              
+              {/* Overlay Crosshairs */}
+              <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-1/2 left-0 right-0 h-px bg-[#38BDF8]/10" />
+                <div className="absolute left-1/2 top-0 bottom-0 w-px bg-[#38BDF8]/10" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 border border-[#38BDF8]/20 rounded-full" />
+              </div>
+            </div>
+
+            {/* Status Footer */}
+            <div className="grid grid-cols-3 border-t border-[#334155]/50 bg-[#0F172A] divide-x divide-[#334155]/50">
+              <div className="px-4 py-3 flex flex-col items-center justify-center">
+                <span className="font-mono text-[9px] text-[#64748B] uppercase tracking-widest mb-1">Nodes</span>
+                <span className="font-mono text-xs text-white">ACTIVE</span>
+              </div>
+              <div className="px-4 py-3 flex flex-col items-center justify-center">
+                <span className="font-mono text-[9px] text-[#64748B] uppercase tracking-widest mb-1">Latency</span>
+                <span className="font-mono text-xs text-[#38BDF8]">12ms</span>
+              </div>
+              <div className="px-4 py-3 flex flex-col items-center justify-center">
+                <span className="font-mono text-[9px] text-[#64748B] uppercase tracking-widest mb-1">Sync</span>
+                <span className="font-mono text-xs text-white">100%</span>
+              </div>
+            </div>
+
+          </div>
         </div>
 
       </div>

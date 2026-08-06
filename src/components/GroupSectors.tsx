@@ -1,244 +1,283 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const ease = [0.25, 1, 0.5, 1] as const;
 
-const SECTORS = [
+interface SectorItem {
+  index: string;
+  title: string;
+  summary: string;
+  description: string;
+  image: string;
+  focusAreas: string[];
+}
+
+const SECTORS: SectorItem[] = [
   {
     index: "01",
-    shortName: "Technology",
     title: "Technology",
-    description: "Building intelligent software and digital infrastructure.",
+    summary: "Intelligent software and digital infrastructure.",
+    description:
+      "Developing foundational software systems, cloud architectures, and enterprise technologies designed for long-term scalability and operational reliability.",
     image: "/images/sectors/tech.png",
+    focusAreas: ["Enterprise Software", "Cloud Infrastructure", "Digital Security"],
   },
   {
     index: "02",
-    shortName: "Artificial Intelligence",
     title: "Artificial Intelligence",
-    description: "Data architectures and predictive models designed to unlock insights.",
+    summary: "Data architectures and predictive models.",
+    description:
+      "Deploying intelligent data systems and machine learning models that optimize operational decision-making and automate complex workflows.",
     image: "/images/sectors/ai.png",
+    focusAreas: ["Machine Learning", "Predictive Analytics", "Data Engineering"],
   },
   {
     index: "03",
-    shortName: "Digital Commerce",
     title: "Digital Commerce",
-    description: "Commercial infrastructure for global scale.",
+    summary: "Commercial infrastructure for global scale.",
+    description:
+      "Building transaction systems, merchant networks, and digital marketplace infrastructure that enable brands to expand internationally.",
     image: "/images/sectors/commerce.png",
+    focusAreas: ["Global Marketplaces", "Transaction Platforms", "Fulfillment Tech"],
   },
   {
     index: "04",
-    shortName: "Sports & Media",
     title: "Sports & Media",
-    description: "Digital competition, talent and entertainment.",
+    summary: "Digital competition, talent, and entertainment.",
+    description:
+      "Investing in modern sports platforms, broadcast media rights, digital tournament formats, and talent platforms engaging global audiences.",
     image: "/images/sectors/sports.png",
+    focusAreas: ["Digital Broadcasting", "Tournament Platforms", "Media Production"],
   },
   {
     index: "05",
-    shortName: "Education",
     title: "Education",
-    description: "Global learning platforms for the next generation.",
+    summary: "Global learning platforms.",
+    description:
+      "Building accessible learning environments and institutional platforms that provide specialized skills and professional accreditation.",
     image: "/images/sectors/education.png",
+    focusAreas: ["EdTech Infrastructure", "Skill Accreditation", "Lifelong Learning"],
   },
   {
     index: "06",
-    shortName: "Hospitality",
     title: "Hospitality",
-    description: "Premium concepts combining design, service and experience.",
+    summary: "Concepts combining design, service, and experience.",
+    description:
+      "Creating curated hospitality destinations and dining concepts where architectural craft meets exceptional service and digital convenience.",
     image: "/images/sectors/hospitality.png",
+    focusAreas: ["Boutique Destinations", "Culinary Concepts", "Guest Experience"],
   },
   {
     index: "07",
-    shortName: "Luxury Brands",
     title: "Luxury Brands",
-    description: "Refined fragrance and lifestyle collections.",
+    summary: "Refined fragrance and artisanal craft.",
+    description:
+      "Developing luxury houses focused on fine perfumery, bespoke craftsmanship, and lifestyle goods built on timeless aesthetic standards.",
     image: "/images/sectors/luxury.png",
+    focusAreas: ["Haute Perfumery", "Artisanal Craft", "Bespoke Design"],
   },
   {
     index: "08",
-    shortName: "Future Ventures",
     title: "Future Ventures",
-    description: "Incubating tomorrow's most ambitious ideas and markets.",
+    summary: "Incubating ambitious ideas and markets.",
+    description:
+      "Allocating capital and strategic resources to high-impact technologies, clean energy solutions, and emerging sectors reshaping the global economy.",
     image: "/images/sectors/future.png",
+    focusAreas: ["Frontier Science", "Clean Technologies", "Strategic Capital"],
   },
 ];
 
 export default function GroupSectors() {
   const [activeIndex, setActiveIndex] = useState<number>(0);
-  const carouselRef = useRef<HTMLDivElement>(null);
-
-  // Scroll mobile carousel to active sector when pill tab is tapped
-  const handleSelectSector = (index: number) => {
-    setActiveIndex(index);
-    if (carouselRef.current && window.innerWidth < 768) {
-      const cardElement = carouselRef.current.children[index] as HTMLElement;
-      if (cardElement) {
-        cardElement.scrollIntoView({
-          behavior: "smooth",
-          block: "nearest",
-          inline: "center",
-        });
-      }
-    }
-  };
+  const activeSector = SECTORS[activeIndex];
 
   return (
-    <section id="sectors" className="section-y bg-surface relative border-y border-surface-line/40">
-      <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop">
+    <section
+      id="sectors"
+      className="section-y bg-surface text-ink border-y border-surface-line/50 relative overflow-hidden"
+    >
+      <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
         
-        {/* Header */}
-        <div className="max-w-[65ch] mb-10 md:mb-16">
+        {/* Header - Refined Typography */}
+        <div className="max-w-2xl mb-12">
           <motion.span
             className="text-eyebrow font-mono-ui text-accent block mb-3 uppercase tracking-[0.2em]"
-            initial={{ opacity: 0, y: 14 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6, ease }}
+            transition={{ duration: 0.5, ease }}
           >
             THE BRAHM GROUP
           </motion.span>
-          
           <motion.h2
-            className="font-display text-4xl md:text-5xl text-ink leading-tight mb-4"
-            initial={{ opacity: 0, y: 18 }}
+            className="font-display text-3xl sm:text-4xl lg:text-5xl text-ink leading-tight mb-4 tracking-tight"
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.75, ease, delay: 0.08 }}
+            transition={{ duration: 0.6, ease, delay: 0.05 }}
           >
             Group <span className="italic font-normal text-accent">Sectors</span>.
           </motion.h2>
-
           <motion.p
-            className="text-lede text-ink-muted font-light leading-relaxed"
-            initial={{ opacity: 0, y: 14 }}
+            className="text-ink-muted font-light leading-relaxed text-sm sm:text-base"
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.65, ease, delay: 0.16 }}
+            transition={{ duration: 0.6, ease, delay: 0.1 }}
           >
             Our companies operate independently while benefiting from the strategic direction, governance, technology capabilities and operational expertise of the Group.
           </motion.p>
         </div>
 
-        {/* Mobile Quick Selector Pill Bar (Visible on < md screens) */}
-        <div className="md:hidden mb-6 overflow-x-auto no-scrollbar py-1">
-          <div className="flex items-center gap-2 min-w-max">
+        {/* Desktop Fixed-Height Tabbed Gallery (lg and up) */}
+        <div className="hidden lg:grid grid-cols-12 gap-8 items-stretch h-[540px]">
+          
+          {/* Left Column: Tab List */}
+          <div className="col-span-4 flex flex-col border-t border-surface-line/70">
             {SECTORS.map((sector, idx) => {
               const isActive = activeIndex === idx;
               return (
                 <button
                   key={sector.index}
-                  onClick={() => handleSelectSector(idx)}
-                  className={`px-4 py-2 rounded-full text-xs font-mono-ui font-medium transition-all duration-300 flex items-center gap-2 border ${
-                    isActive
-                      ? "bg-accent text-white border-accent shadow-sm"
-                      : "bg-paper text-ink-muted border-surface-line hover:border-accent/40"
+                  onClick={() => setActiveIndex(idx)}
+                  className={`flex-1 flex items-center gap-6 px-6 border-b border-surface-line/70 text-left transition-all duration-300 relative ${
+                    isActive ? "bg-paper shadow-sm" : "hover:bg-surface-soft"
                   }`}
                 >
-                  <span className={isActive ? "text-emerald-300" : "text-accent font-semibold"}>
+                  {/* Active Indicator Line */}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeSectorIndicator"
+                      className="absolute left-0 top-0 bottom-0 w-1 bg-accent"
+                      transition={{ type: "spring", stiffness: 400, damping: 35 }}
+                    />
+                  )}
+                  
+                  <span
+                    className={`font-mono-ui text-xs tracking-wider transition-colors duration-300 ${
+                      isActive ? "text-accent font-medium" : "text-ink-faint"
+                    }`}
+                  >
                     {sector.index}
                   </span>
-                  <span>{sector.shortName}</span>
+                  <span
+                    className={`font-display text-lg tracking-wide transition-colors duration-300 ${
+                      isActive ? "text-ink font-normal" : "text-ink-muted"
+                    }`}
+                  >
+                    {sector.title}
+                  </span>
                 </button>
               );
             })}
           </div>
-        </div>
 
-        {/* Cards Container: Horizontal Snap Carousel on Mobile (<768px), Grid on Desktop (>=768px) */}
-        <motion.div
-          ref={carouselRef}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          variants={{
-            hidden: { opacity: 0 },
-            show: { opacity: 1, transition: { staggerChildren: 0.05 } },
-          }}
-          className="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none gap-5 md:gap-6 pb-6 md:pb-0 scrollbar-none md:grid-cols-2 lg:grid-cols-4"
-        >
-          {SECTORS.map((sector, idx) => {
-            const isActive = activeIndex === idx;
-
-            return (
+          {/* Right Column: Dedicated Stage */}
+          <div className="col-span-8 relative rounded-xl border border-surface-line/70 overflow-hidden bg-paper shadow-sm">
+            <AnimatePresence mode="wait">
               <motion.div
-                key={sector.index}
-                variants={{
-                  hidden: { opacity: 0, y: 10 },
-                  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease } },
-                }}
-                onClick={() => setActiveIndex(idx)}
-                onMouseEnter={() => setActiveIndex(idx)}
-                className={`snap-center min-w-[85vw] sm:min-w-[340px] md:min-w-0 flex-1 bg-transparent border-t border-b border-surface-line p-8 md:p-10 flex flex-col justify-between min-h-[260px] md:min-h-[280px] group relative overflow-hidden transition-all duration-500 cursor-pointer ${
-                  isActive
-                    ? "border-ink bg-surface-soft"
-                    : "hover:border-ink/50 hover:bg-surface-soft"
-                }`}
+                key={activeSector.index}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.35, ease: "easeInOut" }}
+                className="absolute inset-0 flex"
               >
-                {/* Purely typographic card, no images or vignettes */}
-
-                {/* Accent Left Border Indicator */}
-                {/* <span
-                  className={`absolute left-0 top-0 h-full w-[3px] bg-accent origin-bottom transition-transform duration-500 ease-out z-20 ${
-                    isActive ? "scale-y-100" : "scale-y-0 group-hover:scale-y-100"
-                  }`}
-                /> */}
-
-                {/* Content Layer */}
-                <div className="relative z-10 flex flex-col justify-between h-full w-full gap-8">
-                  {/* Top Row: Index + Clean Animated Arrow */}
-                  <div className="flex items-center justify-between">
-                    <span
-                      className={`font-mono-ui text-[11px] uppercase tracking-widest font-semibold transition-colors duration-300 ${
-                        isActive ? "text-emerald-400" : "text-accent group-hover:text-emerald-400"
-                      }`}
-                    >
-                      {sector.index}
-                    </span>
-                    <span
-                      className={`transition-all duration-500 transform ${
-                        isActive
-                          ? "text-white/80 translate-x-0"
-                          : "text-ink-muted/0 group-hover:text-white/80 translate-x-2 group-hover:translate-x-0"
-                      }`}
-                    >
-                      {/* <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg> */}
-                    </span>
-                  </div>
-                  
-                  {/* Title & Description */}
-                  <div>
-                    <h3
-                      className={`font-display text-2xl mb-3 transition-colors duration-300 text-ink`}
-                    >
-                      {sector.title}
-                    </h3>
-                    <p
-                      className={`text-sm leading-relaxed font-light transition-colors duration-300 text-ink-muted`}
-                    >
-                      {sector.description}
+                {/* Content Half */}
+                <div className="w-1/2 p-10 flex flex-col justify-center border-r border-surface-line/50 relative z-10 bg-paper">
+                  <div className="space-y-6">
+                    <div>
+                      <span className="font-mono-ui text-xs text-accent tracking-widest uppercase mb-3 block">
+                        Sector {activeSector.index}
+                      </span>
+                      <h3 className="font-display text-2xl text-ink leading-tight">
+                        {activeSector.summary}
+                      </h3>
+                    </div>
+                    
+                    <div className="h-px w-8 bg-surface-line" />
+                    
+                    <p className="text-sm text-ink-muted font-light leading-relaxed">
+                      {activeSector.description}
                     </p>
+
+                    <div className="pt-2">
+                      <span className="text-[10px] font-mono-ui uppercase tracking-widest text-ink-muted block mb-3 font-medium">
+                        Core Capabilities
+                      </span>
+                      <div className="flex flex-wrap gap-2">
+                        {activeSector.focusAreas.map((area) => (
+                          <span
+                            key={area}
+                            className="px-3 py-1.5 rounded-full border border-surface-line text-[11px] font-mono-ui text-ink bg-surface shadow-sm"
+                          >
+                            {area}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
 
-        {/* Mobile Page Indicator Dots */}
-        <div className="flex md:hidden items-center justify-center gap-1.5 mt-3">
-          {SECTORS.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => handleSelectSector(idx)}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                activeIndex === idx ? "w-6 bg-accent" : "w-1.5 bg-surface-line"
-              }`}
-              aria-label={`Go to sector ${idx + 1}`}
-            />
+                {/* Image Half */}
+                <div className="w-1/2 relative bg-surface">
+                  <Image
+                    src={activeSector.image}
+                    alt={activeSector.title}
+                    fill
+                    priority
+                    className="object-cover object-center filter brightness-[0.9] contrast-[1.05]"
+                  />
+                  {/* Subtle vignette for depth */}
+                  <div className="absolute inset-0 bg-gradient-to-l from-transparent to-ink/5" />
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+
+        {/* Mobile/Tablet Horizontal Snap Scroll (<1024px) */}
+        <div className="flex lg:hidden overflow-x-auto snap-x snap-mandatory gap-4 pb-8 -mx-margin-mobile px-margin-mobile hide-scrollbar">
+          {SECTORS.map((sector) => (
+            <div
+              key={sector.index}
+              className="w-[85vw] sm:w-[50vw] shrink-0 snap-center relative rounded-xl border border-surface-line overflow-hidden bg-paper shadow-sm flex flex-col"
+            >
+              <div className="relative h-48 w-full border-b border-surface-line/50">
+                <Image
+                  src={sector.image}
+                  alt={sector.title}
+                  fill
+                  className="object-cover filter brightness-[0.9]"
+                />
+              </div>
+              <div className="p-6 flex flex-col flex-1 gap-4">
+                <div className="flex items-center gap-3">
+                  <span className="font-mono-ui text-[10px] text-accent tracking-widest">
+                    {sector.index}
+                  </span>
+                  <h3 className="font-display text-xl text-ink">
+                    {sector.title}
+                  </h3>
+                </div>
+                <p className="text-sm text-ink-muted font-light line-clamp-3">
+                  {sector.description}
+                </p>
+                <div className="mt-auto pt-4 flex flex-wrap gap-1.5">
+                  {sector.focusAreas.slice(0, 2).map((area) => (
+                    <span
+                      key={area}
+                      className="px-2.5 py-1 rounded-full border border-surface-line text-[10px] font-mono-ui text-ink bg-surface shadow-sm"
+                    >
+                      {area}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
           ))}
         </div>
 

@@ -1,92 +1,113 @@
 "use client";
 
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
 
-interface EnifLoaderProps {
-  isLoading: boolean;
-}
+const CHECKS = [
+  "INITIALIZING GLOBAL INFRASTRUCTURE...",
+  "ESTABLISHING SECURE HANDSHAKE...",
+  "SYNCING DISTRIBUTED DATABASES...",
+  "CALIBRATING NEURAL ARCHITECTURES...",
+  "SYSTEMS ONLINE."
+];
 
-const ease = [0.16, 1, 0.3, 1] as const;
+// Custom spring and easing derived from Emil Kowalski & Apple guidelines
+const springTrans = { type: "spring", duration: 0.8, bounce: 0 };
+const easeOutStrong = [0.23, 1, 0.32, 1] as const;
 
-export function EnifLoader({ isLoading }: EnifLoaderProps) {
-  const [show, setShow] = useState(true);
-  const [progress, setProgress] = useState(0);
+export default function EnifLoader({ onComplete }: { onComplete: () => void }) {
+  const [loading, setLoading] = useState(true);
+  const [currentCheck, setCurrentCheck] = useState(0);
 
-  // Progress counter synchronized with Spline 3D download state
   useEffect(() => {
-    if (!isLoading) {
-      // 3D Scene is loaded! Complete progress to 100% and dismiss smoothly
-      setProgress(100);
-      const dismissTimer = setTimeout(() => setShow(false), 450);
-      return () => clearTimeout(dismissTimer);
-    }
+    // Disable scroll while loading
+    document.body.style.overflow = "hidden";
 
-    // While 3D Scene is still downloading, tick progress up to 90% max
-    const timer = setInterval(() => {
-      setProgress((p) => {
-        if (p >= 90) return 90;
-        return Math.min(90, p + Math.floor(Math.random() * 8 + 4));
+    // Sequence the checks
+    const interval = setInterval(() => {
+      setCurrentCheck((prev) => {
+        if (prev < CHECKS.length - 1) return prev + 1;
+        clearInterval(interval);
+        return prev;
       });
-    }, 120);
+    }, 400); // 400ms per check
 
-    // Safety fallback: dismiss after 12s max if Spline fails on extreme slow network
-    const fallbackTimer = setTimeout(() => {
-      setProgress(100);
-      setTimeout(() => setShow(false), 400);
-    }, 12000);
+    // Complete loading after sequence finishes
+    const totalTime = CHECKS.length * 400 + 800; 
+    const timeout = setTimeout(() => {
+      setLoading(false);
+      setTimeout(() => {
+        document.body.style.overflow = "auto";
+        onComplete();
+      }, 1000); // Wait for exit animation to finish before unmounting completely
+    }, totalTime);
 
     return () => {
-      clearInterval(timer);
-      clearTimeout(fallbackTimer);
+      document.body.style.overflow = "auto";
+      clearInterval(interval);
+      clearTimeout(timeout);
     };
-  }, [isLoading]);
+  }, [onComplete]);
 
   return (
     <AnimatePresence>
-      {show && (
+      {loading && (
         <motion.div
           key="enif-loader"
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, scale: 1.02 }}
-          transition={{ duration: 0.4, ease }}
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#04070D] pointer-events-none select-none"
+          exit={{ 
+            opacity: 0, 
+            scale: 1.05,
+            filter: "blur(10px)",
+          }}
+          transition={{ duration: 0.8, ease: easeOutStrong }}
+          className="fixed inset-0 z-[9999] bg-[#04070D] flex flex-col items-center justify-center pointer-events-none"
         >
-          {/* Subtle Ambient Radial Glow */}
-          <div 
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-[#38BDF8] rounded-full opacity-[0.04] blur-[100px] pointer-events-none" 
-            style={{ transform: 'translate3d(-50%, -50%, 0)' }}
-          />
+          {/* Main Logo Reveal */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, filter: "blur(4px)" }}
+            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            transition={{ duration: 1.2, ease: easeOutStrong }}
+            className="flex flex-col items-center gap-8 mb-16"
+          >
+            <div className="w-16 h-16 relative">
+              <svg viewBox="0 0 100 100" className="w-full h-full text-white">
+                <path d="M50 0 L100 25 L100 75 L50 100 L0 75 L0 25 Z" fill="none" stroke="currentColor" strokeWidth="2" />
+                <path d="M35 30 L65 30 M35 50 L65 50 M35 70 L65 70" stroke="currentColor" strokeWidth="4" />
+                <path d="M35 30 L35 70" stroke="currentColor" strokeWidth="4" />
+              </svg>
+            </div>
+            <h1 className="font-tech-display text-4xl tracking-[0.2em] text-white">
+              ENIF
+            </h1>
+          </motion.div>
 
-          <div className="relative z-10 flex flex-col items-center">
-            {/* Clean ENIF Brand Wordmark */}
+          {/* Fluid Progress Bar */}
+          <div className="w-64 max-w-[80vw] h-[2px] bg-[#334155]/30 rounded-full overflow-hidden mb-6 relative">
             <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease }}
-              className="flex items-center gap-3 mb-8"
-            >
-              <span className="w-6 h-px bg-[#38BDF8]" />
-              <span className="text-3xl sm:text-4xl font-display tracking-[-0.035em] text-white font-medium">
-                ENIF
-              </span>
-              <span className="w-6 h-px bg-[#38BDF8]" />
-            </motion.div>
-
-            {/* Razor-Thin Minimal Progress Line */}
-            <div className="w-40 sm:w-48 h-[1px] bg-white/10 overflow-hidden relative mb-3 rounded-full">
-              <motion.div
-                className="absolute inset-y-0 left-0 bg-[#38BDF8] rounded-full"
-                style={{ width: `${progress}%` }}
-                transition={{ duration: 0.15, ease: "easeOut" }}
-              />
-            </div>
-
-            {/* Quiet Monospace Percentage Counter */}
-            <div className="font-mono text-[10px] text-[#38BDF8]/80 tracking-[0.25em] uppercase font-semibold">
-              {progress}%
-            </div>
+              initial={{ x: "-100%" }}
+              animate={{ x: "0%" }}
+              transition={{ duration: 2, ease: easeOutStrong }}
+              className="absolute inset-y-0 left-0 w-full bg-[#38BDF8]"
+            />
           </div>
+
+          {/* Terminal Checks */}
+          <div className="h-6 flex items-center justify-center overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentCheck}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
+                className="font-mono text-[10px] sm:text-xs text-[#94A3B8] tracking-widest uppercase"
+              >
+                {CHECKS[currentCheck]}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+          
         </motion.div>
       )}
     </AnimatePresence>

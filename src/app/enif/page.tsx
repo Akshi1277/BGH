@@ -8,6 +8,7 @@ import EnifPhilosophy from "@/components/enif/EnifPhilosophy";
 import EnifMethod from "@/components/enif/EnifMethod";
 import EnifCTA from "@/components/enif/EnifCTA";
 import Footer from "@/components/Footer";
+import EnifPageWrapper from "@/components/enif/EnifPageWrapper";
 
 export const metadata: Metadata = {
   title: "ENIF Technologies — Beyond the Stars",
@@ -18,16 +19,18 @@ export const metadata: Metadata = {
 export default function EnifPage() {
   return (
     <main className="bg-[#04070D] text-[#F8FAFC] min-h-screen selection:bg-[#38BDF8]/30 selection:text-white">
-      <LumaBar />
-      <EnifHero />
-      <EnifCapabilities />
-      <EnifWhy />
-      <EnifMethod />
-      <EnifPhilosophy />
-      <EnifCTA />
-      <div className="bg-[#04070D]">
-        <Footer theme="dark" />
-      </div>
+      <EnifPageWrapper>
+        <LumaBar />
+        <EnifHero />
+        <EnifCapabilities />
+        <EnifWhy />
+        <EnifMethod />
+        <EnifPhilosophy />
+        <EnifCTA />
+        <div className="bg-[#04070D]">
+          <Footer theme="dark" />
+        </div>
+      </EnifPageWrapper>
     </main>
   );
 }

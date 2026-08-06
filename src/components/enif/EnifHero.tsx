@@ -3,7 +3,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Icon from "../Icon";
-import { EnifLoader } from "./EnifLoader";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -146,7 +145,6 @@ export default function EnifHero() {
 
         </div>
       </div>
-      <EnifLoader isLoading={!videoLoaded} />
     </section>
   );
 }
