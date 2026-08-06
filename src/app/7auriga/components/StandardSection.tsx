@@ -11,9 +11,10 @@ const standardLines = [
 
 const howWeWorkItems = [
   { label: 'Understand before advising.', sub: 'Think before creating.' },
-  { label: 'Refine before releasing.', sub: 'Quality is never accidental.' },
+  { label: 'Refine before releasing.', sub: 'Quality is never accidental. It is the consequence of discipline, judgement and uncompromising attention to detail.' },
   { label: 'We do not pursue attention.', sub: 'We build recognition.' },
   { label: 'We do not create noise.', sub: 'We establish clarity.' },
+  { label: 'We do not chase trends.', sub: 'We create work designed to remain relevant for years to come.' },
 ];
 
 export default function StandardSection() {

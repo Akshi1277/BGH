@@ -28,10 +28,10 @@ function Wordmark() {
         />
       </span>
       <span className="flex flex-col leading-none">
-        <span className="font-display text-lg tracking-[0.12em] text-[#F4F4F0]">
+        <span className="font-display text-lg tracking-[0.12em] text-ink">
           BRAHM
         </span>
-        <span className="font-mono-ui text-[9px] tracking-[0.32em] text-[#34D399] mt-1">
+        <span className="font-mono-ui text-[9px] tracking-[0.32em] text-accent mt-1 font-semibold">
           GLOBAL HOLDINGS
         </span>
       </span>
@@ -74,7 +74,7 @@ export default function Navbar() {
         transition={{ duration: 0.7, ease: "easeOut" }}
         className={`w-full top-0 fixed z-50 transition-all duration-300 pt-[env(safe-area-inset-top,0px)] ${
           scrolled
-            ? "bg-[#0A0D0B]/90 backdrop-blur-md border-b border-white/10 shadow-lg"
+            ? "bg-white/95 backdrop-blur-md border-b border-surface-line shadow-sm"
             : "bg-transparent border-b border-transparent"
         }`}
       >
@@ -86,7 +86,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-label font-mono-ui uppercase text-white/70 hover:text-[#34D399] transition-colors py-2"
+                className="text-label font-mono-ui uppercase text-ink-muted hover:text-ink transition-colors py-2 font-medium"
               >
                 {link.label}
               </Link>
@@ -103,7 +103,8 @@ export default function Navbar() {
               <motion.div whileHover={{ y: -1 }} transition={{ duration: 0.15 }}>
                 <StarButton
                   href="/7auriga"
-                  className="font-mono-ui uppercase tracking-[0.12em] font-bold !from-[#E0115F] !via-[#9B111E] !to-[#E0115F]"
+                  className="font-mono-ui uppercase tracking-[0.12em] font-bold"
+                  shimmerColor="#E0115F"
                 >
                   7 AURIGA
                 </StarButton>
@@ -113,7 +114,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setOpen(true)}
-            className="md:hidden text-[#F4F4F0] p-2 -mr-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg hover:bg-white/5 active:bg-white/10"
+            className="md:hidden text-ink p-2 -mr-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg hover:bg-black/5 active:bg-black/10"
             aria-label="Open menu"
           >
             <Icon name="menu" size={24} />
@@ -128,13 +129,13 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[60] bg-[#0A0D0B] text-[#F4F4F0] flex flex-col md:hidden pt-[env(safe-area-inset-top,0px)] pb-[env(safe-area-inset-bottom,0px)] overflow-y-auto"
+            className="fixed inset-0 z-[60] bg-white text-ink flex flex-col md:hidden pt-[env(safe-area-inset-top,0px)] pb-[env(safe-area-inset-bottom,0px)] overflow-y-auto"
           >
-            <div className="flex justify-between items-center h-20 px-4 sm:px-margin-mobile shrink-0 border-b border-white/10">
+            <div className="flex justify-between items-center h-20 px-4 sm:px-margin-mobile shrink-0 border-b border-surface-line">
               <Wordmark />
               <button
                 onClick={() => setOpen(false)}
-                className="text-[#F4F4F0] p-2 -mr-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg hover:bg-white/5 active:bg-white/10"
+                className="text-ink p-2 -mr-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg hover:bg-black/5 active:bg-black/10"
                 aria-label="Close menu"
               >
                 <Icon name="close" size={24} />
@@ -174,7 +175,8 @@ export default function Navbar() {
               <StarButton
                 href="/7auriga"
                 onClick={() => setOpen(false)}
-                className="w-full font-mono-ui uppercase tracking-[0.1em] font-bold py-3.5 h-auto justify-center !from-[#E0115F] !via-[#9B111E] !to-[#E0115F]"
+                className="w-full font-mono-ui uppercase tracking-[0.1em] font-bold py-3.5 h-auto justify-center"
+                shimmerColor="#E0115F"
               >
                 7 AURIGA
               </StarButton>

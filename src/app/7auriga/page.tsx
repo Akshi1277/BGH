@@ -6,6 +6,7 @@ import HeroSection from './components/HeroSection';
 import PhilosophySection from './components/PhilosophySection';
 import PracticesSection from './components/PracticesSection';
 import StandardSection from './components/StandardSection';
+import OurPhilosophySection from './components/OurPhilosophySection';
 import OrganisationsSection from './components/OrganisationsSection';
 
 export const metadata: Metadata = {
@@ -73,6 +74,7 @@ export default function AurigaHomePage() {
           <PhilosophySection />
           <PracticesSection />
           <StandardSection />
+          <OurPhilosophySection />
           <OrganisationsSection />
         </main>
 

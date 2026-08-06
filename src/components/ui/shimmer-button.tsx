@@ -39,46 +39,26 @@ export const ShimmerButton = React.forwardRef<
   ) => {
     const content = (
       <>
-        {/* Shimmering beam effect */}
-        <div
-          className="-z-30 absolute inset-0 overflow-hidden rounded-[inherit] pointer-events-none"
-        >
-          <div className="absolute inset-[-100%] animate-[spin_4s_linear_infinite] opacity-80 will-change-transform">
-            <div
-              className="w-full h-full"
-              style={{
-                background: `conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 270deg, ${shimmerColor} 340deg, transparent 360deg)`,
-              }}
-            />
-          </div>
-        </div>
-
-        {/* Inner glass background */}
-        <div
-          className="absolute inset-[1.5px] -z-20 transition-colors duration-300 group-hover:bg-[#0C1A30] rounded-[inherit] backdrop-blur-md"
-          style={{ background }}
-        />
-
         {/* Label & Icon */}
-        <span className="relative z-10 flex items-center justify-center gap-2 text-[11px] font-mono-ui uppercase tracking-widest text-[#F8FAFC] group-hover:text-white transition-colors font-semibold">
+        <span 
+          className="relative z-10 flex items-center justify-center gap-2 text-[12px] font-mono-ui uppercase tracking-widest font-bold transition-all duration-300 group-hover:brightness-125"
+          style={{ color: shimmerColor }}
+        >
           {children}
           {icon && (
             <span
               className="inline-flex items-center group-hover:translate-x-1 transition-transform duration-200"
-              style={{ color: shimmerColor }}
             >
               {icon}
             </span>
           )}
+          
+          {/* Animated Underline */}
+          <span 
+            className="absolute -bottom-1 left-0 right-0 h-[1.5px] opacity-40 group-hover:opacity-100 transition-all duration-300 scale-x-[0.8] group-hover:scale-x-100" 
+            style={{ backgroundColor: shimmerColor }}
+          />
         </span>
-
-        {/* Ambient Bloom */}
-        <div 
-          className="absolute inset-0 rounded-[inherit] pointer-events-none transition-all duration-300 opacity-30 group-hover:opacity-70"
-          style={{
-            boxShadow: `inset 0 0 0 1px ${shimmerColor}, 0 0 20px ${shimmerColor}`,
-          }}
-        />
       </>
     );
 

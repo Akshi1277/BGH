@@ -90,7 +90,8 @@ export default function HeroSection() {
             </h1>
 
             <p className="text-sm md:text-base font-light text-[#9C8F8F] leading-relaxed">
-              Identity, engineered to endure.
+              We Build Identities That Endure.<br/>
+              Brand • Media • Communications
             </p>
           </motion.div>
 
@@ -102,16 +103,16 @@ export default function HeroSection() {
             <div className="flex items-center gap-3 mb-4">
               <span className="h-px w-6 bg-[#9B1C2E]" />
               <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#C8374F]">
-                Optical Precision
+                Strategic Communications
               </span>
             </div>
 
             <h2 className="text-3xl md:text-4xl font-bold text-[#FAF7F5] mb-5 leading-tight tracking-tight">
-              Perception as an<br />exact science.
+              7AURIGA builds perception.
             </h2>
 
             <p className="text-sm md:text-base text-[#9C8F8F] font-light leading-relaxed">
-              Just as custom lens elements align light into unyielding focus, 7AURIGA calibrates every angle of institutional narrative to command authority.
+              7AURIGA is the communications and creative company of BRAHM Global Holdings. Our work extends beyond communication. We help organisations define who they are, how they are understood and how they will be remembered.
             </p>
           </motion.div>
 
@@ -122,17 +123,17 @@ export default function HeroSection() {
             
             <div className="flex items-center justify-end gap-3 mb-4">
               <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#C8374F]">
-                Architectural Depth
+                Disciplined Execution
               </span>
               <span className="h-px w-6 bg-[#9B1C2E]" />
             </div>
 
             <h2 className="text-3xl md:text-4xl font-bold text-[#FAF7F5] mb-5 leading-tight tracking-tight">
-              192 components<br />of strategy.
+              Enduring commercial value.
             </h2>
 
             <p className="text-sm md:text-base text-[#9C8F8F] font-light leading-relaxed ml-auto">
-              Beneath a seamless exterior lies a sophisticated assembly of market positioning, crisis architecture, and stakeholder synchronization.
+              Through strategic thinking, creative excellence and disciplined execution, we build enduring identities that strengthen reputation, inspire confidence and create lasting commercial value.
             </p>
           </motion.div>
 
@@ -144,13 +145,13 @@ export default function HeroSection() {
             <div className="flex items-center gap-3 mb-4">
               <span className="h-px w-6 bg-[#9B1C2E]" />
               <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#C8374F]">
-                The 7AURIGA Standard
+                The Art of Building Influence.
               </span>
               <span className="h-px w-6 bg-[#9B1C2E]" />
             </div>
 
             <h2 className="text-3xl md:text-5xl font-bold text-[#FAF7F5] mb-5 leading-tight tracking-tight">
-              Identities built<br />to endure.
+              Building Modern Icons.
             </h2>
 
             <div className="mt-4 flex items-center justify-center">
