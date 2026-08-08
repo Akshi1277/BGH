@@ -157,12 +157,12 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="group flex items-baseline gap-4 py-3 border-b border-white/10 active:text-[#34D399]"
+                    className="group flex items-baseline gap-4 py-3 border-b border-surface-line active:text-[#34D399]"
                   >
                     <span className="font-mono-ui text-xs tracking-widest text-[#34D399]">
                       0{i + 1}
                     </span>
-                    <span className="font-display text-2xl sm:text-3xl text-[#F4F4F0] group-hover:text-[#34D399] transition-colors">
+                    <span className="font-display text-2xl sm:text-3xl text-ink group-hover:text-[#34D399] transition-colors">
                       {link.label}
                     </span>
                   </Link>
