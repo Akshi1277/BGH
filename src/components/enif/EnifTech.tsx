@@ -54,7 +54,7 @@ export default function EnifTech() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease, delay: 0.1 }}
-            className="font-display text-3xl md:text-5xl text-white leading-[1.18] tracking-[-0.01em]"
+            className="font-display font-extralight text-3xl md:text-5xl text-[#F8FAFC] leading-[1.18] tracking-[-0.01em]"
           >
             Enterprise Technology Stack.
           </motion.h2>
@@ -86,7 +86,7 @@ export default function EnifTech() {
                 <span className="font-mono text-[#38BDF8] text-[10px] tracking-widest font-bold block mb-2 opacity-80">
                   LAYER 0{i + 1}
                 </span>
-                <h3 className="font-display text-lg md:text-xl text-white font-medium">
+                <h3 className="font-display font-light text-lg md:text-xl text-[#F8FAFC]">
                   {layer.layer}
                 </h3>
               </div>

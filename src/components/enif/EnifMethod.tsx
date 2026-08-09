@@ -41,7 +41,7 @@ export default function EnifMethod() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-tech-display text-4xl sm:text-5xl md:text-6xl text-[#F8FAFC] leading-[1.05] tracking-[-0.03em] mb-6"
+            className="font-display font-extralight text-4xl sm:text-5xl md:text-6xl text-[#F8FAFC] leading-[1.05] tracking-[-0.03em] mb-6"
           >
             The Engineering Method.
           </motion.h2>
@@ -84,7 +84,7 @@ export default function EnifMethod() {
                   <span className="font-mono text-[10px] text-[#64748B] tracking-widest uppercase">
                     {step.id}
                   </span>
-                  <span className="font-tech-display text-xl sm:text-2xl text-white tracking-tight">
+                  <span className="font-display font-light text-xl sm:text-2xl text-[#F8FAFC] tracking-tight">
                     {step.name}
                   </span>
                   <span className="text-[#94A3B8] font-mono text-[11px] leading-relaxed mt-2 opacity-80 border-t border-[#334155]/30 pt-3">

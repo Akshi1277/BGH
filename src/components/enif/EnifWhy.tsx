@@ -73,7 +73,7 @@ export default function EnifWhy() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-tech-display text-4xl sm:text-5xl md:text-6xl text-[#F8FAFC] leading-[1.05] tracking-[-0.03em] mb-6"
+            className="font-display font-extralight text-4xl sm:text-5xl md:text-6xl text-[#F8FAFC] leading-[1.05] tracking-[-0.03em] mb-6"
           >
             Why Organisations Choose ENIF.
           </motion.h2>
@@ -108,7 +108,7 @@ export default function EnifWhy() {
                   </div>
                 </div>
                 
-                <h3 className="font-tech-display text-xl sm:text-2xl text-white mb-3">
+                <h3 className="font-display font-light text-xl sm:text-2xl text-[#F8FAFC] mb-3">
                   {item.title}
                 </h3>
                 <p className="text-[#94A3B8] text-sm font-light leading-relaxed mb-6">

@@ -11,7 +11,7 @@ import Footer from "@/components/Footer";
 import EnifPageWrapper from "@/components/enif/EnifPageWrapper";
 
 export const metadata: Metadata = {
-  title: "ENIF Technologies — Beyond the Stars",
+  title: "ENIF Technologies — Engineer Your Enterprise",
   description:
     "ENIF Technologies is the technology and innovation division of BRAHM Global Holdings — designing, engineering and maintaining digital products, intelligent platforms and enterprise software.",
 };

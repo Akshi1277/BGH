@@ -1,0 +1,591 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&family=Sora:wght@200;300;400&display=swap');
+
+/* ═══════════════════════════════════════
+   ECHOID DESIGN TOKENS & LAYOUT SHELL
+   ═══════════════════════════════════════ */
+.echoid-hero {
+  --bg: #000000;
+  --text: #ffffff;
+  --text-dim: rgba(255, 255, 255, 0.62);
+  --text-dimmer: rgba(255, 255, 255, 0.42);
+  --line: rgba(255, 255, 255, 0.14);
+  --line-strong: rgba(255, 255, 255, 0.26);
+  --fill-ghost: rgba(255, 255, 255, 0.05);
+  --fill-solid: rgba(255, 255, 255, 0.10);
+  --gutter: clamp(20px, 4vw, 80px);
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+  --font-display: "Sora", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  min-height: 600px;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  isolation: isolate;
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ═══════════════════════════════════════
+   MEDIA LAYER & SCRIM
+   ═══════════════════════════════════════ */
+.echoid-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: #000000;
+  overflow: hidden;
+}
+
+.echoid-hero__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Dual gradient scrim overlay */
+.echoid-hero__scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (min-width: 721px) {
+  .echoid-hero__scrim {
+    background:
+      linear-gradient(to right, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.55) 68%, rgba(0, 0, 0, 0.82) 100%),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, transparent 20%, transparent 80%, rgba(0, 0, 0, 0.7) 100%);
+  }
+}
+
+@media (max-width: 720px) {
+  .echoid-hero__scrim {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.35) 30%, rgba(0, 0, 0, 0.85) 100%);
+  }
+}
+
+/* ═══════════════════════════════════════
+   NAVBAR (Row 1)
+   ═══════════════════════════════════════ */
+.echoid-hero__nav {
+  position: relative;
+  z-index: 60;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: clamp(16px, 2vh, 28px) var(--gutter);
+  padding-top: max(clamp(16px, 2vh, 28px), env(safe-area-inset-top, 0px));
+  padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
+}
+
+.echoid-hero__logo {
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: clamp(20px, 1.75vw, 28px);
+  letter-spacing: 0.16em;
+  color: #ffffff;
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.echoid-hero__nav-cluster {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 2.5vw, 48px);
+}
+
+.echoid-hero__desktop-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 2.2vw, 44px);
+}
+
+@media (max-width: 900px) {
+  .echoid-hero__desktop-links,
+  .echoid-hero__desktop-cta {
+    display: none !important;
+  }
+}
+
+.echoid-hero__nav-link {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: clamp(11px, 0.75vw, 13px);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.echoid-hero__nav-link:hover {
+  color: var(--text-dim);
+}
+
+.echoid-hero__desktop-cta {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: clamp(11px, 0.75vw, 13px);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-decoration: none;
+  padding: clamp(10px, 1.2vh, 14px) clamp(18px, 1.5vw, 26px);
+  border: 1px solid var(--line-strong);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+  white-space: nowrap;
+}
+
+.echoid-hero__desktop-cta:hover {
+  background-color: var(--fill-ghost);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Hamburger button */
+.echoid-hero__toggle {
+  display: none;
+  position: relative;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 70;
+}
+
+@media (max-width: 900px) {
+  .echoid-hero__toggle {
+    display: block;
+  }
+}
+
+.echoid-hero__bar {
+  position: absolute;
+  left: 50%;
+  width: 22px;
+  height: 1px;
+  background-color: #ffffff;
+  transform: translateX(-50%);
+  transition: transform 0.45s var(--ease-premium), opacity 0.25s ease, top 0.45s var(--ease-premium);
+}
+
+.echoid-hero__bar--1 {
+  top: 16px;
+}
+
+.echoid-hero__bar--2 {
+  top: 22px;
+}
+
+.echoid-hero__bar--3 {
+  top: 28px;
+}
+
+/* Active Hamburger Morph */
+.echoid-hero__toggle[aria-expanded="true"] .echoid-hero__bar--1 {
+  top: 22px;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.echoid-hero__toggle[aria-expanded="true"] .echoid-hero__bar--2 {
+  opacity: 0;
+  transform: translateX(-50%) scaleX(0);
+}
+
+.echoid-hero__toggle[aria-expanded="true"] .echoid-hero__bar--3 {
+  top: 22px;
+  transform: translateX(-50%) rotate(-45deg);
+}
+
+/* ═══════════════════════════════════════
+   MOBILE MENU OVERLAY
+   ═══════════════════════════════════════ */
+.echoid-hero__menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(4, 4, 6, 0.94);
+  backdrop-filter: blur(28px) saturate(140%);
+  -webkit-backdrop-filter: blur(28px) saturate(140%);
+  clip-path: circle(3% at calc(100% - 42px) 42px);
+  opacity: 0;
+  pointer-events: none;
+  transition: clip-path 0.7s var(--ease-premium), opacity 0.45s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+}
+
+.echoid-hero__menu-overlay[aria-hidden="false"] {
+  clip-path: circle(150% at calc(100% - 42px) 42px);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.echoid-hero__menu-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(20px, 4vh, 32px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.echoid-hero__menu-item {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.4s ease, transform 0.5s var(--ease-premium);
+}
+
+.echoid-hero__menu-overlay[aria-hidden="false"] .echoid-hero__menu-item {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(180ms + var(--i) * 70ms);
+}
+
+.echoid-hero__menu-link {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: clamp(18px, 5vw, 24px);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.echoid-hero__menu-link:hover {
+  color: var(--text-dim);
+}
+
+.echoid-hero__menu-cta {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: clamp(13px, 3.5vw, 16px);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 14px 36px;
+  border: 1px solid var(--line-strong);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+  margin-top: 8px;
+}
+
+.echoid-hero__menu-cta:hover {
+  background-color: var(--fill-ghost);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* ═══════════════════════════════════════
+   RIGHT PANEL (Row 2 Body)
+   ═══════════════════════════════════════ */
+.echoid-hero__body {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+@media (max-width: 720px) {
+  .echoid-hero__body {
+    justify-content: center;
+  }
+}
+
+.echoid-hero__panel {
+  width: min(38vw, 560px);
+  min-width: 320px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  max-height: 100%;
+}
+
+@media (max-width: 1100px) {
+  .echoid-hero__panel {
+    width: min(80vw, 520px);
+    min-width: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .echoid-hero__panel {
+    width: 100%;
+    align-items: stretch;
+  }
+}
+
+/* 1) Chip */
+.echoid-hero__chip {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: clamp(10px, 0.7vw, 13px);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.09);
+  padding: clamp(7px, 0.9vh, 11px) clamp(12px, 1vw, 18px);
+  line-height: 1;
+  border-radius: 0;
+  color: #ffffff;
+  align-self: flex-start;
+  white-space: nowrap;
+}
+
+/* 2) H1 Headline */
+.echoid-hero__h1 {
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: clamp(32px, 3.8vw, 72px);
+  letter-spacing: -0.01em;
+  line-height: 1.02;
+  margin-top: clamp(12px, 2vh, 28px);
+  margin-bottom: 0;
+  color: #ffffff;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
+@media (max-width: 380px) {
+  .echoid-hero__h1 {
+    font-size: clamp(28px, 10vw, 42px);
+  }
+}
+
+/* 3) Tagline */
+.echoid-hero__tagline {
+  font-family: var(--font-mono);
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: clamp(10px, 0.82vw, 14px);
+  letter-spacing: 0.12em;
+  color: var(--text-dim);
+  margin-top: clamp(8px, 1.2vh, 16px);
+  margin-bottom: 0;
+  line-height: 1.45;
+  max-width: 50ch;
+}
+
+/* 4) Form */
+.echoid-hero__form {
+  margin-top: clamp(16px, 2.6vh, 38px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.5vh, 16px);
+  width: 100%;
+}
+
+/* Email Input */
+.echoid-hero__input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--line-strong);
+  border-radius: 0;
+  padding: 0 2px clamp(8px, 1.1vh, 14px);
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(14px, 0.9vw, 17px);
+  color: #ffffff;
+  outline: none;
+  transition: border-color 0.25s ease;
+  width: 100%;
+}
+
+.echoid-hero__input::placeholder {
+  color: var(--text-dim);
+  transition: color 0.25s ease;
+}
+
+.echoid-hero__input:focus {
+  border-bottom-color: rgba(255, 255, 255, 0.85);
+}
+
+.echoid-hero__input:focus::placeholder {
+  color: var(--text-dimmer);
+}
+
+/* Buttons */
+.echoid-hero__btn {
+  width: 100%;
+  border-radius: 0;
+  border: none;
+  padding: clamp(11px, 1.4vh, 18px) 18px;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: clamp(10px, 0.75vw, 13px);
+  cursor: pointer;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.echoid-hero__btn--ghost {
+  background-color: var(--fill-ghost);
+  color: var(--text-dimmer);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.echoid-hero__btn--ghost:hover {
+  background-color: rgba(255, 255, 255, 0.09);
+  color: #ffffff;
+}
+
+.echoid-hero__btn--solid {
+  background-color: var(--fill-solid);
+  color: #ffffff;
+  transition: background-color 0.25s ease;
+}
+
+.echoid-hero__btn--solid:hover {
+  background-color: rgba(255, 255, 255, 0.17);
+}
+
+/* 5) Referral Link */
+.echoid-hero__referral {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: clamp(10px, 0.72vw, 13px);
+  letter-spacing: 0.16em;
+  margin-top: clamp(12px, 1.8vh, 24px);
+  align-self: center;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.echoid-hero__referral:hover {
+  color: var(--text-dim);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ═══════════════════════════════════════
+   LEGAL FOOTER (Row 3)
+   ═══════════════════════════════════════ */
+.echoid-hero__footer {
+  position: relative;
+  z-index: 10;
+  border-top: 1px solid var(--line);
+  padding: clamp(12px, 1.5vh, 22px) var(--gutter);
+  padding-bottom: max(clamp(12px, 1.5vh, 22px), env(safe-area-inset-bottom, 0px));
+  padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
+  text-align: center;
+}
+
+.echoid-hero__footer-text {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(11px, 0.75vw, 15px);
+  color: var(--text-dim);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.echoid-hero__legal-link {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color 0.25s ease;
+}
+
+.echoid-hero__legal-link:hover {
+  color: var(--text-dim);
+}
+
+/* ═══════════════════════════════════════
+   FOCUS & ACCESSIBILITY
+   ═══════════════════════════════════════ */
+.echoid-hero a:focus-visible,
+.echoid-hero button:focus-visible,
+.echoid-hero input:focus-visible {
+  outline: 1px solid rgba(255, 255, 255, 0.7) !important;
+  outline-offset: 3px !important;
+}
+
+/* ═══════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .echoid-hero__video {
+    display: none !important;
+  }
+  .echoid-hero__media {
+    background-image: url("https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260806_132328_5f9029c8-218f-4489-82b6-29ff2849920e.png") !important;
+    background-size: cover !important;
+    background-position: center !important;
+  }
+  .echoid-hero *,
+  .echoid-hero *::before,
+  .echoid-hero *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ═══════════════════════════════════════
+   SHORT-HEIGHT COMPRESS (max-height: 680px)
+   ═══════════════════════════════════════ */
+@media (max-height: 680px) {
+  .echoid-hero {
+    min-height: 100svh;
+  }
+  .echoid-hero__nav {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .echoid-hero__h1 {
+    font-size: clamp(26px, 5.5vh, 48px);
+    margin-top: 10px;
+  }
+  .echoid-hero__tagline {
+    margin-top: 6px;
+  }
+  .echoid-hero__form {
+    margin-top: 14px;
+    gap: 8px;
+  }
+  .echoid-hero__btn {
+    padding: 10px 14px;
+  }
+  .echoid-hero__referral {
+    margin-top: 10px;
+  }
+  .echoid-hero__footer {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .echoid-hero__footer-text {
+    font-size: 11px;
+  }
+}

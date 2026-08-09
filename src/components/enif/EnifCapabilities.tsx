@@ -69,7 +69,7 @@ export default function EnifCapabilities() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-tech-display text-4xl sm:text-5xl md:text-6xl text-[#F8FAFC] leading-[1.05] tracking-[-0.03em]"
+              className="font-display font-extralight text-4xl sm:text-5xl md:text-6xl text-[#F8FAFC] leading-[1.05] tracking-[-0.03em]"
             >
               Institutional-Grade Engineering
             </motion.h2>
@@ -109,7 +109,7 @@ export default function EnifCapabilities() {
                 </div>
 
                 {/* Content */}
-                <h3 className="font-tech-display text-2xl sm:text-3xl text-white mb-3 tracking-tight">
+                <h3 className="font-display font-light text-2xl sm:text-3xl text-[#F8FAFC] mb-3 tracking-tight">
                   {cap.title}
                 </h3>
                 <p className="text-[#94A3B8] font-mono text-[11px] uppercase tracking-wide mb-6 opacity-70">
