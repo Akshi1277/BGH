@@ -22,7 +22,7 @@ export default function EnifPhilosophy() {
   const reduce = useReducedMotion();
 
   return (
-    <section id="philosophy" className="py-32 md:py-48 bg-[#04070D] text-[#F8FAFC] relative overflow-hidden border-b border-[#334155]/50">
+    <section id="philosophy" className="py-32 md:py-48 bg-[#04070D] text-[#F8FAFC] relative overflow-hidden border-b border-white/[0.05]">
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
           

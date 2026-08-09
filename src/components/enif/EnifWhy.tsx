@@ -51,7 +51,7 @@ export default function EnifWhy() {
   const reduce = useReducedMotion();
 
   return (
-    <section id="why-enif" className="py-24 md:py-32 lg:py-40 bg-[#04070D] border-b border-[#334155]/50 relative">
+    <section id="why-enif" className="py-24 md:py-32 lg:py-40 bg-[#04070D] border-b border-white/[0.05] relative">
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
         
         {/* Section Header */}

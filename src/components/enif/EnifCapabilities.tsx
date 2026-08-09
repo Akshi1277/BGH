@@ -47,7 +47,7 @@ export default function EnifCapabilities() {
   return (
     <section 
       id="capabilities" 
-      className="py-24 md:py-32 lg:py-40 bg-[#0F172A] border-y border-[#334155]/50 relative"
+      className="py-24 md:py-32 lg:py-40 bg-[#090D16] border-b border-white/[0.05] relative"
     >
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
         
