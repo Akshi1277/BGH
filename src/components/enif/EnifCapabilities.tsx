@@ -47,7 +47,7 @@ export default function EnifCapabilities() {
   return (
     <section 
       id="capabilities" 
-      className="py-24 md:py-32 lg:py-40 bg-[#090D16] border-b border-white/[0.05] relative"
+      className="py-24 md:py-32 lg:py-40 bg-[#0F172A] border-y border-[#334155]/50 relative"
     >
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
         
@@ -69,7 +69,7 @@ export default function EnifCapabilities() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-display font-extralight text-4xl sm:text-5xl md:text-6xl text-[#F8FAFC] leading-[1.05] tracking-[-0.03em]"
+              className="font-tech-display text-4xl sm:text-5xl md:text-6xl text-[#F8FAFC] leading-[1.05] tracking-[-0.03em]"
             >
               Institutional-Grade Engineering
             </motion.h2>
@@ -109,7 +109,7 @@ export default function EnifCapabilities() {
                 </div>
 
                 {/* Content */}
-                <h3 className="font-display font-light text-2xl sm:text-3xl text-[#F8FAFC] mb-3 tracking-tight">
+                <h3 className="font-tech-display text-2xl sm:text-3xl text-white mb-3 tracking-tight">
                   {cap.title}
                 </h3>
                 <p className="text-[#94A3B8] font-mono text-[11px] uppercase tracking-wide mb-6 opacity-70">

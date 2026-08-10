@@ -22,7 +22,7 @@ export default function EnifPhilosophy() {
   const reduce = useReducedMotion();
 
   return (
-    <section id="philosophy" className="py-32 md:py-48 bg-[#04070D] text-[#F8FAFC] relative overflow-hidden border-b border-white/[0.05]">
+    <section id="philosophy" className="py-32 md:py-48 bg-[#04070D] text-[#F8FAFC] relative overflow-hidden border-b border-[#334155]/50">
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
           
@@ -46,7 +46,7 @@ export default function EnifPhilosophy() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-display font-extralight text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#F8FAFC] leading-[0.95] tracking-[-0.04em] mb-8"
+              className="font-tech-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white leading-[0.95] tracking-[-0.04em] mb-8"
             >
               Principles of Engineering.
             </motion.h2>
@@ -74,12 +74,12 @@ export default function EnifPhilosophy() {
                 className="group relative"
               >
                 {/* Number Watermark */}
-                <div className="absolute -left-4 md:-left-12 -top-8 font-display font-extralight text-8xl md:text-9xl text-[#334155]/20 select-none z-0 tracking-tighter">
+                <div className="absolute -left-4 md:-left-12 -top-8 font-tech-display text-8xl md:text-9xl text-[#334155]/20 select-none z-0 tracking-tighter">
                   0{idx + 1}
                 </div>
                 
                 <div className="relative z-10 pl-4 md:pl-0">
-                  <h3 className="font-display font-light text-2xl md:text-3xl text-[#F8FAFC] mb-4 tracking-tight">
+                  <h3 className="font-tech-display text-2xl md:text-3xl text-white mb-4 tracking-tight">
                     {tenet.title}
                   </h3>
                   <div className="w-12 h-px bg-[#38BDF8] mb-6" />

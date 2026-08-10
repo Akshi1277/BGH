@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const CHECKS = [
   "INITIALIZING GLOBAL INFRASTRUCTURE...",
@@ -70,12 +71,13 @@ export default function EnifLoader({ onComplete }: { onComplete: () => void }) {
             transition={{ duration: 1.2, ease: easeOutStrong }}
             className="flex flex-col items-center gap-8 mb-16"
           >
-            <div className="w-16 h-16 relative">
-              <svg viewBox="0 0 100 100" className="w-full h-full text-white">
-                <path d="M50 0 L100 25 L100 75 L50 100 L0 75 L0 25 Z" fill="none" stroke="currentColor" strokeWidth="2" />
-                <path d="M35 30 L65 30 M35 50 L65 50 M35 70 L65 70" stroke="currentColor" strokeWidth="4" />
-                <path d="M35 30 L35 70" stroke="currentColor" strokeWidth="4" />
-              </svg>
+            <div className="w-24 h-24 relative">
+              <Image
+                src="/eniflogo.png"
+                alt="Enif Logo"
+                fill
+                className="object-contain"
+              />
             </div>
             <h1 className="font-tech-display text-4xl tracking-[0.2em] text-white">
               ENIF

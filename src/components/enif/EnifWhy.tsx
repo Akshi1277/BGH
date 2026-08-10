@@ -51,7 +51,7 @@ export default function EnifWhy() {
   const reduce = useReducedMotion();
 
   return (
-    <section id="why-enif" className="py-24 md:py-32 lg:py-40 bg-[#04070D] border-b border-white/[0.05] relative">
+    <section id="why-enif" className="py-24 md:py-32 lg:py-40 bg-[#04070D] border-b border-[#334155]/50 relative">
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
         
         {/* Section Header */}
@@ -73,7 +73,7 @@ export default function EnifWhy() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display font-extralight text-4xl sm:text-5xl md:text-6xl text-[#F8FAFC] leading-[1.05] tracking-[-0.03em] mb-6"
+            className="font-tech-display text-4xl sm:text-5xl md:text-6xl text-[#F8FAFC] leading-[1.05] tracking-[-0.03em] mb-6"
           >
             Why Organisations Choose ENIF.
           </motion.h2>
@@ -108,7 +108,7 @@ export default function EnifWhy() {
                   </div>
                 </div>
                 
-                <h3 className="font-display font-light text-xl sm:text-2xl text-[#F8FAFC] mb-3">
+                <h3 className="font-tech-display text-xl sm:text-2xl text-white mb-3">
                   {item.title}
                 </h3>
                 <p className="text-[#94A3B8] text-sm font-light leading-relaxed mb-6">
