@@ -9,8 +9,13 @@ import Icon from "./Icon";
 const CLIENTS = [
   {
     name: "Printfix",
-    url: "https://printfix.co.in",
+    url: "#",
     logo: "/printfixlogo.png"
+  },
+  {
+    name: "DevGeeks",
+    url: "#",
+    logo: "/devgeeks.svg"
   },
 ];
 
