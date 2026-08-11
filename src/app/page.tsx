@@ -13,13 +13,13 @@ export default function Home() {
   return (
     <main>
       <Hero />
+      <Clients />
       <Mandate />
       <GroupSectors />
       <Portfolio />
       <HowWeBuild />
       <PhilosophyStandard />
       <WhyBRAHM />
-      <Clients />
       <CTA />
       <Footer theme="light" />
     </main>
