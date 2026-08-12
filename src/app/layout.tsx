@@ -60,6 +60,7 @@ export const metadata: Metadata = {
     template: `%s — ${title}`,
   },
   description,
+  keywords: ["Brahm", "Brahm Global", "Brahm Global Holdings", "Venture Builder", "Holding Company", "UK"],
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
@@ -85,12 +86,27 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": title,
+    "alternateName": ["Brahm", "Brahm Global"],
+    "url": siteUrl,
+    "logo": `${siteUrl}/favicon.ico`,
+    "description": description,
+  };
+
   return (
     <html
       lang="en"
       className={`${playfair.variable} ${jakarta.variable} ${spaceGrotesk.variable} ${jbmono.variable} ${manrope.variable} ${crimsonText.variable} h-full antialiased`}
     >
-
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-surface text-ink font-sans-ui relative selection:bg-accent selection:text-white">
         <div
           aria-hidden
