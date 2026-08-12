@@ -16,6 +16,28 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/7auriga',
   },
+  openGraph: {
+    title: '7AURIGA — We Build Identities That Endure',
+    description: '7AURIGA is the Identity Intelligence Practice of BRAHM Global Holdings. We build enduring organisational identities through strategic thinking, creative excellence and disciplined execution.',
+    url: 'https://brahmglobalholdings.com/7auriga',
+    siteName: '7AURIGA',
+    locale: 'en_GB',
+    type: 'website',
+    images: [
+      {
+        url: '/new7auregalogo.png',
+        width: 1200,
+        height: 630,
+        alt: '7AURIGA Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '7AURIGA — We Build Identities That Endure',
+    description: '7AURIGA is the Identity Intelligence Practice of BRAHM Global Holdings. We build enduring organisational identities through strategic thinking, creative excellence and disciplined execution.',
+    images: ['/new7auregalogo.png'],
+  },
 };
 
 import PageLoaderProvider from './components/PageLoaderProvider';

@@ -42,22 +42,24 @@ export default function Hero() {
       <div className="relative z-10 flex flex-col items-center text-center px-4 max-w-5xl mx-auto w-full">
         {/* Main Heading */}
         <motion.div style={{ y: yText, opacity }} className="flex flex-col items-center mb-8">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, ease, delay: 0.2 }}
-            className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem] leading-[1.05] tracking-tight text-ink"
-          >
-            Building Businesses
-          </motion.h1>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, ease, delay: 0.3 }}
-            className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem] leading-[1.05] tracking-tight text-ink"
-          >
-            That <span className="italic font-light text-accent">Endure.</span>
-          </motion.h1>
+          <h1 className="flex flex-col items-center font-display text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem] leading-[1.05] tracking-tight text-ink">
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, ease, delay: 0.2 }}
+              className="block"
+            >
+              Building Businesses
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, ease, delay: 0.3 }}
+              className="block"
+            >
+              That <span className="italic font-light text-accent">Endure.</span>
+            </motion.span>
+          </h1>
         </motion.div>
 
         {/* Subtitle */}

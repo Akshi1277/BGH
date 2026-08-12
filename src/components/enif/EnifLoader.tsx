@@ -79,9 +79,9 @@ export default function EnifLoader({ onComplete }: { onComplete: () => void }) {
                 className="object-contain"
               />
             </div>
-            <h1 className="font-tech-display text-4xl tracking-[0.2em] text-white">
+            <div className="font-tech-display text-4xl tracking-[0.2em] text-white">
               ENIF
-            </h1>
+            </div>
           </motion.div>
 
           {/* Fluid Progress Bar */}
