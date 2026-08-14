@@ -62,9 +62,9 @@ export const metadata: Metadata = {
   description,
   keywords: ["Brahm", "Brahm Global", "Brahm Global Holdings", "Venture Builder", "Holding Company", "UK"],
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/favicon.ico",
+    icon: "/favicon-48x48.png",
+    shortcut: "/favicon-48x48.png",
+    apple: "/icon-192x192.png",
   },
   openGraph: {
     title: `${title} — ${tagline}`,
@@ -101,7 +101,7 @@ export default function RootLayout({
     "name": title,
     "alternateName": ["Brahm", "Brahm Global"],
     "url": siteUrl,
-    "logo": `${siteUrl}/favicon.ico`,
+    "logo": `${siteUrl}/logo.png`,
     "description": description,
   };
 
