@@ -20,7 +20,7 @@ const CLIENTS = [
 ];
 
 export default function Clients() {
-  return (
+  return ( 
     <section
       id="clients"
       className="section-y bg-surface text-ink overflow-hidden border-y border-surface-line"
