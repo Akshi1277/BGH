@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
+import Icon from "./Icon";
 
 const ease = [0.25, 1, 0.5, 1] as const;
 
@@ -31,7 +32,9 @@ export default function ProcessFlow({
 }: ProcessFlowProps) {
   const isDark = theme === "dark";
   const [activeIdx, setActiveIdx] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const [hoverPaused, setHoverPaused] = useState(false);
+  const [manuallyPaused, setManuallyPaused] = useState(false);
+  const isPaused = hoverPaused || manuallyPaused;
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef);
   const activeStep = steps[activeIdx] || steps[0];
@@ -113,11 +116,11 @@ export default function ProcessFlow({
                   key={step.title}
                   onClick={() => {
                     setActiveIdx(idx);
-                    setIsPaused(true);
+                    setHoverPaused(true);
                   }}
-                  onMouseEnter={() => setIsPaused(true)}
-                  onMouseLeave={() => setIsPaused(false)}
-                  className="flex-1 group text-left relative px-3 transition-all duration-300 focus:outline-none cursor-pointer"
+                  onMouseEnter={() => setHoverPaused(true)}
+                  onMouseLeave={() => setHoverPaused(false)}
+                  className="flex-1 group text-left relative px-3 transition-all duration-300 cursor-pointer"
                 >
                   <div className="flex items-center gap-3 mb-2">
                     <span className={`w-8 h-8 rounded-full flex items-center justify-center font-mono-ui text-xs transition-all duration-300 ${
@@ -149,9 +152,9 @@ export default function ProcessFlow({
         </div>
 
         {/* Dynamic Detail Card Inspector with Smooth Auto-Cycle Progress Bar */}
-        <div 
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
+        <div
+          onMouseEnter={() => setHoverPaused(true)}
+          onMouseLeave={() => setHoverPaused(false)}
           className={`border ${isDark ? "bg-[#0A101F]/80 border-cyan-500/20" : "bg-transparent border-surface-line"} rounded-none p-8 md:p-12 min-h-[220px] flex flex-col justify-between relative overflow-hidden group`}
         >
           {/* Top Auto-Cycle Countdown Progress Line */}
@@ -179,10 +182,23 @@ export default function ProcessFlow({
               className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
             >
               <div className="lg:col-span-4">
-                <div className="flex items-center gap-2 mb-2">
+                <div className="flex items-center gap-3 mb-2">
                   <span className="font-mono-ui text-xs text-accent uppercase tracking-widest font-semibold">
                     STAGE 0{activeIdx + 1} OF 0{steps.length}
                   </span>
+                  <button
+                    type="button"
+                    onClick={() => setManuallyPaused((p) => !p)}
+                    className={`w-6 h-6 shrink-0 rounded-full border flex items-center justify-center transition-colors ${
+                      isDark
+                        ? "border-cyan-500/30 text-[#94A3B8] hover:text-white hover:border-cyan-500/60"
+                        : "border-surface-line text-ink-muted hover:text-accent hover:border-accent/40"
+                    }`}
+                    aria-label={manuallyPaused ? "Play stage auto-cycle" : "Pause stage auto-cycle"}
+                    aria-pressed={manuallyPaused}
+                  >
+                    <Icon name={manuallyPaused ? "play" : "pause"} size={10} />
+                  </button>
                 </div>
                 <h3 className={`font-display text-3xl ${isDark ? "text-white" : "text-ink"} font-normal mb-1`}>
                   {activeStep.title}

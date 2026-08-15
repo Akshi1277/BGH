@@ -37,7 +37,7 @@ export default function HowWeBuild() {
           The <span className="italic text-accent">BRAHM</span> Framework
         </>
       }
-      description="A disciplined approach to creating, operating and growing enduring enterprises. Every company within BRAHM Global Holdings is built upon the same disciplined methodology—one that transforms ideas into enduring enterprises through strategic thinking, operational excellence and long-term ownership."
+      description="A repeatable methodology for creating, operating and growing category-defining companies. Every business within BRAHM Global Holdings passes through the same six stages — from first insight to long-term ownership."
       steps={STEPS}
     />
   );

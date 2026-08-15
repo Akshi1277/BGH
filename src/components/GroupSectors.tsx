@@ -13,6 +13,7 @@ interface SectorItem {
   description: string;
   image: string;
   focusAreas: string[];
+  group: "Core Sectors" | "Emerging Focus";
 }
 
 const SECTORS: SectorItem[] = [
@@ -24,6 +25,7 @@ const SECTORS: SectorItem[] = [
       "Developing foundational software systems, cloud architectures, and enterprise technologies designed for long-term scalability and operational reliability.",
     image: "/images/sectors/tech.png",
     focusAreas: ["Enterprise Software", "Cloud Infrastructure", "Digital Security"],
+    group: "Core Sectors",
   },
   {
     index: "02",
@@ -33,51 +35,57 @@ const SECTORS: SectorItem[] = [
       "Deploying intelligent data systems and machine learning models that optimize operational decision-making and automate complex workflows.",
     image: "/images/sectors/ai.png",
     focusAreas: ["Machine Learning", "Predictive Analytics", "Data Engineering"],
+    group: "Core Sectors",
   },
   {
     index: "03",
-    title: "Digital Commerce",
-    summary: "Commercial infrastructure for global scale.",
-    description:
-      "Building transaction systems, merchant networks, and digital marketplace infrastructure that enable brands to expand internationally.",
-    image: "/images/sectors/commerce.png",
-    focusAreas: ["Global Marketplaces", "Transaction Platforms", "Fulfillment Tech"],
-  },
-  {
-    index: "04",
     title: "Sports & Media",
     summary: "Digital competition, talent, and entertainment.",
     description:
       "Investing in modern sports platforms, broadcast media rights, digital tournament formats, and talent platforms engaging global audiences.",
     image: "/images/sectors/sports.png",
     focusAreas: ["Digital Broadcasting", "Tournament Platforms", "Media Production"],
+    group: "Core Sectors",
   },
   {
-    index: "05",
+    index: "04",
     title: "Education",
     summary: "Global learning platforms.",
     description:
       "Building accessible learning environments and institutional platforms that provide specialized skills and professional accreditation.",
     image: "/images/sectors/education.png",
     focusAreas: ["EdTech Infrastructure", "Skill Accreditation", "Lifelong Learning"],
+    group: "Core Sectors",
   },
   {
-    index: "06",
+    index: "05",
     title: "Hospitality",
     summary: "Concepts combining design, service, and experience.",
     description:
       "Creating curated hospitality destinations and dining concepts where architectural craft meets exceptional service and digital convenience.",
     image: "/images/sectors/hospitality.png",
     focusAreas: ["Boutique Destinations", "Culinary Concepts", "Guest Experience"],
+    group: "Core Sectors",
   },
   {
-    index: "07",
+    index: "06",
     title: "Luxury Brands",
     summary: "Refined fragrance and artisanal craft.",
     description:
       "Developing luxury houses focused on fine perfumery, bespoke craftsmanship, and lifestyle goods built on timeless aesthetic standards.",
     image: "/images/sectors/luxury.png",
     focusAreas: ["Haute Perfumery", "Artisanal Craft", "Bespoke Design"],
+    group: "Core Sectors",
+  },
+  {
+    index: "07",
+    title: "Digital Commerce",
+    summary: "Commercial infrastructure for global scale.",
+    description:
+      "Building transaction systems, merchant networks, and digital marketplace infrastructure that enable brands to expand internationally.",
+    image: "/images/sectors/commerce.png",
+    focusAreas: ["Global Marketplaces", "Transaction Platforms", "Fulfillment Tech"],
+    group: "Emerging Focus",
   },
   {
     index: "08",
@@ -87,6 +95,7 @@ const SECTORS: SectorItem[] = [
       "Allocating capital and strategic resources to high-impact technologies, clean energy solutions, and emerging sectors reshaping the global economy.",
     image: "/images/sectors/future.png",
     focusAreas: ["Frontier Science", "Clean Technologies", "Strategic Capital"],
+    group: "Emerging Focus",
   },
 ];
 
@@ -139,38 +148,48 @@ export default function GroupSectors() {
           <div className="col-span-4 flex flex-col border-t border-surface-line/70">
             {SECTORS.map((sector, idx) => {
               const isActive = activeIndex === idx;
+              const prevGroup = idx > 0 ? SECTORS[idx - 1].group : null;
+              const showGroupLabel = sector.group !== prevGroup;
               return (
-                <button
-                  key={sector.index}
-                  onClick={() => setActiveIndex(idx)}
-                  className={`flex-1 flex items-center gap-6 px-6 border-b border-surface-line/70 text-left transition-all duration-300 relative ${
-                    isActive ? "bg-paper shadow-sm" : "hover:bg-surface-soft"
-                  }`}
-                >
-                  {/* Active Indicator Line */}
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeSectorIndicator"
-                      className="absolute left-0 top-0 bottom-0 w-1 bg-accent"
-                      transition={{ type: "spring", stiffness: 400, damping: 35 }}
-                    />
+                <React.Fragment key={sector.index}>
+                  {showGroupLabel && (
+                    <div className="px-6 py-2 bg-surface-soft/60 shrink-0">
+                      <span className="font-mono-ui text-[10px] uppercase tracking-[0.2em] text-ink-faint">
+                        {sector.group}
+                      </span>
+                    </div>
                   )}
-                  
-                  <span
-                    className={`font-mono-ui text-xs tracking-wider transition-colors duration-300 ${
-                      isActive ? "text-accent font-medium" : "text-ink-faint"
+                  <button
+                    onClick={() => setActiveIndex(idx)}
+                    className={`flex-1 flex items-center gap-6 px-6 border-b border-surface-line/70 text-left transition-all duration-300 relative ${
+                      isActive ? "bg-paper shadow-sm" : "hover:bg-surface-soft"
                     }`}
                   >
-                    {sector.index}
-                  </span>
-                  <span
-                    className={`font-display text-lg tracking-wide transition-colors duration-300 ${
-                      isActive ? "text-ink font-normal" : "text-ink-muted"
-                    }`}
-                  >
-                    {sector.title}
-                  </span>
-                </button>
+                    {/* Active Indicator Line */}
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeSectorIndicator"
+                        className="absolute left-0 top-0 bottom-0 w-1 bg-accent"
+                        transition={{ type: "spring", stiffness: 400, damping: 35 }}
+                      />
+                    )}
+
+                    <span
+                      className={`font-mono-ui text-xs tracking-wider transition-colors duration-300 ${
+                        isActive ? "text-accent font-medium" : "text-ink-faint"
+                      }`}
+                    >
+                      {sector.index}
+                    </span>
+                    <span
+                      className={`font-display text-lg tracking-wide transition-colors duration-300 ${
+                        isActive ? "text-ink font-normal" : "text-ink-muted"
+                      }`}
+                    >
+                      {sector.title}
+                    </span>
+                  </button>
+                </React.Fragment>
               );
             })}
           </div>
@@ -241,44 +260,54 @@ export default function GroupSectors() {
 
         {/* Mobile/Tablet Horizontal Snap Scroll (<1024px) */}
         <div className="flex lg:hidden overflow-x-auto snap-x snap-mandatory gap-4 pb-8 -mx-margin-mobile px-margin-mobile hide-scrollbar">
-          {SECTORS.map((sector) => (
-            <div
-              key={sector.index}
-              className="w-[85vw] sm:w-[50vw] shrink-0 snap-center relative rounded-xl border border-surface-line overflow-hidden bg-paper shadow-sm flex flex-col"
-            >
-              <div className="relative h-48 w-full border-b border-surface-line/50">
-                <Image
-                  src={sector.image}
-                  alt={sector.title}
-                  fill
-                  className="object-cover filter brightness-[0.9]"
-                />
-              </div>
-              <div className="p-6 flex flex-col flex-1 gap-4">
-                <div className="flex items-center gap-3">
-                  <span className="font-mono-ui text-[10px] text-accent tracking-widest">
-                    {sector.index}
-                  </span>
-                  <h3 className="font-display text-xl text-ink">
-                    {sector.title}
-                  </h3>
-                </div>
-                <p className="text-sm text-ink-muted font-light line-clamp-3">
-                  {sector.description}
-                </p>
-                <div className="mt-auto pt-4 flex flex-wrap gap-1.5">
-                  {sector.focusAreas.slice(0, 2).map((area) => (
-                    <span
-                      key={area}
-                      className="px-2.5 py-1 rounded-full border border-surface-line text-[10px] font-mono-ui text-ink bg-surface shadow-sm"
-                    >
-                      {area}
+          {SECTORS.map((sector, idx) => {
+            const prevGroup = idx > 0 ? SECTORS[idx - 1].group : null;
+            const showGroupLabel = sector.group !== prevGroup;
+            return (
+              <React.Fragment key={sector.index}>
+                {showGroupLabel && (
+                  <div className="shrink-0 flex items-center justify-center px-1">
+                    <span className="font-mono-ui text-[10px] uppercase tracking-[0.2em] text-ink-faint whitespace-nowrap [writing-mode:vertical-rl] rotate-180">
+                      {sector.group}
                     </span>
-                  ))}
+                  </div>
+                )}
+                <div className="w-[85vw] sm:w-[50vw] shrink-0 snap-center relative rounded-xl border border-surface-line overflow-hidden bg-paper shadow-sm flex flex-col">
+                  <div className="relative h-48 w-full border-b border-surface-line/50">
+                    <Image
+                      src={sector.image}
+                      alt={sector.title}
+                      fill
+                      className="object-cover filter brightness-[0.9]"
+                    />
+                  </div>
+                  <div className="p-6 flex flex-col flex-1 gap-4">
+                    <div className="flex items-center gap-3">
+                      <span className="font-mono-ui text-[10px] text-accent tracking-widest">
+                        {sector.index}
+                      </span>
+                      <h3 className="font-display text-xl text-ink">
+                        {sector.title}
+                      </h3>
+                    </div>
+                    <p className="text-sm text-ink-muted font-light line-clamp-3">
+                      {sector.description}
+                    </p>
+                    <div className="mt-auto pt-4 flex flex-wrap gap-1.5">
+                      {sector.focusAreas.slice(0, 2).map((area) => (
+                        <span
+                          key={area}
+                          className="px-2.5 py-1 rounded-full border border-surface-line text-[10px] font-mono-ui text-ink bg-surface shadow-sm"
+                        >
+                          {area}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              </React.Fragment>
+            );
+          })}
         </div>
 
       </div>

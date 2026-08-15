@@ -30,7 +30,7 @@ const PRINCIPLES = [
   },
   {
     title: "Long-term Thinking",
-    description: "Decisions made for the next century, prioritizing enduring value over short-term market cycles.",
+    description: "Decisions made for the next century, weighed against decades rather than the next quarter's market cycle.",
     icon: "layers" as const,
   },
 ];
@@ -63,7 +63,7 @@ export default function PhilosophyStandard() {
             </p>
 
             <blockquote className="font-display italic text-[1.85rem] md:text-[2.1rem] text-ink leading-snug mb-8">
-              &ldquo;The strongest businesses are built with the patience to endure and the ambition to lead.&rdquo;
+              &ldquo;The strongest businesses are built on patience most competitors don't have, and ambition most competitors won't risk.&rdquo;
             </blockquote>
 
             <div className="h-px w-14 bg-accent-deep/50 mb-8" />
@@ -107,7 +107,7 @@ export default function PhilosophyStandard() {
               transition={{ duration: 0.75, ease, delay: 0.08 }}
             >
               One Group. <br />
-              <span className="italic font-normal text-ink/70">One Enduring Standard.</span>
+              <span className="italic font-normal text-ink/70">One Discipline, Applied Everywhere.</span>
             </motion.h2>
             <motion.div
               className="text-paper-muted font-light leading-relaxed text-lg max-w-xl space-y-4"
@@ -133,7 +133,7 @@ export default function PhilosophyStandard() {
                 <div key={p.title} className={`py-5 transition-all duration-300 ${isOpen ? "pl-3 border-l-2 border-accent bg-accent/5" : ""}`}>
                   <button
                     onClick={() => setOpenIdx(isOpen ? null : idx)}
-                    className="w-full flex items-center justify-between text-left group focus:outline-none cursor-pointer"
+                    className="w-full flex items-center justify-between text-left group cursor-pointer"
                   >
                     <div className="flex items-center gap-4">
                       <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-300 ${

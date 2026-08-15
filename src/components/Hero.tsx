@@ -4,7 +4,13 @@ import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Icon, { IconName } from "./Icon";
+import {
+  LondonHeadquartersIcon,
+  GlobalOperationsIcon,
+  EngineeringExcellenceIcon,
+  LongTermOwnershipIcon,
+} from "./HeroIcons";
+import LivingBackground from "./LivingBackground";
 
 const ease = [0.25, 1, 0.5, 1] as const;
 
@@ -25,16 +31,8 @@ export default function Hero() {
       className="relative min-h-[100svh] w-full flex flex-col justify-center items-center overflow-hidden pt-20 pb-16"
     >
       {/* Abstract Institutional Background */}
+      <LivingBackground />
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <Image
-          src="/images/brahm_abstract_hero.png"
-          alt="Abstract Institutional Background"
-          fill
-          priority
-          quality={100}
-          unoptimized
-          className="object-cover opacity-80 mix-blend-multiply"
-        />
         {/* Soft gradient overlay to ensure text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-surface/30 via-transparent to-surface" />
       </div>
@@ -107,14 +105,14 @@ export default function Hero() {
       >
         <div className="max-w-[1200px] mx-auto px-6 flex justify-center flex-wrap gap-x-12 gap-y-4">
           {[
-            { text: "LONDON HEADQUARTERS", icon: "compass" as IconName },
-            { text: "GLOBAL OPERATIONS", icon: "globe" as IconName },
-            { text: "ENGINEERING EXCELLENCE", icon: "cube" as IconName },
-            { text: "LONG-TERM OWNERSHIP", icon: "shield" as IconName },
+            { text: "LONDON HEADQUARTERS", icon: <LondonHeadquartersIcon /> },
+            { text: "GLOBAL OPERATIONS", icon: <GlobalOperationsIcon /> },
+            { text: "ENGINEERING EXCELLENCE", icon: <EngineeringExcellenceIcon /> },
+            { text: "LONG-TERM OWNERSHIP", icon: <LongTermOwnershipIcon /> },
           ].map((item) => (
-            <div key={item.text} className="flex items-center gap-3">
-              <Icon name={item.icon} size={14} className="text-accent" />
-              <span className="font-mono-ui text-[10px] tracking-[0.15em] uppercase text-ink-muted font-medium">
+            <div key={item.text} className="flex items-center gap-3 group cursor-default">
+              {item.icon}
+              <span className="font-mono-ui text-[10px] tracking-[0.15em] uppercase text-ink-muted font-medium transition-colors duration-500 group-hover:text-ink">
                 {item.text}
               </span>
             </div>

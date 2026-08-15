@@ -140,7 +140,7 @@ export default function WhyBRAHM() {
                 </li>
                 <li className="flex items-start gap-2.5 min-h-[3.25rem]">
                   <span className="text-emerald-400 font-bold mt-0.5">✓</span>
-                  <span><strong>Generational Horizon:</strong> Building institutions designed for lasting permanence</span>
+                  <span><strong>Generational Horizon:</strong> No fixed exit timeline — we hold for decades, not fund cycles</span>
                 </li>
                 <li className="flex items-start gap-2.5 min-h-[3.25rem]">
                   <span className="text-emerald-400 font-bold mt-0.5">✓</span>

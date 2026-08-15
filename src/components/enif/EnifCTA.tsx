@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import Image from "next/image";
 import Icon from "../Icon";
 import { StarButton } from "../ui/StarButton";
 
@@ -77,10 +78,13 @@ export default function EnifCTA() {
             {/* Subtle glow behind logo */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-[#38BDF8]/20 blur-[60px] rounded-full pointer-events-none" />
             
-            <img
+            <Image
               src="/eniflogo.png"
               alt="ENIF Logo"
-              className="w-48 sm:w-64 object-contain relative z-10 opacity-90 drop-shadow-[0_0_15px_rgba(56,189,248,0.3)]"
+              width={2166}
+              height={1666}
+              sizes="(max-width: 640px) 192px, 256px"
+              className="w-48 sm:w-64 h-auto object-contain relative z-10 opacity-90 drop-shadow-[0_0_15px_rgba(56,189,248,0.3)]"
             />
           </motion.div>
 

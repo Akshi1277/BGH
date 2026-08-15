@@ -73,11 +73,11 @@ export default function Clients() {
                   {client.name}
                 </span>
               )}
-              <Icon 
+              {/* <Icon 
                 name="arrow-up-right" 
                 size={20} 
                 className="text-ink-muted group-hover:text-accent transition-colors opacity-0 -translate-x-2 translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:-translate-y-0"
-              />
+              /> */}
             </Link>
           ))}
         </motion.div>

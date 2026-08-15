@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Icon from "../Icon";
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -9,6 +9,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 export default function EnifHero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const reduce = useReducedMotion();
 
   useEffect(() => {
     if (!videoRef.current) return;
@@ -85,7 +86,7 @@ export default function EnifHero() {
           {/* Tagline with Inline Accent Line */}
           <motion.div
             className="flex items-center gap-3 mb-4 sm:mb-6"
-            initial={{ opacity: 0, y: 10 }}
+            initial={reduce ? false : { opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -99,7 +100,7 @@ export default function EnifHero() {
           {/* Headline */}
           <motion.h1
             className="font-tech-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] leading-[1.05] tracking-[-0.035em] text-[#F8FAFC] mb-5 sm:mb-8 drop-shadow-2xl max-w-5xl"
-            initial={{ opacity: 0, y: 20 }}
+            initial={reduce ? false : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease, delay: 0.1 }}
@@ -111,7 +112,7 @@ export default function EnifHero() {
           {/* Description */}
           <motion.p
             className="text-sm sm:text-base md:text-lg text-[#94A3B8] max-w-[58ch] mb-8 sm:mb-10 font-light tracking-[0.01em] leading-relaxed drop-shadow-sm border-l border-[#38BDF8]/20 pl-4 sm:pl-6"
-            initial={{ opacity: 0, y: 16 }}
+            initial={reduce ? false : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease, delay: 0.3 }}
@@ -121,7 +122,7 @@ export default function EnifHero() {
 
           {/* CTAs */}
           <motion.div
-            initial={{ opacity: 0, y: 14 }}
+            initial={reduce ? false : { opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease, delay: 0.46 }}

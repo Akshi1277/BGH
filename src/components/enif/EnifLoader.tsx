@@ -76,6 +76,8 @@ export default function EnifLoader({ onComplete }: { onComplete: () => void }) {
                 src="/eniflogo.png"
                 alt="Enif Logo"
                 fill
+                sizes="96px"
+                priority
                 className="object-contain"
               />
             </div>

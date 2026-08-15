@@ -50,7 +50,7 @@ const VENTURES: Venture[] = [
     name: "7AURIGA",
     tagline: "Building Brands of Enduring Influence.",
     url: "brahmglobalholdings.com/7auriga",
-    logo: "/7auregalogo.png",
+    logo: "/new7auregalogo.png",
     imageSrc: "/image copy 9.png",
     imageAlt: "7AURIGA Brand & Media",
     aspectRatio: "1892/952",
@@ -171,7 +171,9 @@ function getCardProps(
 
 export default function Portfolio() {
   const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [hoverPaused, setHoverPaused] = useState(false);
+  const [manuallyPaused, setManuallyPaused] = useState(false);
+  const paused = hoverPaused || manuallyPaused;
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef);
 
@@ -222,7 +224,7 @@ export default function Portfolio() {
             GROUP COMPANIES
           </span>
           <h2 className="font-display text-4xl md:text-5xl text-ink leading-tight mb-6">
-            Building Institutions <span className="italic font-normal text-accent">That Endure.</span>
+            Six Companies. <span className="italic font-normal text-accent">One Standard.</span>
           </h2>
           <div className="text-base md:text-lg text-ink-muted font-light leading-relaxed space-y-4">
             <p>
@@ -240,12 +242,12 @@ export default function Portfolio() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.85, ease, delay: 0.15 }}
+          onMouseEnter={() => setHoverPaused(true)}
+          onMouseLeave={() => setHoverPaused(false)}
         >
           <div
             className="relative w-full"
             style={{ height: carouselH, perspective: 1300 }}
-            onMouseEnter={() => setPaused(true)}
-            onMouseLeave={() => setPaused(false)}
           >
             {VENTURES.map((venture, i) => {
               const offset = getOffset(i, active);
@@ -402,21 +404,32 @@ export default function Portfolio() {
               </motion.div>
             </AnimatePresence>
 
-            {/* Navigation pills */}
-            <div className="flex items-center gap-2 mt-4">
-              {VENTURES.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActive(i)}
-                  className={[
-                    "rounded-full transition-all duration-300",
-                    i === active
-                      ? "w-8 h-2 bg-accent shadow-sm"
-                      : "w-2.5 h-2.5 bg-ink-muted/30 hover:bg-accent/60",
-                  ].join(" ")}
-                  aria-label={`Go to ${VENTURES[i].name}`}
-                />
-              ))}
+            {/* Navigation pills + pause/play */}
+            <div className="flex items-center gap-4 mt-4">
+              <button
+                type="button"
+                onClick={() => setManuallyPaused((p) => !p)}
+                className="w-7 h-7 shrink-0 rounded-full border border-surface-line flex items-center justify-center text-ink-muted hover:text-accent hover:border-accent/40 transition-colors"
+                aria-label={manuallyPaused ? "Play carousel" : "Pause carousel"}
+                aria-pressed={manuallyPaused}
+              >
+                <Icon name={manuallyPaused ? "play" : "pause"} size={11} />
+              </button>
+              <div className="flex items-center gap-2">
+                {VENTURES.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActive(i)}
+                    className={[
+                      "rounded-full transition-all duration-300",
+                      i === active
+                        ? "w-8 h-2 bg-accent shadow-sm"
+                        : "w-2.5 h-2.5 bg-ink-muted/30 hover:bg-accent/60",
+                    ].join(" ")}
+                    aria-label={`Go to ${VENTURES[i].name}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </motion.div>

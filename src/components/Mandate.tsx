@@ -46,10 +46,10 @@ export default function Mandate() {
               BRAHM Global Holdings was founded on the belief that the world's most respected organisations are not defined by the industries they enter, but by the principles upon which they are built.
             </p>
             <p>
-              Markets evolve. Technologies advance. Industries are continually transformed. Yet integrity, disciplined leadership, operational excellence and long-term thinking remain the foundations of every enduring enterprise.
+              Markets evolve. Technologies advance. Industries are continually transformed. Yet integrity, disciplined leadership, operational excellence and long-term thinking remain constant — the foundations beneath every industry we enter.
             </p>
             <p>
-              For this reason, we do not measure success by the number of companies we establish, the speed at which we grow or the trends we pursue. We measure success by the strength of the institutions we build, the people they develop, the industries they strengthen and the value they continue to create over generations.
+              For this reason, we do not measure success by the number of companies we establish, the speed at which we grow or the trends we pursue. We measure success by the strength of what we build, the people it develops, the industries it strengthens and the value it continues to create over generations.
             </p>
             <div className="pl-6 border-l border-accent mt-4 text-paper-ink">
               <p className="font-display text-xl leading-relaxed">

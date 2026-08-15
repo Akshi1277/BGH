@@ -22,7 +22,7 @@ const PATHWAYS: { icon: IconName; title: string; description: string; href: stri
     title: "WORK WITH ENIF",
     description:
       "Partner with our engineering division to design, build and scale intelligent software, AI-powered platforms and enterprise technology tailored to your organisation.",
-    href: "/enif#contact",
+    href: "mailto:hello@brahmglobalholdings.com?subject=Work With ENIF",
     accent: "#38BDF8",
   },
   {
@@ -161,7 +161,7 @@ export default function CTA() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="font-display text-3xl md:text-5xl text-ink max-w-3xl leading-tight"
           >
-            Every Enduring Enterprise Begins With a Conversation.
+            Let's Talk About What You're Building.
           </motion.h2>
 
           <motion.div
@@ -175,7 +175,7 @@ export default function CTA() {
               Whether you are establishing a new venture, seeking a strategic technology partner, exploring investment opportunities or considering a long-term partnership, we welcome conversations with ambitious organisations and exceptional people who share our commitment to building lasting value.
             </p>
             <p className="text-ink font-normal italic">
-              If your ambition is to create something designed to endure, we would be pleased to begin the conversation.
+              If you're building something meant to matter beyond the next funding round, we'd be glad to talk.
             </p>
           </motion.div>
 
