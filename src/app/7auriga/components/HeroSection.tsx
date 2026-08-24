@@ -10,6 +10,8 @@ import {
 } from 'framer-motion';
 import CameraScrollCanvas from './CameraScrollCanvas';
 
+const WASABI_BASE_URL = (process.env.NEXT_PUBLIC_WASABI_BASE_URL || '').replace(/\/+$/, '');
+
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const shouldReduceMotion = useReducedMotion();
@@ -58,7 +60,7 @@ export default function HeroSection() {
           {shouldReduceMotion ? (
             <div className="w-full h-full flex items-center justify-center p-8">
               <img
-                src="/camera-frames/frame-0192.webp"
+                src={`${WASABI_BASE_URL}/camera-frames/frame-0192.webp`}
                 alt="7AURIGA Exploded Camera"
                 className="max-h-[70vh] object-contain opacity-90"
               />

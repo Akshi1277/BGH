@@ -5,6 +5,8 @@ import { motion, useReducedMotion } from "framer-motion";
 import Icon from "../Icon";
 
 const ease = [0.16, 1, 0.3, 1] as const;
+const WASABI_BASE_URL = (process.env.NEXT_PUBLIC_WASABI_BASE_URL || '').replace(/\/+$/, '');
+const VIDEO_SRC = `${WASABI_BASE_URL}/newvid.mp4`;
 
 export default function EnifHero() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -49,6 +51,7 @@ export default function EnifHero() {
           muted
           playsInline
           preload="auto"
+          crossOrigin={WASABI_BASE_URL ? "anonymous" : undefined}
           disablePictureInPicture
           disableRemotePlayback
           onCanPlayThrough={() => setVideoLoaded(true)}
@@ -56,7 +59,7 @@ export default function EnifHero() {
           className="w-full h-full object-cover origin-center scale-105 translate-x-[14%] md:translate-x-[19%] lg:translate-x-[22%]"
         >
           <source
-            src="/newvid.mp4"
+            src={VIDEO_SRC}
             type="video/mp4"
           /> 
         </video>

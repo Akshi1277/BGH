@@ -5,8 +5,9 @@ import { useScroll, useSpring, useTransform, motion, MotionValue } from 'framer-
 
 import { useLoader } from './PageLoaderProvider';
 
+const WASABI_BASE_URL = (process.env.NEXT_PUBLIC_WASABI_BASE_URL || '').replace(/\/+$/, '');
 const TOTAL_FRAMES = 192;
-const BASE_PATH = '/camera-frames/frame-';
+const BASE_PATH = `${WASABI_BASE_URL}/camera-frames/frame-`;
 
 function getFramePath(index: number): string {
   const frameNum = Math.min(Math.max(index, 1), TOTAL_FRAMES);
@@ -50,6 +51,9 @@ export default function CameraScrollCanvas({
 
     loadIndices.forEach((index) => {
       const img = new Image();
+      if (WASABI_BASE_URL) {
+        img.crossOrigin = 'anonymous';
+      }
       img.src = getFramePath(index);
 
       const finishLoad = () => {
