@@ -208,6 +208,60 @@ ENIF Technologies is the dedicated technology and innovation division of BRAHM G
 - Email: hello@brahmglobalholdings.com?subject=7AURIGA%20Inquiry
 - Canonical URL: https://brahmglobalholdings.com/7auriga
 `,
+
+  "/services": `# Services & Group Capabilities — BRAHM Global Holdings
+
+> Enterprise Engineering, Brand Architecture & Venture Building.
+
+## 1. Venture Building & Enterprise Creation
+- Co-founding and scaling defensible businesses from first principles.
+- Operational architecture and institutional capital allocation.
+- Long-term cash-flow reinvestment with indefinite holding horizon.
+
+## 2. Technology & Artificial Intelligence (ENIF Technologies)
+- Mission-critical enterprise software and high-throughput platforms.
+- Autonomous LLM agents, custom fine-tuned RAG pipelines, and predictive analytics.
+- Sub-10ms global edge latency and 99.999% SLA availability.
+
+## 3. Brand Strategy & Identity Intelligence (7AURIGA)
+- Comprehensive visual identity systems and typographic standards.
+- Executive communications and institutional narrative architecture.
+
+## 4. Strategic Joint Ventures & Co-Investments
+- Cross-border enterprise collaborations and shared technology infrastructure.
+`,
+
+  "/portfolio": `# Group Portfolio — BRAHM Global Holdings
+
+> Six Ventures. One Standard of Excellence.
+
+1. **ENIF Technologies** (Engineering & AI Division): Enterprise platforms, AI agents, cloud systems (https://brahmglobalholdings.com/enif).
+2. **7AURIGA** (Brand Intelligence Practice): Strategic communications, corporate identity (https://brahmglobalholdings.com/7auriga).
+3. **Talent Pro League** (Sports Technology): Next-generation football ecosystem and competition software (https://talentproleague.football).
+4. **London School of Academics & Arts - LSAA** (Education): International British education and AI tutoring.
+5. **Alayn** (Hospitality Technology): AI operating platform for restaurants and hospitality groups (https://alaynai.com).
+6. **Luxure De Eden** (Luxury Goods): Haute perfumery and contemporary luxury fragrance house.
+`,
+
+  "/sectors": `# Market Sectors & Industry Focus — BRAHM Global Holdings
+
+1. **Technology & AI**: Enterprise platforms, autonomous workflows, cloud architecture.
+2. **Brand & Media**: Identity systems, corporate storytelling, sensory digital environments.
+3. **Sports Technology**: Tournament software, grassroots scouting, competition analytics.
+4. **International Education**: Hybrid British curriculum education with AI adaptation.
+5. **Hospitality Technology**: Intelligent restaurant operating systems and F&B automation.
+6. **Luxury Consumer Brands**: Artisanal fragrance and lifestyle consumer goods.
+`,
+
+  "/invest": `# Capital Mandate & Investment Mechanics — BRAHM Global Holdings
+
+> Permanent Capital. Compounding Value.
+
+- **Holding Company Model**: Non-dilutive, indefinite holding horizon without artificial 7-year fund exit deadlines.
+- **In-House Advantages**: Portfolio companies benefit from internal engineering (ENIF) and brand architecture (7AURIGA).
+- **Investment Criteria**: Defensible unit economics, operational synergy, and high-integrity leadership teams.
+- **Contact Investment Committee**: hello@brahmglobalholdings.com
+`,
 };
 
 /**

@@ -16,6 +16,10 @@
 ## Available Endpoints & Markdown Mappings
 - `/` -> Homepage overview of group and companies
 - `/about` -> Institutional mission, philosophy, governance, and business model
+- `/services` -> Group capabilities: venture building, ENIF software & AI, 7AURIGA branding
+- `/portfolio` -> Directory of all 6 operating ventures with status and live links
+- `/sectors` -> The 6 strategic focus industries
+- `/invest` -> Capital mandate, venture building mechanics, and partnership criteria
 - `/contact` -> Departmental contact channels and routing
 - `/privacy` -> Privacy Policy and GDPR compliance details
 - `/enif` -> ENIF Technologies capabilities, architecture, and technology stack
