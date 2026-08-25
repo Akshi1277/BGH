@@ -65,7 +65,7 @@ const VENTURES: Venture[] = [
     badge: "Group Company",
     name: "Talent Pro League",
     tagline: "Reimagining the Future of Football.",
-    url: "talentproleague.football",
+    url: "talentproleague.co.uk",
     imageSrc: "/tpl-preview.png",
     imageAlt: "Talent Pro League dashboard",
     logo: "/image copy 4.png",
