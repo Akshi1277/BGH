@@ -12,6 +12,7 @@ const COLUMNS = [
     links: [
       { label: "ENIF", href: "/enif" },
       { label: "7 AURIGA", href: "/7auriga" },
+      { label: "Fantasize", href: "https://fantasizeshop.com/", external: true },
       { label: "Talent Pro League", href: "/#companies" },
       { label: "London School of Academics & Arts", href: "/#companies" },
       { label: "Alayn", href: "/#companies" },
@@ -166,6 +167,8 @@ export default function Footer({ theme }: FooterProps) {
                 <Link
                   key={link.label}
                   href={link.href}
+                  target={"external" in link && link.external ? "_blank" : undefined}
+                  rel={"external" in link && link.external ? "noopener noreferrer" : undefined}
                   className={`text-sm inline-block py-1 transition-all duration-200 hover:translate-x-0.5 ${
                     isAuriga
                       ? "text-[#9C8F8F] hover:text-[#FAF7F5]"

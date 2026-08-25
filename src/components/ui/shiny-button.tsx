@@ -8,6 +8,8 @@ interface ShinyButtonProps {
   children: React.ReactNode
   onClick?: () => void
   href?: string
+  target?: string
+  rel?: string
   className?: string
   baseBg?: string
   highlight?: string
@@ -18,6 +20,8 @@ export function ShinyButton({
   children, 
   onClick, 
   href,
+  target,
+  rel,
   className = "",
   baseBg = "#000000",
   highlight = "#34D399", 
@@ -212,7 +216,14 @@ export function ShinyButton({
 
   if (href) {
     return (
-      <Link href={href} className={`shiny-cta ${className}`} onClick={onClick} style={style}>
+      <Link
+        href={href}
+        target={target}
+        rel={rel}
+        className={`shiny-cta ${className}`}
+        onClick={onClick}
+        style={style}
+      >
         {content}
       </Link>
     );

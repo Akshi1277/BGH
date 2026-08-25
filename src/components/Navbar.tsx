@@ -81,7 +81,7 @@ export default function Navbar() {
         <div className="max-w-[var(--spacing-container-max)] mx-auto px-4 sm:px-margin-mobile md:px-margin-desktop flex justify-between items-center h-20">
           <Wordmark />
 
-          <div className="hidden md:flex items-center gap-6 lg:gap-8">
+          <div className="hidden md:flex items-center gap-4 lg:gap-8">
             {LINKS.map((link) => (
               <Link
                 key={link.href}
@@ -91,11 +91,11 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2.5 lg:gap-3">
               <motion.div whileHover={{ y: -1 }} transition={{ duration: 0.15 }}>
                 <ShinyButton
                   href="/enif"
-                  className="!px-5 !py-2.5 text-xs font-mono-ui uppercase tracking-[0.12em] font-bold"
+                  className="!px-3.5 sm:!px-4 lg:!px-5 !py-2 lg:!py-2.5 text-[11px] lg:text-xs font-mono-ui uppercase tracking-[0.1em] lg:tracking-[0.12em] font-bold"
                   highlight="#38BDF8"
                   highlightSubtle="#7DD3FC"
                   baseBg="linear-gradient(135deg, #082f49 0%, #04070D 100%)"
@@ -106,12 +106,25 @@ export default function Navbar() {
               <motion.div whileHover={{ y: -1 }} transition={{ duration: 0.15 }}>
                 <ShinyButton
                   href="/7auriga"
-                  className="!px-5 !py-2.5 text-xs font-mono-ui uppercase tracking-[0.12em] font-bold"
+                  className="!px-3.5 sm:!px-4 lg:!px-5 !py-2 lg:!py-2.5 text-[11px] lg:text-xs font-mono-ui uppercase tracking-[0.1em] lg:tracking-[0.12em] font-bold"
                   highlight="#E0115F"
                   highlightSubtle="#FF2A70"
                   baseBg="linear-gradient(135deg, #7A0A30 0%, #290210 100%)"
                 >
                   7 AURIGA
+                </ShinyButton>
+              </motion.div>
+              <motion.div whileHover={{ y: -1 }} transition={{ duration: 0.15 }}>
+                <ShinyButton
+                  href="https://fantasizeshop.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="!px-3.5 sm:!px-4 lg:!px-5 !py-2 lg:!py-2.5 text-[11px] lg:text-xs font-mono-ui uppercase tracking-[0.1em] lg:tracking-[0.12em] font-bold"
+                  highlight="#FF6B35"
+                  highlightSubtle="#FFA07A"
+                  baseBg="linear-gradient(135deg, #9B3719 0%, #300F06 100%)"
+                >
+                  FANTASIZE
                 </ShinyButton>
               </motion.div>
             </div>
@@ -189,6 +202,18 @@ export default function Navbar() {
                 baseBg="linear-gradient(135deg, #7A0A30 0%, #290210 100%)"
               >
                 7 AURIGA
+              </ShinyButton>
+              <ShinyButton
+                href="https://fantasizeshop.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+                className="w-full !px-6 !py-4 text-xs font-mono-ui uppercase tracking-[0.1em] font-bold"
+                highlight="#FF6B35"
+                highlightSubtle="#FFA07A"
+                baseBg="linear-gradient(135deg, #9B3719 0%, #300F06 100%)"
+              >
+                FANTASIZE
               </ShinyButton>
             </div>
           </motion.div>

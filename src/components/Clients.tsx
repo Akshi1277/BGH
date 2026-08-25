@@ -13,6 +13,16 @@ const CLIENTS = [
     logo: "/printfixlogo.png"
   },
   {
+    name: "Unique Agro Product",
+    url: "#",
+    logo: "/uniueagro.png"
+  },
+  {
+    name: "Slim & Shine",
+    url: "#",
+    logo: "/slim-shine.png"
+  },
+  {
     name: "DevGeeks",
     url: "#",
     logo: "/devgeeks.svg"
