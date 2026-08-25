@@ -123,6 +123,22 @@ const VENTURES: Venture[] = [
     cta: "Explore Luxure De Eden",
     href: "/#contact",
   },
+  {
+    number: "07",
+    tag: "WELLNESS & PERSONAL CARE",
+    badge: "Group Company",
+    name: "Fantasize",
+    tagline: "Fantasy of Every Adam & Eve.",
+    url: "fantasizeshop.com",
+    imageSrc: "/fantasize-preview.png",
+    imageAlt: "Fantasize Shop website",
+    logo: "/fantasizelogo.png",
+    aspectRatio: "1892/952",
+    description:
+      "Fantasize is a specialized personal care and wellness brand delivering accredited formulations, herbal remedies and rejuvenating skin treatments. Combining active botanicals with proven efficacy, Fantasize delivers accessible, everyday health and beauty essentials for modern lifestyle needs.",
+    cta: "Explore Fantasize",
+    href: "https://fantasizeshop.com",
+  },
 ];
 
 function getOffset(index: number, active: number): number {
@@ -224,7 +240,7 @@ export default function Portfolio() {
             GROUP COMPANIES
           </span>
           <h2 className="font-display text-4xl md:text-5xl text-ink leading-tight mb-6">
-            Six Companies. <span className="italic font-normal text-accent">One Standard.</span>
+            Seven Companies. <span className="italic font-normal text-accent">One Standard.</span>
           </h2>
           <div className="text-base md:text-lg text-ink-muted font-light leading-relaxed space-y-4">
             <p>
@@ -391,6 +407,8 @@ export default function Portfolio() {
                 {/* CTA */}
                 <Link
                   href={v.href}
+                  target={v.href.startsWith("http") ? "_blank" : undefined}
+                  rel={v.href.startsWith("http") ? "noopener noreferrer" : undefined}
                   className="relative inline-flex items-center gap-2 text-xs font-mono-ui uppercase tracking-[0.15em] text-accent font-bold mt-2 group/cta w-fit"
                 >
                   {v.cta}
