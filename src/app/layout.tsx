@@ -55,12 +55,25 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: siteUrl,
+  },
   title: {
     default: `${title} — ${tagline}`,
     template: `%s — ${title}`,
   },
   description,
-  keywords: ["Brahm", "Brahm Global", "Brahm Global Holdings", "Venture Builder", "Holding Company", "UK"],
+  keywords: [
+    "Brahm",
+    "Brahm Global",
+    "Brahm Global Holdings",
+    "Venture Builder",
+    "Holding Company",
+    "UK",
+    "ENIF Technologies",
+    "7AURIGA",
+    "Talent Pro League",
+  ],
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
@@ -107,10 +120,33 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": title,
-    "alternateName": ["Brahm", "Brahm Global"],
+    "alternateName": ["Brahm", "Brahm Global", "BGH", "BRAHM Global Holdings Ltd"],
     "url": siteUrl,
     "logo": `${siteUrl}/logo.png`,
     "description": description,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "London",
+      "addressRegion": "Greater London",
+      "addressCountry": "GB"
+    },
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "contactType": "general inquiries",
+        "email": "hello@brahmglobalholdings.com",
+        "availableLanguage": ["English"]
+      },
+      {
+        "@type": "ContactPoint",
+        "contactType": "partnerships",
+        "email": "hello@brahmglobalholdings.com",
+        "availableLanguage": ["English"]
+      }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/company/brahmglobalholdings"
+    ]
   };
 
   return (

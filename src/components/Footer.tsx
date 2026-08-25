@@ -21,6 +21,7 @@ const COLUMNS = [
   {
     heading: "THE GROUP",
     links: [
+      { label: "About BGH", href: "/about" },
       { label: "The Vision", href: "/#vision" },
       { label: "Our Sectors", href: "/#sectors" },
       { label: "Our Philosophy", href: "/#standard" },
@@ -30,9 +31,10 @@ const COLUMNS = [
   {
     heading: "CONNECT",
     links: [
+      { label: "Contact Us", href: "/contact" },
       { label: "Start a Conversation", href: "mailto:hello@brahmglobalholdings.com" },
-      { label: "Careers", href: "#" },
-      { label: "LinkedIn", href: "#" },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "LLM Agent Index", href: "/llms.txt" },
     ],
   },
 ];
@@ -202,7 +204,44 @@ export default function Footer({ theme }: FooterProps) {
           >
             &copy; 2026 BRAHM Global Holdings Ltd. All Rights Reserved.
           </div>
-         
+          <div className="flex items-center gap-6 text-[11px] font-mono-ui uppercase tracking-[0.12em]">
+            <Link
+              href="/privacy"
+              className={`transition-colors ${
+                isAuriga
+                  ? "text-[#9C8F8F] hover:text-[#FAF7F5]"
+                  : isEnif
+                  ? "text-[#94A3B8] hover:text-[#38BDF8]"
+                  : "text-ink-muted hover:text-accent"
+              }`}
+            >
+              Privacy
+            </Link>
+            <Link
+              href="/contact"
+              className={`transition-colors ${
+                isAuriga
+                  ? "text-[#9C8F8F] hover:text-[#FAF7F5]"
+                  : isEnif
+                  ? "text-[#94A3B8] hover:text-[#38BDF8]"
+                  : "text-ink-muted hover:text-accent"
+              }`}
+            >
+              Contact
+            </Link>
+            <Link
+              href="/llms.txt"
+              className={`transition-colors ${
+                isAuriga
+                  ? "text-[#9C8F8F] hover:text-[#FAF7F5]"
+                  : isEnif
+                  ? "text-[#94A3B8] hover:text-[#38BDF8]"
+                  : "text-ink-muted hover:text-accent"
+              }`}
+            >
+              llms.txt
+            </Link>
+          </div>
         </div>
       </div>
     </motion.footer>

@@ -9,10 +9,10 @@ import Icon from "./Icon";
 import { ShinyButton } from "./ui/shiny-button";
 
 const LINKS = [
-  { label: "Home", href: "/#vision" },
+  { label: "About", href: "/about" },
   { label: "Group", href: "/#sectors" },
   { label: "Group Companies", href: "/#companies" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 function Wordmark() {
