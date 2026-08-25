@@ -106,7 +106,7 @@ const VENTURES: Venture[] = [
       "Alayn is an intelligent hospitality platform combining artificial intelligence, operational excellence and modern customer experience to help cafés, restaurants and hospitality groups operate more efficiently, grow sustainably and build stronger customer relationships. Designed to become the operating system behind the next generation of hospitality businesses.",
     cta: "Explore Alayn",
     href: "https://alaynai.com",
-  },
+  }, 
   {
     number: "06",
     tag: "LUXURY CONSUMER BRANDS",
