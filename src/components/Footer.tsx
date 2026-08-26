@@ -12,7 +12,6 @@ const COLUMNS = [
     links: [
       { label: "ENIF", href: "/enif" },
       { label: "7 AURIGA", href: "/7auriga" },
-      { label: "Fantasize", href: "https://fantasizeshop.com/", external: true },
       { label: "Talent Pro League", href: "/#companies" },
       { label: "London School of Academics & Arts", href: "/#companies" },
       { label: "Alayn", href: "/#companies" },

@@ -98,12 +98,6 @@ const COMPANIES = [
     desc: "Haute perfumery and contemporary luxury fragrance house celebrating artisanal craftsmanship.",
     href: "/contact",
   },
-  {
-    name: "Fantasize",
-    tag: "Wellness & Personal Care",
-    desc: "Accredited personal care, herbal remedies, and skin rejuvenating formulations for modern lifestyle needs.",
-    href: "https://fantasizeshop.com",
-  },
 ];
 
 export default function AboutPage() {
@@ -222,7 +216,7 @@ export default function AboutPage() {
               THE PORTFOLIO
             </span>
             <h2 className="font-display text-3xl md:text-4xl text-ink leading-tight mb-4">
-              Seven Companies. One Standard.
+              Six Companies. One Standard.
             </h2>
             <p className="text-ink-muted text-base font-light">
               Each company within BRAHM Global Holdings operates with independent leadership while leveraging group-wide resources, technology, and governance.

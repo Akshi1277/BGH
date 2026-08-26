@@ -42,10 +42,6 @@ Headquartered in London. Built for international markets.
 6. **Luxure De Eden** (Luxury Consumer Brands)
    - *Tagline*: Modern Luxury. Enduring Elegance.
    - *Description*: Contemporary luxury fragrance house and artisanal consumer goods.
-7. **Fantasize** (Wellness & Personal Care)
-   - *Tagline*: Fantasy of Every Adam & Eve.
-   - *Description*: Personal care, herbal remedies, and skin rejuvenating formulations.
-   - *URL*: https://fantasizeshop.com
 
 ## Contact & Direct Channels
 - **General Inquiries**: hello@brahmglobalholdings.com

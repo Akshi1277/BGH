@@ -73,7 +73,6 @@ export const metadata: Metadata = {
     "ENIF Technologies",
     "7AURIGA",
     "Talent Pro League",
-    "Fantasize",
   ],
   icons: {
     icon: [
