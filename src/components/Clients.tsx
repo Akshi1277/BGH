@@ -27,6 +27,11 @@ const CLIENTS = [
     url: "#",
     logo: "/devgeeks.svg"
   },
+  {
+    name: "Fantasize",
+    url: "https://fantasizeshop.com",
+    logo: "/fantasizelogo.png"
+  },
 ];
 
 export default function Clients() {
