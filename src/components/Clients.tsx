@@ -9,7 +9,7 @@ import Icon from "./Icon";
 const CLIENTS = [
   {
     name: "Printfix",
-    url: "#",
+    url: "/printfix.co.in",
     logo: "/printfixlogo.png"
   },
   {
@@ -24,13 +24,18 @@ const CLIENTS = [
   },
   {
     name: "DevGeeks",
-    url: "#",
+    url: "https://devgeeks.agency/",
     logo: "/devgeeks.svg"
   },
   {
     name: "Fantasize",
     url: "https://fantasizeshop.com",
     logo: "/fantasizelogo.png"
+  },
+  {
+    name: "Deeniyat",
+    url: "https://www.deeniyat.com",
+    logo: "/deeniyatlogo.png"
   },
 ];
 
