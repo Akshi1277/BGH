@@ -34,7 +34,6 @@ const COLUMNS = [
       { label: "Contact Us", href: "/contact" },
       { label: "Start a Conversation", href: "mailto:hello@brahmglobalholdings.com" },
       { label: "Privacy Policy", href: "/privacy" },
-      { label: "LLM Agent Index", href: "/llms.txt" },
     ],
   },
 ];
@@ -230,18 +229,6 @@ export default function Footer({ theme }: FooterProps) {
               }`}
             >
               Contact
-            </Link>
-            <Link
-              href="/llms.txt"
-              className={`transition-colors ${
-                isAuriga
-                  ? "text-[#9C8F8F] hover:text-[#FAF7F5]"
-                  : isEnif
-                  ? "text-[#94A3B8] hover:text-[#38BDF8]"
-                  : "text-ink-muted hover:text-accent"
-              }`}
-            >
-              llms.txt
             </Link>
           </div>
         </div>
