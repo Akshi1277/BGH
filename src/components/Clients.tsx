@@ -17,10 +17,10 @@ const CLIENTS = [
     url: "#",
     logo: "/uniueagro.png"
   },
-  {
-    name: "Slim & Shine",
-    url: "#",
-    logo: "/slim-shine.png"
+{
+    name: "Deeniyat",
+    url: "https://www.deeniyat.com",
+    logo: "/deeniyatlogo.png"
   },
   {
     name: "DevGeeks",
@@ -32,11 +32,12 @@ const CLIENTS = [
     url: "https://fantasizeshop.com",
     logo: "/fantasizelogo.png"
   },
-  {
-    name: "Deeniyat",
-    url: "https://www.deeniyat.com",
-    logo: "/deeniyatlogo.png"
+    {
+    name: "Slim & Shine",
+    url: "#",
+    logo: "/slim-shine.png"
   },
+  
 ];
 
 export default function Clients() {
