@@ -9,7 +9,7 @@ import Icon from "./Icon";
 const CLIENTS = [
   {
     name: "Printfix",
-    url: "/printfix.co.in",
+    url: "https://printfix.co.in",
     logo: "/printfixlogo.png"
   },
   {
@@ -86,7 +86,7 @@ export default function Clients() {
                     src={client.logo}
                     alt={`${client.name} logo`}
                     fill
-                    className="object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                    className="object-contain transition-transform duration-300"
                   />
                 </div>
               ) : (
