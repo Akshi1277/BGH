@@ -97,7 +97,7 @@ const VENTURES: Venture[] = [
     badge: "Group Company",
     name: "Alayn",
     tagline: "Redefining Hospitality Through Intelligence.",
-    url: "alayn.io",
+    url: "alaynai.com",
     imageSrc: "/image copy 5.png",
     imageAlt: "Alayn dashboard",
     logo: "/alaynlogo.jpeg",
