@@ -79,6 +79,7 @@
   --font-tech-display: "var(--font-tech-display)", -apple-system, sans-serif;
   --font-sans:    "var(--font-sans)", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono:    "var(--font-jbmono)", ui-monospace, "SFMono-Regular", monospace;
+  --font-garamond: "var(--font-garamond)", Garamond, "EB Garamond", Georgia, serif;
 
   /* ─── 7AURIGA DARK LUXURY PALETTE ──────────────────────────────── */
   --color-auriga-bg:        #0D0B0B;   /* deep obsidian dark ground      */
@@ -99,6 +100,7 @@
 @utility font-tech-display { font-family: var(--font-tech-display); }
 @utility font-sans-ui  { font-family: var(--font-sans); }
 @utility font-mono-ui  { font-family: var(--font-mono); }
+@utility font-garamond { font-family: var(--font-garamond); }
 
 /* ─── Type scale ──────────────────────────────────────────────────── */
 @utility text-hero {

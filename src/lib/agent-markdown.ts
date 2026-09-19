@@ -44,9 +44,9 @@ Headquartered in London. Built for international markets.
    - *Description*: Contemporary luxury fragrance house and artisanal consumer goods.
 
 ## Contact & Direct Channels
-- **General Inquiries**: hello@brahmglobalholdings.com
-- **Strategic Partnerships**: hello@brahmglobalholdings.com?subject=Partnership%20Inquiry
-- **Build with BRAHM**: hello@brahmglobalholdings.com?subject=Build%20With%20BRAHM
+- **General Inquiries**: brahmglobalholdings@gmail.com
+- **Strategic Partnerships**: brahmglobalholdings@gmail.com?subject=Partnership%20Inquiry
+- **Build with BRAHM**: brahmglobalholdings@gmail.com?subject=Build%20With%20BRAHM
 
 ## Machine-Readable Resources
 - LLM Agent Index: https://brahmglobalholdings.com/llms.txt
@@ -59,7 +59,7 @@ Headquartered in London. Built for international markets.
 > An independent British venture builder and holding company creating businesses built to last generations.
 
 ## 1. Corporate Identity & Mandate
-BRAHM Global Holdings Ltd is a London-headquartered venture builder and operational holding company. We create, acquire, and scale exceptional businesses across six core industries:
+BRAHM Global Holdings Ltd is a London-headquartered venture builder and operational holding company. We create, acquire, and scale exceptional businesses across diverse core industries:
 - Enterprise Software & Artificial Intelligence
 - Strategic Brand, Media & Communications
 - Sports Technology & Competition Ecosystems
@@ -84,7 +84,7 @@ Unlike conventional private equity or venture capital models that rely on rapid 
 
 ## 4. Location & Contact
 - **Headquarters**: London, United Kingdom
-- **Email**: hello@brahmglobalholdings.com
+- **Email**: brahmglobalholdings@gmail.com
 - **Website**: https://brahmglobalholdings.com
 `,
 
@@ -96,28 +96,28 @@ Unlike conventional private equity or venture capital models that rely on rapid 
 
 ### 1. General & Corporate Inquiries
 For general inquiries regarding the group, leadership, or corporate matters:
-- **Email**: hello@brahmglobalholdings.com
+- **Email**: brahmglobalholdings@gmail.com
 - **Response SLA**: Within 24-48 business hours
 
 ### 2. Strategic Partnerships & Joint Ventures
 For joint venture proposals, co-investment opportunities, and institutional collaborations:
-- **Email**: hello@brahmglobalholdings.com
+- **Email**: brahmglobalholdings@gmail.com
 - **Subject Line**: Partnership Inquiry — [Organisation Name]
 
 ### 3. Build with BRAHM / Venture Proposals
 For entrepreneurs and founders looking to build, scale, or integrate with BRAHM Global Holdings:
-- **Email**: hello@brahmglobalholdings.com
+- **Email**: brahmglobalholdings@gmail.com
 - **Subject Line**: Build With BRAHM — [Venture Name]
 
 ### 4. Engineering & AI Inquiries (ENIF Technologies)
 To partner with ENIF on bespoke enterprise software, AI agents, or digital infrastructure:
-- **Email**: hello@brahmglobalholdings.com
+- **Email**: brahmglobalholdings@gmail.com
 - **Subject Line**: Work With ENIF — [Project Scope]
 - **Direct Portal**: https://brahmglobalholdings.com/enif
 
 ### 5. Brand & Media Inquiries (7AURIGA)
 For brand architecture, identity systems, and narrative positioning:
-- **Email**: hello@brahmglobalholdings.com
+- **Email**: brahmglobalholdings@gmail.com
 - **Subject Line**: 7AURIGA Inquiry — [Brand Scope]
 - **Direct Portal**: https://brahmglobalholdings.com/7auriga
 
@@ -135,7 +135,7 @@ BRAHM Global Holdings Ltd ("we", "our", or "the Company") is committed to protec
 
 - **Data Controller**: BRAHM Global Holdings Ltd
 - **Registered Location**: London, United Kingdom
-- **Privacy Contact**: hello@brahmglobalholdings.com
+- **Privacy Contact**: brahmglobalholdings@gmail.com
 
 ## 2. Information We Collect
 We collect minimal personal data necessary to provide and improve our services:
@@ -160,7 +160,7 @@ Under UK data protection legislation, you hold rights including:
 - Right to restrict or object to processing
 - Right to data portability
 
-To exercise any of these rights, contact hello@brahmglobalholdings.com.
+To exercise any of these rights, contact brahmglobalholdings@gmail.com.
 `,
 
   "/enif": `# ENIF Technologies — Beyond the Stars
@@ -182,7 +182,7 @@ ENIF Technologies is the dedicated technology and innovation division of BRAHM G
 - SOC2 Type II compliance standards and zero-trust security
 
 ## Contact ENIF
-- Email: hello@brahmglobalholdings.com?subject=Work%20With%20ENIF
+- Email: brahmglobalholdings@gmail.com?subject=Work%20With%20ENIF
 - Canonical URL: https://brahmglobalholdings.com/enif
 `,
 
@@ -201,7 +201,7 @@ ENIF Technologies is the dedicated technology and innovation division of BRAHM G
 4. **Executive Communications**: Leadership narrative and institutional reputation management.
 
 ## Contact 7AURIGA
-- Email: hello@brahmglobalholdings.com?subject=7AURIGA%20Inquiry
+- Email: brahmglobalholdings@gmail.com?subject=7AURIGA%20Inquiry
 - Canonical URL: https://brahmglobalholdings.com/7auriga
 `,
 };

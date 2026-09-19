@@ -37,7 +37,7 @@ export default function HowWeBuild() {
           The <span className="italic text-accent">BRAHM</span> Framework
         </>
       }
-      description="A repeatable methodology for creating, operating and growing category-defining companies. Every business within BRAHM Global Holdings passes through the same six stages — from first insight to long-term ownership."
+      description="A repeatable methodology for creating, operating and growing category-defining companies. Every business within BRAHM Global Holdings passes through structured stages — from first insight to long-term ownership."
       steps={STEPS}
     />
   );

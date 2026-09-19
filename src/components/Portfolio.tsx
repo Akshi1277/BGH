@@ -27,38 +27,8 @@ interface Venture {
 }
 
 const VENTURES: Venture[] = [
-  {
-    number: "01",
-    tag: "ENGINEERING & ARTIFICIAL INTELLIGENCE",
-    badge: "Group Company",
-    name: "ENIF",
-    tagline: "Engineering the Intelligence Behind Modern Business.",
-    url: "brahmglobalholdings.com/enif",
-    imageSrc: "/image copy 8.png",
-    imageAlt: "ENIF Technologies",
-    logo: "/eniflogo.png",
-    aspectRatio: "1892/952",
-    description:
-      "ENIF is the engineering company of BRAHM Global Holdings, designing intelligent software, enterprise platforms and artificial intelligence that power both our own businesses and organisations worldwide. From ambitious start-ups to established enterprises, ENIF transforms complex ideas into secure, scalable and commercially successful digital products.",
-    cta: "Explore ENIF",
-    href: "/enif",
-  },
-  {
-    number: "02",
-    tag: "BRAND, MEDIA & COMMUNICATIONS",
-    badge: "Group Company",
-    name: "7AURIGA",
-    tagline: "Building Brands of Enduring Influence.",
-    url: "brahmglobalholdings.com/7auriga",
-    logo: "/new7auregalogo.png",
-    imageSrc: "/image copy 9.png",
-    imageAlt: "7AURIGA Brand & Media",
-    aspectRatio: "1892/952",
-    description:
-      "7AURIGA is the brand, media and creative company of BRAHM Global Holdings. We help organisations define who they are, how they are understood, and how they will be remembered — building identities designed to remain relevant long after they are launched.",
-    cta: "Explore 7AURIGA",
-    href: "/7auriga",
-  },
+ 
+ 
   {
     number: "03",
     tag: "SPORTS TECHNOLOGY",
@@ -107,22 +77,22 @@ const VENTURES: Venture[] = [
     cta: "Explore Alayn",
     href: "https://alaynai.com",
   }, 
-  {
-    number: "06",
-    tag: "LUXURY CONSUMER BRANDS",
-    badge: "Group Company",
-    name: "Luxure De Eden",
-    tagline: "Modern Luxury. Enduring Elegance.",
-    url: "luxuredeeden.com",
-    imageSrc: "/luxure-preview-v2.png",
-    imageAlt: "Luxure De Eden website",
-    logo: "/luxure-logo.png",
-    aspectRatio: "1892/952",
-    description:
-      "Luxure De Eden is a contemporary luxury fragrance house creating refined perfumes inspired by craftsmanship, artistic expression and timeless sophistication. Every collection is designed to deliver an immersive sensory experience while celebrating modern luxury with enduring character.",
-    cta: "Explore Luxure De Eden",
-    href: "/#contact",
-  },
+  // {
+  //   number: "06",
+  //   tag: "LUXURY CONSUMER BRANDS",
+  //   badge: "Group Company",
+  //   name: "Luxure De Eden",
+  //   tagline: "Modern Luxury. Enduring Elegance.",
+  //   url: "luxuredeeden.com",
+  //   imageSrc: "/luxure-preview-v2.png",
+  //   imageAlt: "Luxure De Eden website",
+  //   logo: "/luxure-logo.png",
+  //   aspectRatio: "1892/952",
+  //   description:
+  //     "Luxure De Eden is a contemporary luxury fragrance house creating refined perfumes inspired by craftsmanship, artistic expression and timeless sophistication. Every collection is designed to deliver an immersive sensory experience while celebrating modern luxury with enduring character.",
+  //   cta: "Explore Luxure De Eden",
+  //   href: "/#contact",
+  // },
 ];
 
 function getOffset(index: number, active: number): number {
@@ -208,7 +178,7 @@ export default function Portfolio() {
     <section
       ref={sectionRef}
       id="companies"
-      className="section-y bg-paper text-paper-ink overflow-hidden border-y border-paper-line"
+      className="section-y bg-surface text-paper-ink overflow-hidden border-y border-paper-line"
     >
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop">
 
@@ -223,15 +193,18 @@ export default function Portfolio() {
           <span className="text-eyebrow font-mono-ui text-accent block mb-4 uppercase tracking-[0.2em]">
             GROUP COMPANIES
           </span>
-          <h2 className="font-display text-4xl md:text-5xl text-ink leading-tight mb-6">
-            Six Companies. <span className="italic font-normal text-accent">One Standard.</span>
+          <h2 className="font-display text-4xl md:text-5xl text-ink leading-tight mb-4">
+            Where Businesses <span className="italic font-normal text-accent">Become Legacies.</span>
           </h2>
+          <p className="text-lg md:text-xl text-ink font-medium mb-6">
+            Many industries. Limitless ambition.
+          </p>
           <div className="text-base md:text-lg text-ink-muted font-light leading-relaxed space-y-4">
             <p>
-              Every company within BRAHM Global Holdings operates independently while benefiting from the Group's leadership, engineering capability, operational expertise and long-term strategic direction.
+              Every company within BRAHM Global Holdings operates independently while benefiting from the Group&apos;s leadership, engineering capability, operational expertise and long-term strategic direction.
             </p>
             <p className="italic text-ink font-normal">
-              Different industries. One philosophy. One uncompromising standard of excellence.
+              One philosophy. One uncompromising standard of excellence.
             </p>
           </div>
         </motion.div>

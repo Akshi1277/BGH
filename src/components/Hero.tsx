@@ -96,29 +96,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Bottom Ticker */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, delay: 0.8 }}
-        className="absolute bottom-0 inset-x-0 border-t border-surface-line/50 bg-transparent py-4"
-      >
-        <div className="max-w-[1200px] mx-auto px-6 flex justify-center flex-wrap gap-x-12 gap-y-4">
-          {[
-            { text: "LONDON HEADQUARTERS", icon: <LondonHeadquartersIcon /> },
-            { text: "GLOBAL OPERATIONS", icon: <GlobalOperationsIcon /> },
-            { text: "ENGINEERING EXCELLENCE", icon: <EngineeringExcellenceIcon /> },
-            { text: "LONG-TERM OWNERSHIP", icon: <LongTermOwnershipIcon /> },
-          ].map((item) => (
-            <div key={item.text} className="flex items-center gap-3 group cursor-default">
-              {item.icon}
-              <span className="font-mono-ui text-[10px] tracking-[0.15em] uppercase text-ink-muted font-medium transition-colors duration-500 group-hover:text-ink">
-                {item.text}
-              </span>
-            </div>
-          ))}
-        </div>
-      </motion.div>
+    
     </section>
   );
 }

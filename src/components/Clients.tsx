@@ -13,11 +13,16 @@ const CLIENTS = [
     logo: "/printfixlogo.png"
   },
   {
+    name: "Everest",
+    url: "https://www.everestspices.com",
+    logo: "/everestlogo.png"
+  },
+  {
     name: "Unique Agro Product",
     url: "#",
     logo: "/uniueagro.png"
   },
-{
+  {
     name: "Deeniyat",
     url: "https://www.deeniyat.com",
     logo: "/deeniyatlogo.png"
@@ -27,24 +32,13 @@ const CLIENTS = [
     url: "https://devgeeks.agency/",
     logo: "/devgeeks.svg"
   },
-  {
-    name: "Fantasize",
-    url: "https://fantasizeshop.com",
-    logo: "/fantasizelogo.png"
-  },
-    {
-    name: "Slim & Shine",
-    url: "#",
-    logo: "/slim-shine.png"
-  },
-  
 ];
 
 export default function Clients() {
   return ( 
     <section
       id="clients"
-      className="section-y bg-surface text-ink overflow-hidden border-y border-surface-line"
+      className="section-y bg-paper text-ink overflow-hidden border-y border-surface-line"
     >
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop">
         <motion.div
@@ -70,7 +64,7 @@ export default function Clients() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.25, 1, 0.5, 1] }}
-          className="flex flex-wrap justify-center gap-6 md:gap-10"
+          className="flex flex-wrap justify-center gap-4 md:gap-6"
         >
           {CLIENTS.map((client, index) => (
             <Link
@@ -78,10 +72,10 @@ export default function Clients() {
               href={client.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-3 px-8 py-6 rounded-2xl border border-surface-line bg-paper hover:border-accent/40 hover:shadow-sm transition-all duration-300"
+              className="group flex items-center justify-center px-6 py-5 md:px-7 md:py-6 rounded-2xl border border-surface-line bg-surface hover:border-accent/40 hover:shadow-sm transition-all duration-300"
             >
               {client.logo ? (
-                <div className="relative h-10 w-32 md:h-12 md:w-40 transition-transform duration-300 group-hover:scale-105">
+                <div className="relative h-10 w-28 md:h-11 md:w-36 transition-transform duration-300 group-hover:scale-105">
                   <Image
                     src={client.logo}
                     alt={`${client.name} logo`}

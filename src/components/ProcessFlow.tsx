@@ -62,7 +62,7 @@ export default function ProcessFlow({
       className={`section-y ${
         isDark
           ? "bg-[#04070D] text-[#F8FAFC] border-b border-cyan-500/20"
-          : "bg-surface-soft"
+          : "bg-paper border-y border-surface-line/50"
       } relative overflow-hidden`}
     >
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
@@ -122,14 +122,12 @@ export default function ProcessFlow({
                   onMouseLeave={() => setHoverPaused(false)}
                   className="flex-1 group text-left relative px-3 transition-all duration-300 cursor-pointer"
                 >
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className={`w-8 h-8 rounded-full flex items-center justify-center font-mono-ui text-xs transition-all duration-300 ${
+                  <div className="flex items-center gap-2.5 mb-2">
+                    <span className={`w-2 h-2 rounded-full transition-all duration-300 ${
                       isSelected
-                        ? "bg-accent text-surface shadow-md scale-110 font-bold"
-                        : "bg-surface border border-surface-line text-ink-muted group-hover:border-accent/40"
-                    }`}>
-                      0{idx + 1}
-                    </span>
+                        ? "bg-accent scale-125"
+                        : "bg-surface-line group-hover:bg-accent/40"
+                    }`} />
                     <span className={`font-display text-base transition-colors duration-300 ${
                       isSelected ? "text-accent font-semibold" : "text-ink group-hover:text-accent"
                     }`}>
@@ -182,14 +180,14 @@ export default function ProcessFlow({
               className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
             >
               <div className="lg:col-span-4">
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="font-mono-ui text-xs text-accent uppercase tracking-widest font-semibold">
-                    STAGE 0{activeIdx + 1} OF 0{steps.length}
-                  </span>
+                <div className="flex items-center gap-3.5">
+                  <h3 className={`font-display text-3xl md:text-4xl ${isDark ? "text-white" : "text-ink"} font-normal`}>
+                    {activeStep.title}
+                  </h3>
                   <button
                     type="button"
                     onClick={() => setManuallyPaused((p) => !p)}
-                    className={`w-6 h-6 shrink-0 rounded-full border flex items-center justify-center transition-colors ${
+                    className={`w-7 h-7 shrink-0 rounded-full border flex items-center justify-center transition-colors ${
                       isDark
                         ? "border-cyan-500/30 text-[#94A3B8] hover:text-white hover:border-cyan-500/60"
                         : "border-surface-line text-ink-muted hover:text-accent hover:border-accent/40"
@@ -197,12 +195,9 @@ export default function ProcessFlow({
                     aria-label={manuallyPaused ? "Play stage auto-cycle" : "Pause stage auto-cycle"}
                     aria-pressed={manuallyPaused}
                   >
-                    <Icon name={manuallyPaused ? "play" : "pause"} size={10} />
+                    <Icon name={manuallyPaused ? "play" : "pause"} size={11} />
                   </button>
                 </div>
-                <h3 className={`font-display text-3xl ${isDark ? "text-white" : "text-ink"} font-normal mb-1`}>
-                  {activeStep.title}
-                </h3>
               </div>
 
               <div className={`lg:col-span-8 border-t lg:border-t-0 lg:border-l ${isDark ? "border-cyan-500/20" : "border-surface-line"} pt-6 lg:pt-0 lg:pl-8`}>

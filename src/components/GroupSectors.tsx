@@ -106,7 +106,7 @@ export default function GroupSectors() {
   return (
     <section
       id="sectors"
-      className="section-y bg-surface text-ink border-y border-surface-line/50 relative overflow-hidden"
+      className="section-y bg-paper text-ink border-y border-surface-line/50 relative overflow-hidden"
     >
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
         
@@ -153,7 +153,7 @@ export default function GroupSectors() {
               return (
                 <React.Fragment key={sector.index}>
                   {showGroupLabel && (
-                    <div className="px-6 py-2 bg-surface-soft/60 shrink-0">
+                    <div className="px-6 py-2 bg-paper-soft/60 shrink-0">
                       <span className="font-mono-ui text-[10px] uppercase tracking-[0.2em] text-ink-faint">
                         {sector.group}
                       </span>

@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import Icon from "@/components/Icon";
+import ContactForm from "@/components/ContactForm";
 
 const siteUrl = "https://brahmglobalholdings.com";
-const title = "Contact BRAHM Global Holdings — Departmental Routing & Inquiries";
+const title = "Contact Us — BRAHM Global Holdings";
 const description =
-  "Connect with BRAHM Global Holdings. Contact channels for general corporate inquiries, venture proposals, strategic partnerships, ENIF Technology engagements, and 7AURIGA brand inquiries.";
+  "Connect with BRAHM Global Holdings. Contact our London headquarters for strategic partnerships, venture incubation, enterprise engineering with ENIF, or brand intelligence with 7AURIGA.";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -38,93 +39,32 @@ export const metadata: Metadata = {
   },
 };
 
-const CONTACT_CHANNELS = [
-  {
-    title: "General & Corporate Inquiries",
-    desc: "For general questions regarding the group, corporate structure, governance, or speaking engagements.",
-    email: "hello@brahmglobalholdings.com",
-    subject: "Corporate Inquiry",
-    badge: "Corporate",
-    sla: "24-48 Hours",
-  },
-  {
-    title: "Strategic Partnerships & JVs",
-    desc: "For institutional co-investments, commercial collaborations, and cross-border strategic joint ventures.",
-    email: "hello@brahmglobalholdings.com",
-    subject: "Strategic Partnership Inquiry",
-    badge: "Partnerships",
-    sla: "24 Hours",
-  },
-  {
-    title: "Build with BRAHM",
-    desc: "For entrepreneurs, technical leaders, and founders seeking to incubate or scale ventures within our ecosystem.",
-    email: "hello@brahmglobalholdings.com",
-    subject: "Build With BRAHM Venture Proposal",
-    badge: "Venture Building",
-    sla: "48 Hours",
-  },
-  {
-    title: "ENIF Technologies (Software & AI)",
-    desc: "To engage our engineering division for mission-critical enterprise software, AI agents, or edge architecture.",
-    email: "hello@brahmglobalholdings.com",
-    subject: "Work With ENIF — Project Engagement",
-    badge: "Technology",
-    sla: "24 Hours",
-    link: "/enif",
-    linkText: "Visit ENIF Portal",
-  },
-  {
-    title: "7AURIGA (Identity & Media)",
-    desc: "For strategic branding, corporate narrative positioning, executive reputation, and visual identity design.",
-    email: "hello@brahmglobalholdings.com",
-    subject: "7AURIGA Brand Intelligence Inquiry",
-    badge: "Creative & Media",
-    sla: "24 Hours",
-    link: "/7auriga",
-    linkText: "Visit 7AURIGA Portal",
-  },
-  {
-    title: "Press & Media Relations",
-    desc: "For journalistic inquiries, media requests, brand assets, and official corporate statements.",
-    email: "hello@brahmglobalholdings.com",
-    subject: "Media & Press Inquiry",
-    badge: "Press",
-    sla: "Same Day",
-  },
-];
-
 export default function ContactPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    "name": title,
-    "description": description,
-    "url": `${siteUrl}/contact`,
-    "mainEntity": {
+    name: title,
+    description: description,
+    url: `${siteUrl}/contact`,
+    mainEntity: {
       "@type": "Organization",
-      "name": "BRAHM Global Holdings",
-      "url": siteUrl,
-      "address": {
+      name: "BRAHM Global Holdings",
+      url: siteUrl,
+      address: {
         "@type": "PostalAddress",
-        "addressLocality": "London",
-        "addressCountry": "GB",
-        "addressRegion": "Greater London"
+        addressLocality: "London",
+        addressCountry: "GB",
+        addressRegion: "Greater London",
       },
-      "contactPoint": [
+      contactPoint: [
         {
           "@type": "ContactPoint",
-          "contactType": "general inquiries",
-          "email": "hello@brahmglobalholdings.com",
-          "availableLanguage": ["English"]
+          contactType: "corporate inquiries",
+          email: "brahmglobalholdings@gmail.com",
+          availableLanguage: ["English"],
         },
-        {
-          "@type": "ContactPoint",
-          "contactType": "partnerships",
-          "email": "hello@brahmglobalholdings.com",
-          "availableLanguage": ["English"]
-        }
-      ]
-    }
+      ],
+    },
   };
 
   return (
@@ -134,115 +74,129 @@ export default function ContactPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Hero Section */}
+      {/* Hero Header */}
       <section className="section-y border-b border-surface-line relative overflow-hidden">
         <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop">
           <div className="max-w-3xl">
             <span className="text-eyebrow font-mono-ui text-accent block mb-4 uppercase tracking-[0.2em]">
-              CONTACT & ENGAGEMENT
+              GET IN TOUCH
             </span>
             <h1 className="font-display text-4xl sm:text-5xl md:text-6xl text-ink leading-[1.1] mb-6">
               Start a <span className="italic text-accent">Conversation.</span>
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-ink-muted font-light leading-relaxed">
-              We welcome conversations with ambitious organisations, institutional partners, and visionary founders. Direct your inquiry to the appropriate division below for dedicated attention.
+              We welcome conversations with ambitious organisations, institutional partners, and visionary founders. Send a direct message below or reach our London headquarters.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Departmental Channels Grid */}
+      {/* Main Interactive Contact Section */}
       <section className="section-y border-b border-surface-line bg-paper">
         <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {CONTACT_CHANNELS.map((channel) => (
-              <div
-                key={channel.title}
-                className="p-8 rounded-2xl border border-surface-line bg-surface/70 hover:bg-surface hover:border-accent/40 transition-all duration-300 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="font-mono-ui text-[10px] uppercase tracking-wider text-accent font-semibold px-2.5 py-1 rounded bg-accent/10 border border-accent/20">
-                      {channel.badge}
-                    </span>
-                    <span className="text-[10px] font-mono-ui uppercase tracking-wider text-ink-muted">
-                      SLA: {channel.sla}
-                    </span>
-                  </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            
+            {/* Left Column: Direct Info & Dedicated Portals */}
+            <div className="lg:col-span-5 space-y-8">
+              <div>
+                <span className="font-mono-ui text-xs text-accent uppercase tracking-widest font-semibold block mb-2">
+                  Direct Inquiries
+                </span>
+                <h2 className="font-display text-2xl md:text-3xl text-ink font-semibold mb-4">
+                  Direct Line to Leadership
+                </h2>
+                <p className="text-sm text-ink-muted font-light leading-relaxed">
+                  Every submission is reviewed directly by group partners. We do not use automated ticketing queues or outsourced support agencies.
+                </p>
+              </div>
 
-                  <h2 className="font-display text-xl text-ink font-semibold mb-3">
-                    {channel.title}
-                  </h2>
+              {/* Direct Email Card */}
+              <div className="p-6 rounded-2xl border border-surface-line bg-surface/60 space-y-3">
+                <span className="font-mono-ui text-[10px] uppercase tracking-wider text-ink-muted block font-medium">
+                  Primary Corporate Email
+                </span>
+                <a
+                  href="mailto:brahmglobalholdings@gmail.com"
+                  className="font-display text-lg sm:text-xl text-ink hover:text-accent font-semibold transition-colors flex items-center justify-between group"
+                >
+                  <span className="break-all">brahmglobalholdings@gmail.com</span>
+                  <span className="w-8 h-8 rounded-full border border-surface-line bg-paper flex items-center justify-center text-ink group-hover:text-accent group-hover:border-accent/40 shrink-0 ml-2 transition-all">
+                    <Icon name="arrow-up-right" size={14} />
+                  </span>
+                </a>
+                <p className="text-xs text-ink-muted font-light">
+                  Average response time: within 24 hours on London business days.
+                </p>
+              </div>
 
-                  <p className="text-sm text-ink-muted font-light leading-relaxed mb-6">
-                    {channel.desc}
-                  </p>
-                </div>
+              {/* London HQ Card */}
+              <div className="p-6 rounded-2xl border border-surface-line bg-surface/60 space-y-2">
+                <span className="font-mono-ui text-[10px] uppercase tracking-wider text-ink-muted block font-medium">
+                  Headquarters & Governance
+                </span>
+                <p className="font-display text-base text-ink font-semibold">
+                  London, Greater London, United Kingdom
+                </p>
+                <p className="text-xs text-ink-muted font-light leading-relaxed">
+                  BRAHM Global Holdings Ltd is registered and headquartered in London, operating under UK corporate governance and GDPR data protection frameworks.
+                </p>
+              </div>
 
-                <div className="space-y-3 pt-4 border-t border-surface-line/60">
-                  <a
-                    href={`mailto:${channel.email}?subject=${encodeURIComponent(channel.subject)}`}
-                    className="inline-flex items-center gap-2 text-xs font-mono-ui uppercase tracking-wider text-ink font-bold hover:text-accent transition-colors"
+              {/* Dedicated Division Portals */}
+              <div className="space-y-3 pt-4 border-t border-surface-line/70">
+                <span className="font-mono-ui text-[10px] uppercase tracking-wider text-ink-muted block font-semibold">
+                  Dedicated Group Portals
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <Link
+                    href="/enif"
+                    className="p-4 rounded-xl border border-surface-line bg-surface/40 hover:bg-surface hover:border-accent/30 transition-all flex flex-col justify-between group"
                   >
-                    <span>{channel.email}</span>
-                    <Icon name="arrow-right" size={12} />
-                  </a>
-
-                  {channel.link && (
                     <div>
-                      <Link
-                        href={channel.link}
-                        className="inline-flex items-center gap-1.5 text-[11px] font-mono-ui uppercase tracking-wider text-accent hover:underline"
-                      >
-                        <span>{channel.linkText}</span>
-                        <Icon name="arrow-up-right" size={11} />
-                      </Link>
+                      <span className="font-mono-ui text-[9px] text-accent uppercase tracking-wider font-semibold block mb-1">
+                        Technology Division
+                      </span>
+                      <p className="font-display text-sm text-ink font-medium group-hover:text-accent transition-colors">
+                        ENIF Technologies
+                      </p>
                     </div>
-                  )}
+                    <span className="inline-flex items-center gap-1 text-[11px] text-ink-muted group-hover:text-accent font-mono-ui mt-3">
+                      <span>View Portal</span>
+                      <Icon name="arrow-up-right" size={10} />
+                    </span>
+                  </Link>
+
+                  <Link
+                    href="/7auriga"
+                    className="p-4 rounded-xl border border-surface-line bg-surface/40 hover:bg-surface hover:border-accent/30 transition-all flex flex-col justify-between group"
+                  >
+                    <div>
+                      <span className="font-mono-ui text-[9px] text-accent uppercase tracking-wider font-semibold block mb-1">
+                        Brand & Media Division
+                      </span>
+                      <p className="font-display text-sm text-ink font-medium group-hover:text-accent transition-colors">
+                        7AURIGA
+                      </p>
+                    </div>
+                    <span className="inline-flex items-center gap-1 text-[11px] text-ink-muted group-hover:text-accent font-mono-ui mt-3">
+                      <span>View Portal</span>
+                      <Icon name="arrow-up-right" size={10} />
+                    </span>
+                  </Link>
                 </div>
               </div>
-            ))}
+            </div>
+
+            {/* Right Column: Direct Interactive Form */}
+            <div className="lg:col-span-7">
+              <ContactForm />
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* Headquarters Information */}
-      <section className="section-y border-b border-surface-line">
-        <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-6 space-y-6">
-            <span className="text-eyebrow font-mono-ui text-accent block uppercase tracking-[0.2em]">
-              GLOBAL PRESENCE
-            </span>
-            <h2 className="font-display text-3xl md:text-4xl text-ink leading-tight">
-              Headquartered in London.
-            </h2>
-            <p className="text-ink-muted text-base font-light leading-relaxed">
-              BRAHM Global Holdings Ltd is registered in London, United Kingdom. From the heart of London&apos;s financial and technological district, we manage international assets, build scalable software, and direct brand operations worldwide.
-            </p>
-            <div className="space-y-2 text-sm font-mono-ui text-ink">
-              <p className="text-ink-muted uppercase text-xs tracking-wider">Registered Location</p>
-              <p className="font-medium">London, Greater London, United Kingdom</p>
-            </div>
-          </div>
-
-          <div className="lg:col-span-6 p-8 rounded-2xl border border-surface-line bg-paper">
-            <h3 className="font-display text-xl text-ink font-semibold mb-3">
-              Direct Communication Protocol
-            </h3>
-            <p className="text-sm text-ink-muted font-light leading-relaxed mb-6">
-              All communications are routed through secure, encrypted mail gateways with strict data privacy protocols. For urgent partnership matters, please prefix your email subject with <code className="text-xs bg-surface px-1.5 py-0.5 rounded border border-surface-line font-mono-ui text-accent">[PRIORITY]</code>.
-            </p>
-            <div className="flex items-center gap-3">
-              <a
-                href="mailto:hello@brahmglobalholdings.com"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-ink text-surface font-mono-ui text-xs uppercase tracking-wider font-semibold hover:bg-accent transition-colors"
-              >
-                Send Message
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+    
 
       <Footer theme="light" />
     </main>

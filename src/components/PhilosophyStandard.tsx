@@ -43,20 +43,18 @@ export default function PhilosophyStandard() {
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative z-20">
         
         {/* Left: Editorial Statement Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.85, ease }}
-          className="lg:col-span-5 lg:sticky lg:top-32"
-        >
-          <div
-            className="relative border border-surface-line rounded-none p-8 md:p-10 overflow-hidden bg-transparent"
+        <div className="lg:col-span-5 lg:sticky lg:top-32">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.75, ease }}
+            className="relative border border-surface-line rounded-2xl p-8 md:p-10 overflow-hidden bg-paper/80 backdrop-blur-sm shadow-sm"
           >
-            <span className="absolute top-4 left-4   w-5 h-5 border-t border-l border-accent-deep/40" />
-            <span className="absolute top-4 right-4  w-5 h-5 border-t border-r border-accent-deep/40" />
-            <span className="absolute bottom-4 left-4  w-5 h-5 border-b border-l border-accent-deep/40" />
-            <span className="absolute bottom-4 right-4 w-5 h-5 border-b border-r border-accent-deep/40" />
+            <span className="absolute top-4 left-4   w-5 h-5 border-t border-l border-accent/40" />
+            <span className="absolute top-4 right-4  w-5 h-5 border-t border-r border-accent/40" />
+            <span className="absolute bottom-4 left-4  w-5 h-5 border-b border-l border-accent/40" />
+            <span className="absolute bottom-4 right-4 w-5 h-5 border-b border-r border-accent/40" />
 
             <p className="font-mono-ui text-eyebrow text-accent block mb-6 uppercase tracking-[0.2em]">
               THE INSTITUTIONAL STANDARD
@@ -66,26 +64,15 @@ export default function PhilosophyStandard() {
               &ldquo;The strongest businesses are built on patience most competitors don't have, and ambition most competitors won't risk.&rdquo;
             </blockquote>
 
-            <div className="h-px w-14 bg-accent-deep/50 mb-8" />
+            <div className="h-px w-14 bg-accent/40 mb-6" />
 
-            <dl className="flex flex-col gap-4">
-              {FACTS.map((f) => (
-                <div key={f.label} className="flex items-center justify-between gap-4">
-                  <dt className="font-mono-ui text-[11px] uppercase tracking-[0.18em] text-paper-muted">
-                    {f.label}
-                  </dt>
-                  <dd className="font-display text-sm text-paper-ink font-medium">
-                    {f.value}
-                  </dd>
-                </div>
-              ))}
-            </dl>
+           
 
-            <p className="mt-8 font-mono-ui text-[10px] uppercase tracking-[0.22em] text-paper-muted/60">
+            <p className="mt-6 font-mono-ui text-[10px] uppercase tracking-[0.22em] text-ink-muted/70">
               — BRAHM Global Holdings
             </p>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
 
         {/* Right: Interactive Accordion List */}
         <div className="lg:col-span-7">

@@ -61,7 +61,7 @@ export default function EnifCTA() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, ease, delay: 0.2 }}
             >
-              <StarButton href="mailto:hello@brahmglobalholdings.com?subject=Work With ENIF" icon={<Icon name="arrow-right" size={16} />}>
+              <StarButton href="mailto:brahmglobalholdings@gmail.com?subject=Work With ENIF" icon={<Icon name="arrow-right" size={16} />}>
                 Initiate Engagement
               </StarButton>
             </motion.div>

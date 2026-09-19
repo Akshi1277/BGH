@@ -17,23 +17,18 @@ const LINKS = [
 
 function Wordmark() {
   return (
-    <Link href="/" className="flex items-center gap-3 group">
-      <span className="relative w-9 h-9 rounded-full overflow-hidden border border-[#34D399]/40 shrink-0 bg-[#141A16]">
+    <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group">
+      <span className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden border border-[#34D399]/40 shrink-0 bg-[#141A16]">
         <Image
           src="/whatsapp.svg"
-          alt="Brahm Global Holdings"
+          alt="BRAHM Global Holdings"
           fill
           sizes="36px"
           className="object-cover opacity-90 group-hover:opacity-100 transition-opacity"
         />
       </span>
-      <span className="flex flex-col leading-none">
-        <span className="font-display text-lg tracking-[0.12em] text-ink">
-          BRAHM
-        </span>
-        <span className="font-mono-ui text-[9px] tracking-[0.32em] text-accent mt-1 font-semibold">
-          GLOBAL HOLDINGS
-        </span>
+      <span className="font-garamond font-bold text-xs sm:text-base md:text-[17px] tracking-[0.14em] sm:tracking-[0.18em] text-ink uppercase whitespace-nowrap group-hover:text-accent transition-colors">
+        BRAHM GLOBAL HOLDINGS
       </span>
     </Link>
   );

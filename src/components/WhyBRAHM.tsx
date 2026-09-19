@@ -9,7 +9,7 @@ const ease = [0.25, 1, 0.5, 1] as const;
 
 export default function WhyBRAHM() {
   return (
-    <section id="why-brahm" className="section-y bg-surface relative overflow-hidden border-y border-surface-line/40">
+    <section id="why-brahm" className="section-y bg-paper relative overflow-hidden border-y border-surface-line/50">
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
         
         {/* Header */}
@@ -71,9 +71,7 @@ export default function WhyBRAHM() {
                 </li>
               </ul>
             </div>
-            <div className="pt-4 border-t border-surface-line text-xs font-mono-ui text-ink-muted/70 uppercase">
-              Horizon: Short-Term Exit
-            </div>
+           
           </motion.div>
 
           {/* 02 Private Equity */}
@@ -110,9 +108,7 @@ export default function WhyBRAHM() {
                 </li>
               </ul>
             </div>
-            <div className="pt-4 border-t border-surface-line text-xs font-mono-ui text-ink-muted/70 uppercase">
-              Horizon: 5-Year Liquidation
-            </div>
+       
           </motion.div>
 
           {/* 03 BRAHM Global Holdings (Highlighted) */}
@@ -153,9 +149,7 @@ export default function WhyBRAHM() {
               </ul>
             </div>
 
-            <div className="pt-4 border-t border-emerald-900/80 text-xs font-mono-ui text-emerald-400 uppercase font-semibold">
-              Horizon: Generational
-            </div>
+            
           </motion.div>
 
         </div>

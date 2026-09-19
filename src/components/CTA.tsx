@@ -14,7 +14,7 @@ const PATHWAYS: { icon: IconName; title: string; description: string; href: stri
     title: "BUILD WITH BRAHM",
     description:
       "From new ventures to established enterprises, we partner with organisations to create businesses, products and platforms built for long-term success.",
-    href: "mailto:hello@brahmglobalholdings.com?subject=Build With BRAHM",
+    href: "mailto:brahmglobalholdings@gmail.com?subject=Build With BRAHM",
     accent: "var(--color-accent)",
   },
   {
@@ -22,7 +22,7 @@ const PATHWAYS: { icon: IconName; title: string; description: string; href: stri
     title: "WORK WITH ENIF",
     description:
       "Partner with our engineering division to design, build and scale intelligent software, AI-powered platforms and enterprise technology tailored to your organisation.",
-    href: "mailto:hello@brahmglobalholdings.com?subject=Work With ENIF",
+    href: "mailto:brahmglobalholdings@gmail.com?subject=Work With ENIF",
     accent: "#38BDF8",
   },
   {
@@ -30,7 +30,7 @@ const PATHWAYS: { icon: IconName; title: string; description: string; href: stri
     title: "PARTNER WITH US",
     description:
       "We welcome strategic partnerships, joint ventures and commercial collaborations that create sustainable value for all parties.",
-    href: "mailto:hello@brahmglobalholdings.com?subject=Partnership Inquiry",
+    href: "mailto:brahmglobalholdings@gmail.com?subject=Partnership Inquiry",
     accent: "var(--color-persimmon)",
   },
 ];
@@ -110,7 +110,7 @@ export default function CTA() {
   return (
     <section
       id="contact"
-      className="relative section-y bg-paper text-paper-ink border-y border-paper-line overflow-hidden"
+      className="relative section-y bg-surface text-ink border-y border-surface-line overflow-hidden"
     >
       <div
         className="absolute inset-0 pointer-events-none"
@@ -186,7 +186,7 @@ export default function CTA() {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="mt-10"
           >
-            <MagneticButton href="mailto:hello@brahmglobalholdings.com">
+            <MagneticButton href="mailto:brahmglobalholdings@gmail.com">
               START A CONVERSATION
             </MagneticButton>
           </motion.div>

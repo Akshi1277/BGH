@@ -7,7 +7,7 @@ const ease = [0.25, 1, 0.5, 1] as const;
 
 export default function Mandate() {
   return (
-    <section id="vision" className="section-y bg-paper text-paper-ink border-b border-paper-line relative overflow-hidden">
+    <section id="vision" className="section-y bg-surface text-paper-ink border-b border-paper-line relative overflow-hidden">
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
@@ -52,9 +52,7 @@ export default function Mandate() {
               For this reason, we do not measure success by the number of companies we establish, the speed at which we grow or the trends we pursue. We measure success by the strength of what we build, the people it develops, the industries it strengthens and the value it continues to create over generations.
             </p>
             <div className="pl-6 border-l border-accent mt-4 text-paper-ink">
-              <p className="font-display text-xl leading-relaxed">
-                Our ambition is neither to build the largest group nor the fastest-growing one. It is to build one of lasting significance.
-              </p>
+             
             </div>
           </motion.div>
         </div>

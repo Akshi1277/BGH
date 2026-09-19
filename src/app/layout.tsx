@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Plus_Jakarta_Sans, Space_Grotesk, JetBrains_Mono, Manrope, Crimson_Text } from "next/font/google";
+import { Playfair_Display, Plus_Jakarta_Sans, Space_Grotesk, JetBrains_Mono, Manrope, Crimson_Text, EB_Garamond } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 
@@ -37,6 +37,13 @@ const crimsonText = Crimson_Text({
   weight: ["400", "600"],
   style: ["normal", "italic"],
   variable: "--font-serif-crimson",
+  display: "swap",
+});
+
+const ebGaramond = EB_Garamond({
+  variable: "--font-garamond",
+  subsets: ["latin", "latin-ext"],
+  weight: ["500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -134,13 +141,13 @@ export default function RootLayout({
       {
         "@type": "ContactPoint",
         "contactType": "general inquiries",
-        "email": "hello@brahmglobalholdings.com",
+        "email": "brahmglobalholdings@gmail.com",
         "availableLanguage": ["English"]
       },
       {
         "@type": "ContactPoint",
         "contactType": "partnerships",
-        "email": "hello@brahmglobalholdings.com",
+        "email": "brahmglobalholdings@gmail.com",
         "availableLanguage": ["English"]
       }
     ],
@@ -152,7 +159,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${jakarta.variable} ${spaceGrotesk.variable} ${jbmono.variable} ${manrope.variable} ${crimsonText.variable} h-full antialiased`}
+      className={`${playfair.variable} ${jakarta.variable} ${spaceGrotesk.variable} ${jbmono.variable} ${manrope.variable} ${crimsonText.variable} ${ebGaramond.variable} h-full antialiased`}
     >
       <head>
         <script

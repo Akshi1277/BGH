@@ -215,9 +215,12 @@ export default function AboutPage() {
             <span className="text-eyebrow font-mono-ui text-accent block mb-3 uppercase tracking-[0.2em]">
               THE PORTFOLIO
             </span>
-            <h2 className="font-display text-3xl md:text-4xl text-ink leading-tight mb-4">
-              Six Companies. One Standard.
+            <h2 className="font-display text-3xl md:text-4xl text-ink leading-tight mb-3">
+              Where Businesses <span className="italic font-normal text-accent">Become Legacies.</span>
             </h2>
+            <p className="text-ink font-medium text-base mb-3">
+              Many industries. Limitless ambition.
+            </p>
             <p className="text-ink-muted text-base font-light">
               Each company within BRAHM Global Holdings operates with independent leadership while leveraging group-wide resources, technology, and governance.
             </p>

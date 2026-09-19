@@ -94,7 +94,7 @@ export default function PrivacyPage() {
             <div className="p-4 rounded-xl border border-surface-line bg-surface text-xs font-mono-ui space-y-1 text-ink-muted">
               <p><strong className="text-ink">Entity:</strong> BRAHM Global Holdings Ltd</p>
               <p><strong className="text-ink">Registered Location:</strong> London, Greater London, United Kingdom</p>
-              <p><strong className="text-ink">Data Protection Inquiries:</strong> hello@brahmglobalholdings.com</p>
+              <p><strong className="text-ink">Data Protection Inquiries:</strong> brahmglobalholdings@gmail.com</p>
             </div>
           </div>
 
@@ -168,7 +168,7 @@ export default function PrivacyPage() {
               <li><strong className="text-ink font-medium">Right to Object:</strong> You may object at any time to processing based upon legitimate interests.</li>
             </ul>
             <p className="text-ink-muted text-sm font-light pt-2">
-              To submit a Subject Access Request (SAR) or exercise any of the rights above, please contact our data team at <a href="mailto:hello@brahmglobalholdings.com" className="text-accent underline font-medium">hello@brahmglobalholdings.com</a>.
+              To submit a Subject Access Request (SAR) or exercise any of the rights above, please contact our data team at <a href="mailto:brahmglobalholdings@gmail.com" className="text-accent underline font-medium">brahmglobalholdings@gmail.com</a>.
             </p>
           </div>
 
