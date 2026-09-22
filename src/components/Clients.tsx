@@ -34,6 +34,36 @@ const CLIENTS = [
   },
 ];
 
+function ClientLogoItem({ client }: { client: (typeof CLIENTS)[number] }) {
+  const [hasError, setHasError] = React.useState(false);
+
+  return (
+    <Link
+      href={client.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group flex items-center justify-center px-6 py-5 md:px-7 md:py-6 rounded-2xl border border-surface-line bg-surface hover:border-accent/40 hover:shadow-sm transition-all duration-300"
+    >
+      {client.logo && !hasError ? (
+        <div className="relative h-10 w-28 md:h-11 md:w-36 transition-transform duration-300 group-hover:scale-105">
+          <Image
+            src={client.logo}
+            alt={`${client.name} logo`}
+            fill
+            sizes="(max-width: 768px) 112px, 144px"
+            className="object-contain transition-transform duration-300"
+            onError={() => setHasError(true)}
+          />
+        </div>
+      ) : (
+        <span className="font-display text-2xl md:text-3xl text-ink group-hover:text-accent transition-colors font-medium">
+          {client.name}
+        </span>
+      )}
+    </Link>
+  );
+}
+
 export default function Clients() {
   return ( 
     <section
@@ -67,33 +97,7 @@ export default function Clients() {
           className="flex flex-wrap justify-center gap-4 md:gap-6"
         >
           {CLIENTS.map((client, index) => (
-            <Link
-              key={index}
-              href={client.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center justify-center px-6 py-5 md:px-7 md:py-6 rounded-2xl border border-surface-line bg-surface hover:border-accent/40 hover:shadow-sm transition-all duration-300"
-            >
-              {client.logo ? (
-                <div className="relative h-10 w-28 md:h-11 md:w-36 transition-transform duration-300 group-hover:scale-105">
-                  <Image
-                    src={client.logo}
-                    alt={`${client.name} logo`}
-                    fill
-                    className="object-contain transition-transform duration-300"
-                  />
-                </div>
-              ) : (
-                <span className="font-display text-2xl md:text-3xl text-ink group-hover:text-accent transition-colors font-medium">
-                  {client.name}
-                </span>
-              )}
-              {/* <Icon 
-                name="arrow-up-right" 
-                size={20} 
-                className="text-ink-muted group-hover:text-accent transition-colors opacity-0 -translate-x-2 translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:-translate-y-0"
-              /> */}
-            </Link>
+            <ClientLogoItem key={index} client={client} />
           ))}
         </motion.div>
       </div>
