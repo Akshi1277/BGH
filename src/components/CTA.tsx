@@ -130,8 +130,7 @@ export default function CTA() {
           width: "60%",
           height: "100%",
           background:
-            "radial-gradient(ellipse, color-mix(in srgb, var(--color-accent) 16%, transparent), transparent 70%)",
-          filter: "blur(70px)",
+            "radial-gradient(ellipse closest-side, color-mix(in srgb, var(--color-accent) 14%, transparent), transparent)",
         }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}

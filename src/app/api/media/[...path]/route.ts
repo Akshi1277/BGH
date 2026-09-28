@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
+import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import path from 'path';
 import fs from 'fs';
 import { Readable } from 'stream';
@@ -16,6 +17,12 @@ const s3Client = new S3Client({
   },
   forcePathStyle: true,
 });
+
+// Presigned URLs are valid for 7 days (SigV4 maximum). The signing date is
+// rounded down to the start of the UTC day so every request on the same day
+// gets an identical URL — letting browsers cache the media across visits.
+const SIGN_TTL_SECONDS = 7 * 24 * 60 * 60;
+const DAY_MS = 24 * 60 * 60 * 1000;
 
 function getMimeType(filename: string): string {
   if (filename.endsWith('.mp4')) return 'video/mp4';
@@ -34,50 +41,35 @@ export async function GET(
   const { path: pathSegments } = await context.params;
   const key = pathSegments.join('/');
 
-  if (!key) {
-    return new NextResponse('Bad Request: Missing file key', { status: 400 });
+  if (!key || pathSegments.some((s) => s === '..')) {
+    return new NextResponse('Bad Request: Invalid file key', { status: 400 });
   }
 
-  const rangeHeader = request.headers.get('range');
-  const mimeType = getMimeType(key);
-
-  // Try fetching from Wasabi S3 if credentials exist
+  // Redirect the browser straight to Wasabi with a presigned URL. Signing is a
+  // local computation (no network call), so this responds instantly and the
+  // media bytes never pass through this server.
   if (process.env.WASABI_ACCESS_KEY && process.env.WASABI_SECRET_KEY) {
     try {
-      const command = new GetObjectCommand({
-        Bucket: bucket,
-        Key: key,
-        Range: rangeHeader || undefined,
-      });
+      const signingDate = new Date(Math.floor(Date.now() / DAY_MS) * DAY_MS);
+      const signedUrl = await getSignedUrl(
+        s3Client,
+        new GetObjectCommand({ Bucket: bucket, Key: key }),
+        { expiresIn: SIGN_TTL_SECONDS, signingDate }
+      );
 
-      const response = await s3Client.send(command);
-
-      const headers = new Headers();
-      headers.set('Content-Type', response.ContentType || mimeType);
-      headers.set('Cache-Control', 'public, max-age=31536000, immutable');
-      headers.set('Accept-Ranges', 'bytes');
-      headers.set('X-Media-Source', 'wasabi-s3');
-
-      if (response.ContentRange) {
-        headers.set('Content-Range', response.ContentRange);
-      }
-      if (response.ContentLength) {
-        headers.set('Content-Length', response.ContentLength.toString());
-      }
-
-      const stream = response.Body as unknown as ReadableStream;
-      const status = rangeHeader && response.ContentRange ? 206 : 200;
-
-      return new NextResponse(stream, {
-        status,
-        headers,
-      });
+      const response = NextResponse.redirect(signedUrl, 302);
+      response.headers.set('Cache-Control', 'public, max-age=3600');
+      response.headers.set('X-Media-Source', 'wasabi-s3');
+      return response;
     } catch (s3Error: any) {
-      console.warn(`[Wasabi S3] Failed to fetch ${key}, falling back to local storage:`, s3Error.message);
+      console.warn(`[Wasabi S3] Failed to sign ${key}, falling back to local storage:`, s3Error.message);
     }
   }
 
   // Local fallback from public/ directory
+  const rangeHeader = request.headers.get('range');
+  const mimeType = getMimeType(key);
+
   try {
     const localFilePath = path.join(process.cwd(), 'public', ...pathSegments);
 

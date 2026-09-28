@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 
 interface LoaderContextType {
@@ -18,12 +18,20 @@ export function useLoader() {
 }
 
 export default function PageLoaderProvider({ children }: { children: React.ReactNode }) {
-  const [loadedPercent, setLoadedPercent] = useState(0);
+  const [loadedPercent, setRawLoadedPercent] = useState(0);
+  // Progress only moves forward (the fail-safe may jump to 100 before frames finish)
+  const setLoadedPercent = useCallback((val: number) => setRawLoadedPercent((p) => Math.max(p, val)), []);
   const [loadedCount, setLoadedCount] = useState(0);
   const [isFadingOut, setIsFadingOut] = useState(false);
   const [isUnmounted, setIsUnmounted] = useState(false);
   
-  const totalFrames = 192; 
+  const totalFrames = 192;
+
+  // Safety net: never trap visitors behind the loader on a slow or failing network
+  useEffect(() => {
+    const failSafe = setTimeout(() => setLoadedPercent(100), 8000);
+    return () => clearTimeout(failSafe);
+  }, []);
 
   // Handle cinematic hold and fade out when 100% is reached
   useEffect(() => {

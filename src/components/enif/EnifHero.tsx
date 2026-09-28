@@ -5,8 +5,9 @@ import { motion, useReducedMotion } from "framer-motion";
 import Icon from "../Icon";
 
 const ease = [0.16, 1, 0.3, 1] as const;
-const WASABI_BASE_URL = (process.env.NEXT_PUBLIC_WASABI_BASE_URL || '').replace(/\/+$/, '');
-const VIDEO_SRC = `${WASABI_BASE_URL}/newvid.mp4`;
+// 1080p H.264 with faststart (plays in every browser, ~0.5MB) served from public/
+const VIDEO_SRC = "/enif-hero.mp4";
+const POSTER_SRC = "/enif-hero-poster.jpg";
 
 export default function EnifHero() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -51,7 +52,7 @@ export default function EnifHero() {
           muted
           playsInline
           preload="auto"
-          crossOrigin={WASABI_BASE_URL ? "anonymous" : undefined}
+          poster={POSTER_SRC}
           disablePictureInPicture
           disableRemotePlayback
           onCanPlayThrough={() => setVideoLoaded(true)}

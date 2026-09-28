@@ -41,7 +41,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -69,7 +69,7 @@ export default function Navbar() {
         transition={{ duration: 0.7, ease: "easeOut" }}
         className={`w-full top-0 fixed z-50 transition-all duration-300 pt-[env(safe-area-inset-top,0px)] ${
           scrolled
-            ? "bg-white/95 backdrop-blur-md border-b border-surface-line shadow-sm"
+            ? "bg-white/95 border-b border-surface-line shadow-sm"
             : "bg-transparent border-b border-transparent"
         }`}
       >

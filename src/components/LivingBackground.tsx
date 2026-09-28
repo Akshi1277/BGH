@@ -218,12 +218,25 @@ const Scene = () => {
 };
 
 export default function LivingBackground() {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(true);
+
+  // Stop the per-pixel shader entirely once the hero is scrolled out of view
+  useEffect(() => {
+    const el = wrapperRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => setIsVisible(entry.isIntersecting));
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="absolute inset-0 z-0 pointer-events-none w-full h-full overflow-hidden opacity-80 mix-blend-multiply">
+    <div ref={wrapperRef} className="absolute inset-0 z-0 pointer-events-none w-full h-full overflow-hidden opacity-80 mix-blend-multiply">
       <Canvas
         orthographic
         camera={{ position: [0, 0, 1], left: -1, right: 1, top: 1, bottom: -1, near: 0.1, far: 1000 }}
-        dpr={[1, 1.5]}
+        dpr={1}
+        frameloop={isVisible ? "always" : "never"}
         gl={{ powerPreference: "high-performance", antialias: false, alpha: true }}
       >
         <Suspense fallback={null}>

@@ -5,9 +5,11 @@ import { useScroll, useSpring, useTransform, motion, MotionValue } from 'framer-
 
 import { useLoader } from './PageLoaderProvider';
 
-const WASABI_BASE_URL = (process.env.NEXT_PUBLIC_WASABI_BASE_URL || '').replace(/\/+$/, '');
 const TOTAL_FRAMES = 192;
-const BASE_PATH = `${WASABI_BASE_URL}/camera-frames/frame-`;
+const KEY_STEP = 6; // every 6th frame (~32 frames, ~2.5MB) must load before the page is revealed
+const CONCURRENCY = 6;
+// Served as static files from public/camera-frames (1600px WebP)
+const BASE_PATH = '/camera-frames/frame-';
 
 function getFramePath(index: number): string {
   const frameNum = Math.min(Math.max(index, 1), TOTAL_FRAMES);
@@ -37,86 +39,78 @@ export default function CameraScrollCanvas({
     let isCancelled = false;
     loadedCountRef.current = 0;
 
-    // Load key frames first (1, 20, 40, ...), then remaining frames for fast initial view
-    const loadIndices: number[] = [];
-    const step = 4;
-    for (let i = 1; i <= TOTAL_FRAMES; i += step) {
-      loadIndices.push(i);
-    }
-    for (let i = 1; i <= TOTAL_FRAMES; i++) {
-      if (!loadIndices.includes(i)) {
-        loadIndices.push(i);
+    // Key frames (every KEY_STEP-th + the last) gate the loader; the remaining
+    // frames stream in afterwards while the user is already on the page.
+    const keyIndices: number[] = [];
+    for (let i = 1; i <= TOTAL_FRAMES; i += KEY_STEP) keyIndices.push(i);
+    if (keyIndices[keyIndices.length - 1] !== TOTAL_FRAMES) keyIndices.push(TOTAL_FRAMES);
+    const keySet = new Set(keyIndices);
+    const queue = [
+      ...keyIndices,
+      ...Array.from({ length: TOTAL_FRAMES }, (_, i) => i + 1).filter((i) => !keySet.has(i)),
+    ];
+    let keysDone = 0;
+
+    const reportKeyProgress = () => {
+      keysDone += 1;
+      const pct = Math.round((keysDone / keyIndices.length) * 100);
+      if (onLoadProgress) onLoadProgress(pct);
+      if (loader) {
+        loader.setLoadedCount(keysDone);
+        loader.setLoadedPercent(pct);
       }
-    }
+    };
 
-    loadIndices.forEach((index) => {
-      const img = new Image();
-      if (WASABI_BASE_URL) {
-        img.crossOrigin = 'anonymous';
-      }
-      img.src = getFramePath(index);
+    const loadFrame = (index: number) =>
+      new Promise<void>((resolve) => {
+        const img = new Image();
+        img.decoding = 'async';
 
-      const finishLoad = () => {
-        if (isCancelled) return;
-        loadedCountRef.current += 1;
-        
-        const pct = Math.round((loadedCountRef.current / TOTAL_FRAMES) * 100);
-        if (onLoadProgress) onLoadProgress(pct);
-        
-        if (loader) {
-          loader.setLoadedCount(loadedCountRef.current);
-          loader.setLoadedPercent(pct);
-        }
-
-        // Trigger draw if it's the current frame
-        if (index === currentFrameRef.current) {
-          drawFrame(index);
-        }
-      };
-
-      const onImageReady = () => {
-        if (isCancelled) return;
-        
-        if (typeof window.createImageBitmap === 'function') {
-          window.createImageBitmap(img).then((bitmap) => {
-            if (isCancelled) return;
-            imagesRef.current[index] = bitmap;
-            finishLoad();
-          }).catch(() => {
-            imagesRef.current[index] = img;
-            finishLoad();
-          });
-        } else {
-          imagesRef.current[index] = img;
-          finishLoad();
-        }
-      };
-
-      if (img.complete) {
-        onImageReady();
-      } else {
-        img.onload = () => {
-          if (img.decode) {
-            img.decode().then(onImageReady).catch(onImageReady);
-          } else {
-            onImageReady();
-          }
-        };
-        img.onerror = () => {
+        const finish = (result: HTMLImageElement | ImageBitmap | null) => {
+          if (isCancelled) return resolve();
+          if (result) imagesRef.current[index] = result;
           loadedCountRef.current += 1;
-          if (loader) {
-            loader.setLoadedCount(loadedCountRef.current);
-            const pct = Math.round((loadedCountRef.current / TOTAL_FRAMES) * 100);
-            loader.setLoadedPercent(pct);
+          if (keySet.has(index)) reportKeyProgress();
+          // Redraw so the nearest-frame fallback upgrades to the exact frame
+          if (result) drawFrame(currentFrameRef.current);
+          resolve();
+        };
+
+        img.onload = () => {
+          if (isCancelled) return resolve();
+          if (typeof window.createImageBitmap === 'function') {
+            window.createImageBitmap(img).then(finish).catch(() => finish(img));
+          } else {
+            finish(img);
           }
         };
+        img.onerror = () => finish(null);
+        img.src = getFramePath(index);
+      });
+
+    // Bounded concurrency keeps key frames at the front of the network queue
+    const worker = async () => {
+      while (!isCancelled && queue.length) {
+        await loadFrame(queue.shift()!);
       }
-    });
+    };
+    for (let i = 0; i < CONCURRENCY; i++) worker();
 
     return () => {
       isCancelled = true;
     };
   }, []);
+
+  // Closest already-loaded frame, so scrubbing works before every frame arrives
+  const findNearestLoaded = (frameIndex: number) => {
+    const images = imagesRef.current;
+    if (images[frameIndex]) return images[frameIndex];
+    for (let d = 1; d < TOTAL_FRAMES; d++) {
+      if (frameIndex - d >= 1 && images[frameIndex - d]) return images[frameIndex - d];
+      if (frameIndex + d <= TOTAL_FRAMES && images[frameIndex + d]) return images[frameIndex + d];
+    }
+    return null;
+  };
 
   // Draw frame on canvas with high DPI & contain fit
   const drawFrame = useCallback((frameIndex: number) => {
@@ -125,7 +119,7 @@ export default function CameraScrollCanvas({
     const ctx = canvas.getContext('2d', { alpha: false });
     if (!ctx) return;
 
-    const img = imagesRef.current[frameIndex];
+    const img = findNearestLoaded(frameIndex);
     const width = canvas.width;
     const height = canvas.height;
 

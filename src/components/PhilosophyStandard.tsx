@@ -49,7 +49,7 @@ export default function PhilosophyStandard() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.75, ease }}
-            className="relative border border-surface-line rounded-2xl p-8 md:p-10 overflow-hidden bg-paper/80 backdrop-blur-sm shadow-sm"
+            className="relative border border-surface-line rounded-2xl p-8 md:p-10 overflow-hidden bg-paper/90 shadow-sm"
           >
             <span className="absolute top-4 left-4   w-5 h-5 border-t border-l border-accent/40" />
             <span className="absolute top-4 right-4  w-5 h-5 border-t border-r border-accent/40" />
