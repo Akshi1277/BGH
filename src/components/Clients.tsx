@@ -12,11 +12,11 @@ const CLIENTS = [
     url: "https://printfix.co.in",
     logo: "/printfixlogo.png"
   },
-  {
-    name: "Everest",
-    url: "https://www.everestspices.com",
-    logo: "/everestlogo.png"
-  },
+  // {
+  //   name: "Everest",
+  //   url: "https://www.everestspices.com",
+  //   logo: "/everestlogo.png"
+  // },
   {
     name: "Unique Agro Product",
     url: "#",
