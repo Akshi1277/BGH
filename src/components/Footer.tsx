@@ -15,7 +15,7 @@ const COLUMNS = [
       { label: "Talent Pro League", href: "/#companies" },
       { label: "London School of Academics & Arts", href: "/#companies" },
       { label: "Alayn", href: "/#companies" },
-      { label: "Luxure De Eden", href: "/#companies" },
+      // { label: "Luxure De Eden", href: "/#companies" },
     ],
   },
   {

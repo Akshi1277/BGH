@@ -25,7 +25,6 @@ assert(llmsContent.includes('ENIF Technologies'), 'public/llms.txt references EN
 assert(llmsContent.includes('7AURIGA'), 'public/llms.txt references 7AURIGA');
 assert(llmsContent.includes('Talent Pro League'), 'public/llms.txt references Talent Pro League');
 assert(llmsContent.includes('Alayn'), 'public/llms.txt references Alayn');
-assert(llmsContent.includes('Luxure De Eden'), 'public/llms.txt references Luxure De Eden');
 assert(llmsContent.length > 500, `public/llms.txt has sufficient length (${llmsContent.length} chars)`);
 
 console.log('\n--- 2. Testing Deep RAG LLM Context (llms-full.txt) ---');

@@ -92,12 +92,12 @@ const COMPANIES = [
     desc: "Intelligent operating system and customer relationship AI for restaurants, cafes, and hospitality groups.",
     href: "https://alaynai.com",
   },
-  {
-    name: "Luxure De Eden",
-    tag: "Luxury Goods",
-    desc: "Haute perfumery and contemporary luxury fragrance house celebrating artisanal craftsmanship.",
-    href: "/contact",
-  },
+  // {
+  //   name: "Luxure De Eden",
+  //   tag: "Luxury Goods",
+  //   desc: "Haute perfumery and contemporary luxury fragrance house celebrating artisanal craftsmanship.",
+  //   href: "/contact",
+  // },
 ];
 
 export default function AboutPage() {

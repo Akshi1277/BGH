@@ -51,7 +51,7 @@ const siteUrl = "https://brahmglobalholdings.com";
 const title = "BRAHM GLOBAL HOLDINGS";
 const tagline = "Building Enduring Businesses";
 const description =
-  "BRAHM Global Holdings is a British venture builder and holding company that creates, acquires and scales exceptional businesses across technology, education, sport, hospitality and luxury consumer brands — including Talent Pro League, LSA, Alayn, Luxure De Eden, and our technology division, ENIF.";
+  "BRAHM Global Holdings is a British venture builder and holding company that creates, acquires and scales exceptional businesses across technology, education, sport, hospitality and luxury consumer brands — including Talent Pro League, LSA, Alayn, and our technology division, ENIF.";
 
 export const viewport: Viewport = {
   width: "device-width",

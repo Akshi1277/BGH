@@ -39,9 +39,6 @@ Headquartered in London. Built for international markets.
    - *Tagline*: Redefining Hospitality Through Intelligence.
    - *Description*: Operational AI operating system for restaurants, cafes, and hospitality groups.
    - *URL*: https://alaynai.com
-6. **Luxure De Eden** (Luxury Consumer Brands)
-   - *Tagline*: Modern Luxury. Enduring Elegance.
-   - *Description*: Contemporary luxury fragrance house and artisanal consumer goods.
 
 ## Contact & Direct Channels
 - **General Inquiries**: brahmglobalholdings@gmail.com
@@ -80,7 +77,6 @@ Unlike conventional private equity or venture capital models that rely on rapid 
 - **Talent Pro League**: Next-generation football ecosystem and tournament platform (https://talentproleague.football).
 - **London School of Academics & Arts (LSAA)**: British international education platform.
 - **Alayn**: AI-driven hospitality operating system (https://alaynai.com).
-- **Luxure De Eden**: Modern British haute perfumery.
 
 ## 4. Location & Contact
 - **Headquarters**: London, United Kingdom
