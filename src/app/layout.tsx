@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Plus_Jakarta_Sans, Space_Grotesk, JetBrains_Mono, Manrope, Crimson_Text, EB_Garamond } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
+import "./brahm.css";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
