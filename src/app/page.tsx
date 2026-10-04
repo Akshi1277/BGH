@@ -1,7 +1,7 @@
 import Hero from "@/components/Hero";
 import Clients from "@/components/Clients";
 import Mandate from "@/components/Mandate";
-import GroupSectors from "@/components/GroupSectors";
+import SectorReel from "@/components/brahm/SectorReel";
 import Portfolio from "@/components/Portfolio";
 import PhilosophyStandard from "@/components/PhilosophyStandard";
 import CTA from "@/components/CTA";
@@ -11,7 +11,7 @@ import BrahmFooter from "@/components/brahm/BrahmFooter";
 
 /*
  * Homepage in its original order. Approved redesigns replace their original counterparts:
- * FrameworkSequence (was HowWeBuild), DifferenceSequence (was WhyBRAHM), BrahmFooter (was Footer).
+ * SectorReel (was GroupSectors), FrameworkSequence (was HowWeBuild), DifferenceSequence (was WhyBRAHM), BrahmFooter (was Footer).
  */
 export default function Home() {
   return (
@@ -19,7 +19,7 @@ export default function Home() {
       <Hero />
       <Clients />
       <Mandate />
-      <GroupSectors />
+      <SectorReel />
       <Portfolio />
       <FrameworkSequence />
       <PhilosophyStandard />

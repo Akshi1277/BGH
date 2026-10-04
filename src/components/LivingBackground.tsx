@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useMemo, useEffect, useState, Suspense } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
 
@@ -131,6 +131,11 @@ void main() {
   float breathing = snoise(vec3(noiseUv * 0.5, t * 0.2)) * 0.5 + 0.5; // 0 to 1
   color.rgb += color.rgb * breathing * 0.12; // More noticeable brightening
 
+  // Multiply onto the chalk page ground here instead of with a CSS mix-blend-mode layer,
+  // which made the browser composite the whole canvas against the page every frame.
+  // The page behind the hero is plain surface (#F8F6F2), so the result is identical.
+  color.rgb *= vec3(0.973, 0.965, 0.949);
+
   gl_FragColor = color;
 }
 `;
@@ -217,6 +222,28 @@ const Scene = () => {
   );
 };
 
+/** The drift is slow, so 30 frames a second looks the same as 60 at half the GPU work. */
+const FRAME_MS = 1000 / 30;
+
+const ThrottledLoop = ({ running }: { running: boolean }) => {
+  const invalidate = useThree((state) => state.invalidate);
+  useEffect(() => {
+    if (!running) return;
+    let raf = 0;
+    let last = 0;
+    const tick = (now: number) => {
+      if (now - last >= FRAME_MS - 2) {
+        last = now;
+        invalidate();
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [running, invalidate]);
+  return null;
+};
+
 export default function LivingBackground() {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(true);
@@ -231,14 +258,16 @@ export default function LivingBackground() {
   }, []);
 
   return (
-    <div ref={wrapperRef} className="absolute inset-0 z-0 pointer-events-none w-full h-full overflow-hidden opacity-80 mix-blend-multiply">
+    <div ref={wrapperRef} className="absolute inset-0 z-0 pointer-events-none w-full h-full overflow-hidden opacity-80">
       <Canvas
         orthographic
         camera={{ position: [0, 0, 1], left: -1, right: 1, top: 1, bottom: -1, near: 0.1, far: 1000 }}
-        dpr={1}
-        frameloop={isVisible ? "always" : "never"}
+        // 75% resolution, scaled up by the browser: about half the pixels to shade, and the contour lines stay crisp
+        dpr={0.75}
+        frameloop="demand"
         gl={{ powerPreference: "high-performance", antialias: false, alpha: true }}
       >
+        <ThrottledLoop running={isVisible} />
         <Suspense fallback={null}>
           <Scene />
         </Suspense>

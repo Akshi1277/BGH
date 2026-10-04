@@ -74,28 +74,15 @@ export function ShinyButton({
           overflow: hidden;
           cursor: pointer;
           outline-offset: 4px;
-          border: 1px solid transparent;
           border-radius: 360px;
           color: var(--shiny-cta-fg);
-          background: var(--shiny-cta-bg) padding-box,
-            conic-gradient(
-              from calc(var(--gradient-angle) - var(--gradient-angle-offset)),
-              transparent,
-              var(--shiny-cta-highlight) var(--gradient-percent),
-              var(--gradient-shine) calc(var(--gradient-percent) * 2),
-              var(--shiny-cta-highlight) calc(var(--gradient-percent) * 3),
-              transparent calc(var(--gradient-percent) * 4)
-            ) border-box;
-          box-shadow: inset 0 0 0 1px var(--shiny-cta-bg-subtle);
-          transition: var(--transition);
-          transition-property: --gradient-angle-offset, --gradient-percent, --gradient-shine;
           display: flex;
           align-items: center;
           justify-content: center;
         }
 
-        .shiny-cta::before,
-        .shiny-cta::after,
+        .shiny-cta .shiny-fill::before,
+        .shiny-cta .shiny-fill::after,
         .shiny-cta span::before {
           content: "";
           pointer-events: none;
@@ -111,7 +98,7 @@ export function ShinyButton({
         }
 
         /* Dots pattern */
-        .shiny-cta::before {
+        .shiny-cta .shiny-fill::before {
           --size: calc(100% - var(--shadow-size) * 3);
           --position: 2px;
           --space: calc(var(--position) * 2);
@@ -136,7 +123,7 @@ export function ShinyButton({
         }
 
         /* Inner shimmer */
-        .shiny-cta::after {
+        .shiny-cta .shiny-fill::after {
           --animation: shimmer linear infinite;
           width: 100%;
           aspect-ratio: 1;
@@ -152,6 +139,60 @@ export function ShinyButton({
 
         .shiny-cta span {
           z-index: 1;
+          /* stands in for the 1px border the rim layers now draw, so the button keeps its size */
+          margin: 1px;
+        }
+
+        /*
+         * The rotating rim. It used to be a conic-gradient border whose angle was animated through
+         * a custom property, which made the browser repaint the button on the main thread every
+         * frame for as long as the page was open. Now the gradient is drawn once on an oversized
+         * layer that spins with a transform (handled by the GPU), and a fill layer inset by 1px
+         * covers all of it except the rim. Same picture, no per-frame repaint.
+         */
+        .shiny-cta .shiny-rim,
+        .shiny-cta .shiny-fill {
+          pointer-events: none;
+          position: absolute;
+        }
+
+        .shiny-cta .shiny-rim {
+          inset-inline-start: 50%;
+          inset-block-start: 50%;
+          translate: -50% -50%;
+          width: 150%;
+          aspect-ratio: 1;
+          z-index: -3;
+          background: conic-gradient(
+            from calc(0deg - var(--gradient-angle-offset)),
+            transparent,
+            var(--shiny-cta-highlight) var(--gradient-percent),
+            var(--gradient-shine) calc(var(--gradient-percent) * 2),
+            var(--shiny-cta-highlight) calc(var(--gradient-percent) * 3),
+            transparent calc(var(--gradient-percent) * 4)
+          );
+          transition: var(--transition);
+          transition-property: --gradient-angle-offset, --gradient-percent, --gradient-shine;
+          animation: shimmer var(--duration) linear infinite,
+            shimmer calc(var(--duration) / 0.4) linear infinite reverse paused;
+          animation-composition: add;
+        }
+
+        .shiny-cta .shiny-fill {
+          inset: 1px;
+          z-index: -2;
+          border-radius: inherit;
+          background: var(--shiny-cta-bg);
+          box-shadow: inset 0 0 0 1px var(--shiny-cta-bg-subtle);
+          /* the dots and shimmer layers live on this fill, so they stay inside the rim like before */
+          overflow: hidden;
+        }
+
+        .shiny-cta:is(:hover, :focus-visible) .shiny-rim {
+          --gradient-percent: 20%;
+          --gradient-angle-offset: 95deg;
+          --gradient-shine: var(--shiny-cta-highlight-subtle);
+          animation-play-state: running;
         }
 
         .shiny-cta span::before {
@@ -161,16 +202,20 @@ export function ShinyButton({
           box-shadow: inset 0 -1ex 2rem 4px var(--shiny-cta-highlight);
           opacity: 0;
           transition: opacity var(--transition);
-          animation: calc(var(--duration) * 1.5) breathe linear infinite;
+          animation: calc(var(--duration) * 1.5) breathe linear infinite paused;
         }
 
-        /* Animate */
-        .shiny-cta,
-        .shiny-cta::before,
-        .shiny-cta::after {
+        /* Animate. The shimmer spins with a transform, so it runs all the time; the dots highlight
+         * sweeps by repainting, so it only runs while the button is hovered or focused. */
+        .shiny-cta .shiny-fill::before,
+        .shiny-cta .shiny-fill::after {
           animation: var(--animation) var(--duration),
             var(--animation) calc(var(--duration) / 0.4) reverse paused;
           animation-composition: add;
+        }
+
+        .shiny-cta .shiny-fill::before {
+          animation-play-state: paused;
         }
 
         .shiny-cta:is(:hover, :focus-visible) {
@@ -180,13 +225,14 @@ export function ShinyButton({
         }
 
         .shiny-cta:is(:hover, :focus-visible),
-        .shiny-cta:is(:hover, :focus-visible)::before,
-        .shiny-cta:is(:hover, :focus-visible)::after {
+        .shiny-cta:is(:hover, :focus-visible) .shiny-fill::before,
+        .shiny-cta:is(:hover, :focus-visible) .shiny-fill::after {
           animation-play-state: running;
         }
 
         .shiny-cta:is(:hover, :focus-visible) span::before {
           opacity: 1;
+          animation-play-state: running;
         }
 
         @keyframes gradient-angle {
@@ -210,6 +256,8 @@ export function ShinyButton({
           }
         }
       `}} />
+      <i className="shiny-rim" aria-hidden="true" />
+      <i className="shiny-fill" aria-hidden="true" />
       <span>{children}</span>
     </>
   );

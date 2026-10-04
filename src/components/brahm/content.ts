@@ -104,3 +104,86 @@ export const footer = {
   copyright: "BRAHM Global Holdings Ltd. All Rights Reserved.",
   location: "London, United Kingdom",
 };
+
+export const sectorsIntro = {
+  eyebrow: "THE BRAHM GROUP",
+  title: "Group",
+  titleAccent: "Sectors",
+  body: "Our companies operate independently while benefiting from the strategic direction, governance, technology capabilities and operational expertise of the Group.",
+};
+
+/* The group sectors, as on the current Group Sectors section. */
+export const sectors = [
+  {
+    index: "01",
+    title: "Technology",
+    summary: "Intelligent software and digital infrastructure.",
+    description: "Developing foundational software systems, cloud architectures, and enterprise technologies designed for long-term scalability and operational reliability.",
+    image: "/images/sectors/tech.png",
+    focusAreas: ["Enterprise Software", "Cloud Infrastructure", "Digital Security"],
+    group: "Core Sectors",
+  },
+  {
+    index: "02",
+    title: "Artificial Intelligence",
+    summary: "Data architectures and predictive models.",
+    description: "Deploying intelligent data systems and machine learning models that optimize operational decision-making and automate complex workflows.",
+    image: "/images/sectors/ai.png",
+    focusAreas: ["Machine Learning", "Predictive Analytics", "Data Engineering"],
+    group: "Core Sectors",
+  },
+  {
+    index: "03",
+    title: "Sports & Media",
+    summary: "Digital competition, talent, and entertainment.",
+    description: "Investing in modern sports platforms, broadcast media rights, digital tournament formats, and talent platforms engaging global audiences.",
+    image: "/images/sectors/sports.png",
+    focusAreas: ["Digital Broadcasting", "Tournament Platforms", "Media Production"],
+    group: "Core Sectors",
+  },
+  {
+    index: "04",
+    title: "Education",
+    summary: "Global learning platforms.",
+    description: "Building accessible learning environments and institutional platforms that provide specialized skills and professional accreditation.",
+    image: "/images/sectors/education.png",
+    focusAreas: ["EdTech Infrastructure", "Skill Accreditation", "Lifelong Learning"],
+    group: "Core Sectors",
+  },
+  {
+    index: "05",
+    title: "Hospitality",
+    summary: "Concepts combining design, service, and experience.",
+    description: "Creating curated hospitality destinations and dining concepts where architectural craft meets exceptional service and digital convenience.",
+    image: "/images/sectors/hospitality.png",
+    focusAreas: ["Boutique Destinations", "Culinary Concepts", "Guest Experience"],
+    group: "Core Sectors",
+  },
+  {
+    index: "06",
+    title: "Luxury Brands",
+    summary: "Refined fragrance and artisanal craft.",
+    description: "Developing luxury houses focused on fine perfumery, bespoke craftsmanship, and lifestyle goods built on timeless aesthetic standards.",
+    image: "/images/sectors/luxury.png",
+    focusAreas: ["Haute Perfumery", "Artisanal Craft", "Bespoke Design"],
+    group: "Core Sectors",
+  },
+  {
+    index: "07",
+    title: "Digital Commerce",
+    summary: "Commercial infrastructure for global scale.",
+    description: "Building transaction systems, merchant networks, and digital marketplace infrastructure that enable brands to expand internationally.",
+    image: "/images/sectors/commerce.png",
+    focusAreas: ["Global Marketplaces", "Transaction Platforms", "Fulfillment Tech"],
+    group: "Emerging Focus",
+  },
+  {
+    index: "08",
+    title: "Future Ventures",
+    summary: "Incubating ambitious ideas and markets.",
+    description: "Allocating capital and strategic resources to high-impact technologies, clean energy solutions, and emerging sectors reshaping the global economy.",
+    image: "/images/sectors/future.png",
+    focusAreas: ["Frontier Science", "Clean Technologies", "Strategic Capital"],
+    group: "Emerging Focus",
+  },
+];
