@@ -30,7 +30,7 @@ export default function FrameworkSequence() {
     <section
       id="how-we-build"
       aria-labelledby="bx-framework-title"
-      className="relative bg-surface text-ink border-b border-surface-line/60"
+      className="relative bg-paper text-ink border-b border-surface-line/60"
     >
       {choreo ? <Pinned /> : <Stacked />}
     </section>
@@ -87,7 +87,7 @@ function Pinned() {
 
   return (
     <div ref={ref} className="relative h-[320vh]">
-      <div className="sticky top-0 h-[100dvh] overflow-hidden bg-surface">
+      <div className="sticky top-0 h-[100dvh] overflow-hidden bg-paper">
         <div aria-hidden="true" className="bx-grid absolute inset-0 pointer-events-none opacity-60" />
         <div className="relative mx-auto grid h-full max-w-[1400px] grid-cols-12 gap-8 px-8 lg:px-14 pb-[6vh] pt-[clamp(88px,12vh,124px)]">
           {/* left: header and stage index */}
@@ -366,7 +366,7 @@ function Structure({ p, still }: { p?: MotionValue<number>; still?: number }) {
 
 function Stacked() {
   return (
-    <div className="bx-grid bg-surface px-6 pb-24 pt-20 md:px-12">
+    <div className="bx-grid bg-paper px-6 pb-24 pt-20 md:px-12">
       <div className="mx-auto max-w-[1280px]">
         <Head />
 
