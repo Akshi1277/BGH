@@ -5,12 +5,14 @@ import Icon from "../Icon";
 import MagneticButton from "../MagneticButton";
 import { EMAIL, contact } from "./content";
 import { EASE } from "./motion";
+import MeshFlow from "./MeshFlow";
 
 /*
  * LET'S BUILD: the page's closing call, on the deep ink used for The BRAHM Way. The invitation
  * as a large headline ending on "Building." in light pine, the email set large with an underline
- * that draws on hover, and the three ways in as rows that fill with pine from the left when
- * pointed at. Same words and the same email links as before.
+ * that draws on hover, and the three ways in as rows that answer the pointer quietly: the title
+ * steps in and turns light pine, a pine rule draws along the row's foot, the arrow moves on.
+ * All over a dot grid that bends toward the pointer. Same words and email links as before.
  */
 const rise = {
   initial: { opacity: 0, y: 18 },
@@ -22,8 +24,10 @@ export default function ContactSection() {
   const words = contact.title.split(" ");
   const lastWord = words.pop();
   return (
-    <section id="contact" aria-labelledby="bx-contact-title" className="section-y bg-[#101412] text-surface">
-      <div className="mx-auto max-w-[var(--spacing-container-max)] px-margin-mobile md:px-margin-desktop">
+    <section id="contact" aria-labelledby="bx-contact-title" className="section-y relative overflow-hidden bg-[#101412] text-surface">
+      {/* a dot grid that bends toward the pointer, kept quiet so the type stays first */}
+      <MeshFlow className="opacity-40" />
+      <div className="relative mx-auto max-w-[var(--spacing-container-max)] px-margin-mobile md:px-margin-desktop">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-end lg:gap-16">
           <motion.div {...rise} transition={{ duration: 0.7, ease: EASE }} className="lg:col-span-7">
             <span className="text-eyebrow mb-5 block font-mono-ui uppercase tracking-[0.2em] text-[#7FB79B]">{contact.eyebrow}</span>
@@ -55,13 +59,15 @@ export default function ContactSection() {
             <motion.li key={p.title} {...rise} transition={{ duration: 0.6, ease: EASE, delay: 0.08 * i }} className="border-b border-surface/15">
               <a
                 href={p.href}
-                className="group relative -mx-4 grid items-baseline gap-x-10 gap-y-3 overflow-hidden px-4 py-8 outline-none md:-mx-6 md:grid-cols-[minmax(0,5fr)_minmax(0,6fr)_auto] md:px-6 md:py-10"
+                className="group relative grid items-baseline gap-x-10 gap-y-3 py-8 outline-none md:grid-cols-[minmax(0,5fr)_minmax(0,6fr)_auto] md:py-10"
               >
-                {/* pine fills in from the left when pointed at or focused */}
-                <span aria-hidden="true" className="absolute inset-0 origin-left scale-x-0 bg-accent transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100 group-focus-visible:scale-x-100" />
-                <span className="relative font-display text-[clamp(28px,2.8vw,44px)] font-normal leading-tight text-surface">{p.title}</span>
+                {/* a pine rule draws along the row's foot when pointed at or focused */}
+                <span aria-hidden="true" className="absolute -bottom-px left-0 h-px w-full origin-left scale-x-0 bg-[#7FB79B] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100 group-focus-visible:scale-x-100" />
+                <span className="relative font-display text-[clamp(28px,2.8vw,44px)] font-normal leading-tight text-surface transition-[color,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-2 group-hover:text-[#7FB79B] group-focus-visible:text-[#7FB79B]">
+                  {p.title}
+                </span>
                 <span className="relative max-w-[56ch] text-[15px] font-light leading-relaxed text-surface/60 transition-colors duration-500 group-hover:text-surface/90">{p.description}</span>
-                <span aria-hidden="true" className="relative hidden text-surface/40 transition-all duration-500 group-hover:translate-x-2 group-hover:text-surface md:block">
+                <span aria-hidden="true" className="relative hidden text-surface/40 transition-all duration-500 group-hover:translate-x-2 group-hover:text-[#7FB79B] md:block">
                   <Icon name="arrow-right" size={22} />
                 </span>
               </a>
