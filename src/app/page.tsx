@@ -1,4 +1,4 @@
-import Hero from "@/components/Hero";
+import FilmHero from "@/components/brahm/FilmHero";
 import Clients from "@/components/Clients";
 import Mandate from "@/components/Mandate";
 import SectorReel from "@/components/brahm/SectorReel";
@@ -10,14 +10,15 @@ import DifferenceSequence from "@/components/brahm/DifferenceSequence";
 import BrahmFooter from "@/components/brahm/BrahmFooter";
 
 /*
- * Homepage in its original order. Approved redesigns replace their original counterparts:
+ * Homepage in its original order. Redesigns replace their original counterparts:
+ * FilmHero (was Hero),
  * SectorReel (was GroupSectors), FrameworkSequence (was HowWeBuild), PhilosophySection (was PhilosophyStandard), DifferenceSequence (was WhyBRAHM),
  * ContactSection (was CTA), BrahmFooter (was Footer).
  */
 export default function Home() {
   return (
     <main>
-      <Hero />
+      <FilmHero />
       <Clients />
       <Mandate />
       <SectorReel />
