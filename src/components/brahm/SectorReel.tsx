@@ -96,7 +96,7 @@ function SectorIndex({ active, onPick }: { active: number; onPick: (i: number) =
                     type="button"
                     onClick={() => onPick(i)}
                     aria-current={i === active}
-                    className={`text-left text-[15px] transition-colors ${i === active ? "text-ink underline decoration-accent decoration-1 underline-offset-[6px]" : "text-ink/45 hover:text-ink"}`}
+                    className={`py-2 text-left text-[15px] transition-colors lg:py-0 ${i === active ? "text-ink underline decoration-accent decoration-1 underline-offset-[6px]" : "text-ink/45 hover:text-ink"}`}
                   >
                     {s.title}
                   </button>

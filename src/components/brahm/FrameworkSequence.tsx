@@ -181,7 +181,7 @@ const COLS = [272, 336, 400, 480, 544, 608];
 const WINGS = [96, 640];
 const BAYS = [296, 360, 504, 568];
 
-function Elevation({ p, still }: { p?: MotionValue<number>; still?: number }) {
+function Elevation({ p, still, crop = false }: { p?: MotionValue<number>; still?: number; crop?: boolean }) {
   const fallback = useMotionValue(still ?? 1);
   const v = p ?? fallback;
   const seg = (k: number, a = 0, b = 0.7) => [(k + a) / N, (k + b) / N];
@@ -203,7 +203,7 @@ function Elevation({ p, still }: { p?: MotionValue<number>; still?: number }) {
   const vision = useRange(v, seg(5, 0.2, 0.9), [1, 0]);
 
   return (
-    <svg viewBox="60 80 760 320" className="h-full max-h-[min(56vh,520px)] w-full overflow-visible" aria-hidden="true">
+    <svg viewBox={crop ? "176 80 528 312" : "60 80 760 320"} className="h-full max-h-[min(56vh,520px)] w-full overflow-visible" aria-hidden="true">
       {/* the vision: the finished building, faint and dashed, until it is real */}
       <motion.g style={{ opacity: vision }}>
         <Ghost />
@@ -320,7 +320,7 @@ function Stacked() {
 
         {/* Visual structure preview */}
         <div className="mx-auto my-10 w-full max-w-[560px]">
-          <Elevation still={1} />
+          <Elevation still={1} crop />
         </div>
 
         {/* Step list for mobile/tablet */}
@@ -329,7 +329,7 @@ function Stacked() {
             <li key={s.title} className="grid grid-cols-[3rem_1fr] gap-x-4 border-b border-surface-line py-7">
               <span className="pt-3 font-mono-ui text-xs tracking-wider text-accent">{String(k + 1).padStart(2, "0")}</span>
               <div>
-                <h3 className="font-display text-[clamp(40px,10vw,64px)] font-normal leading-none text-ink">{s.title}</h3>
+                <h3 className="font-display text-[clamp(28px,7.4vw,40px)] font-normal leading-tight text-ink">{s.title}</h3>
                 <p className="mt-3 max-w-[52ch] text-[15px] font-light leading-relaxed text-ink-muted">{s.description}</p>
               </div>
             </li>

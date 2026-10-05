@@ -52,12 +52,12 @@ export default function BrahmFooter() {
                 <p className="font-mono-ui text-[11px] uppercase tracking-[0.18em] font-semibold text-accent">
                   {col.heading}
                 </p>
-                <ul className="mt-4 space-y-2.5">
+                <ul className="mt-2 space-y-0 md:mt-4 md:space-y-2.5">
                   {col.links.map((l) => (
                     <li key={l.label}>
                       <Link
                         href={l.href}
-                        className="inline-block text-[14px] md:text-[15px] font-light text-ink-muted transition-colors duration-200 hover:text-accent"
+                        className="inline-block py-2 text-[14px] md:py-0 md:text-[15px] font-light text-ink-muted transition-colors duration-200 hover:text-accent"
                       >
                         {l.label}
                       </Link>

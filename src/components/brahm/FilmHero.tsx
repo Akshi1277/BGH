@@ -26,7 +26,7 @@ export default function FilmHero() {
 function Copy({ className = "" }: { className?: string }) {
   return (
     <div className={`flex flex-col items-center px-5 text-center ${className}`}>
-      <h1 className="font-display text-[clamp(38px,min(4.8vw,7.6vh),76px)] font-normal leading-[1.05] tracking-[-0.015em] text-ink lg:whitespace-nowrap">
+      <h1 className="font-display text-[clamp(30px,min(8.4vw,7.6vh),76px)] md:text-[clamp(38px,min(4.8vw,7.6vh),76px)] font-normal leading-[1.05] tracking-[-0.015em] text-ink lg:whitespace-nowrap">
         Building Businesses <br className="lg:hidden" />
         That <span className="italic font-light text-accent">Endure.</span>
       </h1>
@@ -187,7 +187,7 @@ function Film() {
   }, []);
 
   return (
-    <section ref={trackRef} className="relative h-[420vh] bg-surface">
+    <section ref={trackRef} className="relative h-[300vh] bg-surface md:h-[420vh]">
       <div className="sticky top-0 h-[100svh] overflow-hidden">
         {/* the first frame, shown until the canvas has painted */}
         {poster && (

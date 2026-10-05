@@ -366,7 +366,7 @@ export default function Portfolio() {
                   href={v.href}
                   target={v.href.startsWith("http") ? "_blank" : undefined}
                   rel={v.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="relative inline-flex items-center gap-2 text-xs font-mono-ui uppercase tracking-[0.15em] text-accent font-bold mt-2 group/cta w-fit"
+                  className="relative inline-flex items-center gap-2 text-xs font-mono-ui uppercase tracking-[0.15em] text-accent font-bold mt-2 group/cta w-fit before:absolute before:-inset-x-2 before:-inset-y-3 before:content-['']"
                 >
                   {v.cta}
                   <Icon
@@ -384,7 +384,7 @@ export default function Portfolio() {
               <button
                 type="button"
                 onClick={() => setManuallyPaused((p) => !p)}
-                className="w-7 h-7 shrink-0 rounded-full border border-surface-line flex items-center justify-center text-ink-muted hover:text-accent hover:border-accent/40 transition-colors"
+                className="relative after:absolute after:-inset-2 after:content-[''] w-7 h-7 shrink-0 rounded-full border border-surface-line flex items-center justify-center text-ink-muted hover:text-accent hover:border-accent/40 transition-colors"
                 aria-label={manuallyPaused ? "Play carousel" : "Pause carousel"}
                 aria-pressed={manuallyPaused}
               >
@@ -396,7 +396,7 @@ export default function Portfolio() {
                     key={i}
                     onClick={() => setActive(i)}
                     className={[
-                      "rounded-full transition-all duration-300",
+                      "relative after:absolute after:-inset-3 after:content-[''] rounded-full transition-all duration-300",
                       i === active
                         ? "w-8 h-2 bg-accent shadow-sm"
                         : "w-2.5 h-2.5 bg-ink-muted/30 hover:bg-accent/60",
