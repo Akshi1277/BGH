@@ -16,7 +16,7 @@ import { useReducedMotion } from "framer-motion";
  * of the wheel still read as motion. Runs only while on screen; reduced motion gets a still.
  */
 const N = 128;
-const src = (set: "d" | "m", i: number) => `/images/hero/hall/${set}/${String(i).padStart(3, "0")}.webp`;
+const src = (set: "d" | "m", i: number) => `/images/hero/doors/${set}/${String(i).padStart(3, "0")}.webp`;
 
 export default function FilmHero() {
   return useReducedMotion() ? <Still /> : <Film />;
