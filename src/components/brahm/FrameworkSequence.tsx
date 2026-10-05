@@ -89,20 +89,20 @@ function Pinned() {
     <div ref={ref} className="relative h-[320vh]">
       <div className="sticky top-0 h-[100dvh] overflow-hidden bg-paper">
         <div aria-hidden="true" className="bx-grid absolute inset-0 pointer-events-none opacity-60" />
-        <div className="relative mx-auto grid h-full max-w-[1400px] grid-cols-12 gap-8 px-8 lg:px-14 pb-[6vh] pt-[clamp(88px,12vh,124px)]">
-          {/* left: header and stage index */}
-          <div className="col-span-4 flex flex-col justify-between z-10">
+        <div className="relative mx-auto grid h-full max-w-[1400px] grid-cols-12 grid-rows-[minmax(0,1fr)] gap-8 px-8 lg:px-14 pb-[6vh] pt-[clamp(88px,12vh,124px)]">
+          {/* left: header and stage index; the list takes whatever height is left, so all six stages fit short screens */}
+          <div className="col-span-4 flex min-h-0 flex-col z-10">
             <Head compact />
-            <ol className="mt-8 pr-4" aria-label="Framework stages">
+            <ol className="mt-[clamp(14px,3vh,32px)] flex min-h-0 flex-1 flex-col justify-end pr-4" aria-label="Framework stages">
               {framework.map((s, k) => {
                 const isActive = k === i;
                 const isPast = k < i;
                 return (
-                  <li key={s.title}>
+                  <li key={s.title} className="flex max-h-[52px] min-h-[30px] flex-1">
                     <button
                       type="button"
                       onClick={() => scrollToStep(k)}
-                      className="group flex w-full items-center gap-4 border-t border-surface-line/70 py-3 text-left transition-colors cursor-pointer"
+                      className="group flex w-full items-center gap-4 border-t border-surface-line/70 text-left transition-colors cursor-pointer"
                     >
                       <span
                         className={`font-mono-ui text-[12px] tracking-wider transition-colors duration-300 ${
