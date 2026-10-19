@@ -34,6 +34,8 @@ const STEP = 360 / REEL_SLOTS;
 const DWELL_MS = 6500;
 // After a drag, swipe, wheel turn or pick, autoplay stays off for this long
 const USER_HOLD_MS = 15000;
+// How long the far cards take to dissolve once the ring starts opening
+const SETTLE_MS = 1100;
 const DEAL = 0.3;
 const START = {
   radius: 460,
@@ -946,6 +948,7 @@ const ReelRing = forwardRef<ReelRingHandle, ReelRingProps>(function ReelRing(
 
     const reducedMotionMq = window.matchMedia("(prefers-reduced-motion: reduce)");
     let frameCount = 0;
+    let fadeStart = 0;
     let rafId = 0;
     let lastTime = performance.now();
 
@@ -997,8 +1000,14 @@ const ReelRing = forwardRef<ReelRingHandle, ReelRingProps>(function ReelRing(
       spinFactor += ((hoveredSlot >= 0 ? 0.2 : 1) - spinFactor) * Math.min(1, 0.08 * stepFrames);
 
       const form = formation.get();
-      const settledRaw = Math.max(0, Math.min(1, (exp - 0.15) / 0.68));
-      const settled = settledRaw * settledRaw * (3 - 2 * settledRaw);
+      // Fade the far cards out on the clock, not on zoom progress: the zoom curve is steepest mid-way, which
+      // squeezed the fade into ~250ms. Over SETTLE_MS they visibly slide toward the frame edges as they dissolve.
+      if (fadeStart === 0 && exp > 0.001) {
+        // A skip or reduced motion jumps the zoom straight to 1: settle immediately too
+        fadeStart = exp >= 0.999 ? now - SETTLE_MS : now;
+      }
+      const settledT = reduce ? 1 : fadeStart ? Math.min(1, (now - fadeStart) / SETTLE_MS) : 0;
+      const settled = 0.5 - 0.5 * Math.cos(Math.PI * settledT);
 
       if (!enteredRef.current) {
         // Smoothly rotate to an exact multiple of STEP (2 * STEP = 45deg) as the ring forms and opens, avoiding any post-entrance snap
@@ -1076,7 +1085,7 @@ const ReelRing = forwardRef<ReelRingHandle, ReelRingProps>(function ReelRing(
           const wanted = videoEl.dataset.src;
           if (
             wanted &&
-            settled > 0.6 &&
+            enteredRef.current &&
             !reduce &&
             videoEl.getAttribute("src") !== wanted
           ) {
@@ -1087,7 +1096,7 @@ const ReelRing = forwardRef<ReelRingHandle, ReelRingProps>(function ReelRing(
           if (videoEl.readyState >= 2 && videoEl.dataset.ready === undefined) {
             videoEl.dataset.ready = "";
           }
-          if (absAng <= 80 && settled > 0.6 && inViewRef.current && !reduce && videoEl.getAttribute("src")) {
+          if (absAng <= 80 && enteredRef.current && inViewRef.current && !reduce && videoEl.getAttribute("src")) {
             if (videoEl.paused) {
               videoEl.play().catch(() => {});
             }
