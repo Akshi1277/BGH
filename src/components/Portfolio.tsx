@@ -27,8 +27,8 @@ interface Venture {
 }
 
 const VENTURES: Venture[] = [
- 
- 
+
+
   {
     number: "03",
     tag: "SPORTS TECHNOLOGY",
@@ -36,14 +36,14 @@ const VENTURES: Venture[] = [
     name: "Talent Pro League",
     tagline: "Reimagining the Future of Football.",
     url: "talentproleague.co.uk",
-    imageSrc: "/tpl-preview.png",
+    imageSrc: "/tpl-preview-v2.webp",
     imageAlt: "Talent Pro League dashboard",
     logo: "/image copy 4.png",
     aspectRatio: "1892/952",
     description:
       "Talent Pro League is a next-generation football ecosystem connecting players, clubs, coaches, leagues and commercial partners through intelligent technology designed to modernise competition management, talent development and grassroots participation. Built to strengthen the future of football through innovation, accessibility and community.",
     cta: "Explore Talent Pro League",
-    href: "https://talentproleague.football",
+    href: "https://talentproleague.co.uk",
   },
   {
     number: "04",
@@ -68,15 +68,31 @@ const VENTURES: Venture[] = [
     name: "Alayn",
     tagline: "Redefining Hospitality Through Intelligence.",
     url: "alaynai.com",
-    imageSrc: "/image copy 5.png",
+    imageSrc: "/alayn-preview.webp",
     imageAlt: "Alayn dashboard",
     logo: "/alaynlogo.jpeg",
-    aspectRatio: "1896/952",
+    aspectRatio: "1892/952",
     description:
       "Alayn is an intelligent hospitality platform combining artificial intelligence, operational excellence and modern customer experience to help cafés, restaurants and hospitality groups operate more efficiently, grow sustainably and build stronger customer relationships. Designed to become the operating system behind the next generation of hospitality businesses.",
     cta: "Explore Alayn",
     href: "https://alaynai.com",
-  }, 
+  },
+  {
+    number: "06",
+    tag: "LUXURY PRINT & PACKAGING",
+    badge: "Group Company",
+    name: "Hannah Pixels",
+    tagline: "From Vision to Reality.",
+    url: "hannahpixels.com",
+    imageSrc: "/hannahpixels-preview.webp",
+    imageAlt: "Hannah Pixels website",
+    logo: "/hannahpixels-mark.png",
+    aspectRatio: "1892/952",
+    description:
+      "Hannah Pixels is an international luxury print and packaging house creating considered physical brand experiences. From rigid gift boxes and fragrance cartons to bespoke carry bags and fine print, every piece is crafted to turn a brand's vision into something people can hold, delivered to doorsteps worldwide.",
+    cta: "Explore Hannah Pixels",
+    href: "https://hannahpixels.com",
+  },
   // {
   //   number: "06",
   //   tag: "LUXURY CONSUMER BRANDS",
@@ -291,7 +307,7 @@ export default function Portfolio() {
                           src={venture.imageSrc!}
                           alt={venture.imageAlt}
                           fill
-                          sizes="(max-width: 640px) 260px, (max-width: 1024px) 320px, 400px"
+                          sizes="(max-width: 640px) 600px, 800px"
                           className="object-cover object-top"
                           loading="eager"
                         />
@@ -310,7 +326,7 @@ export default function Portfolio() {
                           loading="eager"
                         />
                       ) : (
-                        <span 
+                        <span
                           className="shrink-0 rounded-sm bg-accent flex items-center justify-center font-mono-ui text-[9px] text-surface font-bold"
                           style={{ height: 20, width: 20 }}
                         >

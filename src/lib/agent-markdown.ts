@@ -31,7 +31,7 @@ Headquartered in London. Built for international markets.
 3. **Talent Pro League** (Sports Technology)
    - *Tagline*: Reimagining the Future of Football.
    - *Description*: Digital football ecosystem connecting players, clubs, coaches, and leagues.
-   - *URL*: https://talentproleague.football
+   - *URL*: https://talentproleague.co.uk
 4. **London School of Academics & Arts - LSAA** (Education)
    - *Tagline*: British Education Without Borders.
    - *Description*: International digital learning combining British pedagogy with AI personalization.
@@ -39,6 +39,10 @@ Headquartered in London. Built for international markets.
    - *Tagline*: Redefining Hospitality Through Intelligence.
    - *Description*: Operational AI operating system for restaurants, cafes, and hospitality groups.
    - *URL*: https://alaynai.com
+6. **Hannah Pixels** (Luxury Print & Packaging)
+   - *Tagline*: From Vision to Reality.
+   - *Description*: International luxury print and packaging house creating bespoke packaging and fine print for brands worldwide.
+   - *URL*: https://hannahpixels.com
 
 ## Contact & Direct Channels
 - **General Inquiries**: brahmglobalholdings@gmail.com
@@ -74,9 +78,10 @@ Unlike conventional private equity or venture capital models that rely on rapid 
 ## 3. Group Structure & Operating Units
 - **ENIF Technologies**: Technology and AI engineering division (https://brahmglobalholdings.com/enif).
 - **7AURIGA**: Strategic branding, identity intelligence, and media (https://brahmglobalholdings.com/7auriga).
-- **Talent Pro League**: Next-generation football ecosystem and tournament platform (https://talentproleague.football).
+- **Talent Pro League**: Next-generation football ecosystem and tournament platform (https://talentproleague.co.uk).
 - **London School of Academics & Arts (LSAA)**: British international education platform.
 - **Alayn**: AI-driven hospitality operating system (https://alaynai.com).
+- **Hannah Pixels**: Luxury print and packaging house (https://hannahpixels.com).
 
 ## 4. Location & Contact
 - **Headquarters**: London, United Kingdom

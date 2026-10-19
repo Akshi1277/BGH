@@ -78,7 +78,7 @@ const COMPANIES = [
     name: "Talent Pro League",
     tag: "Sports Technology",
     desc: "Digital football ecosystem modernizing league management, talent identification, and grassroots competitions.",
-    href: "https://talentproleague.football",
+    href: "https://talentproleague.co.uk",
   },
   {
     name: "London School of Academics & Arts",
@@ -91,6 +91,12 @@ const COMPANIES = [
     tag: "Hospitality Technology",
     desc: "Intelligent operating system and customer relationship AI for restaurants, cafes, and hospitality groups.",
     href: "https://alaynai.com",
+  },
+  {
+    name: "Hannah Pixels",
+    tag: "Luxury Print & Packaging",
+    desc: "International luxury print and packaging house crafting bespoke boxes, carry bags, and fine print for brands worldwide.",
+    href: "https://hannahpixels.com",
   },
   // {
   //   name: "Luxure De Eden",
