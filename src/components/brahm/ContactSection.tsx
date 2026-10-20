@@ -24,7 +24,7 @@ export default function ContactSection() {
   const words = contact.title.split(" ");
   const lastWord = words.pop();
   return (
-    <section id="contact" aria-labelledby="bx-contact-title" className="section-y relative overflow-hidden bg-[#101412] text-surface">
+    <section id="contact" aria-labelledby="bx-contact-title" className="section-y scroll-mt-[calc(5rem+env(safe-area-inset-top,0px))] relative overflow-hidden bg-[#101412] text-surface">
       {/* a dot grid that bends toward the pointer, kept quiet so the type stays first */}
       <MeshFlow className="opacity-40" />
       <div className="relative mx-auto max-w-[var(--spacing-container-max)] px-margin-mobile md:px-margin-desktop">

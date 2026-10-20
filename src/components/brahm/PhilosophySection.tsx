@@ -15,7 +15,7 @@ import { EASE, useRange } from "./motion";
 export default function PhilosophySection() {
   const still = useReducedMotion() ?? false;
   return (
-    <section id="standard" aria-labelledby="bx-philosophy-title" className="section-y border-y border-surface-line bg-surface text-ink">
+    <section id="standard" aria-labelledby="bx-philosophy-title" className="section-y scroll-mt-[calc(5rem+env(safe-area-inset-top,0px))] border-y border-surface-line bg-surface text-ink">
       <div className="mx-auto grid max-w-[var(--spacing-container-max)] gap-14 px-margin-mobile md:px-margin-desktop lg:grid-cols-12 lg:gap-16">
         <motion.div
           initial={{ opacity: 0, y: 16 }}

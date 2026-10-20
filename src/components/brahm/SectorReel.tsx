@@ -120,7 +120,7 @@ export default function SectorReel() {
       data-stage=""
       data-focus={focused !== null ? String(focused) : undefined}
       aria-labelledby="bx-sectors-title"
-      className="bx-stage"
+      className="bx-stage scroll-mt-[calc(5rem+env(safe-area-inset-top,0px))]"
     >
       {/* 3D World Frame: houses both the tilted coin loader and the expanded 3D cylinder carousel */}
       <div

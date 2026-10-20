@@ -194,7 +194,7 @@ export default function Portfolio() {
     <section
       ref={sectionRef}
       id="companies"
-      className="section-y bg-surface text-paper-ink overflow-hidden border-y border-paper-line"
+      className="section-y scroll-mt-[calc(5rem+env(safe-area-inset-top,0px))] bg-surface text-paper-ink overflow-hidden border-y border-paper-line"
     >
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop">
 

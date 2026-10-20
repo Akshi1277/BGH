@@ -7,7 +7,7 @@ const ease = [0.25, 1, 0.5, 1] as const;
 
 export default function Mandate() {
   return (
-    <section id="vision" className="section-y bg-surface text-paper-ink border-b border-paper-line relative overflow-hidden">
+    <section id="vision" className="section-y scroll-mt-[calc(5rem+env(safe-area-inset-top,0px))] bg-surface text-paper-ink border-b border-paper-line relative overflow-hidden">
       <div className="max-w-[var(--spacing-container-max)] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
