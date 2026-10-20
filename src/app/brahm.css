@@ -3,15 +3,12 @@
  * Prefixed `bx-` so the standalone ENIF and 7AURIGA pages are never affected.
  */
 
-/* the faint architectural grid behind the pinned sections */
-.bx-grid {
-  background-image:
-    linear-gradient(to right, rgba(28, 31, 30, 0.055) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(28, 31, 30, 0.055) 1px, transparent 1px);
-  background-size: 96px 96px;
+/* Lenis drives the home page's scroll; native smooth scrolling would fight it */
+html.lenis {
+  scroll-behavior: auto;
 }
 
-/* ─── Group Sectors: 3D Reel Ring Loader & Cylinder Carousel ──────── */
+/* ─── Group Sectors: 3D Reel Ring & Cylinder Carousel ──────── */
 
 .bx-stage {
   --stage-top: 16px;
@@ -38,10 +35,6 @@
     opacity 0.6s;
   position: relative;
   overflow: hidden;
-}
-
-.bx-worldFrame[data-entering] {
-  z-index: 30;
 }
 
 .bx-worldFrame[data-immediate] {
@@ -332,129 +325,6 @@
   height: 6px;
 }
 
-/* ─── Loader Overlay ──────────────────────────────────────────────── */
-.bx-reelLoader {
-  z-index: 100;
-  background: var(--color-paper);
-  color: var(--color-ink);
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-}
-
-.bx-loaderBrand {
-  z-index: 102;
-  pointer-events: none;
-  transform-origin: 0 0;
-  font-family: var(--font-display);
-  letter-spacing: -0.03em;
-  margin: 0;
-  font-size: clamp(56px, 8vw, 132px);
-  line-height: 0.95;
-  display: flex;
-  position: absolute;
-  top: 3.2vh;
-  left: 4vw;
-}
-
-.bx-loaderMask {
-  vertical-align: bottom;
-  display: inline-block;
-  overflow: hidden;
-}
-
-.bx-loaderMask > span {
-  transform-origin: 0 100%;
-  display: inline-block;
-}
-
-.bx-loaderStatus {
-  flex-direction: column;
-  align-items: flex-end;
-  display: flex;
-  position: absolute;
-  bottom: 4vh;
-  right: 5vw;
-}
-
-.bx-loaderCaption {
-  font-family: var(--font-mono);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-ink-muted);
-  white-space: pre;
-  margin: 0 0 4px;
-  font-size: 12px;
-}
-
-.bx-loaderMask > .bx-odometer {
-  display: flex;
-}
-
-.bx-odometerDigit {
-  letter-spacing: 0;
-  height: 1.1em;
-  margin-right: -0.09em;
-  display: block;
-  overflow: hidden;
-}
-
-.bx-odometerDigit:last-child {
-  margin-right: 0;
-}
-
-.bx-odometerDigit > span {
-  flex-direction: column;
-  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-  display: flex;
-}
-
-.bx-odometerDigit > span > span {
-  height: 1.1em;
-  line-height: 1.1;
-}
-
-.bx-loaderCount {
-  font-family: var(--font-mono);
-  letter-spacing: -0.09em;
-  font-variant-numeric: tabular-nums;
-  align-items: flex-end;
-  font-size: clamp(80px, 12vw, 180px);
-  font-weight: 400;
-  line-height: 1.1;
-  display: flex;
-}
-
-.bx-loaderPercent {
-  letter-spacing: 0;
-  margin: 0 0 0.75em 22px;
-  font-size: 0.22em;
-}
-
-.bx-loaderCount > .bx-loaderMask {
-  padding: 0;
-  display: block;
-}
-
-.bx-reelLoader button {
-  border: 1px solid color-mix(in srgb, var(--color-ink) 13%, transparent);
-  background: transparent;
-  color: var(--color-ink);
-  cursor: pointer;
-  border-radius: 50%;
-  width: 44px;
-  height: 44px;
-  font-size: 18px;
-  position: absolute;
-  bottom: 5vh;
-  left: 4vw;
-  transition: transform 160ms ease-out;
-}
-
-.bx-reelLoader button:active {
-  transform: scale(0.97);
-}
-
 .bx-below {
   z-index: 4;
   flex: none;
@@ -484,15 +354,6 @@
   .bx-wallCenter {
     --wall-scale: 0.5;
   }
-  .bx-loaderStatus {
-    bottom: 7vh;
-  }
-  .bx-reelLoader button {
-    bottom: 8vh;
-  }
-  .bx-loaderBrand {
-    top: 2vh;
-  }
 }
 
 @media (max-height: 760px) {
@@ -518,10 +379,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .bx-reelLoader,
-  .bx-loaderBrand {
-    display: none;
-  }
   .bx-frame,
   .bx-cardLabel,
   .bx-cardLabel i {

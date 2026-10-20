@@ -17,14 +17,14 @@ import ReelRing, {
 } from "./ReelRing";
 
 /*
- * GROUP SECTORS — 3D REEL RING LOADER & CYLINDER CAROUSEL:
- * Adapted from avivashishta.com's 3D Reel Ring Hero:
+ * GROUP SECTORS — 3D REEL RING REVEAL & CYLINDER CAROUSEL:
+ * Adapted from avivashishta.com's 3D Reel Ring Hero, as a mid-page scroll-in reveal (the source's
+ * page-entrance loader — odometer, caption, skip button — is intentionally left out):
  * - 16 vertical cards (270 x 480 px, 9:16) sit on the inside of a cylinder.
  * - As the section enters view, cards start stacked at the front (-180 deg) of a small tilted
- *   ring (radius 460, tilt -22 deg, dutch roll -20 deg) and deal out around the circle while
- *   the tabular odometer climbs to 100%.
+ *   ring (radius 460, tilt -22 deg, dutch roll -20 deg) and deal out around the circle.
  * - When the deal completes and sector covers are decoded, the same ring opens into the
- *   full-width 3D carousel (radius 1800, level camera, perspective 450) with no scene handoff.
+ *   full-width 3D carousel (radius 1620, level camera, perspective 720; see ./reelMath) with no scene handoff.
  * - Autoplay dwells on each sector before stepping on, and waits while the pointer rests on the section.
  * - Visitors can drag, swipe, horizontal-scroll, step, or pick any sector below to turn the cylinder.
  */
@@ -129,7 +129,6 @@ export default function SectorReel() {
         data-entering={entered ? undefined : ""}
         data-immediate={immediate ? "" : undefined}
       >
-        <WorldBackdrop x={springX} y={springY} />
 
         <div className="bx-wallWrap">
           <ReelRing
@@ -167,7 +166,6 @@ export default function SectorReel() {
             </span>
             <h2
               id="bx-sectors-title"
-              data-sectors-wordmark=""
               className="font-display text-3xl leading-[1.06] tracking-tight text-ink sm:text-4xl lg:text-5xl"
             >
               <MaskedWords
@@ -372,25 +370,6 @@ function Details({ s, on }: { s: ReelSectorItem; on: boolean }) {
         ))}
       </p>
     </motion.div>
-  );
-}
-
-function WorldBackdrop({
-  x,
-  y,
-}: {
-  x: MotionValue<number>;
-  y: MotionValue<number>;
-}) {
-  const dx = useTransform(x, (v) => -v * 12);
-  const dy = useTransform(y, (v) => -v * 6);
-
-  return (
-    <div className="bx-worldView" aria-hidden="true">
-      <motion.div style={{ x: dx, y: dy }} className="absolute inset-0">
-        <div className="bx-grid absolute inset-0 opacity-60" />
-      </motion.div>
-    </div>
   );
 }
 

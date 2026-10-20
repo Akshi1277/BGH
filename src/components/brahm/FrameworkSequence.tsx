@@ -12,6 +12,7 @@ import {
 } from "framer-motion";
 import { framework, frameworkIntro } from "./content";
 import { EASE, stepOf, useChoreo, useRange } from "./motion";
+import { smoothScrollTo } from "./SmoothScroll";
 
 /*
  * THE BRAHM FRAMEWORK: How We Build. A pinned sequence: the six stages are listed on the left;
@@ -81,14 +82,13 @@ function Pinned() {
     const elementTop = rect.top + scrollY;
     const scrollableDistance = ref.current.scrollHeight - window.innerHeight;
     const targetScroll = elementTop + (idx / Math.max(1, N - 1)) * scrollableDistance;
-    window.scrollTo({ top: targetScroll, behavior: "smooth" });
+    smoothScrollTo(targetScroll);
     setI(idx);
   };
 
   return (
     <div ref={ref} className="relative h-[320vh]">
       <div className="sticky top-0 h-[100dvh] overflow-hidden bg-paper">
-        <div aria-hidden="true" className="bx-grid absolute inset-0 pointer-events-none opacity-60" />
         <div className="relative mx-auto grid h-full max-w-[1400px] grid-cols-12 grid-rows-[minmax(0,1fr)] gap-8 px-8 lg:px-14 pb-[6vh] pt-[clamp(88px,12vh,124px)]">
           {/* left: header and stage index; the list takes whatever height is left, so all six stages fit short screens */}
           <div className="col-span-4 flex min-h-0 flex-col z-10">
@@ -314,7 +314,7 @@ function Column({ x, v, from, to }: { x: number; v: MotionValue<number>; from: n
 
 function Stacked() {
   return (
-    <div className="bx-grid bg-paper px-6 pb-24 pt-20 md:px-12">
+    <div className="bg-paper px-6 pb-24 pt-20 md:px-12">
       <div className="mx-auto max-w-[1280px]">
         <Head />
 

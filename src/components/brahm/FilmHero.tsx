@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useReducedMotion } from "framer-motion";
+import { isSmoothScrolling } from "./SmoothScroll";
 
 /*
  * THE HERO: the doors open, as a film scrubbed by scroll. A single continuous shot (made in
@@ -144,7 +145,8 @@ function Film() {
       const r = track.getBoundingClientRect();
       const p = Math.min(1, Math.max(0, -r.top / Math.max(1, r.height - window.innerHeight)));
       const target = p * (N - 1);
-      shown += (target - shown) * 0.22;
+      // Lenis already eases the scroll itself; easing the frames as hard again would make the film lag
+      shown += (target - shown) * (isSmoothScrolling() ? 0.5 : 0.22);
       if (Math.abs(target - shown) < 0.02) shown = target;
       if (Math.round(shown) !== drawnIdx || dirty) draw();
       // the headline leaves first; the line about the institution arrives inside the hall

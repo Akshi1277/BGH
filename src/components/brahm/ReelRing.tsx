@@ -3,7 +3,6 @@
 import {
   useCallback,
   useEffect,
-  useInsertionEffect,
   useImperativeHandle,
   useRef,
   useState,
@@ -14,60 +13,35 @@ import {
   AnimatePresence,
   animate,
   motion,
-  useAnimationFrame,
   useMotionValue,
   useSpring,
   type MotionValue,
 } from "framer-motion";
 import { EASE } from "./motion";
+import {
+  REEL_SLOTS,
+  reelAngle,
+  reelPose,
+  reelScene,
+  reelSlotItem,
+} from "./reelMath";
 
 /*
  * ONE SCENE AT TWO MOMENTS:
  * 16 vertical cards (270 x 480 px, 9:16) sit on the inside of a cylinder.
  * Two motion values drive everything: `formation` (0 -> 1) and `expansion` (0 -> 1).
- * One pure function `reelPose(angle, formation, scene)` computes every card's 3D transform.
+ * One pure function `reelPose(angle, formation, scene)` (see ./reelMath) computes every card's 3D transform.
  */
 
-export const REEL_SLOTS = 16;
 const STEP = 360 / REEL_SLOTS;
 // Autoplay dwells on each sector long enough to read its details, then steps one card forward
-const DWELL_MS = 6500;
+const DWELL_MS = 4000;
 // After a drag, swipe, wheel turn or pick, autoplay stays off for this long
 const USER_HOLD_MS = 15000;
 // How long the far cards take to dissolve once the ring starts opening
 const SETTLE_MS = 1100;
-const DEAL = 0.3;
-const START = {
-  radius: 460,
-  perspective: 1000,
-  tilt: -22,
-  roll: -20,
-  scale: 0.52,
-};
-
-export interface ReelScene {
-  radius: number;
-  anchor: number;
-  perspective: number;
-  tilt: number;
-  roll: number;
-  orientation: number;
-  scale: number;
-  expansion: number;
-}
-
-export interface ReelPose {
-  x: number;
-  y: number;
-  z: number;
-  yaw: number;
-  roll: number;
-  scale: number;
-  scaleX: number;
-  scaleY: number;
-  appear: number;
-  behindCamera: boolean;
-}
+// Only the front card and its two neighbours decode video; angled edge cards show their poster
+const PLAY_BAND = STEP * 1.5;
 
 export interface ReelSectorItem {
   index: string;
@@ -84,238 +58,36 @@ export interface ReelRingHandle {
   spinToItem: (itemIndex: number) => void;
 }
 
-export function reelAngle(slot: number, angle: number, slots = REEL_SLOTS): number {
-  return ((((slot * 360) / slots + angle + 180) % 360) + 360) % 360 - 180;
-}
-
-export function reelSlotItem(
-  slot: number,
-  angle: number,
-  total: number,
-  slots = REEL_SLOTS,
-): number {
-  const lap = Math.floor(((360 * slot) / slots + angle + 180) / 360);
-  return (((slot - lap * slots) % total) + total) % total;
-}
-
-export function reelScene(expansion: number, camera = 720): ReelScene {
-  const tilt = START.tilt * (1 - expansion);
-  const radius = START.radius + (1620 - START.radius) * expansion;
-  const anchor =
-    -radius * Math.sin((tilt * Math.PI) / 180) +
-    START.radius * Math.sin((START.tilt * Math.PI) / 180) * (1 - expansion);
-
-  return {
-    radius,
-    anchor,
-    perspective: START.perspective + (camera - START.perspective) * expansion,
-    tilt,
-    roll: START.roll * (1 - expansion),
-    orientation: 1,
-    scale: START.scale + (2.05 - START.scale) * expansion * expansion,
-    expansion,
-  };
-}
-
-export function reelPose(
-  angle: number,
-  formation: number,
-  scene: ReelScene,
-): ReelPose {
-  const around = (((angle + 180) % 360) + 360) % 360;
-  const order = around / 360;
-  const t = Math.max(0, Math.min(1, (formation - order * (1 - DEAL)) / DEAL));
-  const dealt = 1 - (1 - t) ** 3;
-  const placed = -180 + around * dealt;
-  const r = (placed * Math.PI) / 180;
-  const radius = scene.radius - (1 - dealt) * order * 24;
-  const x = -Math.sin(r) * radius;
-  const z = -Math.cos(r) * radius;
-  const cameraZ = z * Math.cos((scene.tilt * Math.PI) / 180);
-
-  // Compensate for wide-angle rectilinear horizontal stretching on side cylinder cards
-  const cosR = Math.cos(r);
-  const rawStretch =
-    cosR > 0.05
-      ? (scene.radius + scene.perspective * cosR) /
-        Math.max(120, scene.perspective + scene.radius * cosR)
-      : 1;
-  const stretch = Math.max(1, Math.min(2.1, rawStretch));
-  const scaleX = scene.scale / (1 + (stretch - 1) * 0.68 * scene.expansion);
-  const scaleY = scene.scale;
-
-  return {
-    x,
-    y: 0,
-    z,
-    yaw: placed * scene.orientation,
-    roll: 0,
-    scale: scene.scale,
-    scaleX,
-    scaleY,
-    appear: Math.min(1, t * 2.5),
-    behindCamera: cameraZ >= scene.perspective - 70,
-  };
-}
-
-export function verifyReelPose(): boolean {
-  const s0 = reelScene(0);
-  const s1 = reelScene(1);
-  if (Math.abs(s0.radius - 460) > 1e-6 || Math.abs(s1.radius - 1620) > 1e-6) {
-    return false;
-  }
-  for (let slot = 0; slot < REEL_SLOTS; slot++) {
-    const a = reelAngle(slot, 0, REEL_SLOTS);
-    const p = reelPose(a, 1, s1);
-    if (Math.abs(Math.hypot(p.x, p.z) - s1.radius) > 1e-4) return false;
-  }
-  return true;
-}
-
-const SCRAMBLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&*+=";
-
-function ScrambleText({ text, delay = 0 }: { text: string; delay?: number }) {
-  const [out, setOut] = useState("");
-  useEffect(() => {
-    let raf = 0;
-    const t0 = performance.now() + delay;
-    const tick = () => {
-      const elapsed = performance.now() - t0;
-      if (elapsed >= 0) {
-        const solved = Math.floor(elapsed / 45);
-        setOut(
-          [...text]
-            .map((ch, idx) =>
-              ch === " " || idx < solved
-                ? ch
-                : idx < solved + 6
-                  ? SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)]
-                  : "",
-            )
-            .join(""),
-        );
-        if (solved >= text.length) return;
-      }
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [text, delay]);
-
-  return <>{out || "\u00A0"}</>;
-}
-
-function Odometer({ value }: { value: number }) {
-  const digits = Math.max(0, Math.min(999, value))
-    .toString()
-    .padStart(3, "0")
-    .split("")
-    .map(Number);
-
-  return (
-    <span className="bx-odometer">
-      {digits.map((d, idx) => (
-        <span key={idx} className="bx-odometerDigit">
-          <span style={{ transform: `translateY(${-(10 * d)}%)` }}>
-            {Array.from({ length: 10 }, (_, n) => (
-              <span key={n}>{n}</span>
-            ))}
-          </span>
-        </span>
-      ))}
-    </span>
-  );
-}
-
-interface ReelLoaderProps {
+interface ReelEntranceOptions {
   active: boolean;
   loading: boolean;
-  ready: number;
-  total: number;
   formation: MotionValue<number>;
   expansion: MotionValue<number>;
-  skip: MotionValue<number>;
-  stageRef: React.RefObject<HTMLElement | null>;
   onChromeStart: (immediate?: boolean) => void;
   onComplete: () => void;
 }
 
-function ReelLoader({
+/*
+ * Scroll-in reveal: deal the cards out, wait for the covers, then open the ring.
+ * The source prompt wraps this in a page-entrance loader (odometer, caption, skip button);
+ * mid-page that read as "the site is still loading", so only the motion is kept.
+ */
+function useReelEntrance({
   active,
   loading,
-  ready,
-  total,
   formation,
   expansion,
-  skip,
-  stageRef,
   onChromeStart,
   onComplete,
-}: ReelLoaderProps) {
-  const [showBackdrop, setShowBackdrop] = useState(true);
-  const [showBrand, setShowBrand] = useState(true);
-  const brandRef = useRef<HTMLParagraphElement>(null);
-  const skippedRef = useRef(false);
+}: ReelEntranceOptions) {
   const finishedRef = useRef(false);
-  const backdropRef = useRef<HTMLDivElement>(null);
   const loadingRef = useRef(loading);
   const tryRevealRef = useRef<() => void>(() => {});
-  const progressMv = useMotionValue(0);
-  const [displayPct, setDisplayPct] = useState(0);
-
-  useInsertionEffect(() => {
-    return progressMv.on("change", (v) => setDisplayPct(Math.round(v)));
-  }, [progressMv]);
 
   useEffect(() => {
     loadingRef.current = loading;
     tryRevealRef.current();
   }, [loading]);
-
-  useEffect(() => {
-    const targetPct = total ? (ready / total) * 100 : 100;
-    const ctrl = animate(progressMv, targetPct, {
-      duration: 0.55,
-      ease: EASE,
-    });
-    return () => ctrl.stop();
-  }, [progressMv, ready, total]);
-
-  // Measure the real target heading in the section below and fly the loader wordmark into it
-  useEffect(() => {
-    if (showBackdrop || !showBrand) return;
-    const brandEl = brandRef.current;
-    const targetEl = stageRef.current?.querySelector("[data-sectors-wordmark]");
-    if (skippedRef.current || !brandEl || !targetEl) {
-      setShowBrand(false);
-      return;
-    }
-    const fromRect = brandEl.getBoundingClientRect();
-    const toRect = targetEl.getBoundingClientRect();
-    const scale =
-      parseFloat(getComputedStyle(targetEl).fontSize) /
-      Math.max(1, parseFloat(getComputedStyle(brandEl).fontSize));
-
-    const moveCtrl = animate(
-      brandEl,
-      {
-        x: toRect.left - fromRect.left,
-        y: toRect.top - fromRect.top,
-        scale,
-      },
-      { duration: 1.1, ease: [0.65, 0, 0.35, 1] },
-    );
-    const fadeCtrl = brandEl.lastElementChild
-      ? animate(brandEl, { opacity: [1, 1, 0] }, { duration: 1.1, times: [0, 0.75, 1] })
-      : null;
-    const timer = window.setTimeout(() => setShowBrand(false), 1120);
-
-    return () => {
-      moveCtrl.stop();
-      fadeCtrl?.stop();
-      clearTimeout(timer);
-    };
-  }, [showBackdrop, showBrand, stageRef]);
 
   useEffect(() => {
     if (finishedRef.current) return;
@@ -335,40 +107,26 @@ function ReelLoader({
 
     const jumpToEnd = () => {
       if (cancelled || finishedRef.current) return;
-      skippedRef.current = true;
       revealing = true;
       controls.forEach((c) => c.stop());
-      if (backdropRef.current) backdropRef.current.style.display = "none";
       formation.jump(1);
       expansion.jump(1);
-      setShowBackdrop(false);
-      setShowBrand(false);
       finish(true);
     };
 
-    if (mq.matches || skip.get() > 0) {
+    if (mq.matches) {
       jumpToEnd();
       return;
     }
 
-    const unsubSkip = skip.on("change", jumpToEnd);
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" || e.key === "Tab") {
-        jumpToEnd();
-      }
-    };
     const onMotionChange = () => {
       if (mq.matches) jumpToEnd();
     };
-
-    window.addEventListener("keydown", onKeyDown);
     mq.addEventListener("change", onMotionChange);
 
     if (!active) {
       return () => {
         cancelled = true;
-        unsubSkip();
-        window.removeEventListener("keydown", onKeyDown);
         mq.removeEventListener("change", onMotionChange);
       };
     }
@@ -376,7 +134,6 @@ function ReelLoader({
     tryRevealRef.current = () => {
       if (!formed || loadingRef.current || revealing || cancelled || finishedRef.current) return;
       revealing = true;
-      setShowBackdrop(false);
       controls.push(
         animate(expansion, 1, {
           duration: 1.35,
@@ -384,6 +141,7 @@ function ReelLoader({
           onComplete: () => finish(false),
         }),
       );
+      // Overlapping handoff: the copy below starts while the cards are still settling
       controls.push(
         animate(0, 1, {
           duration: 0.75,
@@ -400,10 +158,6 @@ function ReelLoader({
         ease: "linear",
         onComplete: () => {
           if (cancelled || finishedRef.current) return;
-          if (mq.matches || skip.get() > 0) {
-            jumpToEnd();
-            return;
-          }
           formed = true;
           tryRevealRef.current();
         },
@@ -413,88 +167,9 @@ function ReelLoader({
     return () => {
       cancelled = true;
       controls.forEach((c) => c.stop());
-      unsubSkip();
-      window.removeEventListener("keydown", onKeyDown);
       mq.removeEventListener("change", onMotionChange);
     };
-  }, [active, formation, expansion, skip, onChromeStart, onComplete]);
-
-  return (
-    <>
-      {showBrand && (
-        <p ref={brandRef} className="bx-loaderBrand" aria-hidden="true">
-          {"Sectors.".split("").map((ch, idx) => (
-            <span key={idx} className="bx-loaderMask">
-              <motion.span
-                initial={{ y: "105%", rotate: 8 }}
-                animate={{ y: 0, rotate: 0 }}
-                transition={{
-                  duration: 1,
-                  delay: 0.1 + idx * 0.08,
-                  ease: EASE,
-                }}
-              >
-                {ch}
-              </motion.span>
-            </span>
-          ))}
-        </p>
-      )}
-
-      <AnimatePresence>
-        {showBackdrop && (
-          <motion.div
-            ref={backdropRef}
-            className="bx-reelLoader"
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.9, ease: EASE }}
-          >
-            <div className="bx-loaderStatus">
-              <motion.p
-                className="bx-loaderCaption"
-                aria-hidden="true"
-                exit={{ opacity: 0, transition: { duration: 0.3 } }}
-              >
-                <ScrambleText text="Loading Sectors" delay={200} />
-              </motion.p>
-              <div
-                className="bx-loaderCount"
-                role="progressbar"
-                aria-label="Preparing Group Sectors"
-                aria-valuemin={0}
-                aria-valuemax={100}
-                aria-valuenow={total ? Math.round((ready / total) * 100) : 100}
-              >
-                <motion.span
-                  className="bx-loaderMask"
-                  initial={{ y: "100%" }}
-                  animate={{ y: 0 }}
-                  exit={{
-                    y: "-100%",
-                    transition: { duration: 0.5, ease: [0.6, 0, 0.8, 0.4] },
-                  }}
-                  transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
-                >
-                  <Odometer value={displayPct} />
-                </motion.span>
-                <span className="bx-loaderPercent">%</span>
-              </div>
-            </div>
-
-            <button
-              type="button"
-              aria-label="Skip entrance animation"
-              title="Skip animation"
-              onClick={() => skip.set(skip.get() + 1)}
-            >
-              ↗
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
-  );
+  }, [active, formation, expansion, onChromeStart, onComplete]);
 }
 
 function useSectorAssetProgress(items: ReelSectorItem[], enabled: boolean) {
@@ -709,11 +384,10 @@ const ReelRing = forwardRef<ReelRingHandle, ReelRingProps>(function ReelRing(
     if (near) wakeRef.current();
   }, [near]);
 
-  const { ready, total, loading } = useSectorAssetProgress(items, hasBeenNear);
+  const { loading } = useSectorAssetProgress(items, hasBeenNear);
 
   const formation = useMotionValue(0);
   const expansion = useMotionValue(0);
-  const skip = useMotionValue(0);
 
   const targetAngle = useMotionValue(0);
   const springAngle = useSpring(targetAngle, {
@@ -728,14 +402,19 @@ const ReelRing = forwardRef<ReelRingHandle, ReelRingProps>(function ReelRing(
   );
   const slotItemsRef = useRef(slotItems);
 
-  useEffect(() => {
-    verifyReelPose();
-  }, []);
-
   const handleEntranceDone = useCallback(() => {
     enteredRef.current = true;
     onEntranceComplete();
   }, [onEntranceComplete]);
+
+  useReelEntrance({
+    active: inView,
+    loading,
+    formation,
+    expansion,
+    onChromeStart,
+    onComplete: handleEntranceDone,
+  });
 
   const spinToItem = useCallback(
     (itemIdx: number) => {
@@ -1081,10 +760,12 @@ const ReelRing = forwardRef<ReelRingHandle, ReelRingProps>(function ReelRing(
         setVis("visible");
 
         if (videoEl) {
-          // Attach (or swap, after slot recycling) the clip only for settled, facing cards
+          // Attach (or swap, after slot recycling) the clip only for settled cards near the front;
+          // the band is one card wider than PLAY_BAND so the next card is buffered before it plays
           const wanted = videoEl.dataset.src;
           if (
             wanted &&
+            absAng <= PLAY_BAND + STEP &&
             enteredRef.current &&
             !reduce &&
             videoEl.getAttribute("src") !== wanted
@@ -1096,7 +777,7 @@ const ReelRing = forwardRef<ReelRingHandle, ReelRingProps>(function ReelRing(
           if (videoEl.readyState >= 2 && videoEl.dataset.ready === undefined) {
             videoEl.dataset.ready = "";
           }
-          if (absAng <= 80 && enteredRef.current && inViewRef.current && !reduce && videoEl.getAttribute("src")) {
+          if (absAng <= PLAY_BAND && enteredRef.current && inViewRef.current && !reduce && videoEl.getAttribute("src")) {
             if (videoEl.paused) {
               videoEl.play().catch(() => {});
             }
@@ -1193,20 +874,8 @@ const ReelRing = forwardRef<ReelRingHandle, ReelRingProps>(function ReelRing(
 
   return (
     <>
-      <ReelLoader
-        active={inView}
-        ready={ready}
-        total={total}
-        loading={loading}
-        formation={formation}
-        expansion={expansion}
-        skip={skip}
-        stageRef={stageRef}
-        onChromeStart={onChromeStart}
-        onComplete={handleEntranceDone}
-      />
       <noscript>
-        <style>{`.bx-reelLoader{display:none}[data-card]{opacity:1!important}`}</style>
+        <style>{`[data-card]{opacity:1!important}`}</style>
       </noscript>
       <div
         ref={wallRef}

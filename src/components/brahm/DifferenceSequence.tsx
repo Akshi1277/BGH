@@ -44,7 +44,6 @@ function Pinned() {
   return (
     <div ref={ref} className="relative h-[240vh]">
       <div className="sticky top-0 flex h-[100dvh] flex-col overflow-hidden bg-paper">
-        <div aria-hidden="true" className="bx-grid pointer-events-none absolute inset-0 opacity-50" />
         <div className="relative mx-auto flex w-full max-w-[1440px] flex-1 flex-col px-10 pb-[7vh] pt-[clamp(96px,14vh,136px)]">
           <Head />
           <div className="mt-[clamp(28px,5vh,56px)] flex min-h-0 flex-1 gap-3">

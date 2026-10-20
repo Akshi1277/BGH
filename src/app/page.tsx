@@ -8,16 +8,19 @@ import ContactSection from "@/components/brahm/ContactSection";
 import FrameworkSequence from "@/components/brahm/FrameworkSequence";
 import DifferenceSequence from "@/components/brahm/DifferenceSequence";
 import BrahmFooter from "@/components/brahm/BrahmFooter";
+import SmoothScroll from "@/components/brahm/SmoothScroll";
 
 /*
  * Homepage in its original order. Redesigns replace their original counterparts:
  * FilmHero (was Hero),
  * SectorReel (was GroupSectors), FrameworkSequence (was HowWeBuild), PhilosophySection (was PhilosophyStandard), DifferenceSequence (was WhyBRAHM),
  * ContactSection (was CTA), BrahmFooter (was Footer).
+ * SmoothScroll eases wheel scrolling for this page only; the ENIF and 7AURIGA pages keep native scroll.
  */
 export default function Home() {
   return (
     <main>
+      <SmoothScroll />
       <FilmHero />
       <Clients />
       <Mandate />
