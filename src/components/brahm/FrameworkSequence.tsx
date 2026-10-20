@@ -17,7 +17,7 @@ import { smoothScrollTo } from "./SmoothScroll";
 /*
  * THE BRAHM FRAMEWORK: How We Build. A pinned sequence: the six stages are listed on the left;
  * the current stage is named beneath a drawing of a building that is put up stage by stage as
- * you scroll. A survey marker on an empty plot (Identify), the site set out and measured
+ * you scroll, each stage labelled by a small callout. A lens finding the building on an empty plot (Identify), the site set out and measured
  * (Validate), plinth, columns and beam (Build), light in the door and windows (Operate), wings
  * either side (Grow), and the pediment and foundation that finish it while the construction
  * guides fade (Endure). Same words as before.
@@ -209,14 +209,9 @@ function Elevation({ p, still, crop = false }: { p?: MotionValue<number>; still?
         <Ghost />
       </motion.g>
 
-      {/* 1 identify: ground, and a survey marker on the empty plot */}
+      {/* 1 identify: the ground; a lens sweeps the empty plot and finds the building it could hold */}
       <line x1={40} y1={360} x2={840} y2={360} {...stroke} stroke={INK} strokeWidth={1.2} />
-      <g>
-        <line x1={440} y1={360} x2={440} y2={318} {...stroke} stroke={PINE} strokeWidth={1.4} />
-        <path d="M440 318 L462 326 L440 334 Z" fill={PINE} opacity={0.85} />
-        <circle cx={440} cy={360} r={4} fill={PINE} />
-        <line x1={424} y1={360} x2={456} y2={360} {...stroke} stroke={PINE} strokeWidth={1.4} />
-      </g>
+      {!still && <Lens v={v} seg={seg} />}
 
       {/* 2 validate: setting-out lines, the footprint, and its dimension */}
       <motion.g style={{ opacity: guides }}>
@@ -272,13 +267,92 @@ function Elevation({ p, still, crop = false }: { p?: MotionValue<number>; still?
       <motion.path d="M262 158 L440 112 L618 158" {...stroke} stroke={PINE} strokeOpacity={0.45} style={{ pathLength: endure, opacity: endure }} />
       <motion.line x1={70} y1={366} x2={810} y2={366} {...stroke} stroke={PINE} strokeWidth={2.6} style={{ pathLength: endure, opacity: endure }} />
       <motion.line x1={96} y1={374} x2={784} y2={374} {...stroke} stroke={PINE} strokeOpacity={0.4} strokeWidth={1.4} style={{ pathLength: endure, opacity: endure }} />
+
+      {/* plain-language callouts, one per stage, so the drawing explains itself */}
+      {!still && CALLOUTS.map((c, k) => <Callout key={c.label} v={v} k={k} {...c} />)}
     </svg>
   );
 }
 
-/* The whole building as a faint dashed outline: what the plot is for, seen before it is built. */
-function Ghost() {
-  const g = { ...stroke, stroke: "rgba(28, 31, 30, 0.16)", strokeDasharray: "3 6" };
+/* What each addition to the drawing means, pinned to the part that just appeared. */
+const CALLOUTS: { label: string; at: [number, number]; to: [number, number]; side: "start" | "middle" | "end" }[] = [
+  { label: "The opportunity", at: [497, 193], to: [566, 140], side: "start" },
+  { label: "Tested & measured", at: [240, 250], to: [176, 214], side: "end" },
+  { label: "Foundations up", at: [272, 262], to: [176, 226], side: "end" },
+  { label: "Open for business", at: [582, 266], to: [680, 226], side: "start" },
+  { label: "New markets", at: [712, 232], to: [712, 210], side: "middle" },
+  { label: "Built to last", at: [560, 136], to: [640, 112], side: "start" },
+];
+
+function Callout({ v, k, label, at, to, side }: { v: MotionValue<number>; k: number } & (typeof CALLOUTS)[number]) {
+  // fades in once its stage's part has started to appear, and out as the next stage begins
+  const last = k === N - 1;
+  const opacity = useRange(
+    v,
+    last ? [(k + 0.3) / N, (k + 0.55) / N] : [(k + 0.3) / N, (k + 0.55) / N, (k + 0.95) / N, (k + 1.05) / N],
+    last ? [0, 1] : [0, 1, 1, 0],
+  );
+  // a "middle" label sits centred above the end of its leader; the others run off to one side
+  const tx = side === "start" ? to[0] + 6 : side === "end" ? to[0] - 6 : to[0];
+  const ty = side === "middle" ? to[1] - 6 : to[1] + 4;
+  return (
+    <motion.g style={{ opacity }}>
+      <circle cx={at[0]} cy={at[1]} r={2.6} fill={PINE} />
+      <line x1={at[0]} y1={at[1]} x2={to[0]} y2={to[1]} {...stroke} stroke={PINE} strokeWidth={1} />
+      <text
+        x={tx}
+        y={ty}
+        textAnchor={side}
+        fill={PINE}
+        fontSize={11}
+        letterSpacing="0.12em"
+        style={{ fontFamily: "var(--font-mono)", textTransform: "uppercase" }}
+      >
+        {label}
+      </text>
+    </motion.g>
+  );
+}
+
+/* Identify: a magnifying lens slides along the empty ground and settles on the plot; inside it
+   the future building shows clearly, while outside it stays a faint dashed idea. */
+const LENS = { r: 80, cy: 250, from: 200, to: 440 };
+
+function Lens({ v, seg }: { v: MotionValue<number>; seg: (k: number, a?: number, b?: number) => number[] }) {
+  const x = useRange(v, seg(0, 0.05, 0.6), [LENS.from - LENS.to, 0]);
+  const opacity = useRange(v, seg(1, 0, 0.3), [1, 0]);
+  return (
+    <motion.g style={{ opacity }}>
+      <defs>
+        <clipPath id="bx-lens-clip">
+          <motion.circle cx={LENS.to} cy={LENS.cy} r={LENS.r} style={{ x }} />
+        </clipPath>
+      </defs>
+      <g clipPath="url(#bx-lens-clip)">
+        <Ghost tone={PINE} />
+      </g>
+      <motion.g style={{ x }}>
+        <circle cx={LENS.to} cy={LENS.cy} r={LENS.r} fill="rgba(31, 92, 67, 0.04)" vectorEffect="non-scaling-stroke" stroke={PINE} strokeWidth={1.6} />
+        <line
+          x1={LENS.to + LENS.r * 0.71}
+          y1={LENS.cy + LENS.r * 0.71}
+          x2={LENS.to + LENS.r * 1.35}
+          y2={LENS.cy + LENS.r * 1.35}
+          {...stroke}
+          stroke={PINE}
+          strokeWidth={4}
+        />
+      </motion.g>
+    </motion.g>
+  );
+}
+
+/* The whole building as a faint dashed outline: what the plot is for, seen before it is built.
+   With a tone (inside the Identify lens) it is drawn solid and clear instead. */
+function Ghost({ tone }: { tone?: string }) {
+  const g = tone
+    ? { ...stroke, stroke: tone, strokeOpacity: 0.75, strokeWidth: 1.3 }
+    : { ...stroke, stroke: "rgba(28, 31, 30, 0.16)", strokeDasharray: "3 6" };
   return (
     <g>
       <path d="M214 170 L440 98 L666 170" {...g} />
