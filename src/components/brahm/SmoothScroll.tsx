@@ -35,8 +35,7 @@ export default function SmoothScroll() {
     const onClick = (e: MouseEvent) => {
       if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       const link = (e.target as Element | null)?.closest?.<HTMLAnchorElement>("a[href*='#']");
-      // Sector cards are #anchors for no-JS fallback only; the reel handles their clicks
-      if (!link || link.closest("[data-card]")) return;
+      if (!link) return;
       const url = new URL(link.href);
       if (url.origin !== location.origin || url.pathname !== location.pathname || !url.hash) return;
       const target = document.getElementById(decodeURIComponent(url.hash.slice(1)));

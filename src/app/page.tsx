@@ -1,7 +1,7 @@
 import FilmHero from "@/components/brahm/FilmHero";
 import Clients from "@/components/Clients";
 import Mandate from "@/components/Mandate";
-import SectorReel from "@/components/brahm/SectorReel";
+import SectorDirectory from "@/components/brahm/SectorDirectory";
 import Portfolio from "@/components/Portfolio";
 import PhilosophySection from "@/components/brahm/PhilosophySection";
 import ContactSection from "@/components/brahm/ContactSection";
@@ -13,7 +13,7 @@ import SmoothScroll from "@/components/brahm/SmoothScroll";
 /*
  * Homepage in its original order. Redesigns replace their original counterparts:
  * FilmHero (was Hero),
- * SectorReel (was GroupSectors), FrameworkSequence (was HowWeBuild), PhilosophySection (was PhilosophyStandard), DifferenceSequence (was WhyBRAHM),
+ * SectorDirectory (was GroupSectors), FrameworkSequence (was HowWeBuild), PhilosophySection (was PhilosophyStandard), DifferenceSequence (was WhyBRAHM),
  * ContactSection (was CTA), BrahmFooter (was Footer).
  * SmoothScroll eases wheel scrolling for this page only; the ENIF and 7AURIGA pages keep native scroll.
  */
@@ -24,7 +24,7 @@ export default function Home() {
       <FilmHero />
       <Clients />
       <Mandate />
-      <SectorReel />
+      <SectorDirectory />
       <Portfolio />
       <FrameworkSequence />
       <PhilosophySection />

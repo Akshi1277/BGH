@@ -1,1 +1,1 @@
-export { default } from "@/components/brahm/SectorReel";
+export { default } from "@/components/brahm/SectorDirectory";
