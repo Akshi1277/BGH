@@ -10,7 +10,7 @@ import { EASE } from "./motion";
  * GROUP SECTORS: a sector directory. Every sector stays visible as an indexed list, grouped into
  * Core Sectors and Emerging Focus, so the whole portfolio reads at a glance. Opening a sector
  * reveals its description and focus areas in place; on wide screens a pinned photo beside the
- * list follows the sector you point at or open. Same words as before.
+ * list follows the sector you point at or open, playing its film where it has one. Same words as before.
  */
 
 type Sector = (typeof sectors)[number];
@@ -92,7 +92,7 @@ export default function SectorDirectory() {
                       exit={{ opacity: 0 }}
                       transition={{ duration: reduce ? 0 : 0.45, ease: EASE }}
                     >
-                      <Image src={shown.image} alt="" fill sizes="(min-width: 1024px) 40vw, 0px" className="object-cover" />
+                      <Media s={shown} still={reduce} sizes="(min-width: 1024px) 40vw, 0px" />
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -177,7 +177,7 @@ function Row({
             <div className="pb-7 pl-[3.5rem] sm:pl-[4rem]">
               {/* the photo lives in the row on narrow screens, beside the list on wide ones */}
               <div className="relative mb-5 aspect-[16/10] overflow-hidden rounded-xl bg-surface-line/40 lg:hidden">
-                <Image src={s.image} alt="" fill sizes="(max-width: 1023px) 90vw, 0px" className="object-cover" />
+                <Media s={s} still={reduce} sizes="(max-width: 1023px) 90vw, 0px" />
               </div>
               <p className="max-w-[56ch] text-[15px] font-light leading-relaxed text-ink-muted">{s.description}</p>
               <ul className="mt-5 flex flex-wrap gap-2" aria-label={`${s.title} focus areas`}>
@@ -195,5 +195,26 @@ function Row({
         )}
       </AnimatePresence>
     </li>
+  );
+}
+
+/** The sector's film (muted, looping) over its still; just the still where there's no film or motion is reduced. */
+function Media({ s, still, sizes }: { s: Sector; still: boolean; sizes: string }) {
+  return (
+    <>
+      <Image src={s.image} alt="" fill sizes={sizes} className="object-cover" />
+      {s.video && !still && (
+        <video
+          src={s.video}
+          poster={s.image}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      )}
+    </>
   );
 }
