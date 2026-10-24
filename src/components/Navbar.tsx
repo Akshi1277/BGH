@@ -89,7 +89,9 @@ export default function Navbar() {
             <div className="flex items-center gap-3">
               <motion.div whileHover={{ y: -1 }} transition={{ duration: 0.15 }}>
                 <ShinyButton
-                  href="/enif"
+                  href="https://enif.brahmglobalholdings.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="!px-5 !py-2.5 text-xs font-mono-ui uppercase tracking-[0.12em] font-bold"
                   highlight="#38BDF8"
                   highlightSubtle="#7DD3FC"
@@ -166,7 +168,9 @@ export default function Navbar() {
             </div>
             <div className="p-4 sm:p-margin-mobile pb-[max(2.5rem,env(safe-area-inset-bottom))] shrink-0 flex flex-col gap-3">
               <ShinyButton
-                href="/enif"
+                href="https://enif.brahmglobalholdings.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
                 className="w-full !px-6 !py-4 text-xs font-mono-ui uppercase tracking-[0.1em] font-bold"
                 highlight="#38BDF8"

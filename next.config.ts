@@ -35,6 +35,20 @@ const nextConfig: NextConfig = {
       })),
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: "/enif",
+        destination: "https://enif.brahmglobalholdings.com",
+        permanent: true,
+      },
+      {
+        source: "/enif/:path*",
+        destination: "https://enif.brahmglobalholdings.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

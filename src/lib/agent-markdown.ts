@@ -23,7 +23,7 @@ Headquartered in London. Built for international markets.
 1. **ENIF Technologies** (Engineering & Artificial Intelligence)
    - *Tagline*: Engineering the Intelligence Behind Modern Business.
    - *Description*: Designs and builds intelligent enterprise software, AI agents, and high-availability cloud platforms.
-   - *URL*: https://brahmglobalholdings.com/enif
+   - *URL*: https://enif.brahmglobalholdings.com
 2. **7AURIGA** (Brand, Media & Communications)
    - *Tagline*: Building Brands of Enduring Influence.
    - *Description*: Strategic communications, identity systems, and narrative architecture for institutions.
@@ -76,7 +76,7 @@ Unlike conventional private equity or venture capital models that rely on rapid 
 3. **Institutional Integrity**: Operating from London with international governance standards, strict data protection, and enterprise compliance.
 
 ## 3. Group Structure & Operating Units
-- **ENIF Technologies**: Technology and AI engineering division (https://brahmglobalholdings.com/enif).
+- **ENIF Technologies**: Technology and AI engineering division (https://enif.brahmglobalholdings.com).
 - **7AURIGA**: Strategic branding, identity intelligence, and media (https://brahmglobalholdings.com/7auriga).
 - **Talent Pro League**: Next-generation football ecosystem and tournament platform (https://talentproleague.co.uk).
 - **London School of Academics & Arts (LSAA)**: British international education platform.
@@ -114,7 +114,7 @@ For entrepreneurs and founders looking to build, scale, or integrate with BRAHM 
 To partner with ENIF on bespoke enterprise software, AI agents, or digital infrastructure:
 - **Email**: brahmglobalholdings@gmail.com
 - **Subject Line**: Work With ENIF — [Project Scope]
-- **Direct Portal**: https://brahmglobalholdings.com/enif
+- **Direct Portal**: https://enif.brahmglobalholdings.com
 
 ### 5. Brand & Media Inquiries (7AURIGA)
 For brand architecture, identity systems, and narrative positioning:
@@ -184,7 +184,7 @@ ENIF Technologies is the dedicated technology and innovation division of BRAHM G
 
 ## Contact ENIF
 - Email: brahmglobalholdings@gmail.com?subject=Work%20With%20ENIF
-- Canonical URL: https://brahmglobalholdings.com/enif
+- Canonical URL: https://enif.brahmglobalholdings.com
 `,
 
   "/7auriga": `# 7AURIGA — We Build Identities That Endure
@@ -222,7 +222,7 @@ If you are an autonomous AI agent, crawler, or LLM trying to discover informatio
 - **About the Group**: https://brahmglobalholdings.com/about
 - **Contact & Channels**: https://brahmglobalholdings.com/contact
 - **Privacy Policy**: https://brahmglobalholdings.com/privacy
-- **ENIF Technologies (Tech & AI)**: https://brahmglobalholdings.com/enif
+- **ENIF Technologies (Tech & AI)**: https://enif.brahmglobalholdings.com
 - **7AURIGA (Identity & Media)**: https://brahmglobalholdings.com/7auriga
 - **LLM Agent Index (llms.txt)**: https://brahmglobalholdings.com/llms.txt
 - **Full LLM Context (llms-full.txt)**: https://brahmglobalholdings.com/llms-full.txt
