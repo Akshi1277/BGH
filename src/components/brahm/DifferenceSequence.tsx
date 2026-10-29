@@ -80,7 +80,7 @@ function Column({ m, open }: { m: Model; open: boolean }) {
       >
         {m.number}
       </span>
-      <p className={`font-mono-ui text-[11px] uppercase tracking-[0.2em] ${dark ? "text-[#7FB79B]" : brahm ? "text-accent" : "text-ink/50"}`}>
+      <p className={`font-mono-ui text-[11px] uppercase tracking-[0.2em] ${dark ? "text-[#7FB79B]" : brahm ? "text-accent" : "text-ink/70"}`}>
         {m.number} • {m.label}
       </p>
       <h3
@@ -132,7 +132,7 @@ function Stacked() {
           const brahm = m.tone === "brahm";
           return (
             <div key={m.label} className={brahm ? "bg-[#101412] p-7 text-surface" : "border border-ink/10 bg-surface p-7 text-ink"}>
-              <p className={`font-mono-ui text-[11px] uppercase tracking-[0.2em] ${brahm ? "text-[#7FB79B]" : "text-ink/50"}`}>
+              <p className={`font-mono-ui text-[11px] uppercase tracking-[0.2em] ${brahm ? "text-[#7FB79B]" : "text-ink/70"}`}>
                 {m.number} • {m.label}
               </p>
               <h3 className={`mt-4 font-display text-[32px] font-normal leading-tight ${brahm ? "italic" : ""}`}>{m.title}</h3>

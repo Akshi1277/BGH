@@ -59,15 +59,17 @@ function Principle({ title, description, still }: { title: string; description: 
   const ref = useRef<HTMLLIElement>(null);
   // 0 as the principle enters from below, 1 as it leaves above; it is at full ink through the middle
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 85%", "end 15%"] });
-  const ink = useRange(scrollYProgress, [0, 0.3, 0.7, 1], [0.32, 1, 1, 0.32]);
+  // only the heading dims, and never below 0.5, so it stays above 3:1 (large text); the
+  // description keeps its full colour because ink-muted barely clears 4.5:1 to begin with
+  const ink = useRange(scrollYProgress, [0, 0.3, 0.7, 1], [0.5, 1, 1, 0.5]);
   const mark = useRange(scrollYProgress, [0.15, 0.35, 0.65, 0.85], [0, 1, 1, 0]);
   return (
     <li ref={ref} className="relative border-t border-ink/10 py-10 pl-7 last:border-b md:py-14">
       <motion.span aria-hidden="true" style={{ scaleY: still ? 1 : mark }} className="absolute left-0 top-10 h-[calc(100%-5rem)] w-[2px] origin-top bg-accent md:top-14 md:h-[calc(100%-7rem)]" />
-      <motion.div style={{ opacity: still ? 1 : ink }}>
-        <h3 className="font-display text-[clamp(26px,2.4vw,34px)] font-normal leading-tight text-ink">{title}</h3>
+      <div>
+        <motion.h3 style={{ opacity: still ? 1 : ink }} className="font-display text-[clamp(26px,2.4vw,34px)] font-normal leading-tight text-ink">{title}</motion.h3>
         <p className="mt-3 max-w-[46ch] text-[16px] font-light leading-relaxed text-ink-muted">{description}</p>
-      </motion.div>
+      </div>
     </li>
   );
 }

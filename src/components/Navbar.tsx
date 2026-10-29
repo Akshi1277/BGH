@@ -21,7 +21,7 @@ function Wordmark() {
       <span className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden border border-[#34D399]/40 shrink-0 bg-[#141A16]">
         <Image
           src="/whatsapp.svg"
-          alt="BRAHM Global Holdings"
+          alt=""
           fill
           sizes="36px"
           className="object-cover opacity-90 group-hover:opacity-100 transition-opacity"

@@ -41,7 +41,7 @@ export default function BrahmFooter() {
             </p>
             <div className="font-mono-ui text-xs uppercase tracking-wider space-y-1.5 text-ink-muted">
               <p>{footer.hq}</p>
-              <p className="text-ink/40">{footer.markets}</p>
+              <p className="text-ink/70">{footer.markets}</p>
             </div>
           </div>
 
@@ -72,7 +72,7 @@ export default function BrahmFooter() {
 
       {/* Bottom Copyright & Location Bar */}
       <div className="relative mt-16 md:mt-20 border-t border-surface-line bg-surface-soft/60">
-        <div className="font-mono-ui text-xs mx-auto flex max-w-[1400px] flex-col justify-between gap-3 px-8 py-6 text-ink/50 sm:flex-row md:px-12">
+        <div className="font-mono-ui text-xs mx-auto flex max-w-[1400px] flex-col justify-between gap-3 px-8 py-6 text-ink/70 sm:flex-row md:px-12">
           <p>
             &copy; {new Date().getFullYear()} {footer.copyright}
           </p>
