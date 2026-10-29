@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { preload } from "react-dom";
 import Link from "next/link";
 import { useReducedMotion } from "framer-motion";
 import { isSmoothScrolling } from "./SmoothScroll";
@@ -15,12 +16,32 @@ import { isSmoothScrolling } from "./SmoothScroll";
  * scrubbed before everything has arrived, drawing the nearest frame that has loaded. Phones get
  * a portrait crop of the centre. The displayed frame eases toward the scroll position, so jumps
  * of the wheel still read as motion. Runs only while on screen; reduced motion gets a still.
+ *
+ * Loading is staged so the film never competes with the first paint: the opening frame (the LCP
+ * element) is the only image fetched up front, the coarse first pass follows once the page has
+ * loaded and the main thread is idle, and the rest waits for the visitor's first scroll or input.
  */
 const N = 128;
 const src = (set: "d" | "m", i: number) => `/images/hero/doors/${set}/${String(i).padStart(3, "0")}.webp`;
+// matches the canvas's choice of set: portrait-ish viewports (width / height < 0.9) get the phone crop
+const PORTRAIT = "(max-aspect-ratio: 9/10)";
+const LANDSCAPE = "(min-aspect-ratio: 9/10)";
+const FIRST_PASS = N / 16;
 
 export default function FilmHero() {
+  preload(src("m", 0), { as: "image", media: PORTRAIT, fetchPriority: "high" });
+  preload(src("d", 0), { as: "image", media: LANDSCAPE, fetchPriority: "high" });
   return useReducedMotion() ? <Still /> : <Film />;
+}
+
+/* The opening frame, art-directed per viewport so phones fetch the smaller portrait crop. */
+function FirstFrame() {
+  return (
+    <picture>
+      <source media={PORTRAIT} srcSet={src("m", 0)} />
+      <img src={src("d", 0)} alt="" fetchPriority="high" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
+    </picture>
+  );
 }
 
 /* The opening words sit in the sky above the palace roof; the invitation waits inside the hall. */
@@ -49,8 +70,7 @@ function Invitation() {
 function Still() {
   return (
     <section className="relative h-[100svh] overflow-hidden">
-      {/* eslint-disable-next-line @next/next/no-img-element -- a single still frame */}
-      <img src={src("d", 0)} alt="" className="absolute inset-0 h-full w-full object-cover" />
+      <FirstFrame />
       <Copy className="relative pt-[clamp(96px,12vh,120px)]" />
       <div className="relative mt-6 flex justify-center">
         <Link href="/#contact" className="flex items-center gap-3 rounded-full bg-ink px-8 py-4 font-mono-ui text-xs font-bold uppercase tracking-[0.15em] text-surface">
@@ -90,20 +110,48 @@ function Film() {
     }
     if (!seen.has(N - 1)) order.splice(1, 0, N - 1);
     let next = 0, alive = true;
+    // how far into `order` loading may go: nothing until the page has loaded, then the coarse
+    // first pass, then everything once the visitor scrolls or interacts
+    let limit = 0, inFlight = 0;
     const pump = () => {
-      if (!alive || next >= order.length) return;
+      if (!alive || next >= Math.min(limit, order.length)) return;
+      inFlight++;
       const i = order[next++];
       const im = new Image();
       im.decoding = "async";
       im.onload = () => {
+        inFlight--;
         imgs[i] = im;
         dirty = true;
         pump();
       };
-      im.onerror = pump;
+      im.onerror = () => {
+        inFlight--;
+        pump();
+      };
       im.src = src(set, i);
     };
-    for (let c = 0; c < 6; c++) pump();
+    const allowUpTo = (n: number) => {
+      if (n <= limit) return;
+      limit = n;
+      for (let c = inFlight; c < 6; c++) pump();
+    };
+
+    let idleId: number | undefined;
+    const loadFirstPass = () => {
+      const go = () => allowUpTo(FIRST_PASS + 1); // +1: the last frame is queued early too
+      if ("requestIdleCallback" in window) idleId = window.requestIdleCallback(go, { timeout: 3000 });
+      else setTimeout(go, 1500);
+    };
+    if (document.readyState === "complete") loadFirstPass();
+    else window.addEventListener("load", loadFirstPass, { once: true });
+
+    const INPUTS = ["scroll", "wheel", "touchstart", "keydown", "pointerdown"] as const;
+    const loadAll = () => {
+      allowUpTo(order.length);
+      INPUTS.forEach((t) => window.removeEventListener(t, loadAll));
+    };
+    INPUTS.forEach((t) => window.addEventListener(t, loadAll, { passive: true }));
 
     let W = 0, H = 0;
     const resize = () => {
@@ -185,6 +233,9 @@ function Film() {
       io.disconnect();
       ro.disconnect();
       window.removeEventListener("scroll", kick);
+      window.removeEventListener("load", loadFirstPass);
+      INPUTS.forEach((t) => window.removeEventListener(t, loadAll));
+      if (idleId !== undefined) window.cancelIdleCallback(idleId);
     };
   }, []);
 
@@ -192,10 +243,7 @@ function Film() {
     <section ref={trackRef} className="relative h-[300vh] bg-surface md:h-[420vh]">
       <div className="sticky top-0 h-[100svh] overflow-hidden">
         {/* the first frame, shown until the canvas has painted */}
-        {poster && (
-          // eslint-disable-next-line @next/next/no-img-element -- first frame of the film
-          <img src={src("d", 0)} alt="" className="absolute inset-0 h-full w-full object-cover" />
-        )}
+        {poster && <FirstFrame />}
         <canvas ref={canvasRef} aria-hidden="true" className="absolute inset-0 h-full w-full" />
         {/* a soft light behind the headline so it reads over the sky */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-[42%] bg-[radial-gradient(ellipse_55%_65%_at_50%_32%,rgba(248,246,242,0.7),transparent_72%)]" />

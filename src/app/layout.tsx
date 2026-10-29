@@ -15,9 +15,12 @@ const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
 });
 
+// Only Playfair, Jakarta and JetBrains Mono carry the homepage; the rest are used in a handful
+// of places, so they load on demand instead of preloading ahead of the hero.
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-tech-display",
   subsets: ["latin"],
+  preload: false,
 });
 
 const jbmono = JetBrains_Mono({
@@ -31,6 +34,7 @@ const manrope = Manrope({
   weight: ["300", "400", "500", "600", "700", "800"],
   variable: "--font-manrope",
   display: "swap",
+  preload: false,
 });
 
 const crimsonText = Crimson_Text({
@@ -39,6 +43,7 @@ const crimsonText = Crimson_Text({
   style: ["normal", "italic"],
   variable: "--font-serif-crimson",
   display: "swap",
+  preload: false,
 });
 
 const ebGaramond = EB_Garamond({
@@ -46,6 +51,7 @@ const ebGaramond = EB_Garamond({
   subsets: ["latin", "latin-ext"],
   weight: ["500", "600", "700", "800"],
   display: "swap",
+  preload: false,
 });
 
 const siteUrl = "https://brahmglobalholdings.com";

@@ -19,6 +19,8 @@ interface Venture {
   imageSrc?: string;
   imageAlt: string;
   logo?: string;
+  /** display size of the logo in the 20px-tall label strip */
+  logoSize?: [width: number, height: number];
   aspectRatio: string;
   description: string;
   cta: string;
@@ -38,7 +40,8 @@ const VENTURES: Venture[] = [
     url: "talentproleague.co.uk",
     imageSrc: "/tpl-preview-v2.webp",
     imageAlt: "Talent Pro League dashboard",
-    logo: "/image copy 4.png",
+    logo: "/images/portfolio/logos/talent-pro-league.webp",
+    logoSize: [40, 20],
     aspectRatio: "1892/952",
     description:
       "Talent Pro League is a next-generation football ecosystem connecting players, clubs, coaches, leagues and commercial partners through intelligent technology designed to modernise competition management, talent development and grassroots participation. Built to strengthen the future of football through innovation, accessibility and community.",
@@ -54,7 +57,8 @@ const VENTURES: Venture[] = [
     url: "lsaa.co.uk",
     imageSrc: "/lsa-preview.png",
     imageAlt: "LSA school dashboard",
-    logo: "/image copy 3.png",
+    logo: "/images/portfolio/logos/lsa.webp",
+    logoSize: [25, 20],
     aspectRatio: "1913/953",
     description:
       "London School of Academics & Arts delivers internationally accessible education through British educators, intelligent technology and personalised learning experiences. Combining academic excellence with AI-powered learning, LSAA prepares learners around the world for the opportunities of tomorrow.",
@@ -70,7 +74,8 @@ const VENTURES: Venture[] = [
     url: "alaynai.com",
     imageSrc: "/alayn-preview.webp",
     imageAlt: "Alayn dashboard",
-    logo: "/alaynlogo.jpeg",
+    logo: "/images/portfolio/logos/alayn.webp",
+    logoSize: [30, 20],
     aspectRatio: "1892/952",
     description:
       "Alayn is an intelligent hospitality platform combining artificial intelligence, operational excellence and modern customer experience to help cafés, restaurants and hospitality groups operate more efficiently, grow sustainably and build stronger customer relationships. Designed to become the operating system behind the next generation of hospitality businesses.",
@@ -86,7 +91,8 @@ const VENTURES: Venture[] = [
     url: "hannahpixels.com",
     imageSrc: "/hannahpixels-preview.webp",
     imageAlt: "Hannah Pixels website",
-    logo: "/hannahpixels-mark.png",
+    logo: "/images/portfolio/logos/hannah-pixels.webp",
+    logoSize: [20, 20],
     aspectRatio: "1892/952",
     description:
       "Hannah Pixels is an international luxury print and packaging house creating considered physical brand experiences. From rigid gift boxes and fragrance cartons to bespoke carry bags and fine print, every piece is crafted to turn a brand's vision into something people can hold, delivered to doorsteps worldwide.",
@@ -309,7 +315,6 @@ export default function Portfolio() {
                           fill
                           sizes="(max-width: 640px) 600px, 800px"
                           className="object-cover object-top"
-                          loading="eager"
                         />
                       )}
                       {!isCenter && <div className="absolute inset-0 bg-ink/15" />}
@@ -318,12 +323,16 @@ export default function Portfolio() {
                     {/* Label strip */}
                     <div className="px-3 py-3 flex items-center gap-2.5 border-t border-surface-line">
                       {venture.logo ? (
+                        // eslint-disable-next-line @next/next/no-img-element -- logos are pre-sized webps of a few KB
                         <img
                           src={venture.logo}
                           alt=""
+                          width={venture.logoSize?.[0]}
+                          height={venture.logoSize?.[1] ?? 20}
                           className="object-contain shrink-0 rounded-sm opacity-90"
                           style={{ height: 20, width: 'auto', maxWidth: 80 }}
-                          loading="eager"
+                          loading="lazy"
+                          decoding="async"
                         />
                       ) : (
                         <span
