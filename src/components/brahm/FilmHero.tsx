@@ -17,16 +17,14 @@ import { isSmoothScrolling } from "./SmoothScroll";
  * a portrait crop of the centre. The displayed frame eases toward the scroll position, so jumps
  * of the wheel still read as motion. Runs only while on screen; reduced motion gets a still.
  *
- * Loading is staged so the film never competes with the first paint: the opening frame (the LCP
- * element) is the only image fetched up front, the coarse first pass follows once the page has
- * loaded and the main thread is idle, and the rest waits for the visitor's first scroll or input.
+ * The opening frame (the LCP element) is the only image fetched up front; the whole film starts
+ * loading the moment the page has loaded, or sooner if the visitor scrolls or interacts first.
  */
 const N = 128;
 const src = (set: "d" | "m", i: number) => `/images/hero/doors/${set}/${String(i).padStart(3, "0")}.webp`;
 // matches the canvas's choice of set: portrait-ish viewports (width / height < 0.9) get the phone crop
 const PORTRAIT = "(max-aspect-ratio: 9/10)";
 const LANDSCAPE = "(min-aspect-ratio: 9/10)";
-const FIRST_PASS = N / 16;
 
 export default function FilmHero() {
   preload(src("m", 0), { as: "image", media: PORTRAIT, fetchPriority: "high" });
@@ -110,8 +108,8 @@ function Film() {
     }
     if (!seen.has(N - 1)) order.splice(1, 0, N - 1);
     let next = 0, alive = true;
-    // how far into `order` loading may go: nothing until the page has loaded, then the coarse
-    // first pass, then everything once the visitor scrolls or interacts
+    // how far into `order` loading may go: nothing until the page has loaded (or the visitor
+    // interacts), then everything
     let limit = 0, inFlight = 0;
     const pump = () => {
       if (!alive || next >= Math.min(limit, order.length)) return;
@@ -137,21 +135,17 @@ function Film() {
       for (let c = inFlight; c < 6; c++) pump();
     };
 
-    let idleId: number | undefined;
-    const loadFirstPass = () => {
-      const go = () => allowUpTo(FIRST_PASS + 1); // +1: the last frame is queued early too
-      if ("requestIdleCallback" in window) idleId = window.requestIdleCallback(go, { timeout: 3000 });
-      else setTimeout(go, 1500);
-    };
-    if (document.readyState === "complete") loadFirstPass();
-    else window.addEventListener("load", loadFirstPass, { once: true });
-
     const INPUTS = ["scroll", "wheel", "touchstart", "keydown", "pointerdown"] as const;
     const loadAll = () => {
       allowUpTo(order.length);
+      window.removeEventListener("load", loadAll);
       INPUTS.forEach((t) => window.removeEventListener(t, loadAll));
     };
-    INPUTS.forEach((t) => window.addEventListener(t, loadAll, { passive: true }));
+    if (document.readyState === "complete") loadAll();
+    else {
+      window.addEventListener("load", loadAll, { once: true });
+      INPUTS.forEach((t) => window.addEventListener(t, loadAll, { passive: true }));
+    }
 
     let W = 0, H = 0;
     const resize = () => {
@@ -233,9 +227,8 @@ function Film() {
       io.disconnect();
       ro.disconnect();
       window.removeEventListener("scroll", kick);
-      window.removeEventListener("load", loadFirstPass);
+      window.removeEventListener("load", loadAll);
       INPUTS.forEach((t) => window.removeEventListener(t, loadAll));
-      if (idleId !== undefined) window.cancelIdleCallback(idleId);
     };
   }, []);
 
