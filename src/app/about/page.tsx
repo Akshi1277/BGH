@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import Icon from "@/components/Icon";
-import { ORG_ADDRESSES } from "@/lib/org-locations";
+import { ORG_ADDRESSES, COMPANY_NUMBER, COMPANIES_HOUSE_URL, CEO } from "@/lib/org-locations";
 
 const siteUrl = "https://brahmglobalholdings.com";
 const title = "About BRAHM Global Holdings — Mandate, Strategy & Governance";
@@ -119,7 +119,9 @@ export default function AboutPage() {
       "name": "BRAHM Global Holdings",
       "url": siteUrl,
       "logo": `${siteUrl}/logo.png`,
-      "address": ORG_ADDRESSES
+      "address": ORG_ADDRESSES,
+      "employee": { "@type": "Person", ...CEO },
+      "sameAs": [COMPANIES_HOUSE_URL]
     }
   };
 
@@ -269,8 +271,32 @@ export default function AboutPage() {
               Rooted in London. Engineered for Global Impact.
             </h2>
             <p className="text-ink-muted text-sm sm:text-base font-light leading-relaxed">
-              BRAHM Global Holdings Ltd is registered and headquartered in London, United Kingdom. We maintain rigorous compliance with UK corporate law, GDPR privacy frameworks, and international enterprise governance standards.
+              BRAHM Global Holdings Ltd is registered and headquartered in London, United Kingdom, with an office in Mumbai, India. We maintain rigorous compliance with UK corporate law, GDPR privacy frameworks, and international enterprise governance standards.
             </p>
+            <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-sm">
+              <div>
+                <dt className="font-mono-ui text-[10px] uppercase tracking-wider text-ink-muted mb-1">Chief Executive Officer</dt>
+                <dd className="text-ink font-medium">{CEO.name}</dd>
+              </div>
+              <div>
+                <dt className="font-mono-ui text-[10px] uppercase tracking-wider text-ink-muted mb-1">Registered in England &amp; Wales</dt>
+                <dd className="text-ink font-medium">
+                  Company No.{" "}
+                  <a
+                    href={COMPANIES_HOUSE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-accent hover:underline"
+                  >
+                    {COMPANY_NUMBER}
+                  </a>
+                </dd>
+              </div>
+              <div>
+                <dt className="font-mono-ui text-[10px] uppercase tracking-wider text-ink-muted mb-1">Offices</dt>
+                <dd className="text-ink font-medium">London, United Kingdom · Mumbai, India</dd>
+              </div>
+            </dl>
             <div className="pt-4 flex items-center gap-6 text-xs font-mono-ui uppercase tracking-wider text-ink">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-500" />

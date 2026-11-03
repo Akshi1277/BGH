@@ -3,7 +3,7 @@ import { Playfair_Display, Plus_Jakarta_Sans, Space_Grotesk, JetBrains_Mono, Man
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 import "./brahm.css";
-import { ORG_ADDRESSES } from "@/lib/org-locations";
+import { ORG_ADDRESSES, COMPANY_NUMBER, COMPANIES_HOUSE_URL, CEO, GROUP_COMPANIES } from "@/lib/org-locations";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -135,7 +135,13 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": title,
-    "alternateName": ["Brahm", "Brahm Global", "BGH", "BRAHM Global Holdings Ltd"],
+    "legalName": "BRAHM Global Holdings Ltd",
+    "alternateName": ["Brahm Global", "BGH", "BRAHM Global Holdings Ltd"],
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "Companies House company number",
+      "value": COMPANY_NUMBER
+    },
     "url": siteUrl,
     "logo": `${siteUrl}/logo.png`,
     "description": description,
@@ -154,8 +160,11 @@ export default function RootLayout({
         "availableLanguage": ["English"]
       }
     ],
+    "employee": { "@type": "Person", ...CEO },
+    "subOrganization": GROUP_COMPANIES,
     "sameAs": [
-      "https://www.linkedin.com/company/brahmglobalholdings"
+      "https://www.linkedin.com/company/brahmglobalholdings",
+      COMPANIES_HOUSE_URL
     ]
   };
 

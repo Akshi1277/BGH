@@ -103,7 +103,7 @@ export const footer = {
       ],
     },
   ],
-  copyright: "BRAHM Global Holdings Ltd. All Rights Reserved.",
+  copyright: "BRAHM Global Holdings Ltd. All Rights Reserved. Company No. 17313775.",
   location: "London, United Kingdom",
 };
 

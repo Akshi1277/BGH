@@ -209,7 +209,7 @@ export default function Footer({ theme }: FooterProps) {
                 : "text-ink-muted"
             }`}
           >
-            &copy; {new Date().getFullYear()} BRAHM Global Holdings Ltd. All Rights Reserved.
+            &copy; {new Date().getFullYear()} BRAHM Global Holdings Ltd. All Rights Reserved. Company No. 17313775.
           </div>
           <div
             className={`text-[11px] font-mono-ui uppercase tracking-[0.14em] flex items-center gap-4 ${
