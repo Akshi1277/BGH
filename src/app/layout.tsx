@@ -3,6 +3,7 @@ import { Playfair_Display, Plus_Jakarta_Sans, Space_Grotesk, JetBrains_Mono, Man
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 import "./brahm.css";
+import { ORG_ADDRESSES } from "@/lib/org-locations";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -138,12 +139,7 @@ export default function RootLayout({
     "url": siteUrl,
     "logo": `${siteUrl}/logo.png`,
     "description": description,
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "London",
-      "addressRegion": "Greater London",
-      "addressCountry": "GB"
-    },
+    "address": ORG_ADDRESSES,
     "contactPoint": [
       {
         "@type": "ContactPoint",

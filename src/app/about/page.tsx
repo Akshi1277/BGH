@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import Icon from "@/components/Icon";
+import { ORG_ADDRESSES } from "@/lib/org-locations";
 
 const siteUrl = "https://brahmglobalholdings.com";
 const title = "About BRAHM Global Holdings — Mandate, Strategy & Governance";
@@ -118,12 +119,7 @@ export default function AboutPage() {
       "name": "BRAHM Global Holdings",
       "url": siteUrl,
       "logo": `${siteUrl}/logo.png`,
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "London",
-        "addressCountry": "GB",
-        "addressRegion": "Greater London"
-      }
+      "address": ORG_ADDRESSES
     }
   };
 

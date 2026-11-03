@@ -3,6 +3,7 @@ import Link from "next/link";
 import Footer from "@/components/Footer";
 import Icon from "@/components/Icon";
 import ContactForm from "@/components/ContactForm";
+import { ORG_ADDRESSES } from "@/lib/org-locations";
 
 const siteUrl = "https://brahmglobalholdings.com";
 const title = "Contact Us — BRAHM Global Holdings";
@@ -50,12 +51,7 @@ export default function ContactPage() {
       "@type": "Organization",
       name: "BRAHM Global Holdings",
       url: siteUrl,
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "London",
-        addressCountry: "GB",
-        addressRegion: "Greater London",
-      },
+      address: ORG_ADDRESSES,
       contactPoint: [
         {
           "@type": "ContactPoint",
@@ -140,6 +136,20 @@ export default function ContactPage() {
                 <p className="text-xs text-ink-muted font-light leading-relaxed">
                   BRAHM Global Holdings Ltd is registered and headquartered in London, operating under UK corporate governance and GDPR data protection frameworks.
                 </p>
+              </div>
+
+              {/* India Office Card */}
+              <div className="p-6 rounded-2xl border border-surface-line bg-surface/60 space-y-2">
+                <span className="font-mono-ui text-[10px] uppercase tracking-wider text-ink-muted block font-medium">
+                  India Office
+                </span>
+                <p className="font-display text-base text-ink font-semibold">
+                  Bandra West, Mumbai, India
+                </p>
+                <address className="not-italic text-xs text-ink-muted font-light leading-relaxed">
+                  Shop no 6, Veena Beena, 22a, Gurunanak Rd, opp. Bandra Railway Station,
+                  Bandra West, Mumbai, Maharashtra 400050
+                </address>
               </div>
 
               {/* Dedicated Division Portals */}

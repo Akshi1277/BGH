@@ -80,12 +80,14 @@ export const footer = {
         { label: "Talent Pro League", href: "/#companies" },
         { label: "London School of Academics & Arts", href: "/#companies" },
         { label: "Alayn", href: "/#companies" },
+        { label: "Hannah Pixels", href: "https://hannahpixels.com" },
       ],
     },
     {
       heading: "ORGANISATION",
       links: [
         { label: "About BGH", href: "/about" },
+        { label: "Partner With Us", href: "/partner" },
         { label: "Vision & Mandate", href: "/#vision" },
         { label: "Industry Sectors", href: "/#sectors" },
         { label: "How We Build", href: "/#how-we-build" },
