@@ -52,6 +52,15 @@ const nextConfig: NextConfig = {
         destination: "https://enif.brahmglobalholdings.com/:path*",
         permanent: true,
       },
+      // One canonical host: www served a full duplicate of the site, which Search Console
+      // flagged as "Alternative page with proper canonical tag". Kept after the /enif rules
+      // so www/enif goes straight to the subdomain in a single hop.
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.brahmglobalholdings.com" }],
+        destination: "https://brahmglobalholdings.com/:path*",
+        permanent: true,
+      },
     ];
   },
 };
